@@ -21,7 +21,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
         OrderTicketsResult otr = new OrderTicketsResult();
         if(tokenResult.isStatus() == true){
             System.out.println("[Preserve Other Service][Verify Login] Success");
-            //1.黄牛检测
+            //1.Ticket hold number check
             System.out.println("[Preserve Service] [Step 1] Check Security");
             CheckInfo checkInfo = new CheckInfo();
             checkInfo.setAccountId(accountId);
@@ -34,7 +34,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
                 return otr;
             }
             System.out.println("[Preserve Service] [Step 1] Check Security Complete. ");
-            //2.查询联系人信息 -- 修改，通过基础信息微服务作为中介
+            //2.search info about contacts
             /***************** For Fault Reproduction - Error Normal (modify)*********************/
 //            System.out.println("[Preserve Other Service] [Step 2] Find contacts");
 //            GetContactsInfo gci = new GetContactsInfo();
@@ -54,16 +54,16 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
 
             Gson gson = new Gson();
             String otiString = gson.toJson(oti);
-            System.out.println("[打印出oti]:" + otiString);
+            System.out.println("[Print oti]:" + otiString);
 
 
             AddContactsResult addContactsResult = null;
 
 
             if(oti.getIsCreateContacts().equals("true")){
-                //先查询联系人数量
 
-                System.out.println("[Preserve Service]准备创建联系人");
+
+                System.out.println("[Preserve Service]Ready to create contact ");
                 int contactsNum = calculateContacts(accountId);
 
                 String name = oti.getContactsName();
@@ -73,14 +73,14 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
 
 
                 if(contactsNum > 0){
-                    System.out.println("[Preserve Service]准备创建联系人check");
+                    System.out.println("[Preserve Service]Create Contacts WITH CHECK ");
                     addContactsResult = addContactsWithCheck(name,type,number,phone,accountId);
                 }else{
-                    System.out.println("[Preserve Service]准备创建联系人without check");
+                    System.out.println("[Preserve Service]Create Contacts WITHOUT CHECK");
                     addContactsResult = addContactsWithoutCheck(name,type,number,phone,accountId);
                 }
                 orderContact = addContactsResult.getContacts();
-                //根据联系人数量再确定要调用哪边
+
             }else{
                 System.out.println("[Preserve Other Service] [Step 2] Find contacts");
                 GetContactsInfo gci = new GetContactsInfo();
@@ -102,7 +102,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
             System.out.println("[Preserve Other Service][Step 2] Complete");
             /*********************************************************************************************/
 
-            //3.查询座位余票信息和车次的详情
+            //3.Search seats that available
             System.out.println("[Preserve Other Service] [Step 3] Check tickets num");
             GetTripAllDetailInfo gtdi = new GetTripAllDetailInfo();
 
@@ -143,7 +143,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
             }
             Trip trip = gtdr.getTrip();
             System.out.println("[Preserve Other Service] [Step 3] Tickets Enough");
-            //4.下达订单请求 设置order的各个信息
+            //4.Create for order
             System.out.println("[Preserve Other Service] [Step 4] Do Order");
             /***************** For Fault Reproduction - Error Normal (modify)*********************/
             //Contacts contacts = gtdr.getContacts();
@@ -234,7 +234,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
             otr.setStatus(true);
             otr.setMessage("Success");
             otr.setOrder(cor.getOrder());
-            //5.检查保险的选择
+            //5.assurance
             if(oti.getAssurance() == 0){
                 System.out.println("[Preserve Service][Step 5] Do not need to buy assurance");
             }else{
@@ -248,7 +248,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
                 }
             }
 
-            //6.增加订餐
+            //6.Add food
             if(oti.getFoodType() != 0){
                 AddFoodOrderInfo afoi = new AddFoodOrderInfo();
                 afoi.setOrderId(cor.getOrder().getId().toString());
@@ -270,7 +270,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
                 System.out.println("[Preserve Service][Step 6] Do not need to buy food");
             }
 
-            //7.增加托运
+            //7.Add delivery
             if(null != oti.getConsigneeName() && !"".equals(oti.getConsigneeName())){
                 ConsignRequest consignRequest = new ConsignRequest();
                 consignRequest.setAccountId(cor.getOrder().getAccountId());
@@ -293,7 +293,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
                 System.out.println("[Preserve Service][Step 7] Do not need to consign");
             }
 
-            //8.发送notification
+            //8.notification
             System.out.println("[Preserve Service]");
             GetAccountByIdInfo getAccountByIdInfo = new GetAccountByIdInfo();
             getAccountByIdInfo.setAccountId(order.getAccountId().toString());
@@ -317,7 +317,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
 
             sendEmail(notifyInfo);
 
-            /**********如果用户添加联系人且联系人重复，抛出异常***********/
+            /**********If user create a contact with duplicate ID，throw exception***********/
             if(oti.getIsCreateContacts().equals("true") && addContactsResult.isExists() == true){
                 throw new RuntimeException("[Normal Error] Reproduction Of Error Normal");
             }

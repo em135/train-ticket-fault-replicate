@@ -61,7 +61,7 @@ public class ContactsServiceImpl implements ContactsService{
         acr.setStatus(true);
         acr.setMessage("Success");
         acr.setContacts(contacts);
-        /*******证件号重复就返回true*********/
+        /*******If ID Number is replicate, then return true*********/
         if(accountContacts.contains(contacts)){
             acr.setExists(true);
         }else{
