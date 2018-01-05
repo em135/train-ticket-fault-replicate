@@ -23,32 +23,32 @@ public class LauncherServiceImpl implements LauncherService {
 
     @Override
     public void doErrorQueue(String email,String password){
-        //0.注册
+        //0.Regist
         RegisterInfo registerInfo = new RegisterInfo(email,password);
         RegisterResult registerResult = restTemplate.postForObject(
                 "http://ts-register-service:12344/register",
                 registerInfo,RegisterResult.class);
-        System.out.println("[注册结果] " + registerResult.getMessage());
+        System.out.println("[Register Result] " + registerResult.getMessage());
 
-        //0.1 随机多注册一个或者两个用户
+        //0.1 randomly register for one or two account
         if(new Random().nextBoolean()){
             String randomEmailOne = new Random().nextInt(10000000) + "@fudan.edu.cn";
             RegisterInfo registerInfoExtraOne = new RegisterInfo(randomEmailOne,"passwordpassword");
             RegisterResult registerResultExtraOne = restTemplate.postForObject(
                     "http://ts-register-service:12344/register",
                     registerInfoExtraOne,RegisterResult.class);
-            System.out.println("[随机多注册第1个账户]" + registerResultExtraOne.getMessage());
+            System.out.println("[Random First Account]" + registerResultExtraOne.getMessage());
             if(new Random().nextBoolean()){
                 String randomEmailTwo = new Random().nextInt(10000000) + "@fudan.edu.cn";
                 RegisterInfo registerInfoExtraTwo = new RegisterInfo(randomEmailTwo,"passwordpassword");
                 RegisterResult registerResultExtraTwo = restTemplate.postForObject(
                         "http://ts-register-service:12344/register",
                         registerInfoExtraTwo,RegisterResult.class);
-                System.out.println("[随机多注册第2个账户]" + registerResultExtraTwo.getMessage());
+                System.out.println("[Random Second Account]" + registerResultExtraTwo.getMessage());
             }
         }
 
-        //1.登录
+        //1.login
         LoginInfo loginInfo = new LoginInfo(
                 email,
                 password,
@@ -59,11 +59,11 @@ public class LauncherServiceImpl implements LauncherService {
         );
         String loginId = loginResult.getAccount().getId().toString();
         String loginToken = loginResult.getToken();
-        System.out.println("[登录结果] " + loginResult.getMessage());
+        System.out.println("[Login Result] " + loginResult.getMessage());
 
         String orderId = UUID.randomUUID().toString();
 
-        //2.预定并预设id
+        //2.reserve a ticket
         Future<OrderTicketsResult> taskResult = asyncTask.sendOrderTicket(orderId,loginId,loginToken);
         try{
             OrderTicketsResult orderTicketsResult = taskResult.get();
@@ -71,21 +71,19 @@ public class LauncherServiceImpl implements LauncherService {
             e.printStackTrace();
         }
 
-        //2.支付操作
+        //2.pay
         Future<Boolean> payResult  = asyncTask.sendInsidePayment(
                 orderId,"Z1234",loginId,loginToken);
 
-        boolean isFault;//error queue是否重现
+        boolean isFault;//error queue successfully reproduce or not.
         try{
             if(new Random().nextBoolean() == false){
-                System.out.println("[Launcher Service]不等待支付结果直接返回");
+                System.out.println("[Launcher Service]Do not wait for result and return directly");
                 isFault = true;
-                //inside-payment-service的pay方法有固定三秒的延迟
-                //do nothing, just send continue to reproduce faults.
             }else{
                 //do wait until result
                 boolean payResultValue = payResult.get().booleanValue();
-                System.out.println("[Launcher Service]支付结果：" + payResultValue);
+                System.out.println("[Launcher Service]Wait for payment result.Payment result：" + payResultValue);
                 isFault = false;
             }
         }catch(Exception e){
@@ -93,31 +91,21 @@ public class LauncherServiceImpl implements LauncherService {
             e.printStackTrace();
         }
 
-        //3.执行退票操作
+        //3.Cancel Order
         Future<CancelOrderResult> taskCancelResult = asyncTask.sendOrderCancel(orderId,loginId,loginToken);
-//        CancelOrderInfo cancelOrderInfo = new CancelOrderInfo(orderId);
-//        HttpHeaders requestHeadersCancelOrder = new HttpHeaders();
-//        requestHeadersCancelOrder.add("Cookie","loginId=" + loginId);
-//        requestHeadersCancelOrder.add("Cookie","loginToken=" + loginToken);
-//        HttpEntity<CancelOrderInfo> requestEntityCancelOrder = new HttpEntity(cancelOrderInfo, requestHeadersCancelOrder);
-//        ResponseEntity rssResponseCancelOrder = restTemplate.exchange(
-//                "http://ts-preserve-service:14568/preserve",
-//                HttpMethod.POST, requestEntityCancelOrder, CancelOrderResult.class);
-//        CancelOrderResult cancelOrderResult = (CancelOrderResult) rssResponseCancelOrder.getBody();
-//        System.out.println("[退票结果] " + cancelOrderResult.getMessage());
 
-        //4.随机查询两次订单什么的
+
+        //4.Search Order twice
         Future<ArrayList<Order>> orderListTask = asyncTask.sendQueryOrder(loginId,loginToken);
         Future<ArrayList<Order>> orderOtherListTask = asyncTask.sendQueryOtherOrder(loginId,loginToken);
         for(;;){
-            //等上边俩完了
             if(orderListTask.isDone() && orderOtherListTask.isDone()){
                 break;
             }
         }
 
 
-        //5.最终决定要不要抛出异常
+        //5.Whether throws a exception
         for(;;){
             if(taskCancelResult.isDone()){
                 if(isFault  == true){
