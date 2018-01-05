@@ -14,9 +14,6 @@ import java.util.*;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Administrator on 2017/6/20.
- */
 @Service
 public class InsidePaymentServiceImpl implements InsidePaymentService{
 
@@ -63,7 +60,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
             payment.setPrice(result.getOrder().getPrice());
             payment.setUserId(userId);
 
-            //判断一下账户余额够不够，不够要去站外支付
+            //Check enough to pay. Not enough, outside payment.
             List<Payment> payments = paymentRepository.findByUserId(userId);
             List<AddMoney> addMonies = addMoneyRepository.findByUserId(userId);
             Iterator<Payment> paymentsIterator = payments.iterator();
@@ -83,7 +80,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
             }
 
             if(totalExpand.compareTo(money) > 0){
-                //站外支付
+                //Outsite payment
                 OutsidePaymentInfo outsidePaymentInfo = new OutsidePaymentInfo();
                 outsidePaymentInfo.setOrderId(info.getOrderId());
                 outsidePaymentInfo.setUserId(userId);
@@ -98,14 +95,14 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
                     System.out.println("[Payment Service][Turn To Outside Patment] Async Task Begin");
                     Future<Boolean> task = asyncTask.sendAsyncCallToPaymentService(outsidePaymentInfo);
                     if(new Random().nextBoolean() == true){
-                        //一半的概率短延时，导致超时。 external固定延迟2秒
+                        //External service timeout
                         outsidePaySuccess = task.get(2000,TimeUnit.MILLISECONDS).booleanValue();
                     }else{
-                        //一半的概率长延时，使得正常返回
+                        //External service timeout normal
                         outsidePaySuccess = task.get(6000,TimeUnit.MILLISECONDS).booleanValue();
                     }
                 }catch (Exception e){
-                    System.out.println("[Inside Payment][Turn to Outside Payment] 外部服务调用超时.");
+                    System.out.println("[Inside Payment][Turn to Outside Payment] External Service Timeout.");
                     //e.printStackTrace();
                     outsidePaySuccess = false;
                     //return false;
@@ -116,9 +113,9 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
                 }
 
 
-                System.out.println("[Inside Payment][Turn to Outside Payment] 外部服务调用正常.");
+                System.out.println("[Inside Payment][Turn to Outside Payment] External Service Success.");
 
-                /*****************************************************************s****************/
+                /*********************************************************************************/
 
                 if(outsidePaySuccess){
                     payment.setType(PaymentType.O);
@@ -260,7 +257,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
         payment.setPrice(info.getPrice());
         payment.setUserId(info.getUserId());
 
-        //判断一下账户余额够不够，不够要去站外支付
+        //Check is enough to pay - go outside payment?
         List<Payment> payments = paymentRepository.findByUserId(userId);
         List<AddMoney> addMonies = addMoneyRepository.findByUserId(userId);
         Iterator<Payment> paymentsIterator = payments.iterator();
@@ -280,7 +277,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
         }
 
         if(totalExpand.compareTo(money) > 0){
-            //站外支付
+            //Outside payment
             OutsidePaymentInfo outsidePaymentInfo = new OutsidePaymentInfo();
             outsidePaymentInfo.setOrderId(info.getOrderId());
             outsidePaymentInfo.setUserId(userId);

@@ -2,18 +2,17 @@
 
 var async = require('async');
 
-//通过setTimeout函数实现Sleep的功能
+
 var sleep = function(array, callback) {
   'use strict';
 
-  //初始化变量
-  var results = [];  //存放最终结果
-  var tmpArray = array.slice(0);  //拷贝一份数据，防止改变变量外部的值
+
+  var results = [];
+  var tmpArray = array.slice(0);
   var isEnd = false;
 
-  //自调用函数
   var run = function() {
-    var tmp = null; //存放截取的数组
+    var tmp = null;
     if (tmpArray.length > 3) {
       tmp = tmpArray.splice(0, 3);
     } else {
@@ -42,7 +41,7 @@ var sleep = function(array, callback) {
 };
 
 
-//测试数据
+
 var arr = [
   {name:'mocksleep', delay:2000}
 ];
