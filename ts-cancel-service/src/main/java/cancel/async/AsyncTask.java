@@ -3,8 +3,6 @@ package cancel.async;
 import java.util.Random;
 import java.util.concurrent.Future;
 import cancel.domain.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
@@ -12,8 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component  
-public class AsyncTask {  
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());  
+public class AsyncTask {
     
     @Autowired
 	private RestTemplate restTemplate;
@@ -35,14 +32,14 @@ public class AsyncTask {
         /*********************** Fault Reproduction - Error Process Seq *************************/
         double op = new Random().nextDouble();
         if(op < 0.5){
-            System.out.println("[Cancel Order Service] 延迟流程，退票将会错误");
+            System.out.println("[Cancel Order Service] Delay Process，Wrong Cancel Process");
             Thread.sleep(4000);
         } else {
-            System.out.println("[Cancel Order Service] 正常流程，退票应该正常");
+            System.out.println("[Cancel Order Service] Normal Process，Normal Cancel Process");
         }
 
 
-        //1.第一步，查询订单信息
+        //1.Search Order Info
         System.out.println("[Cancel Order Service][Get Order] Getting....");
         GetOrderByIdInfo getOrderInfo = new GetOrderByIdInfo();
         getOrderInfo.setOrderId(orderId);
@@ -50,16 +47,16 @@ public class AsyncTask {
                 "http://ts-order-other-service:12032/orderOther/getById/"
                 ,getOrderInfo,GetOrderResult.class);
         Order order = cor.getOrder();
-        //2.第二步，将订单状态修改为退款中
+        //2.Change order status to cancelling
         order.setStatus(OrderStatus.Canceling.getCode());
         ChangeOrderInfo changeOrderInfo = new ChangeOrderInfo();
         changeOrderInfo.setOrder(order);
         changeOrderInfo.setLoginToken(loginToken);
         ChangeOrderResult changeOrderResult = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/update",changeOrderInfo,ChangeOrderResult.class);
         if(changeOrderResult.isStatus() == false){
-            System.out.println("[Cancel Order Service]紧急！修改订单状态到取消中-错误");
+            System.out.println("[Cancel Order Service]Unexpected error");
         }
-        //3.第三步，执行退款
+        //3.do drawback money
         System.out.println("[Cancel Order Service][Draw Back Money] Draw back money...");
         DrawBackInfo info = new DrawBackInfo();
         info.setMoney(money);

@@ -116,11 +116,11 @@ public class CancelServiceImpl implements CancelService{
 
 
                     /*********************** Fault Reproduction - Error Process Seq *************************/
-                    //1.首先退还订单金额
+                    //1.return money
                     String money = calculateRefund(order);
                     Future<Boolean> taskDrawBackMoney = asyncTask.drawBackMoneyForOrderCancel(money,loginId,order.getId().toString(),loginToken);
 
-                    //2.然后修改订单的状态至【已取消】
+                    //2.change status to [canceled]
                     Future<ChangeOrderResult> taskCancelOrder = asyncTask.updateOtherOrderStatusToCancel(changeOrderInfo);
 
                     ChangeOrderResult changeOrderResult = null;
@@ -168,10 +168,10 @@ public class CancelServiceImpl implements CancelService{
                         sendEmail(notifyInfo);
 
                         if(status == false){
-                            System.out.println("[Cancel Order Service]成功复现Processes Seq");
+                            System.out.println("[Cancel Order Service]Success. Processes Seq");
                             throw new RuntimeException("[Error Process Seq]");
                         }else{
-                            System.out.println("[Cancel Order Service]没有复现Processes Seq");
+                            System.out.println("[Cancel Order Service]Fail.Processes Seq");
                         }
 
 
