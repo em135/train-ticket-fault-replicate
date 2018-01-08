@@ -3,35 +3,35 @@
 
 ##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
 
-F1 
+F1:
 ts-error-process-seq
 
-F2
+F2:
 ts-error-reportui
 
-F3
+F3:
 ts-error-docker-JVM
 
-F4
+F4:
 ts-error-ssl
 
-F5
+F5:
 ts-error-cross-timeout-status(chance)
 
-F7
+F7:
 ts-external-normal
 
-F8
+F8:
 ts-error-redis
 
-F10
+F10:
 ts-error-normal
 
-F11
+F11:
 ts-error-bomupdate
 
-F12
+F12:
 ts-error-processes-seq-status(chance)
 
-F13 
+F13:
 ts-error-queue
