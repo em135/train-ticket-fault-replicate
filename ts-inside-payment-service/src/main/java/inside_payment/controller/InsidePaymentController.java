@@ -66,4 +66,14 @@ public class InsidePaymentController {
         return "-------call back end-------";
 
     }
+
+    @RequestMapping(value="/inside_payment/check", method = RequestMethod.GET)
+    public boolean check(){
+        return service.check();
+    }
+
+    @RequestMapping(value="/inside_payment/equal", method = RequestMethod.GET)
+    public boolean equal(){
+        return service.equal();
+    }
 }

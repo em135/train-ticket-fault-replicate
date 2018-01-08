@@ -5,10 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import security.domain.*;
 import security.repository.SecurityRepository;
-
-import java.security.Security;
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class SecurityServiceImpl implements SecurityService{
@@ -18,6 +17,8 @@ public class SecurityServiceImpl implements SecurityService{
 
     @Autowired
     RestTemplate restTemplate;
+
+    public AtomicLong time = new AtomicLong();
 
     @Override
     public GetAllSecurityConfigResult findAllSecurityConfig(){
@@ -133,6 +134,15 @@ public class SecurityServiceImpl implements SecurityService{
                 GetOrderInfoForSecurityResult.class);
         System.out.println("[Security Service][Get Order Other Info For Security] Last One Hour:" + result.getOrderNumInLastOneHour()
                 + " Total Valid Order:" + result.getOrderNumOfValidOrder());
+        return result;
+    }
+
+    @Override
+    public boolean callInsidePayment(CallInsidePaymentInfo info){
+        long time = (long)info.getTime();
+        this.time.set(time);
+
+        Boolean result = restTemplate.getForObject("http://ts-inside-payment-service:18673/inside_payment/check",Boolean.class);
         return result;
     }
 

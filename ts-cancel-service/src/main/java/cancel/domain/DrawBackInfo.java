@@ -7,6 +7,10 @@ public class DrawBackInfo {
 
     private String userId;
     private String money;
+    private String orderId;
+
+
+    private String loginToken;
 
     public DrawBackInfo(){}
 
@@ -24,5 +28,21 @@ public class DrawBackInfo {
 
     public void setMoney(String money) {
         this.money = money;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getLoginToken() {
+        return loginToken;
+    }
+
+    public void setLoginToken(String loginToken) {
+        this.loginToken = loginToken;
     }
 }

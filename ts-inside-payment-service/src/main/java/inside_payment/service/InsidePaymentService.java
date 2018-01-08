@@ -18,4 +18,6 @@ public interface InsidePaymentService {
     boolean payDifference(PaymentDifferenceInfo info, HttpServletRequest request);
     List<AddMoney> queryAddMoney();
     void initPayment(Payment payment);
+    boolean check();
+    boolean equal();
 }
