@@ -1,11 +1,14 @@
 package sso.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import sso.domain.*;
 import sso.repository.AccountRepository;
 import sso.repository.LoginUserListRepository;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -16,6 +19,10 @@ public class AccountSsoServiceImpl implements AccountSsoService{
 
     @Autowired
     private LoginUserListRepository loginUserListRepository;
+
+    @Autowired
+    private StringRedisTemplate template;
+
 
     //private static HashMap<String,String > loginUserList = new HashMap<>();
 
@@ -102,28 +109,20 @@ public class AccountSsoServiceImpl implements AccountSsoService{
     @Override
     public PutLoginResult loginPutToken(String loginId){
         PutLoginResult plr = new PutLoginResult();
-        LoginValue loginValue = loginUserListRepository.findById(loginId);
-
         //if(loginUserList.keySet().contains(loginId)){
-        if(loginValue != null){
-            System.out.println("[SSO Service][Login] Already Login. Old login session will be kick off");
-//            plr.setStatus(false);
-//            plr.setLoginId(loginId);
-//            plr.setMsg("Already Login");
-//            plr.setToken(null);
-            String token = UUID.randomUUID().toString();
-            loginUserListRepository.save(new LoginValue(loginId,token));
-            //loginUserList.put(loginId,token);
-            plr.setStatus(true);
+        if(this.template.hasKey(loginId)){
+            System.out.println("[Account-SSO-Service][Login] Already Login, Token:" + loginId);
+            plr.setStatus(false);
             plr.setLoginId(loginId);
-            plr.setMsg("Success.Other login session has been kick off.");
-            plr.setToken(token);
+            plr.setMsg("Already Login");
+            plr.setToken(null);
 
         }else{
             String token = UUID.randomUUID().toString();
-            loginUserListRepository.save(new LoginValue(loginId,token));
+            ValueOperations<String, String> ops = this.template.opsForValue();
+            ops.set(loginId,token);
             //loginUserList.put(loginId,token);
-            System.out.println("[SSO Service][Login] Login Success. Id:" + loginId + " Token:" + token);
+            System.out.println("[Account-SSO-Service][Login] Login Success. Id:" + loginId + " Token:" + token);
             plr.setStatus(true);
             plr.setLoginId(loginId);
             plr.setMsg("Success");
@@ -135,15 +134,15 @@ public class AccountSsoServiceImpl implements AccountSsoService{
     @Override
     public LogoutResult logoutDeleteToken(LogoutInfo li){
         LogoutResult lr = new LogoutResult();
-        if(loginUserListRepository.findById(li.getId()) == null){
-            System.out.println("[SSO Service][Logout] Already Logout. LogoutId:" + li.getId());
-           lr.setStatus(false);
-           lr.setMessage("Not Login");
+        if(!this.template.hasKey(li.getId())){
+            System.out.println("[Account-SSO-Service][Logout] Already Logout. LogoutId:" + li.getId());
+            lr.setStatus(false);
+            lr.setMessage("Not Login");
         }else{
-            String savedToken = loginUserListRepository.findById(li.getId()).getLoginToken();
+            ValueOperations<String, String> ops = this.template.opsForValue();
+            String savedToken = ops.get(li.getId());
             if(savedToken.equals(li.getToken())){
-                loginUserListRepository.delete(li.getId());
-                //loginUserList.remove(li.getId());
+                this.template.delete(li.getId());
                 lr.setStatus(true);
                 lr.setMessage("Success");
             }else{
@@ -153,19 +152,20 @@ public class AccountSsoServiceImpl implements AccountSsoService{
         }
         return lr;
     }
-
     @Override
     public VerifyResult verifyLoginToken(String verifyToken){
-        System.out.println("[SSO Service][Verify] Verify token:" + verifyToken);
+        System.out.println("[Account-SSO-Service][Verify] Verify token:" + verifyToken);
         VerifyResult vr = new VerifyResult();
-        if(loginUserListRepository.findByloginToken(verifyToken) != null || verifyToken.equals("admin")){
+
+        boolean exist = isExist(verifyToken);
+        if(exist){
             vr.setStatus(true);
             vr.setMessage("Verify Success.");
-            System.out.println("[SSO Service][Verify] Success.Token:" + verifyToken);
+            System.out.println("[Account-SSO-Service][Verify] Success.Token:" + verifyToken);
         }else{
             vr.setStatus(false);
             vr.setMessage("Verify Fail.");
-            System.out.println("[SSO Service][Verify] Fail.Token:" + verifyToken);
+            System.out.println("[Account-SSO-Service][Verify] Fail.Token:" + verifyToken);
         }
         return vr;
     }
@@ -274,6 +274,22 @@ public class AccountSsoServiceImpl implements AccountSsoService{
             result.setStatus(true);
             result.setMessage("Delete account successfully!");
             result.setAccount(account);
+        }
+        return result;
+    }
+
+
+
+
+    private boolean isExist(String verifyToken){
+        boolean result = false;
+        ValueOperations<String, String> ops = this.template.opsForValue();
+        Set<String> keys = this.template.keys("*");
+        for(String key : keys){
+            if(ops.get(key).equals(verifyToken)){
+                result = true;
+                break;
+            }
         }
         return result;
     }
