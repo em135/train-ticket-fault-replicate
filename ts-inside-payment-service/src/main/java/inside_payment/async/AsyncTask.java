@@ -89,7 +89,7 @@ public class AsyncTask {
             changeOrderInfo.setLoginToken(loginToken);
             System.out.println();
             System.out.println("http://ts-order-other-service:12032/orderOther/update before");
-            System.out.println();
+            System.out.println("---重新修改过程---");
             changeOrderResult = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/update",changeOrderInfo,ChangeOrderResult.class);
             System.out.println();
             System.out.println("http://ts-order-other-service:12032/orderOther/update after");
@@ -109,7 +109,7 @@ public class AsyncTask {
             changeOrderInfo.setLoginToken(loginToken);
             System.out.println();
             System.out.println("http://ts-order-other-service:12032/orderOther/update before");
-            System.out.println();
+            System.out.println("---一般过程---");
             changeOrderResult = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/update",changeOrderInfo,ChangeOrderResult.class);
             System.out.println();
             System.out.println("http://ts-order-other-service:12032/orderOther/update after");

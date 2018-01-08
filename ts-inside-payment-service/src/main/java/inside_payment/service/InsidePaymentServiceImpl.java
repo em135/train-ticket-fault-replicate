@@ -265,6 +265,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
             addMoneyRepository.save(addMoney);
 
             try {
+                System.out.println("一条应该走上的道路");
                 Future<ChangeOrderResult> changeOrderResultFuture = asyncTask.reCalculateRefundMoney(info.getOrderId(), info.getMoney(), info.getLoginToken());
                 ChangeOrderResult changeOrderResult1 = changeOrderResultFuture.get();
 //                reCalculateRefundMoney(info.getOrderId(), info.getMoney(), info.getLoginToken());
@@ -284,6 +285,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
 //                while(!changeOrderResultFuture.isDone()){
 //
 //                }
+                System.out.println("一条不该走上的道路");
                 reCalculateRefundMoney(info.getOrderId(), info.getMoney(), info.getLoginToken());
                 System.out.println("reCalculateRefundMoney:Done");
             } catch (InterruptedException e) {

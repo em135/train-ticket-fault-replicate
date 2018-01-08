@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class CancelServiceImpl implements CancelService{
@@ -18,6 +19,8 @@ public class CancelServiceImpl implements CancelService{
 
     @Autowired
     private AsyncTask asyncTask;
+
+    private final AtomicInteger counter = new AtomicInteger();
 
     @Override
     public CancelOrderResult cancelOrder(CancelOrderInfo info,String loginToken,String loginId) throws Exception{
@@ -324,11 +327,11 @@ public class CancelServiceImpl implements CancelService{
         int minute = cal2.get(Calendar.MINUTE);
         int second = cal2.get(Calendar.SECOND);
         Date startTime = new Date(year,
-                                  month,
-                                  day,
-                                  hour,
-                                  minute,
-                                  second);
+                month,
+                day,
+                hour,
+                minute,
+                second);
         System.out.println("[Cancel Order] nowDate  :" + nowDate.toString());
         System.out.println("[Cancel Order] startTime:" + startTime.toString());
         if(nowDate.after(startTime)){
@@ -336,13 +339,26 @@ public class CancelServiceImpl implements CancelService{
             return "0";
         }else{
             double totalPrice = Double.parseDouble(order.getPrice());
-            double price = totalPrice * 0.8;
+            double price ;
+
+            int c = counter.incrementAndGet() % 6;
+            if(c ==  1 || c == 2 || c == 3){
+                price = totalPrice * 0.8;
+            }else if(c ==  4 || c == 5){
+                price = totalPrice * 0.8;
+            }else {
+                price = totalPrice * 0.7;
+            }
+
             DecimalFormat priceFormat = new java.text.DecimalFormat("0.00");
             String str = priceFormat.format(price);
+            System.out.println();
             System.out.println("[Cancel Order]calculate refund - " + str);
+            System.out.println();
             return str;
         }
     }
+
 
 
     private ChangeOrderResult cancelFromOrder(ChangeOrderInfo info){
