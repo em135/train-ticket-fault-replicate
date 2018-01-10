@@ -215,12 +215,12 @@ public class Travel2ServiceImpl implements Travel2Service{
         query.setDepartureTime(departureTime);
 
         ResultForTravel resultForTravel = restTemplate.postForObject(
-                "http://ts-ticketinfo-service:15681/ticketinfo/queryForTravel", query ,ResultForTravel.class);
+                "https://ts-ticketinfo-service:15681/ticketinfo/queryForTravel", query ,ResultForTravel.class);
 
         //车票订单_高铁动车（已购票数）
         QuerySoldTicket information = new QuerySoldTicket(departureTime,trip.getTripId().toString());
         ResultSoldTicket result = restTemplate.postForObject(
-                "http://ts-order-other-service:12032/orderOther/calculate", information ,ResultSoldTicket.class);
+                "https://ts-order-other-service:12032/orderOther/calculate", information ,ResultSoldTicket.class);
         if(result == null){
             System.out.println("soldticket Info doesn't exist");
             return null;
@@ -312,7 +312,7 @@ public class Travel2ServiceImpl implements Travel2Service{
         GetTrainTypeInformation info = new GetTrainTypeInformation();
         info.setId(trainTypeId);
         TrainType trainType = restTemplate.postForObject(
-                "http://ts-train-service:14567/train/retrieve", info, TrainType.class);
+                "https://ts-train-service:14567/train/retrieve", info, TrainType.class);
         return trainType;
     }
 
@@ -320,14 +320,14 @@ public class Travel2ServiceImpl implements Travel2Service{
         QueryForStationId query = new QueryForStationId();
         query.setName(stationName);
         String id = restTemplate.postForObject(
-                "http://ts-ticketinfo-service:15681/ticketinfo/queryForStationId", query ,String.class);
+                "https://ts-ticketinfo-service:15681/ticketinfo/queryForStationId", query ,String.class);
         return id;
     }
 
     private Route getRouteByRouteId(String routeId){
         System.out.println("[Travel Service][Get Route By Id] Route ID：" + routeId);
         GetRouteResult result = restTemplate.getForObject(
-                "http://ts-route-service:11178/route/queryById/" + routeId,
+                "https://ts-route-service:11178/route/queryById/" + routeId,
                 GetRouteResult.class);
         if(result.isStatus() == false){
             System.out.println("[Travel Other Service][Get Route By Id] Fail." + result.getMessage());
@@ -351,7 +351,7 @@ public class Travel2ServiceImpl implements Travel2Service{
         seatRequest.setSeatType(seatType);
 
         int restNumber = restTemplate.postForObject(
-                "http://ts-seat-service:18898/seat/getLeftTicketOfInterval",
+                "https://ts-seat-service:18898/seat/getLeftTicketOfInterval",
                 seatRequest,Integer.class
         );
 

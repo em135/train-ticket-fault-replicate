@@ -37,7 +37,7 @@ public class AccountLoginServiceImpl implements AccountLoginService {
         body.add("verificationCode", li.getVerificationCode());
         HttpEntity requestEntity = new HttpEntity(body,requestHeaders);
         ResponseEntity rssResponse = restTemplate.exchange(
-                "http://ts-verification-code-service:15678/verification/verify",
+                "https://ts-verification-code-service:15678/verification/verify",
                 HttpMethod.POST,
                 requestEntity,
                 String.class
@@ -53,7 +53,7 @@ public class AccountLoginServiceImpl implements AccountLoginService {
             return verifyCodeLr;
         }
         LoginResult lr = restTemplate.postForObject(
-                "http://ts-sso-service:12349/account/login",
+                "https://ts-sso-service:12349/account/login",
                 li,LoginResult.class);
         //将cookie放到response中
         System.out.println("[Login Service] Status:" + lr.getStatus());

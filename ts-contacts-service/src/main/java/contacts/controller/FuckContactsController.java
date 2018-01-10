@@ -151,7 +151,7 @@ public class FuckContactsController {
     private VerifyResult verifySsoLogin(String loginToken){
         System.out.println("[ContactsService][VerifyLogin] Verifying....");
         VerifyResult tokenResult = restTemplate.getForObject(
-                "http://ts-sso-service:12349/verifyLoginToken/" + loginToken,
+                "https://ts-sso-service:12349/verifyLoginToken/" + loginToken,
                      VerifyResult.class);
         return tokenResult;
     }

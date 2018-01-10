@@ -151,7 +151,7 @@ public class RoutePlanServiceImpl implements RoutePlanService{
         GetRouteByStartAndTerminalInfo searchRouteInfo =
                 new GetRouteByStartAndTerminalInfo(fromStationId,toStationId);
         GetRoutesListlResult routeResult = restTemplate.postForObject(
-                "http://ts-route-service:11178/route/queryByStartAndTerminal",
+                "https://ts-route-service:11178/route/queryByStartAndTerminal",
                 searchRouteInfo, GetRoutesListlResult.class);
         ArrayList<Route> routeList = routeResult.getRoutes();
         System.out.println("[Route Plan Service] Candidate Route Number:" + routeList.size());
@@ -180,11 +180,11 @@ public class RoutePlanServiceImpl implements RoutePlanService{
         GetTripsByRouteIdInfo getTripInfo = new GetTripsByRouteIdInfo();
         getTripInfo.setRouteIds(resultRoutes);
         GetTripsByRouteIdResult resultTravel = restTemplate.postForObject(
-                "http://ts-travel-service:12346/travel/getTripsByRouteId",
+                "https://ts-travel-service:12346/travel/getTripsByRouteId",
                 getTripInfo,GetTripsByRouteIdResult.class
         );
         GetTripsByRouteIdResult resultTravel2 = restTemplate.postForObject(
-                "http://ts-travel2-service:16346/travel2/getTripsByRouteId",
+                "https://ts-travel2-service:16346/travel2/getTripsByRouteId",
                 getTripInfo,GetTripsByRouteIdResult.class);
             //合并查询结果
         ArrayList<ArrayList<Trip>> finalTripResult = new ArrayList<>();
@@ -212,7 +212,7 @@ public class RoutePlanServiceImpl implements RoutePlanService{
                 allDetailInfo.setFrom(info.getFormStationName());
                 allDetailInfo.setTo(info.getToStationName());
                 GetTripAllDetailResult tripDetailResult = restTemplate.postForObject(
-                        "http://ts-travel-service:12346//travel/getTripAllDetailInfo",
+                        "https://ts-travel-service:12346//travel/getTripAllDetailInfo",
                         allDetailInfo,GetTripAllDetailResult.class);
                 tripResponse = tripDetailResult.getTripResponse();
             }else{
@@ -222,7 +222,7 @@ public class RoutePlanServiceImpl implements RoutePlanService{
                 allDetailInfo.setFrom(info.getFormStationName());
                 allDetailInfo.setTo(info.getToStationName());
                 GetTripAllDetailResult tripDetailResult = restTemplate.postForObject(
-                        "http://ts-travel2-service:16346//travel2/getTripAllDetailInfo",
+                        "https://ts-travel2-service:16346//travel2/getTripAllDetailInfo",
                         allDetailInfo,GetTripAllDetailResult.class);
                 tripResponse = tripDetailResult.getTripResponse();
             }
@@ -257,14 +257,14 @@ public class RoutePlanServiceImpl implements RoutePlanService{
         System.out.println("[Preserve Service][Get Station Name]");
         QueryForStationId queryForId = new QueryForStationId();
         queryForId.setName(stationName);
-        String stationId = restTemplate.postForObject("http://ts-station-service:12345/station/queryForId",queryForId,String.class);
+        String stationId = restTemplate.postForObject("https://ts-station-service:12345/station/queryForId",queryForId,String.class);
         return stationId;
     }
 
     private Route getRouteByRouteId(String routeId){
         System.out.println("[Route Plan Service][Get Route By Id] Route ID：" + routeId);
         GetRouteResult result = restTemplate.getForObject(
-                "http://ts-route-service:11178/route/queryById/" + routeId,
+                "https://ts-route-service:11178/route/queryById/" + routeId,
                 GetRouteResult.class);
         if(result.isStatus() == false){
             System.out.println("[Travel Service][Get Route By Id] Fail." + result.getMessage());
@@ -278,7 +278,7 @@ public class RoutePlanServiceImpl implements RoutePlanService{
     private ArrayList<TripResponse> getTripFromHighSpeedTravelServive(QueryInfo info){
 
         QueryTripResponsePackage list = restTemplate.postForObject(
-                "http://ts-travel-service:12346/travel/queryWithPackage",
+                "https://ts-travel-service:12346/travel/queryWithPackage",
                 info,  QueryTripResponsePackage.class);
 
         System.out.println("[Route Plan Get Trip][Size]" + list.getResponses().size());
@@ -289,7 +289,7 @@ public class RoutePlanServiceImpl implements RoutePlanService{
     private ArrayList<TripResponse> getTripFromNormalTrainTravelService(QueryInfo info){
 
         QueryTripResponsePackage list = restTemplate.postForObject(
-                "http://ts-travel2-service:16346/travel2/queryWithPackage",
+                "https://ts-travel2-service:16346/travel2/queryWithPackage",
                 info,  QueryTripResponsePackage.class);
 
         System.out.println("[Route Plan Get TripOther][Size]" + list.getResponses().size());
@@ -302,9 +302,9 @@ public class RoutePlanServiceImpl implements RoutePlanService{
 
         String path;
         if(tripId.charAt(0) == 'G' || tripId.charAt(0) == 'D'){
-            path = "http://ts-travel-service:12346/travel/getRouteByTripId/" + tripId;
+            path = "https://ts-travel-service:12346/travel/getRouteByTripId/" + tripId;
         }else{
-            path = "http://ts-travel2-service:16346/travel2/getRouteByTripId/" + tripId;
+            path = "https://ts-travel2-service:16346/travel2/getRouteByTripId/" + tripId;
         }
 
         GetRouteResult route = restTemplate.getForObject(

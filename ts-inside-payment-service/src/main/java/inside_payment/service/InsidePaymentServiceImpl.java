@@ -43,11 +43,11 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
         GetOrderResult result;
 
         if(info.getTripId().startsWith("G") || info.getTripId().startsWith("D")){
-            result = restTemplate.postForObject("http://ts-order-service:12031/order/getById",getOrderByIdInfo,GetOrderResult.class);
+            result = restTemplate.postForObject("https://ts-order-service:12031/order/getById",getOrderByIdInfo,GetOrderResult.class);
              //result = restTemplate.postForObject(
              //       "http://ts-order-service:12031/order/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
         }else{
-            result = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/getById",getOrderByIdInfo,GetOrderResult.class);
+            result = restTemplate.postForObject("https://ts-order-other-service:12032/orderOther/getById",getOrderByIdInfo,GetOrderResult.class);
             //result = restTemplate.postForObject(
             //      "http://ts-order-other-service:12032/orderOther/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
         }
@@ -93,7 +93,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
 
                 /****这里异步调用第三方支付***/
                 boolean outsidePaySuccess = restTemplate.postForObject(
-                        "http://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
+                        "https://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
 //                boolean outsidePaySuccess = false;
 //                try{
 //                    System.out.println("[Payment Service][Turn To Outside Patment] Async Task Begin");
@@ -275,7 +275,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
             outsidePaymentInfo.setUserId(userId);
             outsidePaymentInfo.setPrice(info.getPrice());
             boolean outsidePaySuccess = restTemplate.postForObject(
-                    "http://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
+                    "https://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
             if(outsidePaySuccess){
                 payment.setType(PaymentType.E);
                 paymentRepository.save(payment);
@@ -306,10 +306,10 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
         ModifyOrderStatusResult result;
         if(tripId.startsWith("G") || tripId.startsWith("D")){
             result = restTemplate.postForObject(
-                    "http://ts-order-service:12031/order/modifyOrderStatus", info, ModifyOrderStatusResult.class);
+                    "https://ts-order-service:12031/order/modifyOrderStatus", info, ModifyOrderStatusResult.class);
         }else{
             result = restTemplate.postForObject(
-                    "http://ts-order-other-service:12032/orderOther/modifyOrderStatus", info, ModifyOrderStatusResult.class);
+                    "https://ts-order-other-service:12032/orderOther/modifyOrderStatus", info, ModifyOrderStatusResult.class);
         }
         return result;
     }
