@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
 
   rabbitmq:
@@ -417,27 +417,27 @@ services:
         networks:
           - my-network
 
-  ts-voucher-mysql:
-         image: mysql
-         expose:
-            - "3306"
-         environment:
-           MYSQL_ROOT_PASSWORD: root
-         networks:
-           - my-network
-
-  ts-voucher-service:
-          build: ts-voucher-service
-          image: ts/ts-voucher-service
-          restart: always
-          ports:
-            - 16101:16101
-          depends_on:
-            - ts-voucher-mysql
-          volumes:
-            - /var/lib/mysql
-          networks:
-            - my-network
+#  ts-voucher-mysql:
+#         image: mysql
+#         expose:
+#            - "3306"
+#         environment:
+#           MYSQL_ROOT_PASSWORD: root
+#         networks:
+#           - my-network
+#
+#  ts-voucher-service:
+#          build: ts-voucher-service
+#          image: ts/ts-voucher-service
+#          restart: always
+#          ports:
+#            - 16101:16101
+#          depends_on:
+#            - ts-voucher-mysql
+#          volumes:
+#            - /var/lib/mysql
+#          networks:
+#            - my-network
 
   ts-food-map-service:
         build: ts-food-map-service
@@ -528,10 +528,6 @@ services:
               restart: always
               ports:
                 - 16113:16113
-              deploy:
-                replicas: 1
-                restart_policy:
-                  condition: on-failure
               networks:
                 - my-network
 
@@ -541,10 +537,6 @@ services:
                 restart: always
                 ports:
                   - 16114:16114
-                deploy:
-                  replicas: 1
-                  restart_policy:
-                    condition: on-failure
                 networks:
                   - my-network
 
@@ -554,10 +546,6 @@ services:
                   restart: always
                   ports:
                     - 16115:16115
-                  deploy:
-                    replicas: 1
-                    restart_policy:
-                      condition: on-failure
                   networks:
                     - my-network
 
