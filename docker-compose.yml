@@ -128,8 +128,8 @@ services:
       - 12031:12031
     networks:
       - my-network
-    mem_limit: 300M
-    memswap_limit: 800M
+    mem_limit: 100M
+    memswap_limit: 250M
 
 
   ts-order-mongo:
@@ -504,50 +504,50 @@ services:
             networks:
               - my-network
 
-  ts-admin-basic-info-service:
-        build: ts-admin-basic-info-service
-        image: ts/ts-admin-basic-info-service
-        restart: always
-        ports:
-          - 18767:18767
-        networks:
-          - my-network
-
-  ts-admin-order-service:
-            build: ts-admin-order-service
-            image: ts/ts-admin-order-service
-            restart: always
-            ports:
-              - 16112:16112
-            networks:
-              - my-network
-
-  ts-admin-route-service:
-              build: ts-admin-route-service
-              image: ts/ts-admin-route-service
-              restart: always
-              ports:
-                - 16113:16113
-              networks:
-                - my-network
-
-  ts-admin-travel-service:
-                build: ts-admin-travel-service
-                image: ts/ts-admin-travel-service
-                restart: always
-                ports:
-                  - 16114:16114
-                networks:
-                  - my-network
-
-  ts-admin-user-service:
-                  build: ts-admin-user-service
-                  image: ts/ts-admin-user-service
-                  restart: always
-                  ports:
-                    - 16115:16115
-                  networks:
-                    - my-network
+#  ts-admin-basic-info-service:
+#        build: ts-admin-basic-info-service
+#        image: ts/ts-admin-basic-info-service
+#        restart: always
+#        ports:
+#          - 18767:18767
+#        networks:
+#          - my-network
+#
+#  ts-admin-order-service:
+#            build: ts-admin-order-service
+#            image: ts/ts-admin-order-service
+#            restart: always
+#            ports:
+#              - 16112:16112
+#            networks:
+#              - my-network
+#
+#  ts-admin-route-service:
+#              build: ts-admin-route-service
+#              image: ts/ts-admin-route-service
+#              restart: always
+#              ports:
+#                - 16113:16113
+#              networks:
+#                - my-network
+#
+#  ts-admin-travel-service:
+#                build: ts-admin-travel-service
+#                image: ts/ts-admin-travel-service
+#                restart: always
+#                ports:
+#                  - 16114:16114
+#                networks:
+#                  - my-network
+#
+#  ts-admin-user-service:
+#                  build: ts-admin-user-service
+#                  image: ts/ts-admin-user-service
+#                  restart: always
+#                  ports:
+#                    - 16115:16115
+#                  networks:
+#                    - my-network
 
 networks:
     my-network:
