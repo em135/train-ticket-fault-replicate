@@ -578,7 +578,7 @@ function addListenerToOrderCancel(){
                     }else{
                         $("#cancel_money_refund").text("Error ");
                     }
-                },
+                }
             });
         }
     }

@@ -168,10 +168,14 @@ public class CancelServiceImpl implements CancelService{
                         sendEmail(notifyInfo);
 
                         if(status == false){
-                            System.out.println("[Cancel Order Service]Success. Processes Seq");
+                            System.out.println("[Cancel Order Service]Fail. Processes Seq");
+                            finalResult.setStatus(false);
+                            finalResult.setMessage("Fail.Order Status Wrong.");
                             throw new RuntimeException("[Error Process Seq]");
                         }else{
-                            System.out.println("[Cancel Order Service]Fail.Processes Seq");
+                            finalResult.setStatus(true);
+                            finalResult.setMessage("Success.");
+                            System.out.println("[Cancel Order Service]Success.Processes Seq");
                         }
 
 
