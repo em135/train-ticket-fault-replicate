@@ -41,4 +41,6 @@ public interface OrderService {
     AddOrderResult addNewOrder(Order order);
 
     UpdateOrderResult updateOrder(Order order);
+
+    boolean longConnection();
 }

@@ -1,4 +1,4 @@
-package inside_payment;
+package reproduction;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,22 +10,20 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by Administrator on 2017/6/20.
+ * Created by Administrator on 2017/8/7.
  */
 @SpringBootApplication
+
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableAsync
 @IntegrationComponentScan
-public class InsidePaymentApplication {
-
+public class ReproductionApplication {
     public static void main(String[] args) {
-        SpringApplication.run(InsidePaymentApplication.class, args);
+        SpringApplication.run(ReproductionApplication.class, args);
     }
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        builder.setConnectTimeout(3000);
-        builder.setReadTimeout(3000);
         return builder.build();
     }
 }

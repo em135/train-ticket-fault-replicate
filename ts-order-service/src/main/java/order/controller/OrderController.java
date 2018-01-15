@@ -158,4 +158,10 @@ public class OrderController {
         return tokenResult;
     }
 
+    @RequestMapping(path="/order/longConnection",method = RequestMethod.GET)
+    public boolean longConnection(){
+        return orderService.longConnection();
+    }
+
+
 }

@@ -5,12 +5,15 @@ import order.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class OrderServiceImpl implements OrderService{
 
     @Autowired
     private OrderRepository orderRepository;
+
+    public final AtomicLong counter = new AtomicLong();
 
     @Override
     public LeftTicketInfo getSoldTickets(SeatRequest seatRequest){
@@ -36,6 +39,15 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public CreateOrderResult create(Order order){
+
+        System.out.println("counter:"+counter.incrementAndGet());
+        //Thread sleep//'
+        try{
+            Thread.sleep(30000);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
         System.out.println("[Order Service][Create Order] Ready Create Order.");
         ArrayList<Order> accountOrders = orderRepository.findByAccountId(order.getAccountId());
         CreateOrderResult cor = new CreateOrderResult();
@@ -53,6 +65,8 @@ public class OrderServiceImpl implements OrderService{
             cor.setMessage("Success");
             cor.setOrder(order);
         }
+
+        System.out.println("counter:"+counter.decrementAndGet());
         return cor;
     }
 
@@ -425,6 +439,19 @@ public class OrderServiceImpl implements OrderService{
             result.setMessage("Success");
         }
         return result;
+    }
+
+    @Override
+    public boolean longConnection(){
+        System.out.println("counter:"+counter.incrementAndGet());
+        try{
+            Thread.sleep(20000);
+        }catch(InterruptedException e){
+            System.out.println("counter"+counter.decrementAndGet());
+            return false;
+        }
+        System.out.println("counter:"+counter.decrementAndGet());
+        return true;
     }
 }
 

@@ -1,6 +1,5 @@
 package inside_payment.service;
 
-import inside_payment.async.AsyncTask;
 import inside_payment.domain.*;
 import inside_payment.repository.AddMoneyRepository;
 import inside_payment.repository.PaymentRepository;
@@ -8,12 +7,13 @@ import inside_payment.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by Administrator on 2017/6/20.
@@ -34,22 +34,25 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
     private AsyncTask asyncTask;
 
     @Override
-    public boolean pay(PaymentInfo info, HttpServletRequest request){
+    public boolean pay(PaymentInfo info, HttpServletRequest request) throws Exception{
 //        QueryOrderResult result;
         String userId = CookieUtil.getCookieByName(request,"loginId").getValue();
 
-        GetOrderByIdInfo getOrderByIdInfo = new GetOrderByIdInfo();
-        getOrderByIdInfo.setOrderId(info.getOrderId());
+        Future<GetOrderResult> getOrderTask = asyncTask.getOrder(info);
         GetOrderResult result;
-
-        if(info.getTripId().startsWith("G") || info.getTripId().startsWith("D")){
-            result = restTemplate.postForObject("http://ts-order-service:12031/order/getById",getOrderByIdInfo,GetOrderResult.class);
-             //result = restTemplate.postForObject(
-             //       "http://ts-order-service:12031/order/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
-        }else{
-            result = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/getById",getOrderByIdInfo,GetOrderResult.class);
-            //result = restTemplate.postForObject(
-            //      "http://ts-order-other-service:12032/orderOther/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
+        try {
+            result = getOrderTask.get(2000, TimeUnit.MILLISECONDS);
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+            System.out.println("Timeout");
+            getOrderTask.cancel(true);
+            throw e;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            throw e;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            throw e;
         }
 
         if(result.isStatus()){
@@ -89,45 +92,171 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
                 outsidePaymentInfo.setOrderId(info.getOrderId());
                 outsidePaymentInfo.setUserId(userId);
                 outsidePaymentInfo.setPrice(result.getOrder().getPrice());
-
-
-                /****这里异步调用第三方支付***/
                 boolean outsidePaySuccess = restTemplate.postForObject(
                         "http://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
-//                boolean outsidePaySuccess = false;
-//                try{
-//                    System.out.println("[Payment Service][Turn To Outside Patment] Async Task Begin");
-//                    Future<Boolean> task = asyncTask.sendAsyncCallToPaymentService(outsidePaymentInfo);
-//                    outsidePaySuccess = task.get(2000,TimeUnit.MILLISECONDS).booleanValue();
-//
-//                }catch (Exception e){
-//                    System.out.println("[Inside Payment][Turn to Outside Payment] Time Out.");
-//                    //e.printStackTrace();
-//                    return false;
-//                }
-
-
-
-
                 if(outsidePaySuccess){
                     payment.setType(PaymentType.O);
                     paymentRepository.save(payment);
-                    setOrderStatus(info.getTripId(),info.getOrderId());
+                    Future<ModifyOrderStatusResult> task = asyncTask.setOrderStatus(info.getTripId(),info.getOrderId());
+                    try {
+                        System.out.println("task.get(2000, TimeUnit.MILLISECONDS);before");
+                        System.out.println(task.get(100, TimeUnit.MILLISECONDS));
+                        System.out.println("task.get(2000, TimeUnit.MILLISECONDS);after");
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                        System.out.println("Timeout");
+                        task.cancel(true);
+                        throw e;
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                        throw e;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        throw e;
+                    }
                     return true;
                 }else{
                     return false;
                 }
             }else{
-                setOrderStatus(info.getTripId(),info.getOrderId());
+                Future<ModifyOrderStatusResult> task = asyncTask.setOrderStatus(info.getTripId(),info.getOrderId());
+                try {
+                    System.out.println("else:task.get(2000, TimeUnit.MILLISECONDS);before");
+                    task.get(100, TimeUnit.MILLISECONDS);
+                    System.out.println("else:task.get(2000, TimeUnit.MILLISECONDS);after");
+                } catch (TimeoutException e) {
+                    e.printStackTrace();
+                    System.out.println("Timeout");
+                    task.cancel(true);
+                    throw e;
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                    throw e;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    throw e;
+                }
                 payment.setType(PaymentType.P);
                 paymentRepository.save(payment);
             }
-                return true;
+            return true;
 
         }else{
             return false;
         }
     }
+
+//    @Override
+//    public boolean pay(PaymentInfo info, HttpServletRequest request) throws Exception{
+////        QueryOrderResult result;
+//        String userId = CookieUtil.getCookieByName(request,"loginId").getValue();
+//
+////        GetOrderByIdInfo getOrderByIdInfo = new GetOrderByIdInfo();
+////        getOrderByIdInfo.setOrderId(info.getOrderId());
+////        GetOrderResult result;
+////
+////        if(info.getTripId().startsWith("G") || info.getTripId().startsWith("D")){
+////            result = restTemplate.postForObject("http://ts-order-service:12031/order/getById",getOrderByIdInfo,GetOrderResult.class);
+////             //result = restTemplate.postForObject(
+////             //       "http://ts-order-service:12031/order/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
+////        }else{
+////            result = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/getById",getOrderByIdInfo,GetOrderResult.class);
+////            //result = restTemplate.postForObject(
+////            //      "http://ts-order-other-service:12032/orderOther/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
+////        }
+//        Future<GetOrderResult> getOrderTask = asyncTask.getOrder(info);
+//        GetOrderResult result;
+//        try {
+//            result = getOrderTask.get(2000, TimeUnit.MILLISECONDS);
+//        } catch (TimeoutException e) {
+//            e.printStackTrace();
+//            System.out.println("Timeout");
+//            getOrderTask.cancel(true);
+//            throw e;
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//            throw e;
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//            throw e;
+//        }
+//
+//        if(result.isStatus()){
+//
+//            if(result.getOrder().getStatus() != OrderStatus.NOTPAID.getCode()){
+//                System.out.println("[Inside Payment Service][Pay] Error. Order status Not allowed to Pay.");
+//                return false;
+//            }
+//
+//            Payment payment = new Payment();
+//            payment.setOrderId(info.getOrderId());
+//            payment.setPrice(result.getOrder().getPrice());
+//            payment.setUserId(userId);
+//
+//            //判断一下账户余额够不够，不够要去站外支付
+//            List<Payment> payments = paymentRepository.findByUserId(userId);
+//            List<AddMoney> addMonies = addMoneyRepository.findByUserId(userId);
+//            Iterator<Payment> paymentsIterator = payments.iterator();
+//            Iterator<AddMoney> addMoniesIterator = addMonies.iterator();
+//
+//            BigDecimal totalExpand = new BigDecimal("0");
+//            while(paymentsIterator.hasNext()){
+//                Payment p = paymentsIterator.next();
+//                totalExpand = totalExpand.add(new BigDecimal(p.getPrice()));
+//            }
+//            totalExpand = totalExpand.add(new BigDecimal(result.getOrder().getPrice()));
+//
+//            BigDecimal money = new BigDecimal("0");
+//            while(addMoniesIterator.hasNext()){
+//                AddMoney addMoney = addMoniesIterator.next();
+//                money = money.add(new BigDecimal(addMoney.getMoney()));
+//            }
+//
+//            if(totalExpand.compareTo(money) > 0){
+//                //站外支付
+//                OutsidePaymentInfo outsidePaymentInfo = new OutsidePaymentInfo();
+//                outsidePaymentInfo.setOrderId(info.getOrderId());
+//                outsidePaymentInfo.setUserId(userId);
+//                outsidePaymentInfo.setPrice(result.getOrder().getPrice());
+//
+//
+//                /****这里异步调用第三方支付***/
+//                boolean outsidePaySuccess = restTemplate.postForObject(
+//                        "http://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
+////                boolean outsidePaySuccess = false;
+////                try{
+////                    System.out.println("[Payment Service][Turn To Outside Patment] Async Task Begin");
+////                    Future<Boolean> task = asyncTask.sendAsyncCallToPaymentService(outsidePaymentInfo);
+////                    outsidePaySuccess = task.get(2000,TimeUnit.MILLISECONDS).booleanValue();
+////
+////                }catch (Exception e){
+////                    System.out.println("[Inside Payment][Turn to Outside Payment] Time Out.");
+////                    //e.printStackTrace();
+////                    return false;
+////                }
+//
+//
+//
+//
+//                if(outsidePaySuccess){
+//                    payment.setType(PaymentType.O);
+//                    paymentRepository.save(payment);
+//                    setOrderStatus(info.getTripId(),info.getOrderId());
+//                    return true;
+//                }else{
+//                    return false;
+//                }
+//            }else{
+//                setOrderStatus(info.getTripId(),info.getOrderId());
+//                payment.setType(PaymentType.P);
+//                paymentRepository.save(payment);
+//            }
+//                return true;
+//
+//        }else{
+//            return false;
+//        }
+//    }
 
     @Override
     public boolean createAccount(CreateAccountInfo info){
@@ -298,21 +427,21 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
         return addMoneyRepository.findAll();
     }
 
-    private ModifyOrderStatusResult setOrderStatus(String tripId,String orderId){
-        ModifyOrderStatusInfo info = new ModifyOrderStatusInfo();
-        info.setOrderId(orderId);
-        info.setStatus(1);   //order paid and not collected
-
-        ModifyOrderStatusResult result;
-        if(tripId.startsWith("G") || tripId.startsWith("D")){
-            result = restTemplate.postForObject(
-                    "http://ts-order-service:12031/order/modifyOrderStatus", info, ModifyOrderStatusResult.class);
-        }else{
-            result = restTemplate.postForObject(
-                    "http://ts-order-other-service:12032/orderOther/modifyOrderStatus", info, ModifyOrderStatusResult.class);
-        }
-        return result;
-    }
+//    private ModifyOrderStatusResult setOrderStatus(String tripId,String orderId){
+//        ModifyOrderStatusInfo info = new ModifyOrderStatusInfo();
+//        info.setOrderId(orderId);
+//        info.setStatus(1);   //order paid and not collected
+//
+//        ModifyOrderStatusResult result;
+//        if(tripId.startsWith("G") || tripId.startsWith("D")){
+//            result = restTemplate.postForObject(
+//                    "http://ts-order-service:12031/order/modifyOrderStatus", info, ModifyOrderStatusResult.class);
+//        }else{
+//            result = restTemplate.postForObject(
+//                    "http://ts-order-other-service:12032/orderOther/modifyOrderStatus", info, ModifyOrderStatusResult.class);
+//        }
+//        return result;
+//    }
 
     @Override
     public void initPayment(Payment payment){

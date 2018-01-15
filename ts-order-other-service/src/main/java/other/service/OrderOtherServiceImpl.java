@@ -5,12 +5,16 @@ import other.repository.OrderOtherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class OrderOtherServiceImpl implements OrderOtherService{
 
     @Autowired
     private OrderOtherRepository orderOtherRepository;
+
+    public final AtomicLong counter = new AtomicLong();
+
 
     @Override
     public LeftTicketInfo getSoldTickets(SeatRequest seatRequest){
@@ -35,6 +39,14 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
     @Override
     public CreateOrderResult create(Order order){
+
+        //Thread sleep//'
+        try{
+            Thread.sleep(50000);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
         System.out.println("[Order Other Service][Create Order] Ready Create Order");
         ArrayList<Order> accountOrders = orderOtherRepository.findByAccountId(order.getAccountId());
         CreateOrderResult cor = new CreateOrderResult();
@@ -52,6 +64,9 @@ public class OrderOtherServiceImpl implements OrderOtherService{
             cor.setMessage("Success");
             cor.setOrder(order);
         }
+
+        System.out.println("counter:" + counter.decrementAndGet());
+
         return cor;
     }
 
