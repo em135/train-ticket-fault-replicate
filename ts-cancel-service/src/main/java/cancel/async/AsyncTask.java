@@ -18,7 +18,7 @@ public class AsyncTask {
     @Async("myAsync")
     public Future<ChangeOrderResult> updateOtherOrderStatusToCancel(ChangeOrderInfo info) throws InterruptedException{
 
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 
         System.out.println("[Cancel Order Service][Change Order Status]");
         ChangeOrderResult result = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/update",info,ChangeOrderResult.class);
@@ -33,7 +33,7 @@ public class AsyncTask {
         double op = new Random().nextDouble();
         if(op < 0.5){
             System.out.println("[Cancel Order Service] Delay Process，Wrong Cancel Process");
-            Thread.sleep(4000);
+            Thread.sleep(8000);
         } else {
             System.out.println("[Cancel Order Service] Normal Process，Normal Cancel Process");
         }

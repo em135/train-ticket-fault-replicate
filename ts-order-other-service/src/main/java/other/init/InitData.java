@@ -79,6 +79,13 @@ public class InitData implements CommandLineRunner {
 
         orderThree.setId(UUID.randomUUID());
         service.initOrder(orderThree);
+
+        orderThree.setId(UUID.randomUUID());
+        service.initOrder(orderThree);
+
+        orderThree.setId(UUID.randomUUID());
+        service.initOrder(orderThree);
+
     }
 
 }

@@ -435,11 +435,11 @@ $("#ticket_rebook_confirm_confirm_btn").click(function(){
         },
         success: function(result){
             if(result["status"] == true){
-                alert(result["message"]);
+                alert("rebook true:" + result["message"] );
                 location.hash="anchor_flow_rebook_orders";
                 queryMyOrder();
             }else{
-                alert(result["message"]);
+                alert("rebook false:" + result["message"]);
                 if(result['price'] != null || result['price'] != 'null'){
                     $("#rebook_money_pay").val(result["price"]);
                     location.hash="anchor_flow_rebook_pay";
@@ -481,7 +481,7 @@ $("#ticket_rebook_pay_panel_confirm").click(function(){
             withCredentials: true
         },
         success: function (result) {
-            alert(result['message']);
+            alert("rebook pay:" + result['message']);
             location.hash="anchor_flow_rebook_orders";
             queryMyOrder();
         }
@@ -535,7 +535,7 @@ $("#pay_for_not_paid_pay_button").click(function(){
         },
         success: function (result) {
             if(result == "true"){
-                alert("Success");
+                alert("Not Paid Rebook:" + "Success");
                 location.hash="anchor_flow_rebook_orders";
                 queryMyOrder();
             }else{
@@ -578,6 +578,9 @@ function addListenerToOrderCancel(){
                     }else{
                         $("#cancel_money_refund").text("Error ");
                     }
+                },
+                error: function(){
+                    alert("Cancel Calculate Refund Error");
                 }
             });
         }
@@ -599,6 +602,7 @@ $("#ticket_cancel_panel_confirm").click(function(){
         return;
     }
     var cancelOrderInfoData = JSON.stringify(cancelOrderInfo);
+    $("#ticket_cancel_panel_confirm").attr("disabled",true);
     $.ajax({
         type: "post",
         url: "/cancelOrder",
@@ -612,7 +616,14 @@ $("#ticket_cancel_panel_confirm").click(function(){
             if(result["status"] == true){
                 $("#ticket_cancel_panel").css('display','none');
             }
-            alert(result["message"]);
+            alert("Cancel Success:" + result["message"]);
+        },
+        error: function(){
+            alert("Error");
+        },
+        complete: function(){
+            $("#ticket_cancel_panel_confirm").attr("disabled",false);
+            queryMyOrder();
         }
     });
 });
