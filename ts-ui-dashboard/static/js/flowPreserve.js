@@ -693,7 +693,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
             withCredentials: true
         },
         success: function (result) {
-            //alert(result["message"]);
+            alert(result["message"]);
             if(result['status'] == true){
                 //$("#preserve_pay_panel").css('display','block');
                 $("#preserve_pay_orderId").val(result["order"]["id"]);
