@@ -6,7 +6,6 @@ import train.domain.Information;
 import train.domain.Information2;
 import train.domain.TrainType;
 import train.service.TrainService;
-
 import java.util.List;
 
 

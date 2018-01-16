@@ -296,7 +296,7 @@ function initFoodSelect(tripId){
                 }
 
             } else {
-                alert(result.status + ":" + result.message);
+                //(result.status + ":" + result.message);
             }
 
         }
@@ -407,7 +407,7 @@ function refresh_booking_contacts() {
                 "</select>" +
                 "</td>" +
                 "<td class='booking_contacts_documentNumber'>" + "<input id='booking_new_contacts_documentNum'>" + "</td>" +
-                "<td class='booking_contacts_phoneNumber'>" + "<input id='booking_new_contacts_phoneNum'>" + "</td>" +
+                "<td class='booking_contacts_phoneNumber'>" + "<input id='booking_new_contacts_phoneNum' />" + "</td>" +
                 "<td>" + "<label><input id='booking_new_contacts_select' class='booking_contacts_select' name='booking_contacts' type='radio' />" + "Select" + "</label>" + "</td>" +
                 "</tr>"
             );
@@ -693,7 +693,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
             withCredentials: true
         },
         success: function (result) {
-            alert(result["message"]);
+            //alert(result["message"]);
             if(result['status'] == true){
                 //$("#preserve_pay_panel").css('display','block');
                 $("#preserve_pay_orderId").val(result["order"]["id"]);
@@ -702,6 +702,9 @@ $("#ticket_confirm_confirm_btn").click(function () {
                 $("#preserve_pay_tripId").val(result["order"]["trainNumber"]);
                 location.hash="anchor_flow_preserve_pay";
             }
+        },
+        error:function(){
+            alert("Something Wrong");
         },
         complete: function(){
             $("#ticket_confirm_confirm_btn").attr("disabled",false);
