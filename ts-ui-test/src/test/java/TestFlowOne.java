@@ -43,7 +43,7 @@ public class TestFlowOne {
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
-        baseUrl = "http://10.141.212.24/";
+        baseUrl = "http://10.141.212.21/";
         trainType = "1";//all
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
@@ -81,7 +81,7 @@ public class TestFlowOne {
         //locate booking terminalPlace input
         WebElement elementBookingTerminalPlace = driver.findElement(By.id("travel_booking_terminalPlace"));
         elementBookingTerminalPlace.clear();
-        elementBookingTerminalPlace.sendKeys("Tai Yuan");
+        elementBookingTerminalPlace.sendKeys("Su Zhou");
 
         //locate booking Date input
         String bookDate = "";
@@ -99,7 +99,7 @@ public class TestFlowOne {
         //locate Train Type input
         WebElement elementBookingTraintype = driver.findElement(By.id("search_select_train_type"));
         Select selTraintype = new Select(elementBookingTraintype);
-        selTraintype.selectByValue("trainType"); //ALL
+        selTraintype.selectByValue(trainType); //ALL
 
         //locate Train search button
         WebElement elementBookingSearchBtn = driver.findElement(By.id("travel_booking_button"));
@@ -120,7 +120,7 @@ public class TestFlowOne {
             WebElement elementBookingSeat = ticketsList.get(i).findElement(By.xpath("td[10]/select"));
             Select selSeat = new Select(elementBookingSeat);
             selSeat.selectByValue("3"); //2st
-            ticketsList.get(i).findElement(By.xpath("td[13]/button")).click();
+            ticketsList.get(0).findElement(By.xpath("td[13]/button")).click();
             Thread.sleep(1000);
         }
         else
@@ -152,15 +152,15 @@ public class TestFlowOne {
             Select selTraintype = new Select(elementContactstype);
             selTraintype.selectByValue(documentType); //ID type
 
-            contactsList.get(0).findElement(By.xpath("td[4]/input")).sendKeys(idNumber);
-            contactsList.get(0).findElement(By.xpath("td[5]/input")).sendKeys(phoneNumber);
-            contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();
+            contactsList.get(0).findElement(By.xpath("td[4]/input")).sendKeys(idNumber);//!!
+            contactsList.get(0).findElement(By.xpath("td[5]/input")).sendKeys(phoneNumber);//!!
+            contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();//!!
         }
 
         if (contactsList.size() > 1) {
             Random rand = new Random();
             int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
-            contactsList.get(i).findElement(By.xpath("td[6]/label/input")).click();
+            contactsList.get(i).findElement(By.xpath("td[7]/label/input")).click();
         }
         driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
         System.out.println("Ticket contacts selected btn is clicked");
@@ -192,73 +192,82 @@ public class TestFlowOne {
             System.out.println("Confirming Ticket Canceled!");
         }
         Assert.assertEquals(bStatusConfirm,true);
-
         driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(1000);
+        Thread.sleep(300);
+        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
+        Thread.sleep(15000);
         System.out.println("Confirm Ticket!");
         Alert javascriptConfirm = driver.switchTo().alert();
         String statusAlert = driver.switchTo().alert().getText();
         System.out.println("The Alert information of Confirming Ticket："+statusAlert);
         Assert.assertEquals(statusAlert.startsWith("Success"),true);
         javascriptConfirm.accept();
-    }
-    @Test (dependsOnMethods = {"testTicketConfirm"})
-    public void testTicketPay ()throws Exception {
-        String itemOrderId = driver.findElement(By.id("preserve_pay_orderId")).getAttribute("value");
-        String itemPrice = driver.findElement(By.id("preserve_pay_price")).getAttribute("value");
-        String itemTripId = driver.findElement(By.id("preserve_pay_tripId")).getAttribute("value");
-        boolean bOrderId = !"".equals(itemOrderId);
-        boolean bPrice = !"".equals(itemPrice);
-        boolean bTripId = !"".equals(itemTripId);
-        boolean bStatusPay = bOrderId && bPrice && bTripId;
-        if(bStatusPay == false)
-            System.out.println("Confirming Ticket failed!");
-        Assert.assertEquals(bStatusPay,true);
 
-        driver.findElement(By.id("preserve_pay_button")).click();
-        Thread.sleep(1000);
-        String itemCollectOrderId = driver.findElement(By.id("preserve_collect_order_id")).getAttribute("value");
-        Assert.assertEquals(!"".equals(itemCollectOrderId),true);
-        System.out.println("Success to pay and book ticket!");
-    }
-    @Test (dependsOnMethods = {"testTicketPay"})
-    public void testTicketCollect ()throws Exception {
-        String itemCollectOrderId = driver.findElement(By.id("preserve_collect_order_id")).getAttribute("value");
-        boolean bCollectOrderId = !"".equals(itemCollectOrderId);
-        if(bCollectOrderId == false)
-            System.out.println("Ticket payment failed!");
-        Assert.assertEquals(bCollectOrderId,true);
+        System.out.println("Confirm Ticket!");
+        Alert javascriptConfirm2 = driver.switchTo().alert();
+        String statusAlert2 = driver.switchTo().alert().getText();
+        System.out.println("The Alert information of Confirming Ticket："+statusAlert2);
+        Assert.assertEquals(statusAlert2.startsWith("Success"),true);
+        javascriptConfirm2.accept();
 
-        driver.findElement(By.id("preserve_collect_button")).click();
-        Thread.sleep(1000);
-        String statusCollectOrderId = driver.findElement(By.id("preserve_collect_order_status")).getText();
-
-        if("".equals(statusCollectOrderId))
-            System.out.println("Failed to Collect Ticket! Status is Null!");
-        else if(statusCollectOrderId.startsWith("Success"))
-            System.out.println("Success to Collect Ticket! Status:"+statusCollectOrderId);
-        else
-            System.out.println("Failed to Collect Ticket! Status is:"+statusCollectOrderId);
-        Assert.assertEquals(statusCollectOrderId.startsWith("Success"),true);
     }
-    @Test (dependsOnMethods = {"testTicketCollect"})
-    public void testEnterStation ()throws Exception {
-        String itemEnterOrderId = driver.findElement(By.id("preserve_execute_order_id")).getAttribute("value");
-        if("".equals(itemEnterOrderId))
-            System.out.println("Enter Station,No Order Id,failed");
-        Assert.assertEquals(!"".equals(itemEnterOrderId),true);
-
-        driver.findElement(By.id("preserve_order_button")).click();
-        Thread.sleep(1000);
-        String statusEnterStation = driver.findElement(By.id("preserve_order_status")).getText();
-        if("".equals(statusEnterStation))
-            System.out.println("Failed to Enter Station! Status is Null!");
-        else if(statusEnterStation.startsWith("Success"))
-            System.out.println("Success to Enter Station! Status:"+statusEnterStation);
-        else
-            System.out.println("Failed to Enter Station! Status is:"+statusEnterStation);
-        Assert.assertEquals(statusEnterStation.startsWith("Success"),true);
-    }
+//    @Test (dependsOnMethods = {"testTicketConfirm"})
+//    public void testTicketPay ()throws Exception {
+//        String itemOrderId = driver.findElement(By.id("preserve_pay_orderId")).getAttribute("value");
+//        String itemPrice = driver.findElement(By.id("preserve_pay_price")).getAttribute("value");
+//        String itemTripId = driver.findElement(By.id("preserve_pay_tripId")).getAttribute("value");
+//        boolean bOrderId = !"".equals(itemOrderId);
+//        boolean bPrice = !"".equals(itemPrice);
+//        boolean bTripId = !"".equals(itemTripId);
+//        boolean bStatusPay = bOrderId && bPrice && bTripId;
+//        if(bStatusPay == false)
+//            System.out.println("Confirming Ticket failed!");
+//        Assert.assertEquals(bStatusPay,true);
+//
+//        driver.findElement(By.id("preserve_pay_button")).click();
+//        Thread.sleep(1000);
+//        String itemCollectOrderId = driver.findElement(By.id("preserve_collect_order_id")).getAttribute("value");
+//        Assert.assertEquals(!"".equals(itemCollectOrderId),true);
+//        System.out.println("Success to pay and book ticket!");
+//    }
+//    @Test (dependsOnMethods = {"testTicketPay"})
+//    public void testTicketCollect ()throws Exception {
+//        String itemCollectOrderId = driver.findElement(By.id("preserve_collect_order_id")).getAttribute("value");
+//        boolean bCollectOrderId = !"".equals(itemCollectOrderId);
+//        if(bCollectOrderId == false)
+//            System.out.println("Ticket payment failed!");
+//        Assert.assertEquals(bCollectOrderId,true);
+//
+//        driver.findElement(By.id("preserve_collect_button")).click();
+//        Thread.sleep(1000);
+//        String statusCollectOrderId = driver.findElement(By.id("preserve_collect_order_status")).getText();
+//
+//        if("".equals(statusCollectOrderId))
+//            System.out.println("Failed to Collect Ticket! Status is Null!");
+//        else if(statusCollectOrderId.startsWith("Success"))
+//            System.out.println("Success to Collect Ticket! Status:"+statusCollectOrderId);
+//        else
+//            System.out.println("Failed to Collect Ticket! Status is:"+statusCollectOrderId);
+//        Assert.assertEquals(statusCollectOrderId.startsWith("Success"),true);
+//    }
+//    @Test (dependsOnMethods = {"testTicketCollect"})
+//    public void testEnterStation ()throws Exception {
+//        String itemEnterOrderId = driver.findElement(By.id("preserve_execute_order_id")).getAttribute("value");
+//        if("".equals(itemEnterOrderId))
+//            System.out.println("Enter Station,No Order Id,failed");
+//        Assert.assertEquals(!"".equals(itemEnterOrderId),true);
+//
+//        driver.findElement(By.id("preserve_order_button")).click();
+//        Thread.sleep(1000);
+//        String statusEnterStation = driver.findElement(By.id("preserve_order_status")).getText();
+//        if("".equals(statusEnterStation))
+//            System.out.println("Failed to Enter Station! Status is Null!");
+//        else if(statusEnterStation.startsWith("Success"))
+//            System.out.println("Success to Enter Station! Status:"+statusEnterStation);
+//        else
+//            System.out.println("Failed to Enter Station! Status is:"+statusEnterStation);
+//        Assert.assertEquals(statusEnterStation.startsWith("Success"),true);
+//    }
     @AfterClass
     public void tearDown() throws Exception {
         driver.quit();
