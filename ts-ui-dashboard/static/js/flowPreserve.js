@@ -716,6 +716,9 @@ $("#preserve_pay_button").click(function(){
                 //alert("Some thing error");
             }
         },
+        error: function(){
+          alert("Pay Error");
+        },
         complete: function(){
             $("#preserve_pay_button").attr("disabled",false);
         }
