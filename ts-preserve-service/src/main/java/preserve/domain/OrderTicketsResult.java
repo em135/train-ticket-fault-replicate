@@ -8,6 +8,8 @@ public class OrderTicketsResult {
 
     private Order order;
 
+    private int preserveNumber;
+
     public OrderTicketsResult(){
         //Default Constructor
     }
@@ -35,4 +37,13 @@ public class OrderTicketsResult {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    public int getPreserveNumber() {
+        return preserveNumber;
+    }
+
+    public void setPreserveNumber(int preserveNumber) {
+        this.preserveNumber = preserveNumber;
+    }
+
 }

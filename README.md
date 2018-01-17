@@ -1,37 +1,10 @@
 # fault_replicate
 
 
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
+Each ts-preserve-service instance maintains one global variable preserveNumber.
 
-F1:
-ts-error-process-seq
+When there are more than one instance, the preserveNumber is not correct.
 
-F2:
-ts-error-reportui
+The ui-dashboard will detect it if the user preserve two tickets continuously,
 
-F3:
-ts-error-docker-JVM
-
-F4:
-ts-error-ssl
-
-F5:
-ts-error-cross-timeout-status(chance)
-
-F7:
-ts-external-normal
-
-F8:
-ts-error-redis
-
-F10:
-ts-error-normal
-
-F11:
-ts-error-bomupdate
-
-F12:
-ts-error-processes-seq-status(chance)
-
-F13:
-ts-error-queue
+since the return preserveNumber is equal or less than the current showed on the page.

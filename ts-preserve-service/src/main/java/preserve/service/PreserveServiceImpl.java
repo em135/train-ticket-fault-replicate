@@ -13,8 +13,11 @@ public class PreserveServiceImpl implements PreserveService{
     @Autowired
     private RestTemplate restTemplate;
 
+    private int preserveNumber = 0;//save the preserve people numebr and make a mistake when this service has more than one instance used
+
     @Override
     public OrderTicketsResult preserve(OrderTicketsInfo oti,String accountId,String loginToken){
+        preserveNumber ++;
         VerifyResult tokenResult = verifySsoLogin(loginToken);
         OrderTicketsResult otr = new OrderTicketsResult();
         if(tokenResult.isStatus() == true){
@@ -28,6 +31,7 @@ public class PreserveServiceImpl implements PreserveService{
                 otr.setStatus(false);
                 otr.setMessage(result.getMessage());
                 otr.setOrder(null);
+                otr.setPreserveNumber(preserveNumber);
                 return otr;
             }
             System.out.println("[Preserve Service] [Step 1] Check Security Complete");
@@ -43,6 +47,7 @@ public class PreserveServiceImpl implements PreserveService{
                 otr.setStatus(false);
                 otr.setMessage(gcr.getMessage());
                 otr.setOrder(null);
+                otr.setPreserveNumber(preserveNumber);
                 return otr;
             }
             System.out.println("[Preserve Service][Step 2] Complete");
@@ -62,6 +67,7 @@ public class PreserveServiceImpl implements PreserveService{
                 otr.setStatus(false);
                 otr.setMessage(gcr.getMessage());
                 otr.setOrder(null);
+                otr.setPreserveNumber(preserveNumber);
                 return otr;
             }else{
                 TripResponse tripResponse = gtdr.getTripResponse();
@@ -71,6 +77,7 @@ public class PreserveServiceImpl implements PreserveService{
                         otr.setStatus(false);
                         otr.setMessage("Seat Not Enough");
                         otr.setOrder(null);
+                        otr.setPreserveNumber(preserveNumber);
                         return otr;
                     }
                 }else{
@@ -80,6 +87,7 @@ public class PreserveServiceImpl implements PreserveService{
                             otr.setStatus(false);
                             otr.setMessage("Seat Not Enough");
                             otr.setOrder(null);
+                            otr.setPreserveNumber(preserveNumber);
                             return otr;
                         }
                     }
@@ -153,6 +161,7 @@ public class PreserveServiceImpl implements PreserveService{
                 otr.setStatus(false);
                 otr.setMessage(cor.getMessage());
                 otr.setOrder(null);
+                otr.setPreserveNumber(preserveNumber);
                 return otr;
             }
             System.out.println("[Preserve Service] [Step 4] Do Order Complete");
@@ -249,6 +258,7 @@ public class PreserveServiceImpl implements PreserveService{
             otr.setMessage("Not Login");
             otr.setOrder(null);
         }
+        otr.setPreserveNumber(preserveNumber);
         return otr;
     }
 
