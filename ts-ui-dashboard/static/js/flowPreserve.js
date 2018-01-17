@@ -700,7 +700,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
                 $("#preserve_pay_price").val(result["order"]["price"]);
                 $("#preserve_pay_userId").val(result["order"]["accountId"]);
                 $("#preserve_pay_tripId").val(result["order"]["trainNumber"]);
-                location.hash="anchor_flow_preserve_pay";
+                //location.hash="anchor_flow_preserve_pay";
             }
         },
         error:function(){
