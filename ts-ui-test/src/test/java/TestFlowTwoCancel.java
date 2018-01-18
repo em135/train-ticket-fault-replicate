@@ -22,9 +22,9 @@ public class TestFlowTwoCancel {
     }
     @BeforeClass
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "F:/gitwork/chromedriver.exe");
         driver = new ChromeDriver();
-        baseUrl = "http://10.141.212.21/";
+        baseUrl = "http://10.141.212.23";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @Test
