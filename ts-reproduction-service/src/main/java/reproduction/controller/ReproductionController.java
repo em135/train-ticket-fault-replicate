@@ -2,11 +2,9 @@ package reproduction.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import reproduction.domain.Information;
 import reproduction.domain.OrderTicketsInfo;
 import reproduction.domain.OrderTicketsResult;
 import reproduction.service.ReproductionService;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 

@@ -1,9 +1,7 @@
 package reproduction.service;
 
-import reproduction.domain.Information;
 import reproduction.domain.OrderTicketsInfo;
 import reproduction.domain.OrderTicketsResult;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 

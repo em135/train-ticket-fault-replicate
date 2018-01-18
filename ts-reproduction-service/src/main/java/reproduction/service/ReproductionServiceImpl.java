@@ -1,22 +1,14 @@
 package reproduction.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import reproduction.async.AsyncTask;
-import reproduction.domain.Information;
-import reproduction.domain.Order;
 import reproduction.domain.OrderTicketsInfo;
 import reproduction.domain.OrderTicketsResult;
-
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
