@@ -692,7 +692,7 @@ $("#preserve_pay_button").click(function(){
     if(getCookie("loginId").length < 1 || getCookie("loginToken").length < 1){
         alert("Please Login");
     }
-    $("#preserve_pay_button").attr("disabled",true);
+    //$("#preserve_pay_button").attr("disabled",true);
     var info = new Object();
     info.orderId = $("#preserve_pay_orderId").val();
     info.tripId = $("#preserve_pay_tripId").val();
@@ -717,7 +717,7 @@ $("#preserve_pay_button").click(function(){
             }
         },
         complete: function(){
-            $("#preserve_pay_button").attr("disabled",false);
+            //$("#preserve_pay_button").attr("disabled",false);
         }
     });
     //$("#preserve_pay_panel").css('display','none');

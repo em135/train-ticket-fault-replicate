@@ -8,11 +8,9 @@ import inside_payment.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -41,15 +39,10 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
         GetOrderByIdInfo getOrderByIdInfo = new GetOrderByIdInfo();
         getOrderByIdInfo.setOrderId(info.getOrderId());
         GetOrderResult result;
-
-        if(info.getTripId().startsWith("G") || info.getTripId().startsWith("D")){
-            result = restTemplate.postForObject("http://ts-order-service:12031/order/getById",getOrderByIdInfo,GetOrderResult.class);
-             //result = restTemplate.postForObject(
-             //       "http://ts-order-service:12031/order/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
-        }else{
-            result = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/getById",getOrderByIdInfo,GetOrderResult.class);
-            //result = restTemplate.postForObject(
-            //      "http://ts-order-other-service:12032/orderOther/price", new QueryOrder(info.getOrderId()),QueryOrderResult.class);
+        try{
+            result = asyncTask.sendAsyncCallToGetOrder(getOrderByIdInfo,info.getTripId()).get();
+        }catch (Exception e){
+            return false;
         }
 
         if(result.isStatus()){
@@ -90,24 +83,8 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
                 outsidePaymentInfo.setUserId(userId);
                 outsidePaymentInfo.setPrice(result.getOrder().getPrice());
 
-
-                /****这里异步调用第三方支付***/
                 boolean outsidePaySuccess = restTemplate.postForObject(
                         "http://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
-//                boolean outsidePaySuccess = false;
-//                try{
-//                    System.out.println("[Payment Service][Turn To Outside Patment] Async Task Begin");
-//                    Future<Boolean> task = asyncTask.sendAsyncCallToPaymentService(outsidePaymentInfo);
-//                    outsidePaySuccess = task.get(2000,TimeUnit.MILLISECONDS).booleanValue();
-//
-//                }catch (Exception e){
-//                    System.out.println("[Inside Payment][Turn to Outside Payment] Time Out.");
-//                    //e.printStackTrace();
-//                    return false;
-//                }
-
-
-
 
                 if(outsidePaySuccess){
                     payment.setType(PaymentType.O);
@@ -227,6 +204,13 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
 
     @Override
     public boolean drawBack(DrawBackInfo info){
+        GetAccountByIdInfo getAccountByIdInfo = new GetAccountByIdInfo();
+        getAccountByIdInfo.setAccountId(info.getUserId());
+        try{
+            Account asyncResult = asyncTask.sendAsyncCallToGetAccount(getAccountByIdInfo).get(5000,TimeUnit.MILLISECONDS);
+        }catch(Exception e){
+            return false;
+        }
         if(addMoneyRepository.findByUserId(info.getUserId()) != null){
             AddMoney addMoney = new AddMoney();
             addMoney.setUserId(info.getUserId());
@@ -299,18 +283,14 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
     }
 
     private ModifyOrderStatusResult setOrderStatus(String tripId,String orderId){
-        ModifyOrderStatusInfo info = new ModifyOrderStatusInfo();
-        info.setOrderId(orderId);
-        info.setStatus(1);   //order paid and not collected
 
         ModifyOrderStatusResult result;
-        if(tripId.startsWith("G") || tripId.startsWith("D")){
-            result = restTemplate.postForObject(
-                    "http://ts-order-service:12031/order/modifyOrderStatus", info, ModifyOrderStatusResult.class);
-        }else{
-            result = restTemplate.postForObject(
-                    "http://ts-order-other-service:12032/orderOther/modifyOrderStatus", info, ModifyOrderStatusResult.class);
+        try{
+            result = asyncTask.sendAsyncCallToModifyOrderStatus(tripId,orderId).get();
+        }catch(Exception e){
+            return null;
         }
+
         return result;
     }
 
@@ -324,9 +304,4 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
         }
     }
 
-//    private boolean sendOrderCreateEmail(){
-//        result = restTemplate.postForObject(
-//                "http://ts-notification-service:12031/order/modifyOrderStatus", info, ModifyOrderStatusResult.class);
-//        return true;
-//    }
 }

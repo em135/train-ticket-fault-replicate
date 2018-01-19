@@ -129,8 +129,6 @@ public class PreserveOtherServiceImpl implements PreserveOtherService{
                     "http://ts-ticketinfo-service:15681/ticketinfo/queryForTravel", query ,ResultForTravel.class);
 
 
-//            String ticketPrice = getPrice(queryPriceInfo);
-//            order.setPrice(ticketPrice);//Set ticket price
 
 
             order.setSeatClass(oti.getSeatType());
@@ -145,8 +143,6 @@ public class PreserveOtherServiceImpl implements PreserveOtherService{
                                 SeatClass.FIRSTCLASS.getCode());
                 order.setSeatClass(SeatClass.FIRSTCLASS.getCode());
                 order.setSeatNumber("" + ticket.getSeatNo());
-//                int firstClassRemainNum = gtdr.getTripResponse().getConfortClass();
-//                order.setSeatNumber("FirstClass-" + firstClassRemainNum);
                 order.setPrice(resultForTravel.getPrices().get("confortClass"));
             }else{
                 Ticket ticket =
@@ -155,8 +151,6 @@ public class PreserveOtherServiceImpl implements PreserveOtherService{
                                 SeatClass.SECONDCLASS.getCode());
                 order.setSeatClass(SeatClass.SECONDCLASS.getCode());
                 order.setSeatNumber("" + ticket.getSeatNo());
-//                int secondClassRemainNum = gtdr.getTripResponse().getEconomyClass();
-//                order.setSeatNumber("SecondClass-" + secondClassRemainNum);
                 order.setPrice(resultForTravel.getPrices().get("economyClass"));
             }
             System.out.println("[Preserve Other Service][Order Price] Price is: " + order.getPrice());

@@ -58,12 +58,4 @@ public class InsidePaymentController {
         return service.queryAddMoney();
     }
 
-    @RequestMapping("/hello1_callback")
-    public String hello1_callback(@RequestParam(value="result", defaultValue="satan") String cal_back) {
-
-        System.out.println("Call Back Result:" + cal_back);
-        System.out.println("-------------external call back-------------");
-        return "-------call back end-------";
-
-    }
 }

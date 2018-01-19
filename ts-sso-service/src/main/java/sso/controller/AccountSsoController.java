@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import sso.domain.*;
 import sso.service.AccountSsoService;
 
+import java.util.Random;
 import java.util.UUID;
 
 @RestController
@@ -83,7 +84,7 @@ public class AccountSsoController {
     }
 
     @RequestMapping(path = "/account/findById", method = RequestMethod.POST)
-    public GetAccountByIdResult getAccountById(@RequestBody GetAccountByIdInfo info){
+    public GetAccountByIdResult getAccountById(@RequestBody GetAccountByIdInfo info) throws InterruptedException{
         System.out.println("[SSO Service][Find Account By Id] Account Id:" + info.getAccountId());
         return ssoService.getAccountById(info);
     }
