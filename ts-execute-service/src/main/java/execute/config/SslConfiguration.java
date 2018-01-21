@@ -1,6 +1,6 @@
 package execute.config;
 
-import com.trainticket.verificationcode.VerificationCodeApplication;
+import execute.ExecuteApplication;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
-
 import javax.net.ssl.SSLContext;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -33,7 +32,7 @@ public class SslConfiguration {
 	@Value("${http.client.ssl.trust-store-password}")
 	private String keyStorePassword;
 
-	private static final Logger log = LoggerFactory.getLogger(VerificationCodeApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(ExecuteApplication.class);
 
 	@Bean
 	RestTemplate restTemplate() throws Exception {

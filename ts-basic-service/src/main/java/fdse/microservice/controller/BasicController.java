@@ -1,6 +1,5 @@
 package fdse.microservice.controller;
 
-import fdse.microservice.domain.QueryForStationId;
 import fdse.microservice.domain.QueryForTravel;
 import fdse.microservice.domain.QueryStation;
 import fdse.microservice.domain.ResultForTravel;

@@ -1,6 +1,6 @@
 package adminbasic.config;
 
-import com.trainticket.verificationcode.VerificationCodeApplication;
+import adminbasic.AdminBasicInfoApplication;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -33,7 +33,7 @@ public class SslConfiguration {
 	@Value("${http.client.ssl.trust-store-password}")
 	private String keyStorePassword;
 
-	private static final Logger log = LoggerFactory.getLogger(VerificationCodeApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(AdminBasicInfoApplication.class);
 
 	@Bean
 	RestTemplate restTemplate() throws Exception {
