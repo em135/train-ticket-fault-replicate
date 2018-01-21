@@ -296,7 +296,7 @@ function initFoodSelect(tripId){
                 }
 
             } else {
-                alert(result.status + ":" + result.message);
+                //alert(result.status + ":" + result.message);
             }
 
         }
@@ -591,7 +591,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
         alert("Please Login");
     }
 
-    $("#ticket_confirm_confirm_btn").attr("disabled",true);
+    //$("#ticket_confirm_confirm_btn").attr("disabled",true);
     var orderTicketInfo = new Object();
     orderTicketInfo.contactsId = $("#ticket_confirm_contactsId").text();
     orderTicketInfo.tripId = $("#ticket_confirm_tripId").text();
@@ -674,7 +674,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
             }
         },
         complete: function(){
-            $("#ticket_confirm_confirm_btn").attr("disabled",false);
+            //$("#ticket_confirm_confirm_btn").attr("disabled",false);
         }
     })
 })
