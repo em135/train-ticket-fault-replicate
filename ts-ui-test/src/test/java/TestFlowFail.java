@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by ZDH on 2017/7/19.
  */
-public class TestFlowOne {
+public class TestFlowFail {
     private WebDriver driver;
     private String trainType;//0--all,1--GaoTie,2--others
     private String baseUrl;
@@ -204,6 +204,52 @@ public class TestFlowOne {
         }
 
 
+        //-------------------------------------------------------------------------
+
+        //转向顶头 点击advance travel
+        String js = "document.getElementById('flow_four_page').scrollIntoView(false)";
+        ((JavascriptExecutor)driver).executeScript(js);
+
+        driver.findElement(By.id("flow_four_page")).click();
+        //点击车票检索多次
+
+        String js1 = "document.getElementById('flow_advance_reserve_startingPlace').scrollIntoView(false)";
+        ((JavascriptExecutor)driver).executeScript(js1);
+
+        WebElement elementBookingStartingPlace = driver.findElement(By.id("flow_advance_reserve_startingPlace"));
+        elementBookingStartingPlace.clear();
+        elementBookingStartingPlace.sendKeys("Shang Hai");
+
+        //locate booking terminalPlace input
+        WebElement elementBookingTerminalPlace = driver.findElement(By.id("flow_advance_reserve_terminalPlace"));
+        elementBookingTerminalPlace.clear();
+        elementBookingTerminalPlace.sendKeys("Nan Jing");
+
+        //locate booking Date input
+        String bookDate = "";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Calendar newDate = Calendar.getInstance();
+        Random randDate = new Random();
+        int randomDate = randDate.nextInt(26); //int范围类的随机数
+        newDate.add(Calendar.DATE, randomDate+5);//随机定5-30天后的票
+        bookDate=sdf.format(newDate.getTime());
+
+        JavascriptExecutor js2 = (JavascriptExecutor) driver;
+        js2.executeScript("document.getElementById('flow_advance_reserve_booking_date').value='"+bookDate+"'");
+
+
+        //locate Train Type input
+        WebElement elementBookingTraintype = driver.findElement(By.id("flow_advance_reserve_select_searchType"));
+        Select selTraintype = new Select(elementBookingTraintype);
+        selTraintype.selectByValue("trainType"); //ALL
+
+        //locate Train search button
+        WebElement elementBookingSearchBtn = driver.findElement(By.id("flow_advance_reserve_booking_button"));
+
+        elementBookingSearchBtn.click();
+        elementBookingSearchBtn.click();
+
+        //--------------------------------------------------------------------------
 
         //等待所有alert的抵达
         Thread.sleep(15000);
