@@ -808,35 +808,35 @@ function addListenerToOrderCancel(){
     }
 }
 
-$("#ticket_cancel_panel_cancel").click(function(){
-    $("#ticket_cancel_panel").css('display','none');
-});
-
-$("#ticket_cancel_panel_confirm").click(function(){
-    if(getCookie("loginId").length < 1 || getCookie("loginToken").length < 1){
-        alert("Please Login");
-    }
-    var cancelOrderInfo = new Object();
-    cancelOrderInfo.orderId =  $("#ticket_cancel_order_id").text();
-    if(cancelOrderInfo.orderId == null || cancelOrderInfo.orderId == ""){
-        alert("Please input the order ID that you want to cancel.");
-        return;
-    }
-    var cancelOrderInfoData = JSON.stringify(cancelOrderInfo);
-    $.ajax({
-        type: "post",
-        url: "/cancelOrder",
-        contentType: "application/json",
-        dataType: "json",
-        data: cancelOrderInfoData,
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function (result) {
-            if(result["status"] == true){
-                $("#ticket_cancel_panel").css('display','none');
-            }
-            alert(result["message"]);
-        }
-    });
-});
+// $("#ticket_cancel_panel_cancel").click(function(){
+//     $("#ticket_cancel_panel").css('display','none');
+// });
+//
+// $("#ticket_cancel_panel_confirm").click(function(){
+//     if(getCookie("loginId").length < 1 || getCookie("loginToken").length < 1){
+//         alert("Please Login");
+//     }
+//     var cancelOrderInfo = new Object();
+//     cancelOrderInfo.orderId =  $("#ticket_cancel_order_id").text();
+//     if(cancelOrderInfo.orderId == null || cancelOrderInfo.orderId == ""){
+//         alert("Please input the order ID that you want to cancel.");
+//         return;
+//     }
+//     var cancelOrderInfoData = JSON.stringify(cancelOrderInfo);
+//     $.ajax({
+//         type: "post",
+//         url: "/cancelOrder",
+//         contentType: "application/json",
+//         dataType: "json",
+//         data: cancelOrderInfoData,
+//         xhrFields: {
+//             withCredentials: true
+//         },
+//         success: function (result) {
+//             if(result["status"] == true){
+//                 $("#ticket_cancel_panel").css('display','none');
+//             }
+//             alert(result["message"]);
+//         }
+//     });
+// });

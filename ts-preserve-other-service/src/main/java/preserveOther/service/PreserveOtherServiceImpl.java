@@ -126,7 +126,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService{
             query.setDepartureTime(new Date());
 
             ResultForTravel resultForTravel = restTemplate.postForObject(
-                    "http://ts-ticketinfo-service:15681/ticketinfo/queryForTravel", query ,ResultForTravel.class);
+                    "https://ts-ticketinfo-service:15681/ticketinfo/queryForTravel", query ,ResultForTravel.class);
 
 
 //            String ticketPrice = getPrice(queryPriceInfo);
