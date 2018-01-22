@@ -165,6 +165,9 @@ function queryForTravelInfo(data,path) {
                 addListenerToBookingTable();
             }
         },
+        error: function(){
+            alert("Error");
+        },
         complete: function () {
             $("#travel_booking_button").attr("disabled",false);
         }
@@ -672,6 +675,9 @@ $("#ticket_confirm_confirm_btn").click(function () {
                 $("#preserve_pay_tripId").val(result["order"]["trainNumber"]);
                 location.hash="anchor_flow_preserve_pay";
             }
+        },
+        error: function(){
+            alert("Error");
         },
         complete: function(){
             $("#ticket_confirm_confirm_btn").attr("disabled",false);
