@@ -196,14 +196,31 @@ public class TestFlowOne {
         }
         Assert.assertEquals(bStatusConfirm,true);
 
-        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(1000);
-        System.out.println("Confirm Ticket!");
-        Alert javascriptConfirm = driver.switchTo().alert();
-        String statusAlert = driver.switchTo().alert().getText();
-        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
-        Assert.assertEquals(statusAlert.startsWith("Success"),true);
-        javascriptConfirm.accept();
+        //点击三次预定车票
+        int clickNumber = 3;
+        for(int i = 0;i < clickNumber; i++){
+            driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
+            Thread.sleep(30);
+        }
+
+
+
+        //等待所有alert的抵达
+        Thread.sleep(15000);
+        for(int i = 0;i < clickNumber; i++){
+            Alert javascriptConfirm2 = driver.switchTo().alert();
+            String statusAlert2 = driver.switchTo().alert().getText();
+            System.out.println("The Alert information of Confirming Ticket："+statusAlert2);
+            //Assert.assertEquals(statusAlert.startsWith("Success"),true);
+            javascriptConfirm2.accept();
+        }
+//        System.out.println("Confirm Ticket!");
+//        Alert javascriptConfirm = driver.switchTo().alert();
+//        String statusAlert = driver.switchTo().alert().getText();
+//        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
+//        //Assert.assertEquals(statusAlert.startsWith("Success"),true);
+//        javascriptConfirm.accept();
+
     }
 
     @AfterClass

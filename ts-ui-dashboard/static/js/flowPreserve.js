@@ -415,6 +415,9 @@ function refresh_booking_contacts() {
                 "</tr>"
             );
         },
+        error: function(){
+            alert("Error");
+        },
         complete: function(){
             $("#refresh_booking_contacts_button").attr("disabled",false);
         }
@@ -677,7 +680,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
             }
         },
         error: function () {
-          alert("Ticket Booking Error");
+          alert("Error");
         },
         complete: function(){
             //$("#ticket_confirm_confirm_btn").attr("disabled",false);
