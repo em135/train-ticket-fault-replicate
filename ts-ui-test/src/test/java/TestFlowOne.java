@@ -125,9 +125,8 @@ public class TestFlowOne {
             System.out.println("Tickets search failed!!!");
         Assert.assertEquals(ticketsList.size() > 0,true);
     }
-   // @Test(enabled = false)
     @Test (dependsOnMethods = {"testBooking"})
-    public void testSelectContacts()throws Exception{
+    public void testSelectContacts_One()throws Exception{
         List<WebElement> contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
         //Confirm ticket selection
         if (contactsList.size() == 0) {
@@ -142,7 +141,7 @@ public class TestFlowOne {
         if (contactsList.size() == 1){
             String contactName = getRandomString(5);
             String documentType = "1";//ID Card
-            String idNumber = getRandomString(8);
+            String idNumber = "1234567890";
             String phoneNumber = getRandomString(11);
             contactsList.get(0).findElement(By.xpath("td[2]/input")).sendKeys(contactName);
 
@@ -155,11 +154,11 @@ public class TestFlowOne {
             contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();
         }
 
-        if (contactsList.size() > 1) {
-            Random rand = new Random();
-            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
-            contactsList.get(i).findElement(By.xpath("td[7]/label/input")).click();
-        }
+//        if (contactsList.size() > 1) {
+//            Random rand = new Random();
+//            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
+//            contactsList.get(i).findElement(By.xpath("td[6]/label/input")).click();
+//        }
         driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
         System.out.println("Ticket contacts selected btn is clicked");
         Thread.sleep(1000);
@@ -192,7 +191,7 @@ public class TestFlowOne {
         Assert.assertEquals(bStatusConfirm,true);
 
         driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         System.out.println("Confirm Ticket!");
         Alert javascriptConfirm = driver.switchTo().alert();
         String statusAlert = driver.switchTo().alert().getText();
