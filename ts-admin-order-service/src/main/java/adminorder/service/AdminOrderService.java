@@ -13,4 +13,6 @@ public interface AdminOrderService {
     DeleteOrderResult deleteOrder(DeleteOrderRequest request);
     UpdateOrderResult updateOrder(UpdateOrderRequest request);
     AddOrderResult addOrder(AddOrderRequest request);
+    boolean suspendOrder(String orderId);
+    boolean cancelSuspenOrder(String orderId);
 }

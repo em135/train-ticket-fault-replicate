@@ -16,6 +16,9 @@ public class OrderOtherController {
     @Autowired
     private RestTemplate restTemplate;
 
+    public static int onProcessingRequestsNumber = 0;
+
+
     @RequestMapping(path = "/welcome", method = RequestMethod.GET)
     public String home() {
         return "Welcome to [ Order Other Service ] !";
@@ -25,120 +28,215 @@ public class OrderOtherController {
 
     @RequestMapping(value="/orderOther/getTicketListByDateAndTripId", method = RequestMethod.POST)
     public LeftTicketInfo getTicketListByDateAndTripId(@RequestBody SeatRequest seatRequest){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Get Sold Ticket] Date:" + seatRequest.getTravelDate().toString());
-        return orderService.getSoldTickets(seatRequest);
+        LeftTicketInfo leftTicketInfo = orderService.getSoldTickets(seatRequest);;
+
+        onProcessingRequestsNumber--;
+
+        return leftTicketInfo;
+
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/create", method = RequestMethod.POST)
     public CreateOrderResult createNewOrder(@RequestBody CreateOrderInfo coi){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Create Order] Create Order form " + coi.getOrder().getFrom() + " --->"
                 + coi.getOrder().getTo() + " at " + coi.getOrder().getTravelDate());
         VerifyResult tokenResult = verifySsoLogin(coi.getLoginToken());
+        CreateOrderResult createOrderResult;
         if(tokenResult.isStatus() == true){
             System.out.println("[Order Other Service][Verify Login] Success");
-            return orderService.create(coi.getOrder());
+            createOrderResult = orderService.create(coi.getOrder());
         }else{
             System.out.println("[Order Other Service][Verify Login] Fail");
             CreateOrderResult cor = new CreateOrderResult();
             cor.setStatus(false);
             cor.setMessage("Not Login");
             cor.setOrder(null);
-            return cor;
+            createOrderResult = cor;
         }
+
+        onProcessingRequestsNumber--;
+
+        return createOrderResult;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/adminAddOrder", method = RequestMethod.POST)
     public AddOrderResult addcreateNewOrder(@RequestBody Order order){
-        return orderService.addNewOrder(order);
+
+        onProcessingRequestsNumber++;
+
+        AddOrderResult addOrderResult = orderService.addNewOrder(order);
+
+        onProcessingRequestsNumber--;
+
+        return addOrderResult;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/query", method = RequestMethod.POST)
     public ArrayList<Order> queryOrders(@RequestBody QueryInfo qi,@CookieValue String loginId,@CookieValue String loginToken){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Query Orders] Query Orders for " + loginId);
         VerifyResult tokenResult = verifySsoLogin(loginToken);
+        ArrayList<Order> orders;
         if(tokenResult.isStatus() == true){
             System.out.println("[Order Other Service][Verify Login] Success");
-            return orderService.queryOrders(qi,loginId);
+            orders = orderService.queryOrders(qi,loginId);
         }else{
             System.out.println("[Order Other Service][Verify Login] Fail");
-            return new ArrayList<Order>();
+            orders = new ArrayList<>();
         }
+
+        onProcessingRequestsNumber--;
+
+        return orders;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/orderOther/calculate", method = RequestMethod.POST)
     public CalculateSoldTicketResult calculateSoldTicket(@RequestBody CalculateSoldTicketInfo csti){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Calculate Sold Tickets] Date:" + csti.getTravelDate() + " TrainNumber:"
                 + csti.getTrainNumber());
-        return orderService.queryAlreadySoldOrders(csti);
+        CalculateSoldTicketResult result = orderService.queryAlreadySoldOrders(csti);
+
+        onProcessingRequestsNumber--;
+        return result;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/orderOther/price", method = RequestMethod.POST)
     public GetOrderPriceResult getOrderPrice(@RequestBody GetOrderPrice info){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Get Order Price] Order Id:" + info.getOrderId());
-        return orderService.getOrderPrice(info);
+        GetOrderPriceResult result = orderService.getOrderPrice(info);
+
+        onProcessingRequestsNumber--;
+
+        return result;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/orderOther/payOrder", method = RequestMethod.POST)
     public PayOrderResult payOrder(@RequestBody PayOrderInfo info){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Pay Order] Order Id:" + info.getOrderId());
-        return orderService.payOrder(info);
+        PayOrderResult result = orderService.payOrder(info);
+
+        onProcessingRequestsNumber--;
+
+        return result;
+
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/orderOther/getById", method = RequestMethod.POST)
     public GetOrderResult getOrderById(@RequestBody GetOrderByIdInfo info){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Get Order By Id] Order Id:" + info.getOrderId());
-        return orderService.getOrderById(info);
+        GetOrderResult result = orderService.getOrderById(info);
+
+        onProcessingRequestsNumber--;
+
+        return result;
+
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/orderOther/modifyOrderStatus", method = RequestMethod.POST)
     public ModifyOrderStatusResult modifyOrder(@RequestBody ModifyOrderStatusInfo info){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Modify Order Status] Order Id:" + info.getOrderId());
-        return orderService.modifyOrder(info);
+        ModifyOrderStatusResult result = orderService.modifyOrder(info);
+
+        onProcessingRequestsNumber--;
+
+        return result;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/getOrderOtherInfoForSecurity", method = RequestMethod.POST)
     public GetOrderInfoForSecurityResult securityInfoCheck(@RequestBody GetOrderInfoForSecurity info){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Security Info Get]");
-        return orderService.checkSecurityAboutOrder(info);
+        GetOrderInfoForSecurityResult result = orderService.checkSecurityAboutOrder(info);
+
+        onProcessingRequestsNumber--;
+
+        return result;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/update", method = RequestMethod.POST)
     public ChangeOrderResult saveOrderInfo(@RequestBody ChangeOrderInfo orderInfo){
+
+        onProcessingRequestsNumber++;
+
+        ChangeOrderResult result;
         VerifyResult tokenResult = verifySsoLogin(orderInfo.getLoginToken());
         if(tokenResult.isStatus() == true){
             System.out.println("[Order Other Service][Verify Login] Success");
-            return orderService.saveChanges(orderInfo.getOrder());
+            result =  orderService.saveChanges(orderInfo.getOrder());
         }else{
             System.out.println("[Order Other Service][Verify Login] Fail");
             ChangeOrderResult cor = new ChangeOrderResult();
             cor.setStatus(false);
             cor.setMessage("Not Login");
             cor.setOrder(null);
-            return cor;
+            result = cor;
         }
+
+        onProcessingRequestsNumber--;
+
+        return result;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/adminUpdate", method = RequestMethod.POST)
     public UpdateOrderResult updateOrder(@RequestBody Order order){
-        return orderService.updateOrder(order);
+
+        onProcessingRequestsNumber++
+        ;
+        UpdateOrderResult result = orderService.updateOrder(order);
+
+        onProcessingRequestsNumber--;
+        return result;
     }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/orderOther/delete",method = RequestMethod.POST)
     public DeleteOrderResult deleteOrder(@RequestBody DeleteOrderInfo info){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Delete Order] Order Id:" + info.getOrderId());
-        return orderService.deleteOrder(info);
+        DeleteOrderResult result = orderService.deleteOrder(info);
+
+        onProcessingRequestsNumber--;
+
+        return result;
     }
 
 
@@ -147,8 +245,15 @@ public class OrderOtherController {
     @CrossOrigin(origins = "*")
     @RequestMapping(path="/orderOther/findAll", method = RequestMethod.GET)
     public QueryOrderResult findAllOrder(){
+
+        onProcessingRequestsNumber++;
+
         System.out.println("[Order Other Service][Find All Order]");
-        return orderService.getAllOrders();
+        QueryOrderResult result = orderService.getAllOrders();
+
+        onProcessingRequestsNumber--;
+
+        return result;
     }
 
     private VerifyResult verifySsoLogin(String loginToken){

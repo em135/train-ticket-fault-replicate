@@ -1,5 +1,7 @@
 package other.service;
 
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import other.domain.*;
 import other.repository.OrderOtherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
     @Autowired
     private OrderOtherRepository orderOtherRepository;
+
+    @Autowired
+    private StringRedisTemplate redisTemplate;
 
     @Override
     public LeftTicketInfo getSoldTickets(SeatRequest seatRequest){
@@ -64,7 +69,6 @@ public class OrderOtherServiceImpl implements OrderOtherService{
             System.out.println("[Order Other Service][Init Order] Order Already Exists ID:" + order.getId());
         }
     }
-
 
     @Override
     public OrderAlterResult alterOrder(OrderAlterInfo oai){
@@ -260,21 +264,26 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     }
 
     @Override
-    public ModifyOrderStatusResult modifyOrder(ModifyOrderStatusInfo info){
-        Order order = orderOtherRepository.findById(UUID.fromString(info.getOrderId()));
-        ModifyOrderStatusResult result = new ModifyOrderStatusResult();
-        if(order == null){
-            result.setStatus(false);
-            result.setMessage("Order Not Found");
-            result.setOrder(null);
+    public ModifyOrderStatusResult modifyOrder(ModifyOrderStatusInfo info) {
+        boolean checkSuspendOrder = checkOrderIsSuspend(info.getOrderId());
+        if(checkSuspendOrder == false) {
+            throw new RuntimeException("[Error] The order is suspending by admin.");
         }else{
-            order.setStatus(info.getStatus());
-            orderOtherRepository.save(order);
-            result.setStatus(true);
-            result.setMessage("Success");
-            result.setOrder(order);
+            Order order = orderOtherRepository.findById(UUID.fromString(info.getOrderId()));
+            ModifyOrderStatusResult result = new ModifyOrderStatusResult();
+            if(order == null){
+                result.setStatus(false);
+                result.setMessage("Order Not Found");
+                result.setOrder(null);
+            }else{
+                order.setStatus(info.getStatus());
+                orderOtherRepository.save(order);
+                result.setStatus(true);
+                result.setMessage("Success");
+                result.setOrder(order);
+            }
+            return result;
         }
-        return result;
     }
 
     @Override
@@ -424,6 +433,34 @@ public class OrderOtherServiceImpl implements OrderOtherService{
             result.setMessage("Success");
         }
         return result;
+    }
+
+    private boolean checkOrderIsSuspend(String orderId){
+        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+        String savedToken;
+        if(redisTemplate.hasKey("adminOrderSuspend")){
+            savedToken = ops.get("adminOrderSuspend");
+        }else{
+            savedToken = "";
+        }
+        if(orderId.equals(savedToken)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private int getOrderIsSuspendStatusValue(){
+        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+        if(redisTemplate.hasKey("adminOrderSuspend")) {
+            if(ops.get("adminOrderSuspend").equals("")){
+                return 0;
+            }else{
+                return 1;
+            }
+        }else{
+            return 0;
+        }
     }
 }
 

@@ -131,6 +131,26 @@ app.controller('indexCtrl', function ($scope, $http,$window,loadDataService) {
     
     //Update exist order
     $scope.updateOrder = function (record) {
+
+        //发送OrderId请求
+        $.ajax({
+            type: "get",
+            url: "/adminOrder/suspendOrder/" + record.id,
+            contentType: "application/json",
+            dataType: "json",
+            async:false,
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(result){
+                alert("已锁定Order");
+            },
+            complete: function(){
+            }
+        });
+
+
+
         $scope.update_order_id = record.id;
         $scope.update_order_bought_date = record.boughtDate;
         $scope.update_order_travel_date = record.travelDate;
@@ -187,6 +207,25 @@ app.controller('indexCtrl', function ($scope, $http,$window,loadDataService) {
                 });
             },
             onCancel: function(e) {
+
+                //发送取消操作的请求
+                //发送OrderId请求
+                $.ajax({
+                    type: "get",
+                    url: "/adminOrder/cancelSuspendOrder/" + record.id,
+                    contentType: "application/json",
+                    dataType: "json",
+                    async:false,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function(result){
+                        alert("已解锁该Order");
+                    },
+                    complete: function(){
+                    }
+                });
+
                 alert('You have canceled the operation!');
             }
         });

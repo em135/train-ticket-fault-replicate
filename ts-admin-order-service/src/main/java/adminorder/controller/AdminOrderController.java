@@ -38,4 +38,14 @@ public class AdminOrderController {
         return adminOrderService.deleteOrder(request);
     }
 
+    @RequestMapping(value = "/adminOrder/suspendOrder/{orderId}", method = RequestMethod.GET)
+    public boolean suspendOder(@PathVariable String orderId){
+        return adminOrderService.suspendOrder(orderId);
+    }
+
+    @RequestMapping(value = "/adminOrder/cancelSuspendOrder/{orderId}", method = RequestMethod.GET)
+    public boolean cancelSuspendOder(@PathVariable String orderId){
+        return adminOrderService.cancelSuspenOrder(orderId);
+    }
+
 }

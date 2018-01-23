@@ -7,15 +7,39 @@ import adminorder.domain.request.DeleteOrderRequest;
 import adminorder.domain.request.UpdateOrderRequest;
 import adminorder.domain.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.ArrayList;
 
 @Service
 public class AdminOrderServiceImpl implements AdminOrderService {
+
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private StringRedisTemplate redisTemplate;
+
+    @Override
+    public boolean suspendOrder(String orderId){
+        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+        ops.set("adminOrderSuspend",orderId);
+        return true;
+    }
+
+    @Override
+    public boolean cancelSuspenOrder(String orderId){
+        if(redisTemplate.hasKey("adminOrderSuspend")){
+            ValueOperations<String, String> ops = redisTemplate.opsForValue();
+            ops.set("adminOrderSuspend", "");
+            System.out.println("adminOrderSuspend 已清空");
+        }else{
+            System.out.println("adminOrderSuspend 不存在");
+        }
+        return true;
+    }
 
     @Override
     public GetAllOrderResult getAllOrders(String id) {
