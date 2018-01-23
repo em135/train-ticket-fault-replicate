@@ -39,7 +39,7 @@ public class TestFlowOne {
         System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "http://10.141.212.21/";
-        trainType = "2";//all
+        trainType = "1";//all
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @Test
@@ -53,7 +53,7 @@ public class TestFlowOne {
 
         //call function login
         login(driver,username,password);
-        Thread.sleep(1000);
+        Thread.sleep(5000);
 
         //get login status
         String statusLogin = driver.findElement(By.id("flow_preserve_login_msg")).getText();
@@ -76,7 +76,7 @@ public class TestFlowOne {
         //locate booking terminalPlace input
         WebElement elementBookingTerminalPlace = driver.findElement(By.id("travel_booking_terminalPlace"));
         elementBookingTerminalPlace.clear();
-        elementBookingTerminalPlace.sendKeys("Tai Yuan");
+        elementBookingTerminalPlace.sendKeys("Su Zhou");
 
         //locate booking Date input
         String bookDate = "";
