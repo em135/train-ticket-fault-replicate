@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class TestFlowFail {
+public class TestFlowSuccess {
     private WebDriver driver;
     private String trainType;//0--all,1--GaoTie,2--others
     private String baseUrl;
@@ -53,7 +53,7 @@ public class TestFlowFail {
 
         //call function login
         login(driver,username,password);
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         //get login status
         String statusLogin = driver.findElement(By.id("flow_preserve_login_msg")).getText();
@@ -122,7 +122,7 @@ public class TestFlowFail {
             System.out.println("Tickets search failed!!!");
         Assert.assertEquals(ticketsList.size() > 0,true);
     }
-   // @Test(enabled = false)
+    // @Test(enabled = false)
     @Test (dependsOnMethods = {"testBooking"})
     public void testSelectContacts()throws Exception{
         List<WebElement> contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
@@ -162,8 +162,6 @@ public class TestFlowFail {
         Thread.sleep(1000);
     }
 
-    
-
     @Test (dependsOnMethods = {"testBooking"})
     public void testTicketConfirm ()throws Exception{
         String itemFrom = driver.findElement(By.id("ticket_confirm_from")).getText();
@@ -194,8 +192,18 @@ public class TestFlowFail {
         //点击三次预定车票
         int clickNumber = 3;
         for(int i = 0;i < clickNumber; i++){
+
+            String js = "document.getElementById('ticket_confirm_confirm_btn').scrollIntoView(false)";
+            ((JavascriptExecutor)driver).executeScript(js);
+
             driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-            Thread.sleep(30);
+            Thread.sleep(15000);
+            Alert javascriptConfirm2 = driver.switchTo().alert();
+            String statusAlert2 = driver.switchTo().alert().getText();
+            System.out.println("The Alert information of Confirming Ticket："+statusAlert2);
+            //Assert.assertEquals(statusAlert.startsWith("Success"),true);
+            javascriptConfirm2.accept();
+
         }
 
 
@@ -242,19 +250,25 @@ public class TestFlowFail {
         WebElement elementBookingSearchBtn = driver.findElement(By.id("flow_advance_reserve_booking_button"));
 
         elementBookingSearchBtn.click();
+        Thread.sleep(15000);
+//        Alert javascriptConfirm2 = driver.switchTo().alert();
+//        String statusAlert2 = driver.switchTo().alert().getText();
+//        System.out.println("The Alert information of Confirming Ticket："+statusAlert2);
+//        //Assert.assertEquals(statusAlert.startsWith("Success"),true);
+//        javascriptConfirm2.accept();
+
         elementBookingSearchBtn.click();
+        Thread.sleep(15000);
+//        Alert javascriptConfirm3 = driver.switchTo().alert();
+//        String statusAlert3 = driver.switchTo().alert().getText();
+//        System.out.println("The Alert information of Confirming Ticket："+statusAlert3);
+//        //Assert.assertEquals(statusAlert.startsWith("Success"),true);
+//        javascriptConfirm3.accept();
 
         //--------------------------------------------------------------------------
 
         //等待所有alert的抵达
-        Thread.sleep(15000);
-        for(int i = 0;i < clickNumber; i++){
-            Alert javascriptConfirm2 = driver.switchTo().alert();
-            String statusAlert2 = driver.switchTo().alert().getText();
-            System.out.println("The Alert information of Confirming Ticket："+statusAlert2);
-            //Assert.assertEquals(statusAlert.startsWith("Success"),true);
-            javascriptConfirm2.accept();
-        }
+
 //        System.out.println("Confirm Ticket!");
 //        Alert javascriptConfirm = driver.switchTo().alert();
 //        String statusAlert = driver.switchTo().alert().getText();
@@ -263,6 +277,7 @@ public class TestFlowFail {
 //        javascriptConfirm.accept();
 
     }
+
 
     @AfterClass
     public void tearDown() throws Exception {
