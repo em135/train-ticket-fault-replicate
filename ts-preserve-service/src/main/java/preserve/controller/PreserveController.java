@@ -51,7 +51,10 @@ public class PreserveController {
                 if(statusBean.chartMsgs.get(i).getLoginId().equals(loginId)){
                     statusBean.chartMsgs.remove(pn);
                     System.out.println("-----This OrderTicketsResult return before the last loginId request.------");
-                    throw new Exception("This OrderTicketsResult return before the last loginId request.");
+                    result.setStatus(false);
+                    result.setMessage("ErrorReportUI");
+                    return result;
+                    //throw new Exception("This OrderTicketsResult return before the last loginId request.");
                 }
             }
         }

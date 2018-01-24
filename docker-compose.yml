@@ -51,6 +51,15 @@ services:
     networks:
       - my-network
 
+  ts-click-twice:
+    build: ts-click-twice
+    image: ts/ts-click-twice
+    restart: always
+    ports:
+      - 15345:15345
+    networks:
+      - my-network
+
   ts-account-mongo:
     image: mongo
     networks:
