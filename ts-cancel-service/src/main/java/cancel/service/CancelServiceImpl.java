@@ -166,16 +166,22 @@ public class CancelServiceImpl implements CancelService{
                         finalResult.setMessage("Success.");
                         System.out.println("[Cancel Order Service][Cancel Order] Success.");
                         System.out.println("[Cancel Order Service][Draw Back Money] Success.");
-                        checkStatus(wrongStatus);
-                        return finalResult;
+                        if(wrongStatus == true){
+                            throw  new RuntimeException("[Ts Bomupdate Error]");
+                        }else{
+                            return finalResult;
+                        }
                     }else{
                         CancelOrderResult finalResult = new CancelOrderResult();
                         finalResult.setStatus(false);
                         finalResult.setMessage("Fail.");
                         System.out.println("[Cancel Order Service][Cancel Order] Success.");
                         System.out.println("[Cancel Order Service][Draw Back Money] Fail.");
-                        checkStatus(wrongStatus);
-                        return finalResult;
+                        if(wrongStatus == true){
+                            throw  new RuntimeException("[Ts Bomupdate Error]");
+                        }else{
+                            return finalResult;
+                        }
                     }
 //
 //                    if(changeOrderResult.isStatus() == true){
@@ -204,16 +210,26 @@ public class CancelServiceImpl implements CancelService{
                     result.setStatus(false);
                     result.setMessage("Order Status Cancel Not Permitted");
                     System.out.println("[Cancel Order Service][Cancel Order] Order Status Not Permitted.");
-                    checkStatus(wrongStatus);
-                    return result;
+                    if(wrongStatus == true){
+                        throw  new RuntimeException("[Ts Bomupdate Error]");
+                    }else{
+                        return result;
+                    }
+//                    checkStatus(wrongStatus);
+//                    return result;
                 }
             }else{
                 CancelOrderResult result = new CancelOrderResult();
                 result.setStatus(false);
                 result.setMessage("Order Not Found");
                 System.out.println("[Cancel Order Service][Cancel Order] Order Not Found.");
-                checkStatus(wrongStatus);
-                return result;
+                if(wrongStatus == true){
+                    throw  new RuntimeException("[Ts Bomupdate Error]");
+                }else{
+                    return result;
+                }
+//                checkStatus(wrongStatus);
+//                return result;
             }
         }
     }
@@ -412,15 +428,25 @@ public class CancelServiceImpl implements CancelService{
         return cor;
     }
 
-
-    private void checkStatus(boolean wrongStatus) throws Exception{
+    private boolean checkStatus(boolean wrongStatus) throws Exception{
         Boolean result = restTemplate.getForObject(
                 "http://ts-inside-payment-service:18673/inside_payment/equal"
                 ,Boolean.class);
-        if(wrongStatus){
-            throw new Exception("status error!!");
-        }
+        return result;
+//        if(wrongStatus){
+//            throw new Exception("status error!!");
+//        }
     }
+
+
+//    private void checkStatus(boolean wrongStatus) throws Exception{
+//        Boolean result = restTemplate.getForObject(
+//                "http://ts-inside-payment-service:18673/inside_payment/equal"
+//                ,Boolean.class);
+//        if(wrongStatus){
+//            throw new Exception("status error!!");
+//        }
+//    }
 
 
 }

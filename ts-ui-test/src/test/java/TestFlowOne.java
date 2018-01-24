@@ -21,9 +21,9 @@ public class TestFlowOne {
     }
     @BeforeClass
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "F:/gitwork/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
-        baseUrl = "http://10.141.212.23";
+        baseUrl = "http://10.141.212.22";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @Test
@@ -101,10 +101,16 @@ public class TestFlowOne {
 
         Thread.sleep(10000);
 
+        //no alert open
+
         Alert javascriptConfirm = driver.switchTo().alert();
         String statusAlert = driver.switchTo().alert().getText();
         System.out.println("The Alert information of Cancel Ticket："+statusAlert);
-        Assert.assertEquals(statusAlert.startsWith("Success"),true);
+        if(statusAlert.startsWith("Error")){
+            System.out.println("这是抛出异常的流程");
+        }else{
+            System.out.println("这是正常的流程");
+        }
         javascriptConfirm.accept();
     }
     @AfterClass
