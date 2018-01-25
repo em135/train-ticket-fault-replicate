@@ -55,8 +55,6 @@ public class Order {
         coachNumber = 5;
         seatClass = SeatClass.FIRSTCLASS.getCode();
         seatNumber = "5A";
-        from = "上海";
-        to = "太原";
         status = OrderStatus.PAID.getCode();
         price = "0.0";
     }

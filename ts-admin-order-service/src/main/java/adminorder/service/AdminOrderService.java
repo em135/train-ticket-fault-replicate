@@ -10,9 +10,14 @@ import adminorder.domain.response.UpdateOrderResult;
 
 public interface AdminOrderService {
     GetAllOrderResult getAllOrders(String id);
+
     DeleteOrderResult deleteOrder(DeleteOrderRequest request);
+
     UpdateOrderResult updateOrder(UpdateOrderRequest request);
+
     AddOrderResult addOrder(AddOrderRequest request);
-    boolean suspendOrder(String orderId);
-    boolean cancelSuspenOrder(String orderId);
+
+    boolean suspendOrder(String fromStationId, String toStationId);
+
+    boolean cancelSuspenOrder(String fromStationId, String toStationId);
 }

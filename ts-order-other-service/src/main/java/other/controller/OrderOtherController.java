@@ -16,8 +16,6 @@ public class OrderOtherController {
     @Autowired
     private RestTemplate restTemplate;
 
-    public static int onProcessingRequestsNumber = 0;
-
 
     @RequestMapping(path = "/welcome", method = RequestMethod.GET)
     public String home() {
@@ -26,15 +24,16 @@ public class OrderOtherController {
 
     /***************************For Normal Use***************************/
 
+    @RequestMapping(value = "/orderOther/getOrdersByFromId/{fromId}/{toId}", method = RequestMethod.GET)
+    public ArrayList<Order> getOrdersByFromIdAndToId(){
+        return  null;
+    }
+
     @RequestMapping(value="/orderOther/getTicketListByDateAndTripId", method = RequestMethod.POST)
     public LeftTicketInfo getTicketListByDateAndTripId(@RequestBody SeatRequest seatRequest){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Get Sold Ticket] Date:" + seatRequest.getTravelDate().toString());
         LeftTicketInfo leftTicketInfo = orderService.getSoldTickets(seatRequest);;
-
-        onProcessingRequestsNumber--;
 
         return leftTicketInfo;
 
@@ -43,8 +42,6 @@ public class OrderOtherController {
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/create", method = RequestMethod.POST)
     public CreateOrderResult createNewOrder(@RequestBody CreateOrderInfo coi){
-
-        onProcessingRequestsNumber++;
 
         System.out.println("[Order Other Service][Create Order] Create Order form " + coi.getOrder().getFrom() + " --->"
                 + coi.getOrder().getTo() + " at " + coi.getOrder().getTravelDate());
@@ -62,8 +59,6 @@ public class OrderOtherController {
             createOrderResult = cor;
         }
 
-        onProcessingRequestsNumber--;
-
         return createOrderResult;
     }
 
@@ -71,11 +66,7 @@ public class OrderOtherController {
     @RequestMapping(path = "/orderOther/adminAddOrder", method = RequestMethod.POST)
     public AddOrderResult addcreateNewOrder(@RequestBody Order order){
 
-        onProcessingRequestsNumber++;
-
         AddOrderResult addOrderResult = orderService.addNewOrder(order);
-
-        onProcessingRequestsNumber--;
 
         return addOrderResult;
     }
@@ -83,8 +74,6 @@ public class OrderOtherController {
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/query", method = RequestMethod.POST)
     public ArrayList<Order> queryOrders(@RequestBody QueryInfo qi,@CookieValue String loginId,@CookieValue String loginToken){
-
-        onProcessingRequestsNumber++;
 
         System.out.println("[Order Other Service][Query Orders] Query Orders for " + loginId);
         VerifyResult tokenResult = verifySsoLogin(loginToken);
@@ -97,8 +86,6 @@ public class OrderOtherController {
             orders = new ArrayList<>();
         }
 
-        onProcessingRequestsNumber--;
-
         return orders;
     }
 
@@ -106,13 +93,10 @@ public class OrderOtherController {
     @RequestMapping(path="/orderOther/calculate", method = RequestMethod.POST)
     public CalculateSoldTicketResult calculateSoldTicket(@RequestBody CalculateSoldTicketInfo csti){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Calculate Sold Tickets] Date:" + csti.getTravelDate() + " TrainNumber:"
                 + csti.getTrainNumber());
         CalculateSoldTicketResult result = orderService.queryAlreadySoldOrders(csti);
 
-        onProcessingRequestsNumber--;
         return result;
     }
 
@@ -120,12 +104,8 @@ public class OrderOtherController {
     @RequestMapping(path="/orderOther/price", method = RequestMethod.POST)
     public GetOrderPriceResult getOrderPrice(@RequestBody GetOrderPrice info){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Get Order Price] Order Id:" + info.getOrderId());
         GetOrderPriceResult result = orderService.getOrderPrice(info);
-
-        onProcessingRequestsNumber--;
 
         return result;
     }
@@ -134,12 +114,8 @@ public class OrderOtherController {
     @RequestMapping(path="/orderOther/payOrder", method = RequestMethod.POST)
     public PayOrderResult payOrder(@RequestBody PayOrderInfo info){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Pay Order] Order Id:" + info.getOrderId());
         PayOrderResult result = orderService.payOrder(info);
-
-        onProcessingRequestsNumber--;
 
         return result;
 
@@ -149,12 +125,8 @@ public class OrderOtherController {
     @RequestMapping(path="/orderOther/getById", method = RequestMethod.POST)
     public GetOrderResult getOrderById(@RequestBody GetOrderByIdInfo info){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Get Order By Id] Order Id:" + info.getOrderId());
         GetOrderResult result = orderService.getOrderById(info);
-
-        onProcessingRequestsNumber--;
 
         return result;
 
@@ -164,12 +136,8 @@ public class OrderOtherController {
     @RequestMapping(path="/orderOther/modifyOrderStatus", method = RequestMethod.POST)
     public ModifyOrderStatusResult modifyOrder(@RequestBody ModifyOrderStatusInfo info){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Modify Order Status] Order Id:" + info.getOrderId());
         ModifyOrderStatusResult result = orderService.modifyOrder(info);
-
-        onProcessingRequestsNumber--;
 
         return result;
     }
@@ -178,12 +146,8 @@ public class OrderOtherController {
     @RequestMapping(path="/getOrderOtherInfoForSecurity", method = RequestMethod.POST)
     public GetOrderInfoForSecurityResult securityInfoCheck(@RequestBody GetOrderInfoForSecurity info){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Security Info Get]");
         GetOrderInfoForSecurityResult result = orderService.checkSecurityAboutOrder(info);
-
-        onProcessingRequestsNumber--;
 
         return result;
     }
@@ -191,8 +155,6 @@ public class OrderOtherController {
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/update", method = RequestMethod.POST)
     public ChangeOrderResult saveOrderInfo(@RequestBody ChangeOrderInfo orderInfo){
-
-        onProcessingRequestsNumber++;
 
         ChangeOrderResult result;
         VerifyResult tokenResult = verifySsoLogin(orderInfo.getLoginToken());
@@ -208,8 +170,6 @@ public class OrderOtherController {
             result = cor;
         }
 
-        onProcessingRequestsNumber--;
-
         return result;
     }
 
@@ -217,11 +177,8 @@ public class OrderOtherController {
     @RequestMapping(path = "/orderOther/adminUpdate", method = RequestMethod.POST)
     public UpdateOrderResult updateOrder(@RequestBody Order order){
 
-        onProcessingRequestsNumber++
-        ;
         UpdateOrderResult result = orderService.updateOrder(order);
 
-        onProcessingRequestsNumber--;
         return result;
     }
 
@@ -229,12 +186,8 @@ public class OrderOtherController {
     @RequestMapping(path="/orderOther/delete",method = RequestMethod.POST)
     public DeleteOrderResult deleteOrder(@RequestBody DeleteOrderInfo info){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Delete Order] Order Id:" + info.getOrderId());
         DeleteOrderResult result = orderService.deleteOrder(info);
-
-        onProcessingRequestsNumber--;
 
         return result;
     }
@@ -246,12 +199,8 @@ public class OrderOtherController {
     @RequestMapping(path="/orderOther/findAll", method = RequestMethod.GET)
     public QueryOrderResult findAllOrder(){
 
-        onProcessingRequestsNumber++;
-
         System.out.println("[Order Other Service][Find All Order]");
         QueryOrderResult result = orderService.getAllOrders();
-
-        onProcessingRequestsNumber--;
 
         return result;
     }

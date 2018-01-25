@@ -15,6 +15,51 @@ var loadBody = function () {
     }
 };
 
+$("#order_search_by_station_search_lock").click(function(){
+    var fromStationId = $('#order_search_by_station_from').val();
+    var toStationId = $('#order_search_by_station_to').val();
+    $.ajax({
+        type: "get",
+        url: "/adminOrder/suspendOrder/" + fromStationId + "/" + toStationId,
+        contentType: "application/json",
+        dataType: "json",
+        async:false,
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function(){
+            alert("Lock Success");
+        },
+        error: function () {
+            alert("Lock Fail")
+        }
+    });
+    //然后再刷新搜索结果
+
+
+});
+
+$("#order_search_by_station_unlock").click(function(){
+    var fromStationId = $('#order_search_by_station_from').val();
+    var toStationId = $('#order_search_by_station_to').val();
+    $.ajax({
+        type: "get",
+        url: "/adminOrder/cancelSuspendOrder/" + fromStationId + "/" + toStationId,
+        contentType: "application/json",
+        dataType: "json",
+        async:false,
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function(){
+            alert("Unlock Success");
+        },
+        error: function () {
+            alert("Unlock Fail");
+        }
+    });
+});
+
 /*
  * 登出
  * */
@@ -132,22 +177,22 @@ app.controller('indexCtrl', function ($scope, $http,$window,loadDataService) {
     //Update exist order
     $scope.updateOrder = function (record) {
 
-        //发送OrderId请求
-        $.ajax({
-            type: "get",
-            url: "/adminOrder/suspendOrder/" + record.id,
-            contentType: "application/json",
-            dataType: "json",
-            async:false,
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function(result){
-                alert("已锁定Order");
-            },
-            complete: function(){
-            }
-        });
+        // //发送OrderId请求
+        // $.ajax({
+        //     type: "get",
+        //     url: "/adminOrder/suspendOrder/" + record.id,
+        //     contentType: "application/json",
+        //     dataType: "json",
+        //     async:false,
+        //     xhrFields: {
+        //         withCredentials: true
+        //     },
+        //     success: function(result){
+        //         alert("已锁定Order");
+        //     },
+        //     complete: function(){
+        //     }
+        // });
 
 
 
@@ -208,23 +253,23 @@ app.controller('indexCtrl', function ($scope, $http,$window,loadDataService) {
             },
             onCancel: function(e) {
 
-                //发送取消操作的请求
-                //发送OrderId请求
-                $.ajax({
-                    type: "get",
-                    url: "/adminOrder/cancelSuspendOrder/" + record.id,
-                    contentType: "application/json",
-                    dataType: "json",
-                    async:false,
-                    xhrFields: {
-                        withCredentials: true
-                    },
-                    success: function(result){
-                        alert("已解锁该Order");
-                    },
-                    complete: function(){
-                    }
-                });
+                // //发送取消操作的请求
+                // //发送OrderId请求
+                // $.ajax({
+                //     type: "get",
+                //     url: "/adminOrder/cancelSuspendOrder/" + record.id,
+                //     contentType: "application/json",
+                //     dataType: "json",
+                //     async:false,
+                //     xhrFields: {
+                //         withCredentials: true
+                //     },
+                //     success: function(result){
+                //         alert("已解锁该Order");
+                //     },
+                //     complete: function(){
+                //     }
+                // });
 
                 alert('You have canceled the operation!');
             }

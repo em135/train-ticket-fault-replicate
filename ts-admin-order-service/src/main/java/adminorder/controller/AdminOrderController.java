@@ -38,14 +38,14 @@ public class AdminOrderController {
         return adminOrderService.deleteOrder(request);
     }
 
-    @RequestMapping(value = "/adminOrder/suspendOrder/{orderId}", method = RequestMethod.GET)
-    public boolean suspendOder(@PathVariable String orderId){
-        return adminOrderService.suspendOrder(orderId);
+    @RequestMapping(value = "/adminOrder/suspendOrder/{fromStationId}/{toStationId}", method = RequestMethod.GET)
+    public boolean suspendOder(@PathVariable String fromStationId, @PathVariable String toStationId){
+        return adminOrderService.suspendOrder(fromStationId,toStationId);
     }
 
-    @RequestMapping(value = "/adminOrder/cancelSuspendOrder/{orderId}", method = RequestMethod.GET)
-    public boolean cancelSuspendOder(@PathVariable String orderId){
-        return adminOrderService.cancelSuspenOrder(orderId);
+    @RequestMapping(value = "/adminOrder/cancelSuspendOrder/{fromStationId}/{toStationId}", method = RequestMethod.GET)
+    public boolean cancelSuspendOder(@PathVariable String fromStationId, @PathVariable String toStationId){
+        return adminOrderService.cancelSuspenOrder(fromStationId,toStationId);
     }
 
 }

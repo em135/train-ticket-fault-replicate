@@ -265,11 +265,13 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
     @Override
     public ModifyOrderStatusResult modifyOrder(ModifyOrderStatusInfo info) {
-        boolean checkSuspendOrder = checkOrderIsSuspend(info.getOrderId());
+
+        Order order = orderOtherRepository.findById(UUID.fromString(info.getOrderId()));
+
+        boolean checkSuspendOrder = checkOrderIsSuspend(order.getFrom(),order.getTo());
         if(checkSuspendOrder == false) {
             throw new RuntimeException("[Error] The order is suspending by admin.");
         }else{
-            Order order = orderOtherRepository.findById(UUID.fromString(info.getOrderId()));
             ModifyOrderStatusResult result = new ModifyOrderStatusResult();
             if(order == null){
                 result.setStatus(false);
@@ -435,32 +437,27 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         return result;
     }
 
-    private boolean checkOrderIsSuspend(String orderId){
+    private boolean checkOrderIsSuspend(String fromStationId, String toStationId){
         ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        String savedToken;
-        if(redisTemplate.hasKey("adminOrderSuspend")){
-            savedToken = ops.get("adminOrderSuspend");
+        String savedFromStationId, savedToStationId;
+        if(redisTemplate.hasKey("adminOrderSuspendFromStationId")){
+            savedFromStationId = ops.get("adminOrderSuspendFromStationId");
         }else{
-            savedToken = "";
+            savedFromStationId = "";
         }
-        if(orderId.equals(savedToken)){
+        if(redisTemplate.hasKey("adminOrderSuspendToStationId")){
+            savedToStationId = ops.get("adminOrderSuspendToStationId");
+        }else{
+            savedToStationId = "";
+        }
+
+        if(fromStationId.equals(savedFromStationId) || toStationId.equals(savedToStationId)){
             return false;
         }else{
             return true;
         }
     }
 
-    private int getOrderIsSuspendStatusValue(){
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        if(redisTemplate.hasKey("adminOrderSuspend")) {
-            if(ops.get("adminOrderSuspend").equals("")){
-                return 0;
-            }else{
-                return 1;
-            }
-        }else{
-            return 0;
-        }
-    }
+
 }
 

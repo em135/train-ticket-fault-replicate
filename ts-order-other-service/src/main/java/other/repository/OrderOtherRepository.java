@@ -1,5 +1,6 @@
 package other.repository;
 
+import com.sun.deploy.util.ArrayUtil;
 import other.domain.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -22,5 +23,9 @@ public interface OrderOtherRepository extends MongoRepository<Order, String> {
     @Query("{ 'travelDate' : ?0 , trainNumber : ?1 }")
     ArrayList<Order> findByTravelDateAndTrainNumber(Date travelDate, String trainNumber);
 
+    @Query("{ 'from' : ?0 , to : ?1 }")
+    ArrayList<Order> findByFromIdAndToId(String fromId,String toId);
+
     void deleteById(UUID id);
+
 }

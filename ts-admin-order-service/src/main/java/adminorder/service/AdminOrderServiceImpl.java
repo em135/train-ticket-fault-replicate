@@ -23,20 +23,28 @@ public class AdminOrderServiceImpl implements AdminOrderService {
     private StringRedisTemplate redisTemplate;
 
     @Override
-    public boolean suspendOrder(String orderId){
+    public boolean suspendOrder(String fromStationId,String toStationId){
         ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        ops.set("adminOrderSuspend",orderId);
+        ops.set("adminOrderSuspendFromStationId",fromStationId);
+        ops.set("adminOrderSuspendToStationId",toStationId);
         return true;
     }
 
     @Override
-    public boolean cancelSuspenOrder(String orderId){
-        if(redisTemplate.hasKey("adminOrderSuspend")){
+    public boolean cancelSuspenOrder(String fromStationId,String toStationId){
+        if(redisTemplate.hasKey("adminOrderSuspendFromStationId")){
             ValueOperations<String, String> ops = redisTemplate.opsForValue();
-            ops.set("adminOrderSuspend", "");
-            System.out.println("adminOrderSuspend 已清空");
+            ops.set("adminOrderSuspendFromStationId", "");
+            System.out.println("adminOrderSuspendFromStationId 已清空");
         }else{
-            System.out.println("adminOrderSuspend 不存在");
+            System.out.println("adminOrderSuspendFromStationId 不存在");
+        }
+        if(redisTemplate.hasKey("adminOrderSuspendToStationId")){
+            ValueOperations<String, String> ops = redisTemplate.opsForValue();
+            ops.set("adminOrderSuspendToStationId", "");
+            System.out.println("adminOrderSuspendToStationId 已清空");
+        }else{
+            System.out.println("adminOrderSuspendToStationId 不存在");
         }
         return true;
     }
