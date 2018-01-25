@@ -648,9 +648,10 @@ $("#ticket_confirm_confirm_btn").click(function () {
     console.log(orderTicketsData);
 
     var tripType = orderTicketInfo.tripId.charAt(0);
+    var path;
     if(tripType == 'G' || tripType == 'D'){
         //path = "/preserve";
-        path = "/clickTwice"
+        path = "/click/clickTwice"
     }else{
         path = "/preserveOther";
     }
@@ -664,7 +665,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
             withCredentials: true
         },
         success: function (result) {
-            alert(result["message"]);
+            alert("Success");
             if(result['status'] == true){
                 //$("#preserve_pay_panel").css('display','block');
                 $("#preserve_pay_orderId").val(result["order"]["id"]);

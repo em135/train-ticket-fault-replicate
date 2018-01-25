@@ -43,7 +43,7 @@ public class TestFlowOne {
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
-        baseUrl = "http://10.141.212.21/";
+        baseUrl = "http://10.141.212.22/";
         trainType = "1";//all
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
@@ -58,7 +58,7 @@ public class TestFlowOne {
 
         //call function login
         login(driver,username,password);
-        Thread.sleep(1000);
+        Thread.sleep(5000);
 
         //get login status
         String statusLogin = driver.findElement(By.id("flow_preserve_login_msg")).getText();
@@ -193,15 +193,15 @@ public class TestFlowOne {
         }
         Assert.assertEquals(bStatusConfirm,true);
         driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(300);
-        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(15000);
-        System.out.println("Confirm Ticket!");
-        Alert javascriptConfirm = driver.switchTo().alert();
-        String statusAlert = driver.switchTo().alert().getText();
-        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
-        Assert.assertEquals(statusAlert.startsWith("Success"),true);
-        javascriptConfirm.accept();
+        Thread.sleep(20000);
+//        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
+//        Thread.sleep(15000);
+//        System.out.println("Confirm Ticket!");
+//        Alert javascriptConfirm = driver.switchTo().alert();
+//        String statusAlert = driver.switchTo().alert().getText();
+//        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
+//        Assert.assertEquals(statusAlert.startsWith("Success"),true);
+//        javascriptConfirm.accept();
 
         System.out.println("Confirm Ticket!");
         Alert javascriptConfirm2 = driver.switchTo().alert();

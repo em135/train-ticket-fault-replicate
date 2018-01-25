@@ -13,10 +13,15 @@ public class ClickController {
     @Autowired
     private AsyncTask asyncTask;
 
+    @RequestMapping(path = "/welcome", method = RequestMethod.GET)
+    public String home() {
+        return "Welcome to Click ] !";
+    }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(path = "/clickTwice", method = RequestMethod.POST)
+    @RequestMapping(path = "/click/clickTwice", method = RequestMethod.POST)
     public boolean clickTwice(@RequestBody OrderTicketsInfo oti, @CookieValue String loginId, @CookieValue String loginToken) throws Exception{
+        System.out.println("Click Two");
         Future<OrderTicketsResult> task1 = asyncTask.sendAsyncClickTwice(oti,loginId,loginToken);
         Thread.sleep(500);
         Future<OrderTicketsResult> task2 = asyncTask.sendAsyncClickTwice(oti,loginId,loginToken);
