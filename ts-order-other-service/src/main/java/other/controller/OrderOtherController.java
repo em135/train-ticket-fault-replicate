@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import other.domain.*;
+import other.repository.OrderOtherRepository;
 import other.service.OrderOtherService;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @RestController
@@ -16,6 +19,8 @@ public class OrderOtherController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private OrderOtherRepository orderOtherRepository;
 
     @RequestMapping(path = "/welcome", method = RequestMethod.GET)
     public String home() {
@@ -24,9 +29,21 @@ public class OrderOtherController {
 
     /***************************For Normal Use***************************/
 
-    @RequestMapping(value = "/orderOther/getOrdersByFromId/{fromId}/{toId}", method = RequestMethod.GET)
-    public ArrayList<Order> getOrdersByFromIdAndToId(){
-        return  null;
+    @RequestMapping(value = "/orderOther/getOrdersByFromAndTo/{fromId}/{toId}", method = RequestMethod.GET)
+    public ArrayList<Order> getOrdersByFromIdAndToId(@PathVariable String fromID, @PathVariable String toId){
+
+        System.out.println("[Order Service][Get] From:" + fromID + " To:" + toId);
+
+        ArrayList<Order> ordersFrom = orderOtherRepository.findByFromId(fromID);
+        ArrayList<Order> ordersTo = orderOtherRepository.findByToId(toId);
+
+        ArrayList<Order> orders = new ArrayList<>();
+        orders.addAll(ordersFrom);
+        orders.addAll(ordersTo);
+
+        System.out.println("[Order Service][Get] From:" + ordersFrom.size() + " To:" + ordersTo.size());
+
+        return orders;
     }
 
     @RequestMapping(value="/orderOther/getTicketListByDateAndTripId", method = RequestMethod.POST)

@@ -35,7 +35,25 @@ $("#order_search_by_station_search_lock").click(function(){
         }
     });
     //然后再刷新搜索结果
+    $.ajax({
+        type: "get",
+        url: "/orderOther/getOrdersByFromAndTo/" + fromStationId + "/" + toStationId,
+        contentType: "application/json",
+        dataType: "json",
+        async:false,
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function(result){
 
+            alert("返回：" + result.length);
+
+            $scope.records = result;
+        },
+        error: function () {
+            alert("获取失败");
+        }
+    });
 
 });
 
