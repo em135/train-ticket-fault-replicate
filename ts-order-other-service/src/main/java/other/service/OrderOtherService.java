@@ -41,4 +41,6 @@ public interface OrderOtherService {
     AddOrderResult addNewOrder(Order order);
 
     UpdateOrderResult updateOrder(Order order);
+
+    QueryOrderResult getAllOrdersAsync();
 }

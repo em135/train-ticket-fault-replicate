@@ -2,14 +2,19 @@ package other.service;
 
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import other.async.AsyncTask;
 import other.domain.*;
 import other.repository.OrderOtherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
+import java.util.concurrent.Future;
 
 @Service
 public class OrderOtherServiceImpl implements OrderOtherService{
+
+    @Autowired
+    private AsyncTask asyncTask;
 
     @Autowired
     private OrderOtherRepository orderOtherRepository;
@@ -261,6 +266,20 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         ArrayList<Order> orders = orderOtherRepository.findAll();
         QueryOrderResult result = new QueryOrderResult(true,"Success.",orders);
         return result;
+    }
+
+    @Override
+    public QueryOrderResult getAllOrdersAsync(){
+
+        try{
+            Future<QueryOrderResult> resultFuture = asyncTask.viewAllOrderAsync();
+            QueryOrderResult result = resultFuture.get();
+
+            return result;
+        } catch (Exception e){
+            return null;
+        }
+
     }
 
     @Override

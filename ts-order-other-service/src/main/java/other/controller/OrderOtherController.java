@@ -57,6 +57,12 @@ public class OrderOtherController {
     }
 
     @CrossOrigin(origins = "*")
+    @RequestMapping(path = "/orderOther/asyncViewAllOrder", method = RequestMethod.GET)
+    public QueryOrderResult asyncViewAllOrder(){
+        return orderService.getAllOrdersAsync();
+    }
+
+    @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/create", method = RequestMethod.POST)
     public CreateOrderResult createNewOrder(@RequestBody CreateOrderInfo coi){
 
