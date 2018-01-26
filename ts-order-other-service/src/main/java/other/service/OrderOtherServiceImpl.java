@@ -19,8 +19,25 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     @Autowired
     private OrderOtherRepository orderOtherRepository;
 
-    @Autowired
-    private StringRedisTemplate redisTemplate;
+    private String fromId;
+
+    private String toId;
+
+//    @Autowired
+//    private StringRedisTemplate redisTemplate;
+    @Override
+    public boolean cancelSuspend(String fromId,String toId){
+        this.fromId = "";
+        this.toId = "";
+        return true;
+    }
+
+    @Override
+    public boolean suspend(String fromId,String toId){
+        this.fromId = fromId;
+        this.toId = toId;
+        return true;
+    }
 
     @Override
     public LeftTicketInfo getSoldTickets(SeatRequest seatRequest){
@@ -457,24 +474,29 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     }
 
     private boolean checkOrderIsSuspend(String fromStationId, String toStationId){
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        String savedFromStationId, savedToStationId;
-        if(redisTemplate.hasKey("adminOrderSuspendFromStationId")){
-            savedFromStationId = ops.get("adminOrderSuspendFromStationId");
-        }else{
-            savedFromStationId = "";
-        }
-        if(redisTemplate.hasKey("adminOrderSuspendToStationId")){
-            savedToStationId = ops.get("adminOrderSuspendToStationId");
-        }else{
-            savedToStationId = "";
-        }
-
-        if(fromStationId.equals(savedFromStationId) || toStationId.equals(savedToStationId)){
+        if(fromStationId.equals(fromId) || toStationId.equals(toId)){
             return false;
         }else{
             return true;
         }
+//        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+//        String savedFromStationId, savedToStationId;
+//        if(redisTemplate.hasKey("adminOrderSuspendFromStationId")){
+//            savedFromStationId = ops.get("adminOrderSuspendFromStationId");
+//        }else{
+//            savedFromStationId = "";
+//        }
+//        if(redisTemplate.hasKey("adminOrderSuspendToStationId")){
+//            savedToStationId = ops.get("adminOrderSuspendToStationId");
+//        }else{
+//            savedToStationId = "";
+//        }
+//
+//        if(fromStationId.equals(savedFromStationId) || toStationId.equals(savedToStationId)){
+//            return false;
+//        }else{
+//            return true;
+//        }
     }
 
 

@@ -22,11 +22,13 @@ public class AsyncTask {
     @Async("myAsync")
     public Future<QueryOrderResult> viewAllOrderAsync(){
         count++;
+        System.out.println("[Enter View All Order Async]");
         try{
             Thread.sleep(20000);
             ArrayList<Order> orders = orderOtherRepository.findAll();
             QueryOrderResult result = new QueryOrderResult(true,"Success.",orders);
             count--;
+            System.out.println("[Exit View All Order Async]");
             return new AsyncResult<>(result);
         }catch(Exception e){
             count--;

@@ -1,5 +1,7 @@
 package other.controller;
 
+import com.sun.org.apache.regexp.internal.RE;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -22,12 +24,25 @@ public class OrderOtherController {
     @Autowired
     private OrderOtherRepository orderOtherRepository;
 
+
+
     @RequestMapping(path = "/welcome", method = RequestMethod.GET)
     public String home() {
         return "Welcome to [ Order Other Service ] !";
     }
 
     /***************************For Normal Use***************************/
+
+    @RequestMapping(value = "/orderOther/suspend/{fromId}/{toId}", method = RequestMethod.GET)
+    public Boolean setSuspendStation(@PathVariable String fromId, @PathVariable String toId){
+        return new Boolean(orderService.suspend(fromId,toId));
+    }
+
+    @RequestMapping(value = "/orderOther/cancelSuspend/{fromId}/{toId}", method = RequestMethod.GET)
+    public Boolean setCancelSuspendStation(@PathVariable String fromId, @PathVariable String toId){
+        return new Boolean(orderService.cancelSuspend(fromId,toId));
+    }
+
 
     @RequestMapping(value = "/orderOther/getOrdersByFromAndTo/{fromId}/{toId}", method = RequestMethod.GET)
     public ArrayList<Order> getOrdersByFromIdAndToId(@PathVariable String fromID, @PathVariable String toId){

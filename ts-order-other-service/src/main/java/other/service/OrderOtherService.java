@@ -43,4 +43,8 @@ public interface OrderOtherService {
     UpdateOrderResult updateOrder(Order order);
 
     QueryOrderResult getAllOrdersAsync();
+
+    boolean cancelSuspend(String fromId,String toId);
+
+    boolean suspend(String fromId,String toId);
 }

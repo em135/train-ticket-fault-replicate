@@ -15,68 +15,6 @@ var loadBody = function () {
     }
 };
 
-$("#order_search_by_station_search_lock").click(function(){
-    var fromStationId = $('#order_search_by_station_from').val();
-    var toStationId = $('#order_search_by_station_to').val();
-    $.ajax({
-        type: "get",
-        url: "/adminOrder/suspendOrder/" + fromStationId + "/" + toStationId,
-        contentType: "application/json",
-        dataType: "json",
-        async:false,
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function(){
-            alert("Lock Success");
-        },
-        error: function () {
-            alert("Lock Fail")
-        }
-    });
-    //然后再刷新搜索结果
-    $.ajax({
-        type: "get",
-        url: "/orderOther/getOrdersByFromAndTo/" + fromStationId + "/" + toStationId,
-        contentType: "application/json",
-        dataType: "json",
-        async:false,
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function(result){
-
-            alert("返回：" + result.length);
-
-            $scope.records = result;
-        },
-        error: function () {
-            alert("获取失败");
-        }
-    });
-
-});
-
-$("#order_search_by_station_unlock").click(function(){
-    var fromStationId = $('#order_search_by_station_from').val();
-    var toStationId = $('#order_search_by_station_to').val();
-    $.ajax({
-        type: "get",
-        url: "/adminOrder/cancelSuspendOrder/" + fromStationId + "/" + toStationId,
-        contentType: "application/json",
-        dataType: "json",
-        async:false,
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function(){
-            alert("Unlock Success");
-        },
-        error: function () {
-            alert("Unlock Fail");
-        }
-    });
-});
 
 /*
  * 登出
@@ -146,7 +84,49 @@ app.controller('indexCtrl', function ($scope, $http,$window,loadDataService) {
         }
         alert(des);
     }
-    
+
+    $scope.stationSuspend = function(){
+        var fromStationId = $scope.station_from;
+        var toStationId = $scope.station_to;
+
+        $http({
+            method: "get",
+            url: "/adminOrder/suspendOrder/" + fromStationId + "/" + toStationId,
+            withCredentials: true,
+            async:false,
+        }).success(function () {
+            alert("Lock Success");
+        }).error(function () {
+            alert("Lock Fail");
+        });
+
+        $http({
+            method: "get",
+            url: "/orderOther/getOrdersByFromAndTo/" + fromStationId + "/" + toStationId,
+            withCredentials: true
+        }).success(function (result) {
+            alert("Return：" + result.length);
+        }).error(function () {
+            alert("Fail");
+        });
+
+    }
+
+    $scope.cancelSuspend = function(){
+        var fromStationId = $scope.station_from;
+        var toStationId = $scope.station_to;
+        $http({
+            method: "get",
+            url: "/adminOrder/cancelSuspendOrder/" + fromStationId + "/" + toStationId,
+            withCredentials: true
+        }).success(function () {
+            alert("Unlock Success");
+        }).error(function () {
+            alert("Unlock Fail");
+        });
+    }
+
+
     //Add new order
     $scope.addNewOrder = function () {
         $('#add_prompt').modal({

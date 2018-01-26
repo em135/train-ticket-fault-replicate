@@ -6,11 +6,14 @@ import adminorder.domain.request.AddOrderRequest;
 import adminorder.domain.request.DeleteOrderRequest;
 import adminorder.domain.request.UpdateOrderRequest;
 import adminorder.domain.response.*;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import javax.swing.text.BadLocationException;
 import java.util.ArrayList;
 
 @Service
@@ -24,28 +27,33 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 
     @Override
     public boolean suspendOrder(String fromStationId,String toStationId){
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        ops.set("adminOrderSuspendFromStationId",fromStationId);
-        ops.set("adminOrderSuspendToStationId",toStationId);
+        System.out.println(fromStationId + " " + toStationId);
+        restTemplate.getForObject("http://ts-order-other-service:12032/orderOther/suspend/" + fromStationId + "/" + toStationId, Boolean.class);
+//        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+//        ops.set("adminOrderSuspendFromStationId",fromStationId);
+//        ops.set("adminOrderSuspendToStationId",toStationId);
         return true;
     }
 
     @Override
     public boolean cancelSuspenOrder(String fromStationId,String toStationId){
-        if(redisTemplate.hasKey("adminOrderSuspendFromStationId")){
-            ValueOperations<String, String> ops = redisTemplate.opsForValue();
-            ops.set("adminOrderSuspendFromStationId", "");
-            System.out.println("adminOrderSuspendFromStationId 已清空");
-        }else{
-            System.out.println("adminOrderSuspendFromStationId 不存在");
-        }
-        if(redisTemplate.hasKey("adminOrderSuspendToStationId")){
-            ValueOperations<String, String> ops = redisTemplate.opsForValue();
-            ops.set("adminOrderSuspendToStationId", "");
-            System.out.println("adminOrderSuspendToStationId 已清空");
-        }else{
-            System.out.println("adminOrderSuspendToStationId 不存在");
-        }
+//        if(redisTemplate.hasKey("adminOrderSuspendFromStationId")){
+//            ValueOperations<String, String> ops = redisTemplate.opsForValue();
+//            ops.set("adminOrderSuspendFromStationId", "");
+//            System.out.println("adminOrderSuspendFromStationId 已清空");
+//        }else{
+//            System.out.println("adminOrderSuspendFromStationId 不存在");
+//        }
+//        if(redisTemplate.hasKey("adminOrderSuspendToStationId")){
+//            ValueOperations<String, String> ops = redisTemplate.opsForValue();
+//            ops.set("adminOrderSuspendToStationId", "");
+//            System.out.println("adminOrderSuspendToStationId 已清空");
+//        }else{
+//            System.out.println("adminOrderSuspendToStationId 不存在");
+//        }
+        System.out.println(fromStationId + " " + toStationId);
+        restTemplate.getForObject("http://ts-order-other-service:12032//orderOther/cancelSuspend/" + fromStationId + "/" + toStationId, Boolean.class);
+
         return true;
     }
 
