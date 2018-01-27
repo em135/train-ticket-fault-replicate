@@ -1,0 +1,327 @@
+[
+  {
+    "traceId": "a9bb29e8676bf168",
+    "id": "a9bb29e8676bf168",
+    "name": "http:/inside_payment/pay",
+    "timestamp": 1516796711596000,
+    "duration": 2024109,
+    "annotations": [
+      {
+        "timestamp": 1516796711596000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516796713620109,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "error",
+        "value": "Request processing failed; nested exception is java.lang.RuntimeException: [Error External Normal]",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.status_code",
+        "value": "500",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "InsidePaymentController",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicErrorController",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "pay",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "error",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "4b7984116c41:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9bb29e8676bf168",
+    "id": "48b8b1fc7871e8ba",
+    "name": "http:/orderother/getbyid",
+    "parentId": "a9bb29e8676bf168",
+    "timestamp": 1516796711599000,
+    "duration": 11000,
+    "annotations": [
+      {
+        "timestamp": 1516796711599000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516796711601500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.17.0.28",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516796711607500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.17.0.28",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516796711610000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.17.0.28",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.17.0.28",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "4b7984116c41:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d7e2505bbded:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.17.0.28",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9bb29e8676bf168",
+    "id": "49dae9cf5768ec9f",
+    "name": "send-async-call-to-payment-service",
+    "parentId": "a9bb29e8676bf168",
+    "timestamp": 1516796711619000,
+    "duration": 2009084,
+    "binaryAnnotations": [
+      {
+        "key": "class",
+        "value": "AsyncTask",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "lc",
+        "value": "async",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "method",
+        "value": "sendAsyncCallToPaymentService",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9bb29e8676bf168",
+    "id": "7f99e025638dd2d4",
+    "name": "http:/greet",
+    "parentId": "49dae9cf5768ec9f",
+    "timestamp": 1516796711619000,
+    "duration": 2007000,
+    "annotations": [
+      {
+        "timestamp": 1516796711619000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516796713626000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "rest-service-external",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/greet",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://rest-service-external:16100/greet",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "4b7984116c41:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.17.0.66",
+          "port": 18673
+        }
+      }
+    ]
+  }
+]
+ 
