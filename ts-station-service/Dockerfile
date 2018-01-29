@@ -1,6 +1,6 @@
 FROM java:8-jre
 
 ADD ./target/ts-station-service-1.0.jar /app/
-CMD ["java", "-Xmx100m", "-jar", "/app/ts-station-service-1.0.jar"]
+CMD ["java", "-Xmx150m", "-jar", "/app/ts-station-service-1.0.jar"]
 
 EXPOSE 12345

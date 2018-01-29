@@ -16,13 +16,20 @@ public class BasicController {
     @Autowired
     BasicService service;
 
+    @RequestMapping(path = "/welcome", method = RequestMethod.GET)
+    public String home() {
+        return "Welcome to [ Basic Info Service ] !";
+    }
+
     @RequestMapping(value="/basic/queryForTravel", method= RequestMethod.POST)
     public ResultForTravel queryForTravel(@RequestBody QueryForTravel info){
+        System.out.println("/basic/queryForTravel");
         return service.queryForTravel(info);
     }
 
     @RequestMapping(value="/basic/queryForStationId", method= RequestMethod.POST)
     public String queryForStationId(@RequestBody QueryStation info){
+        System.out.println("/basic/queryForStationId");
         return service.queryForStationId(info);
     }
 }

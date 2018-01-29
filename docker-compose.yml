@@ -128,8 +128,8 @@ services:
       - 12031:12031
     networks:
       - my-network
-    mem_limit: 300M
-    memswap_limit: 800M
+    mem_limit: 200M
+    memswap_limit: 600M
 
 
   ts-order-mongo:
@@ -250,8 +250,8 @@ services:
         - 15680:15680
       networks:
           - my-network
-      mem_limit: 300M
-      memswap_limit: 800M
+      mem_limit: 200M
+      memswap_limit: 600M
 
   ts-ticketinfo-service:
         build: ts-ticketinfo-service

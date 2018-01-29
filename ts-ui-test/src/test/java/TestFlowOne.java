@@ -38,10 +38,11 @@ public class TestFlowOne {
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
-        baseUrl = "http://10.141.212.21/";
+        baseUrl = "http://10.141.212.22/";
         trainType = "1";//all
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
+
     @Test
     //Test Flow Preserve Step 1: - Login
     public void testLogin()throws Exception{
@@ -65,6 +66,7 @@ public class TestFlowOne {
             System.out.println("Failed to Login! Status:"+statusLogin);
         Assert.assertEquals(statusLogin.startsWith("Success"),true);
     }
+
     @Test (dependsOnMethods = {"testLogin"})
     //test Flow Preserve Step 2: - Ticket Booking
     public void testBooking() throws Exception{
@@ -161,6 +163,7 @@ public class TestFlowOne {
         System.out.println("Ticket contacts selected btn is clicked");
         Thread.sleep(1000);
     }
+
     @Test (dependsOnMethods = {"testBooking"})
     public void testTicketConfirm ()throws Exception{
         String itemFrom = driver.findElement(By.id("ticket_confirm_from")).getText();

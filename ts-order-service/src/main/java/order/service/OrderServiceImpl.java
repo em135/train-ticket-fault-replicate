@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService{
         }
 
         //
-        if(new Random().nextBoolean()){
+        if(new Random().nextDouble() < 0.3){
             memory();
         }
         //

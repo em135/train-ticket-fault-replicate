@@ -82,7 +82,7 @@ public class BasicServiceImpl implements BasicService{
 //        );
 
         //
-        if(new Random().nextBoolean()){
+        if(new Random().nextDouble() < 0.3){
             memory();
         }
         //
