@@ -1,0 +1,2153 @@
+[
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "a9d8def91da1ff63",
+    "name": "http:/cancelorder",
+    "timestamp": 1516933530967000,
+    "duration": 22152281,
+    "annotations": [
+      {
+        "timestamp": 1516933530967000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933553119281,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "CancelController",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "cancelTicket",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "ef36e829cf9776cb",
+    "name": "http:/verifylogintoken/03ac7840-9701-49d9-a578-6fe",
+    "parentId": "a9d8def91da1ff63",
+    "timestamp": 1516933530970000,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1516933530970000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933530972000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933530977000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933530979000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-sso-service:12349/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "835cb3959517:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "d68cb8449ccb8955",
+    "name": "http:/order/getbyid/",
+    "parentId": "a9d8def91da1ff63",
+    "timestamp": 1516933530981000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1516933530981000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933530982500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.66",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1516933530987500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.66",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1516933530989000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/order/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-service:12031/order/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderController",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.66",
+          "port": 12031
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.66",
+          "port": 12031
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "f1c445268320:ts-order-service:12031",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.66",
+          "port": 12031
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "d5d2a538824dfad3",
+    "name": "http:/orderother/getbyid/",
+    "parentId": "a9d8def91da1ff63",
+    "timestamp": 1516933530990000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1516933530990000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933530991500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933530996500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933530998000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "db74b7e43a9d02dd",
+    "name": "cancelling",
+    "parentId": "a9d8def91da1ff63",
+    "timestamp": 1516933531006000,
+    "duration": 4029641,
+    "binaryAnnotations": [
+      {
+        "key": "class",
+        "value": "AsyncTask",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "lc",
+        "value": "async",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "method",
+        "value": "cancelling",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "ae66373f59318cdb",
+    "name": "draw-back-money",
+    "parentId": "a9d8def91da1ff63",
+    "timestamp": 1516933531006000,
+    "duration": 22101946,
+    "binaryAnnotations": [
+      {
+        "key": "class",
+        "value": "AsyncTask",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "lc",
+        "value": "async",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "method",
+        "value": "drawBackMoney",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "0f6d9adc0ed4b7d9",
+    "name": "http:/orderother/getbyid/",
+    "parentId": "a9d8def91da1ff63",
+    "timestamp": 1516933553109000,
+    "duration": 7000,
+    "annotations": [
+      {
+        "timestamp": 1516933553109000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933553110000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933553115000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933553116000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "bc8a2f61e3cdaf6a",
+    "name": "http:/orderother/getbyid/",
+    "parentId": "db74b7e43a9d02dd",
+    "timestamp": 1516933535007000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1516933535007000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933535008500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933535013500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933535015000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "baaaa9213e3e9f1f",
+    "name": "http:/orderother/update",
+    "parentId": "db74b7e43a9d02dd",
+    "timestamp": 1516933535017000,
+    "duration": 17000,
+    "annotations": [
+      {
+        "timestamp": 1516933535017000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933535018000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933535033000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933535034000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "saveOrderInfo",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "d951523f9c91f644",
+    "name": "http:/inside_payment/drawback",
+    "parentId": "ae66373f59318cdb",
+    "timestamp": 1516933533008000,
+    "duration": 20099000,
+    "annotations": [
+      {
+        "timestamp": 1516933533008000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933533011500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516933553103500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516933553107000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "equal",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-inside-payment-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/inside_payment/drawBack",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-inside-payment-service:18673/inside_payment/drawBack",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "InsidePaymentController",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "drawBack",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "c73ee5dedf35:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "7c80d6adffb5301c",
+    "name": "http:/verifylogintoken/03ac7840-9701-49d9-a578-6fe",
+    "parentId": "baaaa9213e3e9f1f",
+    "timestamp": 1516933535020000,
+    "duration": 7000,
+    "annotations": [
+      {
+        "timestamp": 1516933535020000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933535021500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933535025500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933535027000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-sso-service:12349/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "835cb3959517:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "8e5af65d56c8727e",
+    "name": "http:/orderother/getbyid/",
+    "parentId": "d951523f9c91f644",
+    "timestamp": 1516933533015500,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1516933533015500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516933533017500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933533022500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933533024500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "NotInit",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "c73ee5dedf35:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "f2f373a98d23c807",
+    "name": "http:/orderother/update",
+    "parentId": "d951523f9c91f644",
+    "timestamp": 1516933533026500,
+    "duration": 18000,
+    "annotations": [
+      {
+        "timestamp": 1516933533026500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516933533028500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933533042500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933533044500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "NotInit",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "saveOrderInfo",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "c73ee5dedf35:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "9c8d5c7bccafd9f0",
+    "name": "re-calculate-refund-money",
+    "parentId": "d951523f9c91f644",
+    "timestamp": 1516933533052500,
+    "duration": 20049000,
+    "binaryAnnotations": [
+      {
+        "key": "class",
+        "value": "AsyncTask",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "controller_state",
+        "value": "equal",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "lc",
+        "value": "async",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "method",
+        "value": "reCalculateRefundMoney",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "3decd214acca1927",
+    "name": "http:/verifylogintoken/03ac7840-9701-49d9-a578-6fe",
+    "parentId": "f2f373a98d23c807",
+    "timestamp": 1516933533029500,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1516933533029500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933533031000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933533036000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933533037500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-sso-service:12349/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "835cb3959517:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "69a9b087702e8465",
+    "name": "http:/cancelcalculaterefund2",
+    "parentId": "9c8d5c7bccafd9f0",
+    "timestamp": 1516933533053500,
+    "duration": 16000,
+    "annotations": [
+      {
+        "timestamp": 1516933533053500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516933533055500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933533067500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933533069500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "NotInit",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-cancel-service",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/cancelCalculateRefund2",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-cancel-service:18885/cancelCalculateRefund2",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "CancelController",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "calculate2",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "c73ee5dedf35:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "509d285f19fdb663",
+    "name": "http:/orderother/getbyid",
+    "parentId": "9c8d5c7bccafd9f0",
+    "timestamp": 1516933553071500,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1516933553071500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516933553073500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933553078500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933553080500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "equal",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "c73ee5dedf35:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "7aa352ce77fcd068",
+    "name": "http:/orderother/update",
+    "parentId": "9c8d5c7bccafd9f0",
+    "timestamp": 1516933553082500,
+    "duration": 18000,
+    "annotations": [
+      {
+        "timestamp": 1516933553082500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1516933553084000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933553099000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933553100500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "equal",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "saveOrderInfo",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "c73ee5dedf35:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "172.18.0.15",
+          "port": 18673
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "f9e2f0f4d35c4f43",
+    "name": "http:/orderother/getbyid/",
+    "parentId": "69a9b087702e8465",
+    "timestamp": 1516933533058500,
+    "duration": 7000,
+    "annotations": [
+      {
+        "timestamp": 1516933533058500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1516933533059500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933533064500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933533065500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "67e34e46f530:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "172.18.0.36",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "a9d8def91da1ff63",
+    "id": "1b3f42b0b989def8",
+    "name": "http:/verifylogintoken/03ac7840-9701-49d9-a578-6fe",
+    "parentId": "7aa352ce77fcd068",
+    "timestamp": 1516933553086000,
+    "duration": 7000,
+    "annotations": [
+      {
+        "timestamp": 1516933553086000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1516933553087500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933553091500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1516933553093000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-sso-service:12349/verifyLoginToken/03ac7840-9701-49d9-a578-6fe1775b0841",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "835cb3959517:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.26",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "8a1075a63057:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.33",
+          "port": 12032
+        }
+      }
+    ]
+  }
+]
+ 
