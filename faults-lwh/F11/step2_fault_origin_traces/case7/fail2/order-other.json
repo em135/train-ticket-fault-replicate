@@ -1,0 +1,179 @@
+[
+  {
+    "traceId": "3442821b326e2c33",
+    "id": "3442821b326e2c33",
+    "name": "http:/orderother/query",
+    "timestamp": 1517056661921000,
+    "duration": 14640,
+    "annotations": [
+      {
+        "timestamp": 1517056661921000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1517056661935640,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryOrders",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "0bd8bfeef73e:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "3442821b326e2c33",
+    "id": "6eb6197c5d7e8086",
+    "name": "http:/verifylogintoken/b2e24239-13e1-4ed9-b9f0-c4d",
+    "parentId": "3442821b326e2c33",
+    "timestamp": 1517056661923000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1517056661923000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1517056661924500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.28",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1517056661929500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.28",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1517056661931000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/b2e24239-13e1-4ed9-b9f0-c4d5f6ceba87",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-sso-service:12349/verifyLoginToken/b2e24239-13e1-4ed9-b9f0-c4d5f6ceba87",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.28",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.28",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "a8b29692d967:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.28",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "0bd8bfeef73e:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.18.0.25",
+          "port": 12032
+        }
+      }
+    ]
+  }
+]
+ 
