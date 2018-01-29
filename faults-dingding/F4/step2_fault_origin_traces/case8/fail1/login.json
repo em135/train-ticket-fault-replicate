@@ -1,0 +1,298 @@
+[
+  {
+    "traceId": "7c0f1fbfb976a42e",
+    "id": "7c0f1fbfb976a42e",
+    "name": "http:/login",
+    "timestamp": 1517211881208000,
+    "duration": 48565,
+    "annotations": [
+      {
+        "timestamp": 1517211881208000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "timestamp": 1517211881256565,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountLoginController",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "login",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "4d2e4d2cffd1:ts-login-service:12342",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "7c0f1fbfb976a42e",
+    "id": "7202cfd0bcf3470d",
+    "name": "https:/verification/verify",
+    "parentId": "7c0f1fbfb976a42e",
+    "timestamp": 1517211881211000,
+    "duration": 18000,
+    "annotations": [
+      {
+        "timestamp": 1517211881211000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "timestamp": 1517211881218500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-verification-code-service",
+          "ipv4": "172.18.0.36",
+          "port": 15678
+        }
+      },
+      {
+        "timestamp": 1517211881221500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-verification-code-service",
+          "ipv4": "172.18.0.36",
+          "port": 15678
+        }
+      },
+      {
+        "timestamp": 1517211881229000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-verification-code-service",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verification/verify",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "https://ts-verification-code-service:15678/verification/verify",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "VerificationCodeController",
+        "endpoint": {
+          "serviceName": "ts-verification-code-service",
+          "ipv4": "172.18.0.36",
+          "port": 15678
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyCode",
+        "endpoint": {
+          "serviceName": "ts-verification-code-service",
+          "ipv4": "172.18.0.36",
+          "port": 15678
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "4d2e4d2cffd1:ts-login-service:12342",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "7a60f28b6d9e:ts-verification-code-service:15678",
+        "endpoint": {
+          "serviceName": "ts-verification-code-service",
+          "ipv4": "172.18.0.36",
+          "port": 15678
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "7c0f1fbfb976a42e",
+    "id": "703dca85922a82f3",
+    "name": "https:/account/login",
+    "parentId": "7c0f1fbfb976a42e",
+    "timestamp": 1517211881231000,
+    "duration": 22000,
+    "annotations": [
+      {
+        "timestamp": 1517211881231000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "timestamp": 1517211881238000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.9",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1517211881246000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.9",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1517211881253000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/account/login",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "https://ts-sso-service:12349/account/login",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.9",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "login",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.9",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "4d2e4d2cffd1:ts-login-service:12342",
+        "endpoint": {
+          "serviceName": "ts-login-service",
+          "ipv4": "172.18.0.63",
+          "port": 12342
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "227fc9d441d7:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.9",
+          "port": 12349
+        }
+      }
+    ]
+  }
+]
