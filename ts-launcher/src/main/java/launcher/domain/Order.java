@@ -1,4 +1,4 @@
-package click.domain;
+package launcher.domain;
 
 import java.util.Date;
 import java.util.UUID;

@@ -32,9 +32,9 @@ public class OrderTicketsInfo {
     //consign
     private String handleDate;
 
-    private String consigneeName="";
+    private String consigneeName;
 
-    private String consigneePhone="";
+    private String consigneePhone;
 
     private double consigneeWeight;
 

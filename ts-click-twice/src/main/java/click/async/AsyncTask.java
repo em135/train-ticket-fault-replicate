@@ -1,16 +1,20 @@
 package click.async;
 
+import click.domain.GetRoutePlanInfo;
 import click.domain.OrderTicketsInfo;
-import click.domain.OrderTicketsInfoPlus;
 import click.domain.OrderTicketsResult;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import click.domain.RoutePlanResults;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.Future;
 
 @Component  
@@ -18,37 +22,62 @@ public class AsyncTask {
     @Autowired
 	private RestTemplate restTemplate;
 
-    @Async("myAsync")
-    public Future<OrderTicketsResult> sendAsyncClickTwice(OrderTicketsInfo info,String loginId, String loginToken) throws InterruptedException {
+    @Async("mySimpleAsync")
+    public Future<OrderTicketsResult> sendOrderTicket(String loginId, String loginToken){
 
-//        Gson gson = new GsonBuilder()
-//                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-//                .create();
-//        String jsonString = gson.toJson(info);
-//
-//        System.out.println("【发送的Json】" + jsonString);
-//
-//        HttpHeaders requestHeaders = new HttpHeaders();
-//        requestHeaders.add("Cookie","loginId=" + loginId);
-//        requestHeaders.add("Cookie","loginId=" + loginToken);
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        HttpEntity<OrderTicketsInfo> entity = new HttpEntity<>(info,headers);
-//        ResponseEntity<OrderTicketsResult> resp = restTemplate.exchange(
-//                "http://ts-preserve-service:14568/preserve", HttpMethod.POST, entity, OrderTicketsResult.class);
-//        OrderTicketsResult result = resp.getBody();
+        OrderTicketsInfo orderTicketsInfo = new OrderTicketsInfo();
+        orderTicketsInfo.setContactsId("4d2a46c7-71cb-4cf1-a5bb-b68406d9da6f");
+        orderTicketsInfo.setTripId("Z1234");
+        orderTicketsInfo.setSeatType(2);
+        orderTicketsInfo.setDate(new Date(1504137600000L));
+        orderTicketsInfo.setFrom("Shang Hai");
+        orderTicketsInfo.setTo("Nan Jing");
 
-        OrderTicketsInfoPlus plus = new OrderTicketsInfoPlus();
-        plus.setInfo(info);
-        plus.setLoginId(loginId);
-        plus.setLoginToken(loginToken);
+        HttpHeaders requestHeadersPreserveOrder = new HttpHeaders();
+        requestHeadersPreserveOrder.add("Cookie","loginId=" + loginId);
+        requestHeadersPreserveOrder.add("Cookie","loginToken=" + loginToken);
+        HttpEntity< OrderTicketsInfo> requestEntityPreserveOrder = new HttpEntity( orderTicketsInfo, requestHeadersPreserveOrder);
+        ResponseEntity rssResponsePreserveOrder = restTemplate.exchange(
+                "http://ts-preserve-other-service:14569/preserveOther",
+                HttpMethod.POST, requestEntityPreserveOrder, OrderTicketsResult.class);
+        OrderTicketsResult orderTicketsResult = (OrderTicketsResult)rssResponsePreserveOrder.getBody();
 
-        OrderTicketsResult result = restTemplate.postForObject("http://ts-preserve-service:14568/preserve",plus,OrderTicketsResult.class);
+        if(orderTicketsResult == null){
+            throw new RuntimeException("Error");
+        }
 
-        return new AsyncResult<>(result);
-
+        System.out.println("[预定结果] " + orderTicketsResult.getMessage());
+        return new AsyncResult(orderTicketsResult);
     }
 
+    @Async("mySimpleAsync")
+    public Future<RoutePlanResults> searchInAdvanceSearch(String loginId, String loginToken){
+
+        GetRoutePlanInfo getRoutePlanInfo = new GetRoutePlanInfo();
+        getRoutePlanInfo.setFormStationName("Shang Hai");
+        getRoutePlanInfo.setToStationName("Nan Jing");
+
+        java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
+        String s = "2018-02-28";
+        Date date = null;
+        try{
+            date = formatter.parse(s);
+        }catch (Exception e){
+
+        }
+
+        getRoutePlanInfo.setTravelDate(date);
+        getRoutePlanInfo.setNum(5);
+
+        RoutePlanResults results = restTemplate.postForObject("",getRoutePlanInfo,RoutePlanResults.class);
+
+        if(results == null){
+            throw new RuntimeException("Error");
+        }
+
+        System.out.println("[搜索结果]" + results.isStatus() + " " + results.getResults().size());
+
+        return null;
+    }
       
 }  
