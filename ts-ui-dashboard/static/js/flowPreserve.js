@@ -3,7 +3,7 @@
 /**Before ***/
 function setTodayDatePreserve(){
     var today = new Date();
-    var dd = today.getDate();
+    var dd = today.getDate(a);
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
     if(dd < 10){
@@ -296,7 +296,7 @@ function initFoodSelect(tripId){
                 }
 
             } else {
-                alert(result.status + ":" + result.message);
+                //alert(result.status + ":" + result.message);
             }
 
         }

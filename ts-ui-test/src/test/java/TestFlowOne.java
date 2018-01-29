@@ -41,7 +41,7 @@ public class TestFlowOne {
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
-        baseUrl = "http://10.141.212.21/";
+        baseUrl = "http://10.141.212.22/";
         trainType = "2";//all
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
