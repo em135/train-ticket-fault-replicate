@@ -412,6 +412,9 @@ function refresh_booking_contacts() {
                 "</tr>"
             );
         },
+        error: function () {
+            alert("Fail");
+        },
         complete: function(){
             $("#refresh_booking_contacts_button").attr("disabled",false);
         }

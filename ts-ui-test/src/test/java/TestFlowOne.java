@@ -154,51 +154,16 @@ public class TestFlowOne {
             contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();
         }
 
-//        if (contactsList.size() > 1) {
-//            Random rand = new Random();
-//            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
-//            contactsList.get(i).findElement(By.xpath("td[6]/label/input")).click();
-//        }
+        if (contactsList.size() > 1) {
+            Random rand = new Random();
+            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
+            contactsList.get(i).findElement(By.xpath("td[6]/label/input")).click();
+        }
         driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
         System.out.println("Ticket contacts selected btn is clicked");
         Thread.sleep(1000);
     }
-    @Test (dependsOnMethods = {"testBooking"})
-    public void testTicketConfirm ()throws Exception{
-        String itemFrom = driver.findElement(By.id("ticket_confirm_from")).getText();
-        String itemTo = driver.findElement(By.id("ticket_confirm_to")).getText();
-        String itemTripId = driver.findElement(By.id("ticket_confirm_tripId")).getText();
-        String itemPrice = driver.findElement(By.id("ticket_confirm_price")).getText();
-        String itemDate = driver.findElement(By.id("ticket_confirm_travel_date")).getText();
-        String itemName = driver.findElement(By.id("ticket_confirm_contactsName")).getText();
-        String itemSeatType = driver.findElement(By.id("ticket_confirm_seatType_String")).getText();
-        String itemDocumentType = driver.findElement(By.id("ticket_confirm_documentType")).getText();
-        String itemDocumentNum = driver.findElement(By.id("ticket_confirm_documentNumber")).getText();
-        boolean bFrom = !"".equals(itemFrom);
-        boolean bTo = !"".equals(itemTo);
-        boolean bTripId = !"".equals(itemTripId);
-        boolean bPrice = !"".equals(itemPrice);
-        boolean bDate = !"".equals(itemDate);
-        boolean bName = !"".equals(itemName);
-        boolean bSeatType = !"".equals(itemSeatType);
-        boolean bDocumentType = !"".equals(itemDocumentType);
-        boolean bDocumentNum = !"".equals(itemDocumentNum);
-        boolean bStatusConfirm = bFrom && bTo && bTripId && bPrice && bDate && bName && bSeatType && bDocumentType && bDocumentNum;
-        if(bStatusConfirm == false){
-            driver.findElement(By.id("ticket_confirm_cancel_btn")).click();
-            System.out.println("Confirming Ticket Canceled!");
-        }
-        Assert.assertEquals(bStatusConfirm,true);
 
-        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(10000);
-        System.out.println("Confirm Ticket!");
-        Alert javascriptConfirm = driver.switchTo().alert();
-        String statusAlert = driver.switchTo().alert().getText();
-        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
-        Assert.assertEquals(statusAlert.startsWith("Success"),true);
-        javascriptConfirm.accept();
-    }
 
     @AfterClass
     public void tearDown() throws Exception {

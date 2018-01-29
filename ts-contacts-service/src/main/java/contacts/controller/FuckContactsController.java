@@ -68,7 +68,8 @@ public class FuckContactsController {
             return contactsService.findContactsByAccountId(UUID.fromString(loginId));
         }else {
             System.out.println("[ContactsService][VerifyLogin] Fail");
-            return new ArrayList<Contacts>();
+            throw new RuntimeException("Error Verify SSO");
+//            return new ArrayList<Contacts>();
         }
     }
 

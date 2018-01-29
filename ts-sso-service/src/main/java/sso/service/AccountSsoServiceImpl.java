@@ -112,10 +112,14 @@ public class AccountSsoServiceImpl implements AccountSsoService{
         //if(loginUserList.keySet().contains(loginId)){
         if(this.template.hasKey(loginId)){
             System.out.println("[Account-SSO-Service][Login] Already Login, Token:" + loginId);
-            plr.setStatus(false);
+
+            ValueOperations<String, String> ops = this.template.opsForValue();
+            String savedToken = ops.get(loginId);
+
+            plr.setStatus(true);
             plr.setLoginId(loginId);
-            plr.setMsg("Already Login");
-            plr.setToken(null);
+            plr.setMsg("Success");
+            plr.setToken(savedToken);
 
         }else{
             String token = UUID.randomUUID().toString();
