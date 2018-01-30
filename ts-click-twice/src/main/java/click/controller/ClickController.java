@@ -43,8 +43,8 @@ public class ClickController {
         String loginToken = loginResult.getToken();
 
         //点三次确认车票，并等待结果
-        int numReserve = new Random().nextInt(5);
-        for(int i = 0; i < 3; i++){
+        int numReserve = new Random().nextInt(5) + 1;
+        for(int i = 0; i < numReserve; i++){
             System.out.println("[订票] " + i + " " + numReserve);
             Future<OrderTicketsResult> taskResult = asyncTask.sendOrderTicket(loginId,loginToken);
             try{
@@ -67,8 +67,8 @@ public class ClickController {
 //            e.printStackTrace();
 //        }
 
-        int numReserch = new Random().nextInt(5);
-        for(int i = 0;i < 2;i++){
+        int numReserch = new Random().nextInt(5) + 1;
+        for(int i = 0;i < numReserch;i++){
 
             System.out.println("[搜索] " + i + " " + numReserch);
             Future<TravelAdvanceResult> taskResult = asyncTask.searchInAdvanceSearch(loginId,loginToken);
@@ -110,7 +110,7 @@ public class ClickController {
         String loginToken = loginResult.getToken();
 
         //点三次确认车票，并等待结果
-        int numReserve = new Random().nextInt(5);
+        int numReserve = new Random().nextInt(5) + 1;
         for(int i = 0;i < numReserve;i++){
             Future<OrderTicketsResult> taskResult = asyncTask.sendOrderTicket(loginId,loginToken);
 //            try{
@@ -133,7 +133,7 @@ public class ClickController {
 //            e.printStackTrace();
 //        }
 
-        int numReserch = new Random().nextInt(5);
+        int numReserch = new Random().nextInt(5) + 1;
         for(int i = 0;i < numReserch;i++){
             Future<TravelAdvanceResult> taskResult = asyncTask.searchInAdvanceSearch(loginId,loginToken);
 //            try{
