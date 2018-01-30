@@ -5,6 +5,6 @@ package other.async;
  */
 public class Count {
 
-    public static int count = 0;
+    //public static int count = 0;
 
 }

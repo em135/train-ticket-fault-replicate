@@ -17,21 +17,22 @@ public class AsyncTask {
     @Autowired
     private OrderOtherRepository orderOtherRepository;
 
+    public static int count = 0;
 
     @Async("myAsync")
     public Future<QueryOrderResult> viewAllOrderAsync(){
-        Count.count++;
-        System.out.println("[Enter View All Order Async] Count:" + Count.count);
+        count++;
+        System.out.println("[Enter View All Order Async] Count:" + count);
         try{
             Thread.sleep(10000);
             ArrayList<Order> orders = orderOtherRepository.findAll();
             QueryOrderResult result = new QueryOrderResult(true,"Success.",orders);
-            Count.count--;
-            System.out.println("[Exit View All Order Async] Count:" + Count.count);
+            count--;
+            System.out.println("[Exit View All Order Async] Count:" + count);
             return new AsyncResult<>(result);
         }catch(Exception e){
-            Count.count--;
-            System.out.println("[Exit View All Order Async] Exception Count:" + Count.count);
+            count--;
+            System.out.println("[Exit View All Order Async] Exception Count:" + count);
             return null;
         }
 

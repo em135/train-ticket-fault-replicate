@@ -12,9 +12,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class ExecutorConfig {  
   
     /** Set the ThreadPoolExecutor's core pool size. */  
-    private int corePoolSize = 4;
+    private int corePoolSize = 7;
     /** Set the ThreadPoolExecutor's maximum pool size. */  
-    private int maxPoolSize = 7;
+    private int maxPoolSize = 9;
     /** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */  
     private int queueCapacity = 100;
   

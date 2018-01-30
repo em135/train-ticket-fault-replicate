@@ -1,11 +1,12 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 public class TestFlowFail {
     private WebDriver driver;
     private String baseUrl;
+    private List<WebElement> myOrdersList;
+
     public static void login(WebDriver driver,String username,String password){
         driver.findElement(By.id("flow_one_page")).click();
         driver.findElement(By.id("flow_preserve_login_email")).clear();
@@ -45,8 +48,45 @@ public class TestFlowFail {
     //打开Admin，输入上海以外的地名，或者不输入，直接跳过
     public void testInputSomethingAdmin()throws Exception{
 
+        driver.get(baseUrl + "/");
+
+        driver.findElement(By.id("adminlogin")).click();
+
+        String username = "adminroot";
+        String password = "adminroot";
+
+        driver.findElement(By.id("doc-ipt-email-1")).clear();
+        driver.findElement(By.id("doc-ipt-email-1")).sendKeys(username);
+        driver.findElement(By.id("doc-ipt-pwd-1")).clear();
+        driver.findElement(By.id("doc-ipt-pwd-1")).sendKeys(password);
+        driver.findElement(By.id("jcadmin_jclogin_btn")).click();
+
+        Thread.sleep(5000);
+
+        boolean status = new Random().nextBoolean();
+
+        String[] citys = {"shanghai", "nanjing"};
+        String fromId = citys[new Random().nextInt(2)];
+        String toId = citys[new Random().nextInt(2)];
+        fromId = "shanghai";
+        toId = "nanjing";
+        if(status == false){
+            driver.findElement(By.id("order_search_by_station_from")).clear();
+            driver.findElement(By.id("order_search_by_station_from")).sendKeys(fromId);
+            driver.findElement(By.id("order_search_by_station_to")).clear();
+            driver.findElement(By.id("order_search_by_station_to")).sendKeys(toId);
+            driver.findElement(By.id("order_search_by_station_search_lock")).click();
+        }else{
+            //Skip
+        }
+
+        Thread.sleep(3000);
+
+        Alert javascriptConfirm = driver.switchTo().alert();
+        javascriptConfirm.accept();
+
     }
-    @Test
+    @Test(dependsOnMethods = {"testInputSomethingAdmin"})
     //登录
     public void testLogin()throws Exception{
         driver.get(baseUrl + "/");
@@ -69,12 +109,72 @@ public class TestFlowFail {
             System.out.println("Failed to Login! Status:"+statusLogin);
         Assert.assertEquals(statusLogin.startsWith("Success"),true);
     }
-    
-    @Test (dependsOnMethods = {"testLogin"})
-    // 点击一下全局搜索
-    // 点击进入并退票，等待结果
-    public void testBooking() throws Exception{
 
+    @Test (dependsOnMethods = {"testLogin"})
+    public void testViewAllOrdersThread() throws Exception{
+
+        String js = "document.getElementById('flow_two_page').scrollIntoView(false)";
+        ((JavascriptExecutor)driver).executeScript(js);
+        driver.findElement(By.id("flow_two_page")).click();
+
+
+        String js2 = "document.getElementById('refresh_all_order_list_async_button').scrollIntoView(false)";
+        ((JavascriptExecutor)driver).executeScript(js2);
+        driver.findElement(By.id("refresh_all_order_list_async_button")).click();
+
+        Thread.sleep(1000);
+
+    }
+
+    @Test (dependsOnMethods = {"testViewAllOrdersThread"})
+    public void testViewOrders() throws Exception{
+        driver.findElement(By.id("refresh_my_order_list_button")).click();
+        Thread.sleep(1000);
+        //gain my oeders
+        myOrdersList = driver.findElements(By.xpath("//div[@id='my_orders_result']/div"));
+        if (myOrdersList.size() > 0) {
+            System.out.printf("Success to show my orders list，the list size is:%d%n",myOrdersList.size());
+        } else {
+            System.out.println("Failed to show my orders list，the list size is 0 or No orders in this user!");
+        }
+        Assert.assertEquals(myOrdersList.size() > 0,true);
+    }
+    @Test (dependsOnMethods = {"testViewOrders"})
+    public void testClickOrderCancel() throws Exception{
+        System.out.printf("The orders list size is:%d%n",myOrdersList.size());
+        String statusOrder  = "";
+        int i;
+        //Find the first not paid order .
+        for(i = 0;i < myOrdersList.size();i++) {
+            //while(!(statusOrder.startsWith("Not")) && i < myOrdersList.size()) {
+            //statusOrder = myOrdersList.get(i).findElement(By.xpath("/div[2]/div/div/form/div[7]/div/label[2]")).getText();
+            statusOrder = myOrdersList.get(i).findElement(By.xpath("div[2]//form[@role='form']/div[7]/div/label[2]")).getText();
+            if(statusOrder.startsWith("Paid"))
+                break;
+        }
+        if(i == myOrdersList.size() || i > myOrdersList.size())
+            System.out.printf("Failed,there is no not paid order!");
+        Assert.assertEquals(i < myOrdersList.size(),true);
+
+        Thread.sleep(1000);
+        String js = "document.getElementsByClassName('ticket_cancel_btn')[0].scrollIntoView(false)";
+        ((JavascriptExecutor)driver).executeScript(js);
+        Thread.sleep(1000);
+
+        myOrdersList.get(i).findElement(
+                By.xpath("div[2]//form[@role='form']/div[12]/div/button[@class='ticket_cancel_btn btn btn-primary']")
+        ).click();
+        Thread.sleep(2000);
+
+        driver.findElement(By.id("ticket_cancel_panel_confirm")).click();
+
+        Thread.sleep(10000);
+
+        Alert javascriptConfirm = driver.switchTo().alert();
+        String statusAlert = driver.switchTo().alert().getText();
+        System.out.println("The Alert information of Cancel Ticket："+statusAlert);
+        Assert.assertEquals(statusAlert.startsWith("Success"),true);
+        javascriptConfirm.accept();
     }
 
 

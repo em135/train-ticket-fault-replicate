@@ -66,8 +66,8 @@ public class TestFlowSuccess {
         boolean status = new Random().nextBoolean();
 
         String[] citys = {"beijing", "shanghaihongqiao", "taiyuan", "xuzhou", "jinan", "hangzhou"};
-        String fromId = citys[new Random().nextInt(7)];
-        String toId = citys[new Random().nextInt(7)];
+        String fromId = citys[new Random().nextInt(6)];
+        String toId = citys[new Random().nextInt(6)];
         if(status == false){
             driver.findElement(By.id("order_search_by_station_from")).clear();
             driver.findElement(By.id("order_search_by_station_from")).sendKeys(fromId);
@@ -111,12 +111,12 @@ public class TestFlowSuccess {
     @Test (dependsOnMethods = {"testLogin"})
     public void testViewAllOrdersThread() throws Exception{
 
-        String js1 = "document.getElementsByClassName('flow_two_page')[0].scrollIntoView(false)";
-        ((JavascriptExecutor)driver).executeScript(js1);
+        String js = "document.getElementById('flow_two_page').scrollIntoView(false)";
+        ((JavascriptExecutor)driver).executeScript(js);
         driver.findElement(By.id("flow_two_page")).click();
 
 
-        String js2 = "document.getElementsByClassName('refresh_all_order_list_async_button')[0].scrollIntoView(false)";
+        String js2 = "document.getElementById('refresh_all_order_list_async_button').scrollIntoView(false)";
         ((JavascriptExecutor)driver).executeScript(js2);
         driver.findElement(By.id("refresh_all_order_list_async_button")).click();
 

@@ -191,7 +191,7 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
         boolean checkSuspendOrder = checkOrderIsSuspend(order.getFrom(),order.getTo());
 
-        System.out.println("[服务池子] " + Count.count);
+        System.out.println("[服务池子] " + asyncTask.count);
         System.out.println("[锁定区域] " + fromId + " || " + toId);
         System.out.println("[正在修改] " + order.getFrom() + " || " + order.getTo());
 
@@ -326,7 +326,7 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
         boolean checkSuspendOrder = checkOrderIsSuspend(order.getFrom(),order.getTo());
 
-        System.out.println("[服务池子] " + Count.count);
+        System.out.println("[服务池子] " + AsyncTask.count);
         System.out.println("[锁定区域] " + fromId + " || " + toId);
         System.out.println("[正在修改] " + order.getFrom() + " || " + order.getTo());
 
@@ -499,7 +499,8 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     }
 
     private boolean checkOrderIsSuspend(String fromStationId, String toStationId){
-        if(fromStationId.equals(fromId) || toStationId.equals(toId)){
+        if(fromStationId.equals(fromId) || fromStationId.equals(toId)
+                || toStationId.equals(fromId) || toStationId.equals(toId)){
             return false;
         }else{
             return true;
