@@ -1,8 +1,8 @@
 package other.service;
 
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
+
 import other.async.AsyncTask;
+import other.async.Count;
 import other.domain.*;
 import other.repository.OrderOtherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -188,36 +188,52 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
     @Override
     public ChangeOrderResult saveChanges(Order order){
-        Order oldOrder = findOrderById(order.getId());
-        ChangeOrderResult cor = new ChangeOrderResult();
-        if(oldOrder == null){
-            System.out.println("[Order Other Service][Modify Order] Fail.Order not found.");
-            cor.setStatus(false);
-            cor.setMessage("Order Not Found");
-            cor.setOrder(null);
-        }else{
-            oldOrder.setAccountId(order.getAccountId());
-            oldOrder.setBoughtDate(order.getBoughtDate());
-            oldOrder.setTravelDate(order.getTravelDate());
-            oldOrder.setTravelTime(order.getTravelTime());
-            oldOrder.setCoachNumber(order.getCoachNumber());
-            oldOrder.setSeatClass(order.getSeatClass());
-            oldOrder.setSeatNumber(order.getSeatNumber());
-            oldOrder.setFrom(order.getFrom());
-            oldOrder.setTo(order.getTo());
-            oldOrder.setStatus(order.getStatus());
-            oldOrder.setTrainNumber(order.getTrainNumber());
-            oldOrder.setPrice(order.getPrice());
-            oldOrder.setContactsName(order.getContactsName());
-            oldOrder.setContactsDocumentNumber(order.getContactsDocumentNumber());
-            oldOrder.setDocumentType(order.getDocumentType());
-            orderOtherRepository.save(oldOrder);
-            System.out.println("[Order Other Service] Success.");
-            cor.setOrder(oldOrder);
-            cor.setStatus(true);
-            cor.setMessage("Success");
+
+        boolean checkSuspendOrder = checkOrderIsSuspend(order.getFrom(),order.getTo());
+
+        System.out.println("[服务池子] " + Count.count);
+        System.out.println("[锁定区域] " + fromId + " || " + toId);
+        System.out.println("[正在修改] " + order.getFrom() + " || " + order.getTo());
+
+        if(checkSuspendOrder == false) {
+            throw new RuntimeException("[Error] The order is suspending by admin.");
+        }else {
+            Order oldOrder = findOrderById(order.getId());
+            ChangeOrderResult cor = new ChangeOrderResult();
+            if(oldOrder == null){
+                System.out.println("[Order Other Service][Modify Order] Fail.Order not found.");
+                cor.setStatus(false);
+                cor.setMessage("Order Not Found");
+                cor.setOrder(null);
+            }else{
+
+
+
+                oldOrder.setAccountId(order.getAccountId());
+                oldOrder.setBoughtDate(order.getBoughtDate());
+                oldOrder.setTravelDate(order.getTravelDate());
+                oldOrder.setTravelTime(order.getTravelTime());
+                oldOrder.setCoachNumber(order.getCoachNumber());
+                oldOrder.setSeatClass(order.getSeatClass());
+                oldOrder.setSeatNumber(order.getSeatNumber());
+                oldOrder.setFrom(order.getFrom());
+                oldOrder.setTo(order.getTo());
+                oldOrder.setStatus(order.getStatus());
+                oldOrder.setTrainNumber(order.getTrainNumber());
+                oldOrder.setPrice(order.getPrice());
+                oldOrder.setContactsName(order.getContactsName());
+                oldOrder.setContactsDocumentNumber(order.getContactsDocumentNumber());
+                oldOrder.setDocumentType(order.getDocumentType());
+                orderOtherRepository.save(oldOrder);
+                System.out.println("[Order Other Service] Success.");
+                cor.setOrder(oldOrder);
+                cor.setStatus(true);
+                cor.setMessage("Success");
+            }
+            return cor;
         }
-        return cor;
+
+
     }
 
     @Override
@@ -290,8 +306,9 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
         try{
             Future<QueryOrderResult> resultFuture = asyncTask.viewAllOrderAsync();
-            QueryOrderResult result = resultFuture.get();
-
+            //QueryOrderResult result = resultFuture.get();
+            ArrayList<Order> orders = orderOtherRepository.findAll();
+            QueryOrderResult result = new QueryOrderResult(true,"Success.",orders);
             return result;
         } catch (Exception e){
             return null;
@@ -305,6 +322,11 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         Order order = orderOtherRepository.findById(UUID.fromString(info.getOrderId()));
 
         boolean checkSuspendOrder = checkOrderIsSuspend(order.getFrom(),order.getTo());
+
+        System.out.println("[服务池子] " + Count.count);
+        System.out.println("[锁定区域] " + fromId + " || " + toId);
+        System.out.println("[正在修改] " + order.getFrom() + " || " + order.getTo());
+
         if(checkSuspendOrder == false) {
             throw new RuntimeException("[Error] The order is suspending by admin.");
         }else{

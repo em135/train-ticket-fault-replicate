@@ -105,9 +105,9 @@ app.controller('indexCtrl', function ($scope, $http,$window,loadDataService) {
             url: "/orderOther/getOrdersByFromAndTo/" + fromStationId + "/" + toStationId,
             withCredentials: true
         }).success(function (result) {
-            alert("Return：" + result.length);
+            //alert("Return：" + result.length);
         }).error(function () {
-            alert("Fail");
+            //alert("Fail");
         });
 
     }

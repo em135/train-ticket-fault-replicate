@@ -34,12 +34,11 @@ $("#refresh_all_order_list_async_button").click(function(){
         url: "/orderOther/asyncViewAllOrder",
         contentType: "application/json",
         dataType: "json",
-        data:data,
         xhrFields: {
             withCredentials: true
         },
         success: function(result){
-
+            //alert("  ");
         },
         complete: function(){
 

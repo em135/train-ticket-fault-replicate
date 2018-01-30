@@ -45,11 +45,11 @@ public class OrderOtherController {
 
 
     @RequestMapping(value = "/orderOther/getOrdersByFromAndTo/{fromId}/{toId}", method = RequestMethod.GET)
-    public ArrayList<Order> getOrdersByFromIdAndToId(@PathVariable String fromID, @PathVariable String toId){
+    public ArrayList<Order> getOrdersByFromIdAndToId(@PathVariable String fromId, @PathVariable String toId){
 
-        System.out.println("[Order Service][Get] From:" + fromID + " To:" + toId);
+        System.out.println("[Order Service][Get] From:" + fromId + " To:" + toId);
 
-        ArrayList<Order> ordersFrom = orderOtherRepository.findByFromId(fromID);
+        ArrayList<Order> ordersFrom = orderOtherRepository.findByFromId(fromId);
         ArrayList<Order> ordersTo = orderOtherRepository.findByToId(toId);
 
         ArrayList<Order> orders = new ArrayList<>();
