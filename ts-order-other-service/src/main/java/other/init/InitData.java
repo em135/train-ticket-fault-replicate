@@ -29,7 +29,7 @@ public class InitData implements CommandLineRunner {
         order.setSeatClass(2);
         order.setSeatNumber("30");
         order.setFrom("shanghai");
-        order.setTo("taiyuan");
+        order.setTo("nanjing");
         order.setStatus(OrderStatus.PAID.getCode());
         order.setPrice("1300.0");
         service.initOrder(order);
