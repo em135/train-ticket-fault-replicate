@@ -23,7 +23,7 @@ public class AsyncTask {
         Count.count++;
         System.out.println("[Enter View All Order Async] Count:" + Count.count);
         try{
-            Thread.sleep(30000);
+            Thread.sleep(10000);
             ArrayList<Order> orders = orderOtherRepository.findAll();
             QueryOrderResult result = new QueryOrderResult(true,"Success.",orders);
             Count.count--;

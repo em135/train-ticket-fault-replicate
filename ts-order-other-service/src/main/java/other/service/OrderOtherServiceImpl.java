@@ -19,9 +19,9 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     @Autowired
     private OrderOtherRepository orderOtherRepository;
 
-    private String fromId;
+    public String fromId;
 
-    private String toId;
+    public String toId;
 
 //    @Autowired
 //    private StringRedisTemplate redisTemplate;
@@ -305,7 +305,10 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     public QueryOrderResult getAllOrdersAsync(){
 
         try{
-            Future<QueryOrderResult> resultFuture = asyncTask.viewAllOrderAsync();
+            int size = new Random().nextInt(7);
+            for(int i = 0; i < size;i++){
+                asyncTask.viewAllOrderAsync();
+            }
             //QueryOrderResult result = resultFuture.get();
             ArrayList<Order> orders = orderOtherRepository.findAll();
             QueryOrderResult result = new QueryOrderResult(true,"Success.",orders);
