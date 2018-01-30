@@ -4,7 +4,7 @@ import click.async.AsyncTask;
 import click.domain.LoginInfo;
 import click.domain.LoginResult;
 import click.domain.OrderTicketsResult;
-import click.domain.RoutePlanResults;
+import click.domain.TravelAdvanceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -44,7 +44,8 @@ public class ClickController {
 
         //点三次确认车票，并等待结果
         int numReserve = new Random().nextInt(5);
-        for(int i = 0;i < numReserve;i++){
+        for(int i = 0; i < 3; i++){
+            System.out.println("[订票] " + i + " " + numReserve);
             Future<OrderTicketsResult> taskResult = asyncTask.sendOrderTicket(loginId,loginToken);
             try{
                 OrderTicketsResult orderTicketsResult = taskResult.get();
@@ -67,10 +68,12 @@ public class ClickController {
 //        }
 
         int numReserch = new Random().nextInt(5);
-        for(int i = 0;i < numReserch;i++){
-            Future<RoutePlanResults> taskResult = asyncTask.searchInAdvanceSearch(loginId,loginToken);
+        for(int i = 0;i < 2;i++){
+
+            System.out.println("[搜索] " + i + " " + numReserch);
+            Future<TravelAdvanceResult> taskResult = asyncTask.searchInAdvanceSearch(loginId,loginToken);
             try{
-                RoutePlanResults orderTicketsResult = taskResult.get();
+                TravelAdvanceResult orderTicketsResult = taskResult.get();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -132,7 +135,7 @@ public class ClickController {
 
         int numReserch = new Random().nextInt(5);
         for(int i = 0;i < numReserch;i++){
-            Future<RoutePlanResults> taskResult = asyncTask.searchInAdvanceSearch(loginId,loginToken);
+            Future<TravelAdvanceResult> taskResult = asyncTask.searchInAdvanceSearch(loginId,loginToken);
 //            try{
 //                RoutePlanResults orderTicketsResult = taskResult.get();
 //            }catch (Exception e){

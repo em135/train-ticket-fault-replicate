@@ -16,10 +16,15 @@ public class AsyncTask {
     @Autowired
 	private RestTemplate restTemplate;
 
+    public static int size;
+
     @Async("mySimpleAsync")
     public Future<ResultForTravel> queryForTravel(QueryForTravel info){
+        size += 1;
+        System.out.println("[Ticket Info] Thread Size: " + size);
         ResultForTravel result = restTemplate.postForObject(
                 "http://ts-basic-service:15680/basic/queryForTravel", info, ResultForTravel.class);
+        size -= 1;
         return new AsyncResult<>(result);
     }
 

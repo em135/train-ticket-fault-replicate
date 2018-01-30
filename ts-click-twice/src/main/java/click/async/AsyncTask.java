@@ -1,9 +1,9 @@
 package click.async;
 
-import click.domain.GetRoutePlanInfo;
 import click.domain.OrderTicketsInfo;
 import click.domain.OrderTicketsResult;
-import click.domain.RoutePlanResults;
+import click.domain.QueryInfo;
+import click.domain.TravelAdvanceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -51,31 +51,29 @@ public class AsyncTask {
     }
 
     @Async("mySimpleAsync")
-    public Future<RoutePlanResults> searchInAdvanceSearch(String loginId, String loginToken){
+    public Future<TravelAdvanceResult> searchInAdvanceSearch(String loginId, String loginToken) throws Exception{
 
-        GetRoutePlanInfo getRoutePlanInfo = new GetRoutePlanInfo();
-        getRoutePlanInfo.setFormStationName("Shang Hai");
-        getRoutePlanInfo.setToStationName("Nan Jing");
+        QueryInfo getRoutePlanInfo = new QueryInfo();
+        getRoutePlanInfo.setStartingPlace("Shang Hai");
+        getRoutePlanInfo.setEndPlace("Nan Jing");
 
-        java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
-        String s = "2018-02-28";
-        Date date = null;
-        try{
-            date = formatter.parse(s);
-        }catch (Exception e){
+        java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
+        String s = "2018-01-31";
+        Date date = formatter.parse(s);
 
-        }
+        //date = new Date(1504137600000L);
 
-        getRoutePlanInfo.setTravelDate(date);
-        getRoutePlanInfo.setNum(5);
+        getRoutePlanInfo.setDepartureTime(date);
 
-        RoutePlanResults results = restTemplate.postForObject("",getRoutePlanInfo,RoutePlanResults.class);
+        TravelAdvanceResult results = restTemplate.postForObject(
+                "http://ts-travel-plan-service:14322/travelPlan/getCheapest",
+                getRoutePlanInfo,TravelAdvanceResult.class);
 
         if(results == null){
             throw new RuntimeException("Error");
         }
 
-        System.out.println("[搜索结果]" + results.isStatus() + " " + results.getResults().size());
+        System.out.println("[搜索结果]" + results.isStatus() + " " + results.getTravelAdvanceResultUnits().size());
 
         return null;
     }

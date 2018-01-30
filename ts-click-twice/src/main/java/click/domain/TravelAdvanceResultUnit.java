@@ -3,7 +3,7 @@ package click.domain;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class RoutePlanResultUnit {
+public class TravelAdvanceResultUnit {
 
     private String tripId;
 
@@ -17,13 +17,17 @@ public class RoutePlanResultUnit {
 
     private String priceForSecondClassSeat;
 
+    private int numberOfRestTicketSecondClass;
+
     private String priceForFirstClassSeat;
+
+    private int numberOfRestTicketFirstClass;
 
     private Date startingTime;
 
     private Date endTime;
 
-    public RoutePlanResultUnit() {
+    public TravelAdvanceResultUnit() {
         //Default Constructor
     }
 
@@ -75,12 +79,28 @@ public class RoutePlanResultUnit {
         this.priceForSecondClassSeat = priceForSecondClassSeat;
     }
 
+    public int getNumberOfRestTicketSecondClass() {
+        return numberOfRestTicketSecondClass;
+    }
+
+    public void setNumberOfRestTicketSecondClass(int numberOfRestTicketSecondClass) {
+        this.numberOfRestTicketSecondClass = numberOfRestTicketSecondClass;
+    }
+
     public String getPriceForFirstClassSeat() {
         return priceForFirstClassSeat;
     }
 
     public void setPriceForFirstClassSeat(String priceForFirstClassSeat) {
         this.priceForFirstClassSeat = priceForFirstClassSeat;
+    }
+
+    public int getNumberOfRestTicketFirstClass() {
+        return numberOfRestTicketFirstClass;
+    }
+
+    public void setNumberOfRestTicketFirstClass(int numberOfRestTicketFirstClass) {
+        this.numberOfRestTicketFirstClass = numberOfRestTicketFirstClass;
     }
 
     public Date getStartingTime() {
