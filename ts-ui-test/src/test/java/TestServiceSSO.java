@@ -8,8 +8,6 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-
 /**
  * Created by ZDH on 2017/7/19.
  */

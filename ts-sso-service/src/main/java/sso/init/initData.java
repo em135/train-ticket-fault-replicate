@@ -30,6 +30,16 @@ public class initData implements CommandLineRunner {
         acc = new Account();
         acc.setDocumentType(DocumentType.ID_CARD.getCode());
         acc.setDocumentNum("DefaultDocumentNumber");
+        acc.setEmail("vip_microservices@163.com");
+        acc.setPassword("DefaultPassword2");
+        acc.setName("VIP User");
+        acc.setGender(Gender.MALE.getCode());
+        acc.setId(UUID.fromString("5e3b57c7-71cb-4cf1-b5bb-b68406d9da6f"));
+        ssoService.createAccount(acc);
+
+        acc = new Account();
+        acc.setDocumentType(DocumentType.ID_CARD.getCode());
+        acc.setDocumentNum("DefaultDocumentNumber");
         acc.setEmail("root@163.com");
         acc.setPassword("adminroot");
         acc.setName("adminroot");

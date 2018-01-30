@@ -25,12 +25,12 @@ services:
     networks:
       - my-network
 
-  redis:
-    image: redis
-    ports:
-      - 6379:6379
-    networks:
-      - my-network
+#  redis:
+#    image: redis
+#    ports:
+#      - 6379:6379
+#    networks:
+#      - my-network
 
 
   ts-ui-dashboard:
@@ -89,6 +89,13 @@ services:
       - 12349:12349
     networks:
       - my-network
+
+  ts-sso-redis:
+      image: redis
+      ports:
+        - 6379:6379
+      networks:
+        - my-network
 
 
 
