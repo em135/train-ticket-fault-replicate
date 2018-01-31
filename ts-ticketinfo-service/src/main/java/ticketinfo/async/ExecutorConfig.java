@@ -11,9 +11,9 @@ import java.util.concurrent.Executor;
 public class ExecutorConfig {  
   
     /** Set the ThreadPoolExecutor's core pool size. */  
-    private int corePoolSize = 1;
+    private int corePoolSize = 2;
     /** Set the ThreadPoolExecutor's maximum pool size. */ 
-    private int maxPoolSize = 2;
+    private int maxPoolSize = 3;
     /** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */  
     private int queueCapacity = 1;
   
