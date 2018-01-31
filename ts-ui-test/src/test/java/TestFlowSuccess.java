@@ -36,7 +36,7 @@ public class TestFlowSuccess {
     public void testCancelTickets() throws Exception{
 
 
-        baseUrl = "http://10.141.212.22:15345/click/autoSuccess";
+        baseUrl = "http://10.141.212.22:15345/click/auto";
         driver.get(baseUrl);
 
         Thread.sleep(20000);

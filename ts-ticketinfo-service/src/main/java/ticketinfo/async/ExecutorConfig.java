@@ -15,7 +15,7 @@ public class ExecutorConfig {
     /** Set the ThreadPoolExecutor's maximum pool size. */ 
     private int maxPoolSize = 3;
     /** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */  
-    private int queueCapacity = 1;
+    private int queueCapacity = 10;
   
     @Bean  
     public Executor mySimpleAsync() {  

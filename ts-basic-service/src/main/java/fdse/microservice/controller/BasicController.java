@@ -20,7 +20,7 @@ public class BasicController {
     public ResultForTravel queryForTravel(@RequestBody QueryForTravel info){
         System.out.println("[Basic Info][Query For Travel] Sleep Begin");
         try{
-            Thread.sleep(30000);
+            Thread.sleep(4000);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -26,7 +26,7 @@ public class ClickController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(params = "/click/occupy", method = RequestMethod.GET)
+    @RequestMapping(path = "/click/occupy", method = RequestMethod.GET)
     public boolean occupy() throws Exception {
         //登录
         String email = "fdse_microservices@163.com";
@@ -43,8 +43,8 @@ public class ClickController {
         String loginToken = loginResult.getToken();
 
         //点2次确认车票，并等待结果
-        for(int i = 0;i < 3;i++){
-            Future<OrderTicketsResult> taskResult = asyncTask.sendOrderTicket(loginId,loginToken);
+        for(int i = 0;i < 6;i++){
+            Future<TravelAdvanceResult> taskResult = asyncTask.searchInAdvanceSearch(loginId,loginToken);
         }
         return true;
     }

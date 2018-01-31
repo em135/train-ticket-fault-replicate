@@ -30,7 +30,7 @@ public class TicketInfoServiceImpl implements TicketInfoService{
         try{
             return asyncTask.queryForTravel(info).get(8000, TimeUnit.MILLISECONDS);
         }catch(Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
 
