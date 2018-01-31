@@ -40,7 +40,6 @@ public class OrderOtherApplication {
     //                                       String a = orderOtherServiceImpl.fromId;
     //                                       String b = orderOtherServiceImpl.toId;
     //Use the following method to print the key in Zipkin
-/**
     @Bean
     public SpanAdjuster spanCollector() {
         return new SpanAdjuster() {
@@ -48,11 +47,14 @@ public class OrderOtherApplication {
             public Span adjust(Span span) {
                 return span.toBuilder()
                         .tag("controller_state",
-                                "<------------Your Key Here----------->")
+                                "Lock Station One:" + orderOtherServiceImpl.fromId
+                                        + " & Lock Station Two:"
+                                        + orderOtherServiceImpl.toId
+                                        + "      Thread-IN-Pool-Number:"
+                                        + AsyncTask.count)
                         //.name(span.getName() + "--------------------")
                         .build();
             }
         };
     }
- **/
 }
