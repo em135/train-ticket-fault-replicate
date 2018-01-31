@@ -32,22 +32,5 @@ public class OrderOtherApplication {
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
-
-    @Bean
-    public SpanAdjuster spanCollector() {
-        return new SpanAdjuster() {
-            @Override
-            public Span adjust(Span span) {
-                return span.toBuilder()
-                        .tag("controller_state",
-                                "Lock Station One:" + orderOtherServiceImpl.fromId
-                                        + " & Lock Station Two:"
-                                        + orderOtherServiceImpl.toId
-                                        + "      Thread-IN-Pool-Number:"
-                                        + AsyncTask.count)
-                        //.name(span.getName() + "--------------------")
-                        .build();
-            }
-        };
-    }
+    
 }
