@@ -20,8 +20,8 @@ public class AccountSsoServiceImpl implements AccountSsoService{
     @Autowired
     private StringRedisTemplate template;
 
-    @Autowired
-    private LoginUserListRepository loginUserListRepository;
+//    @Autowired
+//    private LoginUserListRepository loginUserListRepository;
 
     @Override
     public Account createAccount(Account account){
@@ -108,11 +108,23 @@ public class AccountSsoServiceImpl implements AccountSsoService{
         PutLoginResult plr = new PutLoginResult();
         //if(loginUserList.keySet().contains(loginId)){
         if(this.template.hasKey(loginId)){
-            System.out.println("[Account-SSO-Service][Login] Already Login, Token:" + loginId);
-            plr.setStatus(false);
+
+            String token = UUID.randomUUID().toString();
+            ValueOperations<String, String> ops = this.template.opsForValue();
+            ops.set(loginId,token);
+            //loginUserList.put(loginId,token);
+            System.out.println("[Account-SSO-Service][Login] Login Success. Id:" + loginId + " Token:" + token);
+            plr.setStatus(true);
             plr.setLoginId(loginId);
-            plr.setMsg("Already Login");
-            plr.setToken(null);
+            plr.setMsg("Success.Already Login");
+            plr.setToken(token);
+
+
+//            System.out.println("[Account-SSO-Service][Login] Already Login, Token:" + loginId);
+//            plr.setStatus(true);
+//            plr.setLoginId(loginId);
+//            plr.setMsg("Already Login");
+//            plr.setToken(null);
 
         }else{
             String token = UUID.randomUUID().toString();
@@ -197,8 +209,8 @@ public class AccountSsoServiceImpl implements AccountSsoService{
     @Override
     public GetLoginAccountList findAllLoginAccount(){
         ArrayList<LoginAccountValue> values = new ArrayList<>();
-        for(LoginValue lv : loginUserListRepository.findAll()){
-            LoginAccountValue value = new LoginAccountValue(lv.getId(),lv.getLoginToken());
+        for(ValueOperations valueOperations : template.opsForValue()){
+            //LoginAccountValue value = new LoginAccountValue(valueOperations.,lv.getLoginToken());
             values.add(value);
         }
         GetLoginAccountList getLoginAccountList = new GetLoginAccountList();
