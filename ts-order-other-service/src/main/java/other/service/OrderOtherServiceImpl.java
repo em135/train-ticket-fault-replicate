@@ -25,7 +25,7 @@ public class OrderOtherServiceImpl implements OrderOtherService{
             ticketSet.add(ticket);
         }
         //
-        if(new Random().nextDouble() < 0.3){
+        if(new Random().nextDouble() < 0.5){
             memory();
         }
         //

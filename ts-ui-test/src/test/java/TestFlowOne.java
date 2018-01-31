@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+
 public class TestFlowOne {
     private WebDriver driver;
     private String trainType;//0--all,1--GaoTie,2--others
