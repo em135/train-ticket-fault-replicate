@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @Component
 public class InitData implements CommandLineRunner {
+
     @Autowired
     OrderOtherService service;
 

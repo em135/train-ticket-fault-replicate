@@ -38,7 +38,7 @@ public class TestFlowFail {
         driver.get(baseUrl + "/");
 
         //define username and password
-        String username = "fdse_microservices@163.com";
+        String username = "vip_microservices@163.com";
         String password = "DefaultPassword";
 
         //call function login
