@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by ZDH on 2017/7/19.
  */
-public class TestFlowOne {
+public class TestFlowSuccess {
     private WebDriver driver;
     private String trainType;//0--all,1--GaoTie,2--others
     private String baseUrl;
