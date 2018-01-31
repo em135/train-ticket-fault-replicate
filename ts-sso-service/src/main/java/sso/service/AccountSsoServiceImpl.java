@@ -209,10 +209,15 @@ public class AccountSsoServiceImpl implements AccountSsoService{
     @Override
     public GetLoginAccountList findAllLoginAccount(){
         ArrayList<LoginAccountValue> values = new ArrayList<>();
-        for(ValueOperations valueOperations : template.opsForValue()){
-            //LoginAccountValue value = new LoginAccountValue(valueOperations.,lv.getLoginToken());
-            values.add(value);
+        ValueOperations<String, String> ops = this.template.opsForValue();
+
+        Set<String> keys = this.template.keys("*");
+        for(String key : keys){
+            String token = ops.get(key);
+            values.add(new LoginAccountValue(key,token));
         }
+
+
         GetLoginAccountList getLoginAccountList = new GetLoginAccountList();
         getLoginAccountList.setStatus(true);
         getLoginAccountList.setMessage("Success");

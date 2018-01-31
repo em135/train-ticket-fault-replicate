@@ -22,7 +22,7 @@ public class initData implements CommandLineRunner {
         acc.setDocumentNum("DefaultDocumentNumber");
         acc.setEmail("fdse_microservices@163.com");
         acc.setPassword("DefaultPassword");
-        acc.setName("Default User");
+        acc.setName("Normal_User");
         acc.setGender(Gender.MALE.getCode());
         acc.setId(UUID.fromString("4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f"));
         ssoService.createAccount(acc);
@@ -32,7 +32,7 @@ public class initData implements CommandLineRunner {
         acc.setDocumentNum("DefaultDocumentNumber");
         acc.setEmail("vip_microservices@163.com");
         acc.setPassword("DefaultPassword2");
-        acc.setName("VIP User");
+        acc.setName("VIP_User");
         acc.setGender(Gender.MALE.getCode());
         acc.setId(UUID.fromString("5e3b57c7-71cb-4cf1-b5bb-b68406d9da6f"));
         ssoService.createAccount(acc);
