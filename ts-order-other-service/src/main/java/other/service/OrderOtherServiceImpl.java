@@ -196,7 +196,40 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         System.out.println("[正在修改] " + order.getFrom() + " || " + order.getTo());
 
         if(checkSuspendOrder == false) {
-            throw new RuntimeException("[Error] The order is suspending by admin.");
+
+            try{
+                System.out.println("[抛出错误]");
+                throw new RuntimeException("[Error] The order is suspending by admin.");
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+
+                Order oldOrder = findOrderById(order.getId());
+                ChangeOrderResult cor = new ChangeOrderResult();
+
+                oldOrder.setAccountId(order.getAccountId());
+                oldOrder.setBoughtDate(order.getBoughtDate());
+                oldOrder.setTravelDate(order.getTravelDate());
+                oldOrder.setTravelTime(order.getTravelTime());
+                oldOrder.setCoachNumber(order.getCoachNumber());
+                oldOrder.setSeatClass(order.getSeatClass());
+                oldOrder.setSeatNumber(order.getSeatNumber());
+                oldOrder.setFrom(order.getFrom());
+                oldOrder.setTo(order.getTo());
+                oldOrder.setStatus(order.getStatus());
+                oldOrder.setTrainNumber(order.getTrainNumber());
+                oldOrder.setPrice(order.getPrice());
+                oldOrder.setContactsName(order.getContactsName());
+                oldOrder.setContactsDocumentNumber(order.getContactsDocumentNumber());
+                oldOrder.setDocumentType(order.getDocumentType());
+                orderOtherRepository.save(oldOrder);
+                System.out.println("[Order Other Service] Success.");
+                cor.setOrder(oldOrder);
+                cor.setStatus(true);
+                cor.setMessage("Success");
+                return cor;
+            }
+
         }else {
             Order oldOrder = findOrderById(order.getId());
             ChangeOrderResult cor = new ChangeOrderResult();
