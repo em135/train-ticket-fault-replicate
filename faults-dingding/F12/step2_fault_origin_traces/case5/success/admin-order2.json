@@ -1,0 +1,187 @@
+[
+  {
+    "traceId": "f850b9346748199d",
+    "id": "f850b9346748199d",
+    "name": "http:/adminorder/suspendorder/xuzhou/beijing",
+    "timestamp": 1517391612930000,
+    "duration": 16673,
+    "annotations": [
+      {
+        "timestamp": 1517391612930000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "timestamp": 1517391612946673,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "AdminOrderController",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "suspendOder",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e5016cedd723:ts-admin-order-service:16112",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "f850b9346748199d",
+    "id": "063b2559e2457f1a",
+    "name": "http:/orderother/suspend/xuzhou/beijing",
+    "parentId": "f850b9346748199d",
+    "timestamp": 1517391612934000,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1517391612934000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "timestamp": 1517391612937000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.38",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1517391612940000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.38",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1517391612943000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "AsyncTask.count:0  fromId: xuzhou  toId: beijing",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.38",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/suspend/xuzhou/beijing",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/suspend/xuzhou/beijing",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.38",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "setSuspendStation",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.38",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e5016cedd723:ts-admin-order-service:16112",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.34",
+          "port": 16112
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "b5a6a28deab0:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.38",
+          "port": 12032
+        }
+      }
+    ]
+  }
+]
