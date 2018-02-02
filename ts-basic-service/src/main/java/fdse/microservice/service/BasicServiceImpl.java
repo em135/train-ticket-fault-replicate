@@ -82,9 +82,9 @@ public class BasicServiceImpl implements BasicService{
 //        );
 
         //
-        if(new Random().nextDouble() < 0.3){
-            memory();
-        }
+//        if(new Random().nextDouble() < 0.3){
+//            memory();
+//        }
         //
 
 

@@ -1,6 +1,5 @@
 package cancel.service;
 
-import cancel.async.AsyncTask;
 import cancel.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +13,6 @@ public class CancelServiceImpl implements CancelService{
 
     @Autowired
     private RestTemplate restTemplate;
-
-    @Autowired
-    private AsyncTask asyncTask;
 
     @Override
     public CancelOrderResult cancelOrder(CancelOrderInfo info,String loginToken,String loginId) throws Exception{
