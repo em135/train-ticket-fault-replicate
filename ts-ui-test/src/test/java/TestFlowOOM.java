@@ -1,18 +1,24 @@
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
-public class TestFlowOne {
+/**
+ * 0.5的概率OOM
+ */
+public class TestFlowOOM {
     private WebDriver driver;
     private String trainType;//0--all,1--GaoTie,2--others
     private String baseUrl;
@@ -40,7 +46,7 @@ public class TestFlowOne {
         System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "http://10.141.212.22/";
-        trainType = "1";//all
+        trainType = "2";//all
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -125,82 +131,82 @@ public class TestFlowOne {
             System.out.println("Tickets search failed!!!");
         Assert.assertEquals(ticketsList.size() > 0,true);
     }
-   // @Test(enabled = false)
-    @Test (dependsOnMethods = {"testBooking"})
-    public void testSelectContacts()throws Exception{
-        List<WebElement> contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
-        //Confirm ticket selection
-        if (contactsList.size() == 0) {
-            driver.findElement(By.id("refresh_booking_contacts_button")).click();
-            Thread.sleep(1000);
-            contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
-        }
-        if(contactsList.size() == 0)
-            System.out.println("Show Contacts failed!");
-        Assert.assertEquals(contactsList.size() > 0,true);
-
-        if (contactsList.size() == 1){
-            String contactName = getRandomString(5);
-            String documentType = "1";//ID Card
-            String idNumber = getRandomString(8);
-            String phoneNumber = getRandomString(11);
-            contactsList.get(0).findElement(By.xpath("td[2]/input")).sendKeys(contactName);
-
-            WebElement elementContactstype = contactsList.get(0).findElement(By.xpath("td[3]/select"));
-            Select selTraintype = new Select(elementContactstype);
-            selTraintype.selectByValue(documentType); //ID type
-
-            contactsList.get(0).findElement(By.xpath("td[4]/input")).sendKeys(idNumber);
-            contactsList.get(0).findElement(By.xpath("td[5]/input")).sendKeys(phoneNumber);
-            contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();
-        }
-
-        if (contactsList.size() > 1) {
-            Random rand = new Random();
-            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
-            contactsList.get(i).findElement(By.xpath("td[7]/label/input")).click();
-        }
-        driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
-        System.out.println("Ticket contacts selected btn is clicked");
-        Thread.sleep(1000);
-    }
-
-    @Test (dependsOnMethods = {"testBooking"})
-    public void testTicketConfirm ()throws Exception{
-        String itemFrom = driver.findElement(By.id("ticket_confirm_from")).getText();
-        String itemTo = driver.findElement(By.id("ticket_confirm_to")).getText();
-        String itemTripId = driver.findElement(By.id("ticket_confirm_tripId")).getText();
-        String itemPrice = driver.findElement(By.id("ticket_confirm_price")).getText();
-        String itemDate = driver.findElement(By.id("ticket_confirm_travel_date")).getText();
-        String itemName = driver.findElement(By.id("ticket_confirm_contactsName")).getText();
-        String itemSeatType = driver.findElement(By.id("ticket_confirm_seatType_String")).getText();
-        String itemDocumentType = driver.findElement(By.id("ticket_confirm_documentType")).getText();
-        String itemDocumentNum = driver.findElement(By.id("ticket_confirm_documentNumber")).getText();
-        boolean bFrom = !"".equals(itemFrom);
-        boolean bTo = !"".equals(itemTo);
-        boolean bTripId = !"".equals(itemTripId);
-        boolean bPrice = !"".equals(itemPrice);
-        boolean bDate = !"".equals(itemDate);
-        boolean bName = !"".equals(itemName);
-        boolean bSeatType = !"".equals(itemSeatType);
-        boolean bDocumentType = !"".equals(itemDocumentType);
-        boolean bDocumentNum = !"".equals(itemDocumentNum);
-        boolean bStatusConfirm = bFrom && bTo && bTripId && bPrice && bDate && bName && bSeatType && bDocumentType && bDocumentNum;
-        if(bStatusConfirm == false){
-            driver.findElement(By.id("ticket_confirm_cancel_btn")).click();
-            System.out.println("Confirming Ticket Canceled!");
-        }
-        Assert.assertEquals(bStatusConfirm,true);
-
-        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(1000);
-        System.out.println("Confirm Ticket!");
-        Alert javascriptConfirm = driver.switchTo().alert();
-        String statusAlert = driver.switchTo().alert().getText();
-        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
-        Assert.assertEquals(statusAlert.startsWith("Success"),true);
-        javascriptConfirm.accept();
-    }
+    // @Test(enabled = false)
+//    @Test (dependsOnMethods = {"testBooking"})
+//    public void testSelectContacts()throws Exception{
+//        List<WebElement> contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
+//        //Confirm ticket selection
+//        if (contactsList.size() == 0) {
+//            driver.findElement(By.id("refresh_booking_contacts_button")).click();
+//            Thread.sleep(1000);
+//            contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
+//        }
+//        if(contactsList.size() == 0)
+//            System.out.println("Show Contacts failed!");
+//        Assert.assertEquals(contactsList.size() > 0,true);
+//
+//        if (contactsList.size() == 1){
+//            String contactName = getRandomString(5);
+//            String documentType = "1";//ID Card
+//            String idNumber = getRandomString(8);
+//            String phoneNumber = getRandomString(11);
+//            contactsList.get(0).findElement(By.xpath("td[2]/input")).sendKeys(contactName);
+//
+//            WebElement elementContactstype = contactsList.get(0).findElement(By.xpath("td[3]/select"));
+//            Select selTraintype = new Select(elementContactstype);
+//            selTraintype.selectByValue(documentType); //ID type
+//
+//            contactsList.get(0).findElement(By.xpath("td[4]/input")).sendKeys(idNumber);
+//            contactsList.get(0).findElement(By.xpath("td[5]/input")).sendKeys(phoneNumber);
+//            contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();
+//        }
+//
+//        if (contactsList.size() > 1) {
+//            Random rand = new Random();
+//            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
+//            contactsList.get(i).findElement(By.xpath("td[7]/label/input")).click();
+//        }
+//        driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
+//        System.out.println("Ticket contacts selected btn is clicked");
+//        Thread.sleep(1000);
+//    }
+//
+//    @Test (dependsOnMethods = {"testBooking"})
+//    public void testTicketConfirm ()throws Exception{
+//        String itemFrom = driver.findElement(By.id("ticket_confirm_from")).getText();
+//        String itemTo = driver.findElement(By.id("ticket_confirm_to")).getText();
+//        String itemTripId = driver.findElement(By.id("ticket_confirm_tripId")).getText();
+//        String itemPrice = driver.findElement(By.id("ticket_confirm_price")).getText();
+//        String itemDate = driver.findElement(By.id("ticket_confirm_travel_date")).getText();
+//        String itemName = driver.findElement(By.id("ticket_confirm_contactsName")).getText();
+//        String itemSeatType = driver.findElement(By.id("ticket_confirm_seatType_String")).getText();
+//        String itemDocumentType = driver.findElement(By.id("ticket_confirm_documentType")).getText();
+//        String itemDocumentNum = driver.findElement(By.id("ticket_confirm_documentNumber")).getText();
+//        boolean bFrom = !"".equals(itemFrom);
+//        boolean bTo = !"".equals(itemTo);
+//        boolean bTripId = !"".equals(itemTripId);
+//        boolean bPrice = !"".equals(itemPrice);
+//        boolean bDate = !"".equals(itemDate);
+//        boolean bName = !"".equals(itemName);
+//        boolean bSeatType = !"".equals(itemSeatType);
+//        boolean bDocumentType = !"".equals(itemDocumentType);
+//        boolean bDocumentNum = !"".equals(itemDocumentNum);
+//        boolean bStatusConfirm = bFrom && bTo && bTripId && bPrice && bDate && bName && bSeatType && bDocumentType && bDocumentNum;
+//        if(bStatusConfirm == false){
+//            driver.findElement(By.id("ticket_confirm_cancel_btn")).click();
+//            System.out.println("Confirming Ticket Canceled!");
+//        }
+//        Assert.assertEquals(bStatusConfirm,true);
+//
+//        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
+//        Thread.sleep(1000);
+//        System.out.println("Confirm Ticket!");
+//        Alert javascriptConfirm = driver.switchTo().alert();
+//        String statusAlert = driver.switchTo().alert().getText();
+//        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
+//        Assert.assertEquals(statusAlert.startsWith("Success"),true);
+//        javascriptConfirm.accept();
+//    }
     @AfterClass
     public void tearDown() throws Exception {
         driver.quit();
