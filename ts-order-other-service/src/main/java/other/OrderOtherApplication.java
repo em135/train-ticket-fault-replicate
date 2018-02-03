@@ -12,7 +12,6 @@ import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.client.RestTemplate;
 import other.async.AsyncTask;
-import other.async.Count;
 import other.service.OrderOtherServiceImpl;
 
 @SpringBootApplication
@@ -47,11 +46,10 @@ public class OrderOtherApplication {
             public Span adjust(Span span) {
                 return span.toBuilder()
                         .tag("controller_state",
-                                "Lock Station One:" + orderOtherServiceImpl.fromId
-                                        + " & Lock Station Two:"
-                                        + orderOtherServiceImpl.toId
-                                        + "      Thread-IN-Pool-Number:"
-                                        + AsyncTask.count)
+                                "(" + orderOtherServiceImpl.fromId
+                                        + " / "
+                                        + AsyncTask.count
+                                        + ")")
                         //.name(span.getName() + "--------------------")
                         .build();
             }
