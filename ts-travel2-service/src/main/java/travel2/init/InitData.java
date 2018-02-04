@@ -24,7 +24,7 @@ public class InitData implements CommandLineRunner {
         info.setRouteId("0b23bd3e-876a-4af3-b920-c50a90c90b04");
         info.setStartingStationId("shanghai");
         info.setStationsId("nanjing");
-        info.setTerminalStationId("beijing");
+        info.setTerminalStationId("nanjing");
         info.setStartingTime(new Date("Mon May 04 09:51:52 GMT+0800 2013"));
         info.setEndTime(new Date("Mon May 04 15:51:52 GMT+0800 2013"));
         service.create(info);
