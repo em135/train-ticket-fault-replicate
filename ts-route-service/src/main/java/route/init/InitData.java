@@ -17,9 +17,9 @@ public class InitData implements CommandLineRunner {
         CreateAndModifyRouteInfo info = new CreateAndModifyRouteInfo();
         info.setId("0b23bd3e-876a-4af3-b920-c50a90c90b04");
         info.setStartStation("shanghai");
-        info.setEndStation("taiyuan");
-        info.setStationList("shanghai,nanjing,shijiazhuang,taiyuan");
-        info.setDistanceList("0,350,1000,1300");
+        info.setEndStation("nanjing");
+        info.setStationList("shanghai,nanjing");
+        info.setDistanceList("0,350");
         routeService.createAndModify(info);
 
         info.setId("9fc9c261-3263-4bfa-82f8-bb44e06b2f52");
@@ -85,6 +85,8 @@ public class InitData implements CommandLineRunner {
         info.setStationList("shanghai,suzhou");
         info.setDistanceList("0,50");
         routeService.createAndModify(info);
+
+
 
     }
 
