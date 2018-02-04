@@ -85,7 +85,7 @@ public class TestFlowOOM {
         //locate booking terminalPlace input
         WebElement elementBookingTerminalPlace = driver.findElement(By.id("travel_booking_terminalPlace"));
         elementBookingTerminalPlace.clear();
-        elementBookingTerminalPlace.sendKeys("Su Zhou");
+        elementBookingTerminalPlace.sendKeys("Nan Jing");
 
         //locate booking Date input
         String bookDate = "";
