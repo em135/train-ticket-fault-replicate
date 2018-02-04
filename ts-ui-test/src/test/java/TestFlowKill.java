@@ -104,28 +104,28 @@ public class TestFlowKill {
         //locate Train search button
         WebElement elementBookingSearchBtn = driver.findElement(By.id("travel_booking_button"));
         elementBookingSearchBtn.click();
-        Thread.sleep(1000);
+        Thread.sleep(10000);
 
-        List<WebElement> ticketsList = driver.findElements(By.xpath("//table[@id='tickets_booking_list_table']/tbody/tr"));
-        //Confirm ticket selection
-        if (ticketsList.size() == 0) {
-            elementBookingSearchBtn.click();
-            ticketsList = driver.findElements(By.xpath("//table[@id='tickets_booking_list_table']/tbody/tr"));
-        }
-        if(ticketsList.size() > 0) {
-            //Pick up a train at random and book tickets
-            System.out.printf("Success to search tickets，the tickets list size is:%d%n",ticketsList.size());
-            Random rand = new Random();
-            int i = rand.nextInt(1000) % ticketsList.size(); //int范围类的随机数
-            WebElement elementBookingSeat = ticketsList.get(i).findElement(By.xpath("td[10]/select"));
-            Select selSeat = new Select(elementBookingSeat);
-            selSeat.selectByValue("3"); //2st
-            ticketsList.get(i).findElement(By.xpath("td[13]/button")).click();
-            Thread.sleep(1000);
-        }
-        else
-            System.out.println("Tickets search failed!!!");
-        Assert.assertEquals(ticketsList.size() > 0,true);
+//        List<WebElement> ticketsList = driver.findElements(By.xpath("//table[@id='tickets_booking_list_table']/tbody/tr"));
+//        //Confirm ticket selection
+//        if (ticketsList.size() == 0) {
+//            elementBookingSearchBtn.click();
+//            ticketsList = driver.findElements(By.xpath("//table[@id='tickets_booking_list_table']/tbody/tr"));
+//        }
+//        if(ticketsList.size() > 0) {
+//            //Pick up a train at random and book tickets
+//            System.out.printf("Success to search tickets，the tickets list size is:%d%n",ticketsList.size());
+//            Random rand = new Random();
+//            int i = rand.nextInt(1000) % ticketsList.size(); //int范围类的随机数
+//            WebElement elementBookingSeat = ticketsList.get(i).findElement(By.xpath("td[10]/select"));
+//            Select selSeat = new Select(elementBookingSeat);
+//            selSeat.selectByValue("3"); //2st
+//            ticketsList.get(i).findElement(By.xpath("td[13]/button")).click();
+//            Thread.sleep(1000);
+//        }
+//        else
+//            System.out.println("Tickets search failed!!!");
+//        Assert.assertEquals(ticketsList.size() > 0,true);
     }
    // @Test(enabled = false)
 //    @Test (dependsOnMethods = {"testBooking"})

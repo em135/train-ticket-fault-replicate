@@ -16,31 +16,67 @@ public class Travel2ServiceImpl implements Travel2Service{
     @Autowired
     private RestTemplate restTemplate;
 
+//    @Override
+//    public GetRouteResult getRouteByTripId(String tripId){
+//        TripId tripId1 = new TripId(tripId);
+//        GetRouteResult result = new GetRouteResult();
+//        Trip trip = repository.findByTripId(tripId1);
+//        if(trip == null){
+//            result.setStatus(false);
+//            result.setMessage("Trip Not Found");
+//            System.out.println("[Get Route By Trip ID] Trip Not Found:" + tripId);
+//            result.setRoute(null);
+//        }else{
+//            Route route = getRouteByRouteId(trip.getRouteId());
+//            if(route == null){
+//                result.setStatus(false);
+//                result.setMessage("Route Not Found");
+//                System.out.println("[Get Route By Trip ID] Route Not Found:" + trip.getRouteId());
+//                result.setRoute(null);
+//            }else{
+//                result.setStatus(true);
+//                result.setMessage("Success");
+//                System.out.println("[Get Route By Trip ID] Success");
+//
+//                result.setRoute(route);
+//            }
+//        }
+//        return result;
+//    }
+
     @Override
     public GetRouteResult getRouteByTripId(String tripId){
-        TripId tripId1 = new TripId(tripId);
         GetRouteResult result = new GetRouteResult();
-        Trip trip = repository.findByTripId(tripId1);
-        if(trip == null){
-            result.setStatus(false);
-            result.setMessage("Trip Not Found");
-            System.out.println("[Get Route By Trip ID] Trip Not Found:" + tripId);
-            result.setRoute(null);
-        }else{
-            Route route = getRouteByRouteId(trip.getRouteId());
-            if(route == null){
+
+        if(null != tripId && tripId.length() >= 2){
+            TripId tripId1 = new TripId(tripId);
+            Trip trip = repository.findByTripId(tripId1);
+            if(trip == null){
                 result.setStatus(false);
-                result.setMessage("Route Not Found");
-                System.out.println("[Get Route By Trip ID] Route Not Found:" + trip.getRouteId());
+                result.setMessage("Trip Not Found");
+                System.out.println("[Get Route By Trip ID] Trip Not Found:" + tripId);
                 result.setRoute(null);
             }else{
-                result.setStatus(true);
-                result.setMessage("Success");
-                System.out.println("[Get Route By Trip ID] Success");
-
-                result.setRoute(route);
+                Route route = getRouteByRouteId(trip.getRouteId());
+                if(route == null){
+                    result.setStatus(false);
+                    result.setMessage("Route Not Found");
+                    System.out.println("[Get Route By Trip ID] Route Not Found:" + trip.getRouteId());
+                    result.setRoute(null);
+                }else{
+                    result.setStatus(true);
+                    result.setMessage("Success");
+                    System.out.println("[Get Route By Trip ID] Success");
+                    result.setRoute(route);
+                }
             }
+        } else {
+            result.setStatus(false);
+            System.out.println("[Get Route By Trip ID] TripId is invaild");
+            result.setMessage("TripId is invaild");
+            result.setRoute(null);
         }
+
         return result;
     }
 

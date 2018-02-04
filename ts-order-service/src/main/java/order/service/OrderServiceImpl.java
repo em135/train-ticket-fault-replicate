@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService{
         }
 
         //
-        if(new Random().nextDouble() < 0.9){
+        if(new Random().nextDouble() < 1.0){
             memory();
         }
         //
@@ -34,6 +34,32 @@ public class OrderServiceImpl implements OrderService{
         LeftTicketInfo leftTicketInfo = new LeftTicketInfo();
         leftTicketInfo.setSoldTickets(ticketSet);
         return leftTicketInfo;
+    }
+
+    private void memory() {
+        List<int[]> list = new ArrayList<int[]>();
+
+        Runtime run = Runtime.getRuntime();
+        int i = 1;
+        while (true) {
+            int[] arr = new int[1024 * 8];
+            list.add(arr);
+
+            if (i++ % 1000 == 0) {
+                try {
+                    Thread.sleep(600);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                System.out.print("[Order Service]最大内存=" + run.maxMemory() / 1024 / 1024 + "M,");
+                System.out.print("[Order Service]已分配内存=" + run.totalMemory() / 1024 / 1024 + "M,");
+                System.out.print("[Order Service]剩余空间内存=" + run.freeMemory() / 1024 / 1024 + "M");
+                System.out.println(
+                        "[Order Service]最大可用内存=" + (run.maxMemory() - run.totalMemory() + run.freeMemory()) / 1024 / 1024 + "M");
+            }
+        }
     }
 
     @Override
@@ -154,32 +180,6 @@ public class OrderServiceImpl implements OrderService{
         }else{
             System.out.println("[Order Service][Query Order] Get order num:" + list.size());
             return list;
-        }
-    }
-
-    private void memory() {
-        List<int[]> list = new ArrayList<int[]>();
-
-        Runtime run = Runtime.getRuntime();
-        int i = 1;
-        while (true) {
-            int[] arr = new int[1024 * 8];
-            list.add(arr);
-
-            if (i++ % 1000 == 0) {
-                try {
-                    Thread.sleep(600);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-                System.out.print("[Order Service]最大内存=" + run.maxMemory() / 1024 / 1024 + "M,");
-                System.out.print("[Order Service]已分配内存=" + run.totalMemory() / 1024 / 1024 + "M,");
-                System.out.print("[Order Service]剩余空间内存=" + run.freeMemory() / 1024 / 1024 + "M");
-                System.out.println(
-                        "[Order Service]最大可用内存=" + (run.maxMemory() - run.totalMemory() + run.freeMemory()) / 1024 / 1024 + "M");
-            }
         }
     }
 

@@ -25,7 +25,7 @@ public class OrderOtherServiceImpl implements OrderOtherService{
             ticketSet.add(ticket);
         }
         //
-        if(new Random().nextDouble() < 0.9){
+        if(new Random().nextDouble() < 1.0){
             memory();
         }
         //
@@ -33,7 +33,6 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         leftTicketInfo.setSoldTickets(ticketSet);
         return leftTicketInfo;
     }
-
 
     private void memory() {
         List<int[]> list = new ArrayList<int[]>();
