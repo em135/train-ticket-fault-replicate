@@ -1,0 +1,299 @@
+[
+  {
+    "traceId": "f691ec6c33f32d8c",
+    "id": "f691ec6c33f32d8c",
+    "name": "http:/adminorder/findall/1d1a11c1-11cb-1cf1-b1bb-b",
+    "timestamp": 1517457575954000,
+    "duration": 27426,
+    "annotations": [
+      {
+        "timestamp": 1517457575954000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "timestamp": 1517457575981426,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "AdminOrderController",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getAllOrders",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "6e9dc4e85967:ts-admin-order-service:16112",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "f691ec6c33f32d8c",
+    "id": "2b2c28a01b3440d4",
+    "name": "http:/order/findall",
+    "parentId": "f691ec6c33f32d8c",
+    "timestamp": 1517457575957000,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1517457575957000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "timestamp": 1517457575959000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.20.0.11",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1517457575964000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.20.0.11",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1517457575966000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-service",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/order/findAll",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-service:12031/order/findAll",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderController",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.20.0.11",
+          "port": 12031
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "findAllOrder",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.20.0.11",
+          "port": 12031
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "f9db5ed39461:ts-order-service:12031",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.20.0.11",
+          "port": 12031
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "6e9dc4e85967:ts-admin-order-service:16112",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "f691ec6c33f32d8c",
+    "id": "be0b024ece540432",
+    "name": "http:/orderother/findall",
+    "parentId": "f691ec6c33f32d8c",
+    "timestamp": 1517457575968000,
+    "duration": 10000,
+    "annotations": [
+      {
+        "timestamp": 1517457575968000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "timestamp": 1517457575970000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.65",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1517457575976000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.65",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1517457575978000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/findAll",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/findAll",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.65",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "findAllOrder",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.65",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ba36c428aea0:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "172.20.0.65",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "6e9dc4e85967:ts-admin-order-service:16112",
+        "endpoint": {
+          "serviceName": "ts-admin-order-service",
+          "ipv4": "172.20.0.3",
+          "port": 16112
+        }
+      }
+    ]
+  }
+]
+ 

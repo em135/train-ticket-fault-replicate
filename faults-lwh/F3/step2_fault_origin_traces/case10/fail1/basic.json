@@ -1,0 +1,4028 @@
+[
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "38f7b83fdea26542",
+    "name": "http:/travel/query",
+    "timestamp": 1517815198755000,
+    "duration": 264586343,
+    "annotations": [
+      {
+        "timestamp": 1517815198755000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815463341343,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "error",
+        "value": "Request processing failed; nested exception is org.springframework.web.client.HttpServerErrorException: 500 null",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.status_code",
+        "value": "500",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TravelController",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicErrorController",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "query",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "error",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "70370c7038c99ec0",
+    "name": "http:/ticketinfo/queryforstationid",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815198760000,
+    "duration": 26000,
+    "annotations": [
+      {
+        "timestamp": 1517815198760000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815198762500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198783500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198786000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-ticketinfo-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-ticketinfo-service:15681/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TicketInfoController",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "f5d9fce1a9f5934c",
+    "name": "http:/ticketinfo/queryforstationid",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815198789000,
+    "duration": 26000,
+    "annotations": [
+      {
+        "timestamp": 1517815198789000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815198791000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198813000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198815000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-ticketinfo-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-ticketinfo-service:15681/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TicketInfoController",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "c87a6c832afae673",
+    "name": "http:/route/querybyid/f3d4d4ef-693b-4456-8eed-59c0",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815198820000,
+    "duration": 12000,
+    "annotations": [
+      {
+        "timestamp": 1517815198820000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815198823000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "timestamp": 1517815198829000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "timestamp": 1517815198832000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-route-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/route/queryById/f3d4d4ef-693b-4456-8eed-59c0d717dd08",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-route-service:11178/route/queryById/f3d4d4ef-693b-4456-8eed-59c0d717dd08",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "RouteController",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryById",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "9c149d54e35a:ts-route-service:11178",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "b99e9e06b53c6785",
+    "name": "http:/ticketinfo/queryfortravel",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815198834000,
+    "duration": 107000,
+    "annotations": [
+      {
+        "timestamp": 1517815198834000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815198836500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198938500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198941000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-ticketinfo-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/ticketinfo/queryForTravel",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-ticketinfo-service:15681/ticketinfo/queryForTravel",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TicketInfoController",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForTravel",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "674f6d552555e94d",
+    "name": "http:/order/calculate",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815198944000,
+    "duration": 52403000,
+    "annotations": [
+      {
+        "timestamp": 1517815198944000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815220266500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.43",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1517815230024500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.43",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1517815251347000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/order/calculate",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-service:12031/order/calculate",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderController",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.43",
+          "port": 12031
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "calculateSoldTicket",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.43",
+          "port": 12031
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "f76bbb48e8dc:ts-order-service:12031",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "172.18.0.43",
+          "port": 12031
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "450ffc16ef87f83c",
+    "name": "http:/ticketinfo/queryforstationid",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815251349000,
+    "duration": 30000,
+    "annotations": [
+      {
+        "timestamp": 1517815251349000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251352500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251375500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251379000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-ticketinfo-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-ticketinfo-service:15681/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TicketInfoController",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "c5ad342014cf609c",
+    "name": "http:/ticketinfo/queryforstationid",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815251381000,
+    "duration": 30000,
+    "annotations": [
+      {
+        "timestamp": 1517815251381000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251383500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251408500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251411000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-ticketinfo-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-ticketinfo-service:15681/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TicketInfoController",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "8e4e26883774e578",
+    "name": "http:/ticketinfo/queryforstationid",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815251413000,
+    "duration": 24000,
+    "annotations": [
+      {
+        "timestamp": 1517815251413000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251414500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251435500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251437000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-ticketinfo-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-ticketinfo-service:15681/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TicketInfoController",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "d71e2ca617b0aa5c",
+    "name": "http:/ticketinfo/queryforstationid",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815251439000,
+    "duration": 23000,
+    "annotations": [
+      {
+        "timestamp": 1517815251439000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251440500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251460500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251462000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-ticketinfo-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-ticketinfo-service:15681/ticketinfo/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TicketInfoController",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "69fa585db63df528",
+    "name": "http:/seat/getleftticketofinterval",
+    "parentId": "38f7b83fdea26542",
+    "timestamp": 1517815251464000,
+    "duration": 211875000,
+    "annotations": [
+      {
+        "timestamp": 1517815251464000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251473500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "timestamp": 1517815463329500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "timestamp": 1517815463339000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "error",
+        "value": "Request processing failed; nested exception is org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://ts-order-service:12031/order/getTicketListByDateAndTripId\": Unexpected end of file from server; nested exception is java.net.SocketException: Unexpected end of file from server",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-seat-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/seat/getLeftTicketOfInterval",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.status_code",
+        "value": "500",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-seat-service:18898/seat/getLeftTicketOfInterval",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "SeatController",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getLeftTicketOfInterval",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "5e64ce4f2278:ts-seat-service:18898",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "01be9eaec03758a9",
+    "name": "http:/basic/queryforstationid",
+    "parentId": "70370c7038c99ec0",
+    "timestamp": 1517815198764500,
+    "duration": 17000,
+    "annotations": [
+      {
+        "timestamp": 1517815198764500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198766500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198779500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198781500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-basic-service",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-basic-service:15680/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicController",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "c91473006d62459c",
+    "name": "http:/basic/queryforstationid",
+    "parentId": "f5d9fce1a9f5934c",
+    "timestamp": 1517815198793000,
+    "duration": 18000,
+    "annotations": [
+      {
+        "timestamp": 1517815198793000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198795000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198809000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198811000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-basic-service",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-basic-service:15680/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicController",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "03dc47b2a37e0f9e",
+    "name": "http:/basic/queryfortravel",
+    "parentId": "b99e9e06b53c6785",
+    "timestamp": 1517815198838500,
+    "duration": 98000,
+    "annotations": [
+      {
+        "timestamp": 1517815198838500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815198842000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198933000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198936500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-basic-service",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/basic/queryForTravel",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-basic-service:15680/basic/queryForTravel",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicController",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForTravel",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "17d5488f95ca45d7",
+    "name": "http:/basic/queryforstationid",
+    "parentId": "450ffc16ef87f83c",
+    "timestamp": 1517815251354500,
+    "duration": 19000,
+    "annotations": [
+      {
+        "timestamp": 1517815251354500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251357000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251371000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251373500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-basic-service",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-basic-service:15680/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicController",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "4b2197b03406e801",
+    "name": "http:/basic/queryforstationid",
+    "parentId": "c5ad342014cf609c",
+    "timestamp": 1517815251385500,
+    "duration": 21000,
+    "annotations": [
+      {
+        "timestamp": 1517815251385500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251388500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251403500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251406500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-basic-service",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-basic-service:15680/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicController",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "a5df267dc71f41b4",
+    "name": "http:/basic/queryforstationid",
+    "parentId": "8e4e26883774e578",
+    "timestamp": 1517815251417500,
+    "duration": 16000,
+    "annotations": [
+      {
+        "timestamp": 1517815251417500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251419500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251431500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251433500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-basic-service",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-basic-service:15680/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicController",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "718e9393745aff87",
+    "name": "http:/basic/queryforstationid",
+    "parentId": "d71e2ca617b0aa5c",
+    "timestamp": 1517815251443500,
+    "duration": 15000,
+    "annotations": [
+      {
+        "timestamp": 1517815251443500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "timestamp": 1517815251445000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251457000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251458500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-basic-service",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-basic-service:15680/basic/queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "BasicController",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForStationId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "51697f66d192:ts-ticketinfo-service:15681",
+        "endpoint": {
+          "serviceName": "ts-ticketinfo-service",
+          "ipv4": "172.18.0.46",
+          "port": 15681
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "bf9543b2c496d4de",
+    "name": "http:/travel/getroutebytripid/d1345",
+    "parentId": "69fa585db63df528",
+    "timestamp": 1517815251478500,
+    "duration": 27000,
+    "annotations": [
+      {
+        "timestamp": 1517815251478500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "timestamp": 1517815251482000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251502000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251505500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-travel-service",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/travel/getRouteByTripId/D1345",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-travel-service:12346/travel/getRouteByTripId/D1345",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TravelController",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getRouteByTripId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "5e64ce4f2278:ts-seat-service:18898",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "700f37045f5248ce",
+    "name": "http:/order/getticketlistbydateandtripid",
+    "parentId": "69fa585db63df528",
+    "timestamp": 1517815251508500,
+    "duration": 211818000,
+    "annotations": [
+      {
+        "timestamp": 1517815251508500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "timestamp": 1517815463326500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-service",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/order/getTicketListByDateAndTripId",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-service:12031/order/getTicketListByDateAndTripId",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "5e64ce4f2278:ts-seat-service:18898",
+        "endpoint": {
+          "serviceName": "ts-seat-service",
+          "ipv4": "172.18.0.32",
+          "port": 18898
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "de1b6d1338ab0758",
+    "name": "http:/station/queryforid",
+    "parentId": "01be9eaec03758a9",
+    "timestamp": 1517815198768500,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1517815198768500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198771000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198775000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198777500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "9b1da0a844b097b1",
+    "name": "http:/station/queryforid",
+    "parentId": "c91473006d62459c",
+    "timestamp": 1517815198798000,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1517815198798000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198800500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198804500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198807000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "05ec793814c29e09",
+    "name": "http:/station/exist",
+    "parentId": "03dc47b2a37e0f9e",
+    "timestamp": 1517815198845000,
+    "duration": 10000,
+    "annotations": [
+      {
+        "timestamp": 1517815198845000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198847500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198852500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198855000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/exist",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/exist",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "exist",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "3362c572518e20f8",
+    "name": "http:/station/exist",
+    "parentId": "03dc47b2a37e0f9e",
+    "timestamp": 1517815198856000,
+    "duration": 10000,
+    "annotations": [
+      {
+        "timestamp": 1517815198856000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198858500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198863500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198866000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/exist",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/exist",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "exist",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "4dad5f2210403bee",
+    "name": "http:/train/retrieve",
+    "parentId": "03dc47b2a37e0f9e",
+    "timestamp": 1517815198867000,
+    "duration": 16000,
+    "annotations": [
+      {
+        "timestamp": 1517815198867000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198869500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-train-service",
+          "ipv4": "172.18.0.40",
+          "port": 14567
+        }
+      },
+      {
+        "timestamp": 1517815198880500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-train-service",
+          "ipv4": "172.18.0.40",
+          "port": 14567
+        }
+      },
+      {
+        "timestamp": 1517815198883000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-train-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/train/retrieve",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-train-service:14567/train/retrieve",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TrainController",
+        "endpoint": {
+          "serviceName": "ts-train-service",
+          "ipv4": "172.18.0.40",
+          "port": 14567
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "retrieve",
+        "endpoint": {
+          "serviceName": "ts-train-service",
+          "ipv4": "172.18.0.40",
+          "port": 14567
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "bea69c5d00b0:ts-train-service:14567",
+        "endpoint": {
+          "serviceName": "ts-train-service",
+          "ipv4": "172.18.0.40",
+          "port": 14567
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "a6fa26d204a485d2",
+    "name": "http:/route/querybyid/f3d4d4ef-693b-4456-8eed-59c0",
+    "parentId": "03dc47b2a37e0f9e",
+    "timestamp": 1517815198885000,
+    "duration": 10000,
+    "annotations": [
+      {
+        "timestamp": 1517815198885000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198887500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "timestamp": 1517815198892500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "timestamp": 1517815198895000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-route-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/route/queryById/f3d4d4ef-693b-4456-8eed-59c0d717dd08",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-route-service:11178/route/queryById/f3d4d4ef-693b-4456-8eed-59c0d717dd08",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "RouteController",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryById",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "9c149d54e35a:ts-route-service:11178",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "ebbdec45dadb4579",
+    "name": "http:/price/query",
+    "parentId": "03dc47b2a37e0f9e",
+    "timestamp": 1517815198897000,
+    "duration": 14000,
+    "annotations": [
+      {
+        "timestamp": 1517815198897000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198899000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-price-service",
+          "ipv4": "172.18.0.10",
+          "port": 16579
+        }
+      },
+      {
+        "timestamp": 1517815198909000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-price-service",
+          "ipv4": "172.18.0.10",
+          "port": 16579
+        }
+      },
+      {
+        "timestamp": 1517815198911000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-price-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/price/query",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-price-service:16579/price/query",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "PriceController",
+        "endpoint": {
+          "serviceName": "ts-price-service",
+          "ipv4": "172.18.0.10",
+          "port": 16579
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "query",
+        "endpoint": {
+          "serviceName": "ts-price-service",
+          "ipv4": "172.18.0.10",
+          "port": 16579
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "0b57738a7c0d:ts-price-service:16579",
+        "endpoint": {
+          "serviceName": "ts-price-service",
+          "ipv4": "172.18.0.10",
+          "port": 16579
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "7d0125b024bde175",
+    "name": "http:/station/queryforid",
+    "parentId": "03dc47b2a37e0f9e",
+    "timestamp": 1517815198913000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1517815198913000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198915000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198919000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198921000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "2a6b7b07376a7ac5",
+    "name": "http:/station/queryforid",
+    "parentId": "03dc47b2a37e0f9e",
+    "timestamp": 1517815198923000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1517815198923000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815198925000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198929000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815198931000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "f1bd1ff29eed8e6a",
+    "name": "http:/station/queryforid",
+    "parentId": "17d5488f95ca45d7",
+    "timestamp": 1517815251359000,
+    "duration": 11000,
+    "annotations": [
+      {
+        "timestamp": 1517815251359000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251362000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251367000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251370000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "21440e2575e0dffa",
+    "name": "http:/station/queryforid",
+    "parentId": "4b2197b03406e801",
+    "timestamp": 1517815251391500,
+    "duration": 11000,
+    "annotations": [
+      {
+        "timestamp": 1517815251391500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251394500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251399500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251402500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "14443b12e5df5f95",
+    "name": "http:/station/queryforid",
+    "parentId": "a5df267dc71f41b4",
+    "timestamp": 1517815251421500,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1517815251421500,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251423000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251428000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251429500,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "7ebb2f72d48647f6",
+    "name": "http:/station/queryforid",
+    "parentId": "718e9393745aff87",
+    "timestamp": 1517815251447000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1517815251447000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "timestamp": 1517815251449000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251453000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "timestamp": 1517815251455000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-station-service",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-station-service:12345/station/queryForId",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "StationController",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryForId",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "45c90dd48236:ts-station-service:12345",
+        "endpoint": {
+          "serviceName": "ts-station-service",
+          "ipv4": "172.18.0.16",
+          "port": 12345
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "d91f00c95e02:ts-basic-service:15680",
+        "endpoint": {
+          "serviceName": "ts-basic-service",
+          "ipv4": "172.18.0.41",
+          "port": 15680
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "38f7b83fdea26542",
+    "id": "a0f34351b5d3e281",
+    "name": "http:/route/querybyid/f3d4d4ef-693b-4456-8eed-59c0",
+    "parentId": "bf9543b2c496d4de",
+    "timestamp": 1517815251489000,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1517815251489000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517815251491500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "timestamp": 1517815251495500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "timestamp": 1517815251498000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-route-service",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/route/queryById/f3d4d4ef-693b-4456-8eed-59c0d717dd08",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-route-service:11178/route/queryById/f3d4d4ef-693b-4456-8eed-59c0d717dd08",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "RouteController",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "queryById",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "9c149d54e35a:ts-route-service:11178",
+        "endpoint": {
+          "serviceName": "ts-route-service",
+          "ipv4": "172.18.0.54",
+          "port": 11178
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "e07cfdc15043:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.55",
+          "port": 12346
+        }
+      }
+    ]
+  }
+]
+ 
