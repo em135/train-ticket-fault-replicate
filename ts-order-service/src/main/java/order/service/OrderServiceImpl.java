@@ -53,11 +53,11 @@ public class OrderServiceImpl implements OrderService{
                     e.printStackTrace();
                 }
 
-                System.out.print("[Order Service]最大内存=" + run.maxMemory() / 1024 / 1024 + "M,");
-                System.out.print("[Order Service]已分配内存=" + run.totalMemory() / 1024 / 1024 + "M,");
-                System.out.print("[Order Service]剩余空间内存=" + run.freeMemory() / 1024 / 1024 + "M");
+                System.out.print("[Order Service]Max RAM=" + run.maxMemory() / 1024 / 1024 + "M,");
+                System.out.print("[Order Service]Allocated RAM=" + run.totalMemory() / 1024 / 1024 + "M,");
+                System.out.print("[Order Service]Rest RAM=" + run.freeMemory() / 1024 / 1024 + "M");
                 System.out.println(
-                        "[Order Service]最大可用内存=" + (run.maxMemory() - run.totalMemory() + run.freeMemory()) / 1024 / 1024 + "M");
+                        "[Order Service]Max available RAM=" + (run.maxMemory() - run.totalMemory() + run.freeMemory()) / 1024 / 1024 + "M");
             }
         }
     }

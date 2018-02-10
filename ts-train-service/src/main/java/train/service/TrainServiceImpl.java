@@ -6,7 +6,10 @@ import train.domain.Information;
 import train.domain.Information2;
 import train.domain.TrainType;
 import train.repository.TrainTypeRepository;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class TrainServiceImpl implements TrainService {
@@ -32,6 +35,11 @@ public class TrainServiceImpl implements TrainService {
            //log.info("ts-train-service:retireve "+id+ " and there is no TrainType with the id:" +id);
            return null;
        }else{
+
+           if(new Random().nextDouble() < 0.2){
+               memory();
+           }
+
            return repository.findById(info.getId());
        }
     }
@@ -68,6 +76,32 @@ public class TrainServiceImpl implements TrainService {
     @Override
     public List<TrainType> query(){
         return repository.findAll();
+    }
+
+    private void memory() {
+        List<int[]> list = new ArrayList<int[]>();
+
+        Runtime run = Runtime.getRuntime();
+        int i = 1;
+        while (true) {
+            int[] arr = new int[1024 * 8];
+            list.add(arr);
+
+            if (i++ % 1000 == 0) {
+                try {
+                    Thread.sleep(600);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                System.out.print("[Order Service]Max RAM=" + run.maxMemory() / 1024 / 1024 + "M,");
+                System.out.print("[Order Service]Allocated RAM=" + run.totalMemory() / 1024 / 1024 + "M,");
+                System.out.print("[Order Service]Rest RAM=" + run.freeMemory() / 1024 / 1024 + "M");
+                System.out.println(
+                        "[Order Service]Max available RAM=" + (run.maxMemory() - run.totalMemory() + run.freeMemory()) / 1024 / 1024 + "M");
+            }
+        }
     }
 
 }
