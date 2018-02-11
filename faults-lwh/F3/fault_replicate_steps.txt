@@ -7,14 +7,15 @@ setup system:
 fault reproduce manually step:
 
 1. Log in
+2. Input "Shanghai" in the start station and input "Suzhou" in the end station
 2. Select date and click [Search]. Remeber to select high-speed train.
-3. Select one Train-Number and click [Book].
-4. Select one contacts and click [Select]
-5. Click [Confirm Ticket] twice quickly and wait for the result.
-6. If there is no fault occurs, you will receive two SUCCESS. Or you will receive [Something Wrong].
+4. After a few seconds, it will alert [error]
 
 train_ticket replicate test case:
 
-There is only one test case in ts-ui-test, named [TestFlowOne].
-Just run it and is will do like fault reproduce manually step that mentioned above.
+There are two test cases in ts-ui-test, named [TestFlowKill] and [TestFlowOOM].
+Just run [TestFlowKill] and it will do like fault reproduce manually step that mentioned above.
+
+Note:
+Every time you run it, order service crashes.Thus, you need to wait for the order service to restart if you want to run it one more time. Otherwise "Connection refused" will be printed in the terminal.
 
