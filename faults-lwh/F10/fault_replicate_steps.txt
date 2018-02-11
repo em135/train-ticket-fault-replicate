@@ -1,26 +1,24 @@
+train_ticket replicate test case:
+
+There is only one test case in ts-ui-test, named [TestFlowOne.java].
+Run it will preserve ticket successfully once and fail twice.
+
 
 setup system:
 
 1. Use docker-compose to setup the Train-Ticket System.
+2. After running the test case once, delete all the contacts in the admin page.
 
 
 fault reproduce manually step:
 
-1. Log in
-2. Select date and click [Search]. Remeber to select [Others]
-3. Select one Train-Number and click [Book].
-4. At the first time you refresh contacts list, the list is empty.
-   Input a new contact info and click [Select]
-5. Click [Confirm Ticket] and wait for the SUCCESS alert.
-6. At the second time you refresh contacts list, the list has one contact.
-   Input a new contact info with the same document number with the first time and click [Select]
-7. Click [Confirm Ticket] and wait for the ERROR alert.
-8. At the third time you refresh contacts list, the list has two contact.
-   Input a new contact info with the same document number with the first time and click [Select]
-9. Click [Confirm Ticket] and wait for the ERROR alert.
+1. Log in and ensure there is at least one contact.
+2. Input "Shang Hai" as the Starting Place and "Nan Jing" as the Terminal Place
+3. Randomly select one day between 5 and 30 days from today as the Date
+4. Click [Search]
+5. Add one contact, select it and click [Select]
+6. Click [Confirm Ticket]
+7. You will get error alert and see the exception logs on the server console.
 
-train_ticket replicate test case:
 
-There is only one test case in ts-ui-test, named [TestFlowOne].
-Just run it and is will do like fault reproduce manually step that mentioned above.
 

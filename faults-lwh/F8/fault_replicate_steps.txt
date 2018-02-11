@@ -1,3 +1,10 @@
+train_ticket replicate test case:
+
+There are two test cases in ts-ui-test, named [TestFlowFail.java] and [TestFlowSuccess.java] .
+Run [TestFlowFail.java] will reproduce the fault.
+Run [TestFlowSuccess.java] won't trigger the fault.
+
+
 setup system:
 
 1. Use docker-compose to setup the Train-Ticket System.
@@ -8,20 +15,11 @@ setup system:
 
 fault reproduce manually step:
 
-1. Log in
+1. Log in with the vip username "vip_microservices@163.com" and password "DefaultPassword"
 2. Click [Flow Two - Ticket Cancel & Ticket Change]
 3. Click [Refresh Orders]
 4. Select the order mentioned above and click [Cancel Order]
 5. Click [Confirm Cancel]
-6. You will get result of cancel. If you get SUCCESS means the fault do not occur.
-                                  If you get Error alert, that means the fault occurs, and you will see the exception logs on the server console.
-
-
-train_ticket replicate test case:
-
-There is only one test case in ts-ui-test, named [TestFlowOne.java].
-Just run it and it will do like fault reproduce manually steps that mentioned above.
-
-
+6. You will get error alert and see the exception logs on the server console.
 
 
