@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class TestFlowTwoCancel {
@@ -29,6 +30,10 @@ public class TestFlowTwoCancel {
     @Test
     //Test Flow Preserve Step 1: - Login
     public void testLogin()throws Exception{
+
+        //Add random delay to emulate the waiting between user click
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+
         driver.get(baseUrl + "/");
 
         //define username and password
@@ -59,6 +64,10 @@ public class TestFlowTwoCancel {
     }
     @Test (dependsOnMethods = {"testLogin"})
     public void testViewOrders() throws Exception{
+
+        //Add random delay to emulate the waiting between user click
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+
         driver.findElement(By.id("refresh_my_order_list_button")).click();
         Thread.sleep(1000);
         //gain my oeders
@@ -72,6 +81,10 @@ public class TestFlowTwoCancel {
     }
     @Test (dependsOnMethods = {"testViewOrders"})
     public void testClickOrderCancel() throws Exception{
+
+        //Add random delay to emulate the waiting between user click
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+
         System.out.printf("The orders list size is:%d%n",myOrdersList.size());
         String statusOrder  = "";
         int i;
