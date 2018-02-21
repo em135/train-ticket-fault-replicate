@@ -23,11 +23,17 @@ public class TestFlowSuccess {
         driver.findElement(By.id("flow_preserve_login_email")).sendKeys(username);
         driver.findElement(By.id("flow_preserve_login_password")).clear();
         driver.findElement(By.id("flow_preserve_login_password")).sendKeys(password);
+
+        try{
+            Thread.sleep(new Random().nextInt(6000));
+        }catch(Exception e){
+
+        }
         driver.findElement(By.id("flow_preserve_login_button")).click();
     }
-    //获取指定位数的随机字符串(包含数字,0<length)
+
     public static String getRandomString(int length) {
-        //随机字符串的随机字符库
+
         String KeyString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuffer sb = new StringBuffer();
         int len = KeyString.length();
@@ -45,7 +51,6 @@ public class TestFlowSuccess {
     }
 
     @Test
-    //打开Admin，输入上海以外的地名，或者不输入，直接跳过
     public void testInputSomethingAdmin()throws Exception{
 
         driver.get(baseUrl + "/");
@@ -59,6 +64,8 @@ public class TestFlowSuccess {
         driver.findElement(By.id("doc-ipt-email-1")).sendKeys(username);
         driver.findElement(By.id("doc-ipt-pwd-1")).clear();
         driver.findElement(By.id("doc-ipt-pwd-1")).sendKeys(password);
+
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("jcadmin_jclogin_btn")).click();
 
         Thread.sleep(5000);
@@ -73,6 +80,8 @@ public class TestFlowSuccess {
             driver.findElement(By.id("order_search_by_station_from")).sendKeys(fromId);
             driver.findElement(By.id("order_search_by_station_to")).clear();
             driver.findElement(By.id("order_search_by_station_to")).sendKeys(toId);
+
+            Thread.sleep(new Random().nextInt(6000));
             driver.findElement(By.id("order_search_by_station_search_lock")).click();
         }else{
             //Skip
@@ -85,7 +94,6 @@ public class TestFlowSuccess {
 
     }
     @Test(dependsOnMethods = {"testInputSomethingAdmin"})
-    //登录
     public void testLogin()throws Exception{
         driver.get(baseUrl + "/");
 
@@ -118,6 +126,8 @@ public class TestFlowSuccess {
 
         String js2 = "document.getElementById('refresh_all_order_list_async_button').scrollIntoView(false)";
         ((JavascriptExecutor)driver).executeScript(js2);
+
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("refresh_all_order_list_async_button")).click();
 
         Thread.sleep(1000);
@@ -126,6 +136,8 @@ public class TestFlowSuccess {
 
     @Test (dependsOnMethods = {"testViewAllOrdersThread"})
     public void testViewOrders() throws Exception{
+
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("refresh_my_order_list_button")).click();
         Thread.sleep(1000);
         //gain my oeders
@@ -159,11 +171,13 @@ public class TestFlowSuccess {
         ((JavascriptExecutor)driver).executeScript(js);
         Thread.sleep(1000);
 
+        Thread.sleep(new Random().nextInt(6000));
         myOrdersList.get(i).findElement(
                 By.xpath("div[2]//form[@role='form']/div[12]/div/button[@class='ticket_cancel_btn btn btn-primary']")
         ).click();
-        Thread.sleep(2000);
+        Thread.sleep(500);
 
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("ticket_cancel_panel_confirm")).click();
 
         Thread.sleep(10000);
