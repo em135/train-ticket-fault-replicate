@@ -16,6 +16,7 @@ public class TestFlowSuccess {
     private String trainType;//0--all,1--GaoTie,2--others
     private String baseUrl;
     //获取指定位数的随机字符串(包含数字,0<length)
+
     public static String getRandomString(int length) {
         //随机字符串的随机字符库
         String KeyString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -26,23 +27,65 @@ public class TestFlowSuccess {
         }
         return sb.toString();
     }
+
+    public static void login(WebDriver driver,String username,String password){
+        //Add random delay to emulate the waiting between user click
+        try{
+            Thread.sleep(new Random().nextInt(7000) + 3000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("flow_four_page")).click();
+        driver.findElement(By.id("flow_advance_reserve_login_email")).clear();
+        driver.findElement(By.id("flow_advance_reserve_login_email")).sendKeys(username);
+        driver.findElement(By.id("flow_advance_reserve_login_password")).clear();
+        driver.findElement(By.id("flow_advance_reserve_login_password")).sendKeys(password);
+        driver.findElement(By.id("flow_advance_reserve_login_button")).click();
+    }
+
     @BeforeClass
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "D:/Program/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "F:/gitwork/chromedriver.exe");
         driver = new ChromeDriver();
+        baseUrl = "http://10.141.212.21";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
+
     @Test
-    public void testCancelTickets() throws Exception{
+    //Test Flow Preserve Step 1: - Login
+    public void testLogin()throws Exception{
+
+        driver.get(baseUrl + "/");
 
 
-        baseUrl = "http://10.141.212.22:15345/click/auto";
-        driver.get(baseUrl);
+        //define username and password
+        String username = "fdse_microservices@163.com";
+        String password = "DefaultPassword";
 
-        Thread.sleep(20000);
+        //call function login
+        login(driver,username,password);
+        Thread.sleep(1000);
 
-
+        //get login status
+//        String statusLogin = driver.findElement(By.id("flow_preserve_login_msg")).getText();
+//        if("".equals(statusLogin)) {
+//            System.out.println("Failed to Login! Status is Null!");
+//        } else if(statusLogin.startsWith("Success")) {
+//            System.out.println("Success to Login! Status:" + statusLogin);
+//        } else {
+//            System.out.println("Failed to Login! Status:" + statusLogin);
+//        }
+//        Assert.assertEquals(statusLogin.startsWith("Success"),true);
+//
+//        Thread.sleep(1000);
+//        String js = "document.getElementById('flow_two_page').scrollIntoView(false)";
+//        ((JavascriptExecutor)driver).executeScript(js);
+//        Thread.sleep(1000);
+//
+//        driver.findElement(By.id("flow_two_page")).click();
     }
+
+
 
 
     @AfterClass
