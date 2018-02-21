@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class TestFlowOne {
@@ -17,6 +18,12 @@ public class TestFlowOne {
         driver.findElement(By.id("flow_preserve_login_email")).sendKeys(username);
         driver.findElement(By.id("flow_preserve_login_password")).clear();
         driver.findElement(By.id("flow_preserve_login_password")).sendKeys(password);
+
+        try{
+            Thread.sleep(new Random().nextInt(6000));
+        }catch (Exception e){
+
+        }
         driver.findElement(By.id("flow_preserve_login_button")).click();
     }
     @BeforeClass
@@ -59,6 +66,8 @@ public class TestFlowOne {
     }
     @Test (dependsOnMethods = {"testLogin"})
     public void testViewOrders() throws Exception{
+
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("refresh_my_order_list_button")).click();
         Thread.sleep(1000);
         //gain my oeders
@@ -92,11 +101,13 @@ public class TestFlowOne {
         ((JavascriptExecutor)driver).executeScript(js);
         Thread.sleep(1000);
 
+        Thread.sleep(new Random().nextInt(6000));
         myOrdersList.get(i).findElement(
                 By.xpath("div[2]//form[@role='form']/div[12]/div/button[@class='ticket_cancel_btn btn btn-primary']")
         ).click();
         Thread.sleep(2000);
 
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("ticket_cancel_panel_confirm")).click();
 
         Thread.sleep(10000);
