@@ -28,7 +28,7 @@ public class TicketInfoServiceImpl implements TicketInfoService{
 //                "http://ts-basic-service:15680/basic/queryForTravel", info, ResultForTravel.class);
 //        return result;
         try{
-            return asyncTask.queryForTravel(info).get(8000, TimeUnit.MILLISECONDS);
+            return asyncTask.queryForTravel(info).get(20000, TimeUnit.MILLISECONDS);
         }catch(Exception e){
             //e.printStackTrace();
             return null;
