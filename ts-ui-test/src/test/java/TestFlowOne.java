@@ -4,9 +4,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -26,11 +24,16 @@ public class TestFlowOne {
         driver.findElement(By.id("flow_preserve_login_email")).sendKeys(username);
         driver.findElement(By.id("flow_preserve_login_password")).clear();
         driver.findElement(By.id("flow_preserve_login_password")).sendKeys(password);
+
+        try{
+            //Add random delay to emulate the waiting between user click.
+            Thread.sleep(new Random().nextInt(6000));
+        }catch (Exception e){
+
+        }
         driver.findElement(By.id("flow_preserve_login_button")).click();
     }
-    //获取指定位数的随机字符串(包含数字,0<length)
     public static String getRandomString(int length) {
-        //随机字符串的随机字符库
         String KeyString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuffer sb = new StringBuffer();
         int len = KeyString.length();
@@ -50,9 +53,6 @@ public class TestFlowOne {
     @Test
     //Test Flow Preserve Step 1: - Login
     public void testLogin()throws Exception{
-
-        //Add random delay to emulate the waiting between user click.
-        Thread.sleep(new Random().nextInt(7000) + 3000);
 
         driver.get(baseUrl + "/");
 
@@ -96,8 +96,8 @@ public class TestFlowOne {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Calendar newDate = Calendar.getInstance();
         Random randDate = new Random();
-        int randomDate = randDate.nextInt(26); //int范围类的随机数
-        newDate.add(Calendar.DATE, randomDate+5);//随机定5-30天后的票
+        int randomDate = randDate.nextInt(26);
+        newDate.add(Calendar.DATE, randomDate+5);
         bookDate=sdf.format(newDate.getTime());
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -114,7 +114,7 @@ public class TestFlowOne {
 
 
         //Add random delay to emulate the waiting between user click.
-        Thread.sleep(new Random().nextInt(7000) + 3000);
+        Thread.sleep(new Random().nextInt(6000));
         elementBookingSearchBtn.click();
 
 
@@ -130,14 +130,14 @@ public class TestFlowOne {
             //Pick up a train at random and book tickets
             System.out.printf("Success to search tickets，the tickets list size is:%d%n",ticketsList.size());
             Random rand = new Random();
-            int i = rand.nextInt(1000) % ticketsList.size(); //int范围类的随机数
+            int i = rand.nextInt(1000) % ticketsList.size();
             WebElement elementBookingSeat = ticketsList.get(i).findElement(By.xpath("td[10]/select"));
             Select selSeat = new Select(elementBookingSeat);
             selSeat.selectByValue("3"); //2st
 
 
             //Add random delay to emulate the waiting between user click.
-            Thread.sleep(new Random().nextInt(7000) + 3000);
+            Thread.sleep(new Random().nextInt(6000));
             ticketsList.get(0).findElement(By.xpath("td[13]/button")).click();
 
             Thread.sleep(1000);
@@ -150,16 +150,13 @@ public class TestFlowOne {
     @Test (dependsOnMethods = {"testBooking"})
     public void testSelectContacts()throws Exception{
 
-        //Add random delay to emulate the waiting between user click.
-        Thread.sleep(new Random().nextInt(7000) + 3000);
-
         List<WebElement> contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
         //Confirm ticket selection
         if (contactsList.size() == 0) {
 
 
             //Add random delay to emulate the waiting between user click.
-            Thread.sleep(new Random().nextInt(7000) + 3000);
+            Thread.sleep(new Random().nextInt(6000));
             driver.findElement(By.id("refresh_booking_contacts_button")).click();
 
 
@@ -185,22 +182,22 @@ public class TestFlowOne {
             contactsList.get(0).findElement(By.xpath("td[5]/input")).sendKeys(phoneNumber);//!!
 
             //Add random delay to emulate the waiting between user click.
-            Thread.sleep(new Random().nextInt(7000) + 3000);
+            Thread.sleep(new Random().nextInt(6000));
             contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();//!!
         }
 
         if (contactsList.size() > 1) {
             Random rand = new Random();
-            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
+            int i = rand.nextInt(100) % (contactsList.size() - 1);
 
 
             //Add random delay to emulate the waiting between user click.
-            Thread.sleep(new Random().nextInt(7000) + 3000);
+            Thread.sleep(new Random().nextInt(6000));
             contactsList.get(i).findElement(By.xpath("td[7]/label/input")).click();
         }
 
         //Add random delay to emulate the waiting between user click.
-        Thread.sleep(new Random().nextInt(7000) + 3000);
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
 
 
@@ -209,9 +206,6 @@ public class TestFlowOne {
     }
     @Test (dependsOnMethods = {"testBooking"})
     public void testTicketConfirm ()throws Exception{
-
-        //Add random delay to emulate the waiting between user click.
-        Thread.sleep(new Random().nextInt(7000) + 3000);
 
         String itemFrom = driver.findElement(By.id("ticket_confirm_from")).getText();
         String itemTo = driver.findElement(By.id("ticket_confirm_to")).getText();
@@ -241,10 +235,10 @@ public class TestFlowOne {
         Assert.assertEquals(bStatusConfirm,true);
 
         //Add random delay to emulate the waiting between user click.
-        Thread.sleep(new Random().nextInt(7000) + 3000);
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
         //Add random delay to emulate the waiting between user click.
-        Thread.sleep(new Random().nextInt(7000) + 3000);
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
 
 
