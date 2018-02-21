@@ -31,9 +31,8 @@ public class TestFlowFail {
         }
         driver.findElement(By.id("flow_preserve_login_button")).click();
     }
-    //获取指定位数的随机字符串(包含数字,0<length)
     public static String getRandomString(int length) {
-        //随机字符串的随机字符库
+        //
         String KeyString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuffer sb = new StringBuffer();
         int len = KeyString.length();
@@ -51,7 +50,6 @@ public class TestFlowFail {
     }
 
     @Test
-    //打开Admin，输入上海以外的地名，或者不输入，直接跳过
     public void testInputSomethingAdmin()throws Exception{
 
         driver.get(baseUrl + "/");
@@ -97,7 +95,6 @@ public class TestFlowFail {
 
     }
     @Test(dependsOnMethods = {"testInputSomethingAdmin"})
-    //登录
     public void testLogin()throws Exception{
         driver.get(baseUrl + "/");
 
