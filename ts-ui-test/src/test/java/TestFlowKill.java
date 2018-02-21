@@ -7,13 +7,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-/**
- * 0.5的概率OOM
- */
+
 public class TestFlowKill {
     private WebDriver driver;
     private String trainType;//0--all,1--GaoTie,2--others
@@ -26,9 +23,7 @@ public class TestFlowKill {
         driver.findElement(By.id("flow_preserve_login_password")).sendKeys(password);
         driver.findElement(By.id("flow_preserve_login_button")).click();
     }
-    //获取指定位数的随机字符串(包含数字,0<length)
     public static String getRandomString(int length) {
-        //随机字符串的随机字符库
         String KeyString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuffer sb = new StringBuffer();
         int len = KeyString.length();
@@ -88,8 +83,8 @@ public class TestFlowKill {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Calendar newDate = Calendar.getInstance();
         Random randDate = new Random();
-        int randomDate = randDate.nextInt(26); //int范围类的随机数
-        newDate.add(Calendar.DATE, randomDate+5);//随机定5-30天后的票
+        int randomDate = randDate.nextInt(26); 
+        newDate.add(Calendar.DATE, randomDate+5);
         bookDate=sdf.format(newDate.getTime());
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -116,7 +111,7 @@ public class TestFlowKill {
 //            //Pick up a train at random and book tickets
 //            System.out.printf("Success to search tickets，the tickets list size is:%d%n",ticketsList.size());
 //            Random rand = new Random();
-//            int i = rand.nextInt(1000) % ticketsList.size(); //int范围类的随机数
+//            int i = rand.nextInt(1000) % ticketsList.size();
 //            WebElement elementBookingSeat = ticketsList.get(i).findElement(By.xpath("td[10]/select"));
 //            Select selSeat = new Select(elementBookingSeat);
 //            selSeat.selectByValue("3"); //2st
@@ -159,7 +154,7 @@ public class TestFlowKill {
 //
 //        if (contactsList.size() > 1) {
 //            Random rand = new Random();
-//            int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
+//            int i = rand.nextInt(100) % (contactsList.size() - 1);
 //            contactsList.get(i).findElement(By.xpath("td[7]/label/input")).click();
 //        }
 //        driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
