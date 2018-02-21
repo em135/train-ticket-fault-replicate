@@ -18,6 +18,13 @@ public class TestFlowTwoCancel {
         driver.findElement(By.id("flow_preserve_login_email")).sendKeys(username);
         driver.findElement(By.id("flow_preserve_login_password")).clear();
         driver.findElement(By.id("flow_preserve_login_password")).sendKeys(password);
+
+        //Add random delay to emulate the waiting between user click
+        try{
+            Thread.sleep(new Random().nextInt(6000));
+        }catch (Exception e){
+
+        }
         driver.findElement(By.id("flow_preserve_login_button")).click();
     }
     @BeforeClass
@@ -30,10 +37,7 @@ public class TestFlowTwoCancel {
     @Test
     //Test Flow Preserve Step 1: - Login
     public void testLogin()throws Exception{
-
-        //Add random delay to emulate the waiting between user click
-        Thread.sleep(new Random().nextInt(7000) + 3000);
-
+        
         driver.get(baseUrl + "/");
 
         //define username and password
@@ -66,9 +70,9 @@ public class TestFlowTwoCancel {
     public void testViewOrders() throws Exception{
 
         //Add random delay to emulate the waiting between user click
-        Thread.sleep(new Random().nextInt(7000) + 3000);
-
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("refresh_my_order_list_button")).click();
+
         Thread.sleep(1000);
         //gain my oeders
         myOrdersList = driver.findElements(By.xpath("//div[@id='my_orders_result']/div"));
@@ -81,9 +85,6 @@ public class TestFlowTwoCancel {
     }
     @Test (dependsOnMethods = {"testViewOrders"})
     public void testClickOrderCancel() throws Exception{
-
-        //Add random delay to emulate the waiting between user click
-        Thread.sleep(new Random().nextInt(7000) + 3000);
 
         System.out.printf("The orders list size is:%d%n",myOrdersList.size());
         String statusOrder  = "";
@@ -105,11 +106,13 @@ public class TestFlowTwoCancel {
         ((JavascriptExecutor)driver).executeScript(js);
         Thread.sleep(1000);
 
+        Thread.sleep(new Random().nextInt(6000));
         myOrdersList.get(i).findElement(
                 By.xpath("div[2]//form[@role='form']/div[12]/div/button[@class='ticket_cancel_btn btn btn-primary']")
         ).click();
         Thread.sleep(2000);
 
+        Thread.sleep(new Random().nextInt(6000));
         driver.findElement(By.id("ticket_cancel_panel_confirm")).click();
 
         Thread.sleep(10000);
