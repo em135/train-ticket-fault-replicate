@@ -107,9 +107,9 @@ public class TestFlowOne {
         String statusAlert = driver.switchTo().alert().getText();
         System.out.println("The Alert information of Cancel Ticket："+statusAlert);
         if(statusAlert.startsWith("Error")){
-            System.out.println("这是抛出异常的流程");
+            System.out.println("Exception Process");
         }else{
-            System.out.println("这是正常的流程");
+            System.out.println("Normal Process");
         }
         javascriptConfirm.accept();
     }
