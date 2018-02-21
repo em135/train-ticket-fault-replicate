@@ -50,6 +50,10 @@ public class TestFlowOne {
     @Test
     //Test Flow Preserve Step 1: - Login
     public void testLogin()throws Exception{
+
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+
         driver.get(baseUrl + "/");
 
         //define username and password
@@ -73,6 +77,10 @@ public class TestFlowOne {
     @Test (dependsOnMethods = {"testLogin"})
     //test Flow Preserve Step 2: - Ticket Booking
     public void testBooking() throws Exception{
+
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+
         //locate booking startingPlace input
         WebElement elementBookingStartingPlace = driver.findElement(By.id("travel_booking_startingPlace"));
         elementBookingStartingPlace.clear();
@@ -103,7 +111,13 @@ public class TestFlowOne {
 
         //locate Train search button
         WebElement elementBookingSearchBtn = driver.findElement(By.id("travel_booking_button"));
+
+
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
         elementBookingSearchBtn.click();
+
+
         Thread.sleep(1000);
 
         List<WebElement> ticketsList = driver.findElements(By.xpath("//table[@id='tickets_booking_list_table']/tbody/tr"));
@@ -120,7 +134,12 @@ public class TestFlowOne {
             WebElement elementBookingSeat = ticketsList.get(i).findElement(By.xpath("td[10]/select"));
             Select selSeat = new Select(elementBookingSeat);
             selSeat.selectByValue("3"); //2st
+
+
+            //Add random delay to emulate the waiting between user click.
+            Thread.sleep(new Random().nextInt(7000) + 3000);
             ticketsList.get(0).findElement(By.xpath("td[13]/button")).click();
+
             Thread.sleep(1000);
         }
         else
@@ -130,10 +149,20 @@ public class TestFlowOne {
    // @Test(enabled = false)
     @Test (dependsOnMethods = {"testBooking"})
     public void testSelectContacts()throws Exception{
+
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+
         List<WebElement> contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
         //Confirm ticket selection
         if (contactsList.size() == 0) {
+
+
+            //Add random delay to emulate the waiting between user click.
+            Thread.sleep(new Random().nextInt(7000) + 3000);
             driver.findElement(By.id("refresh_booking_contacts_button")).click();
+
+
             Thread.sleep(1000);
             contactsList = driver.findElements(By.xpath("//table[@id='contacts_booking_list_table']/tbody/tr"));
         }
@@ -154,20 +183,36 @@ public class TestFlowOne {
 
             contactsList.get(0).findElement(By.xpath("td[4]/input")).sendKeys(idNumber);//!!
             contactsList.get(0).findElement(By.xpath("td[5]/input")).sendKeys(phoneNumber);//!!
+
+            //Add random delay to emulate the waiting between user click.
+            Thread.sleep(new Random().nextInt(7000) + 3000);
             contactsList.get(0).findElement(By.xpath("td[6]/label/input")).click();//!!
         }
 
         if (contactsList.size() > 1) {
             Random rand = new Random();
             int i = rand.nextInt(100) % (contactsList.size() - 1); //int范围类的随机数
+
+
+            //Add random delay to emulate the waiting between user click.
+            Thread.sleep(new Random().nextInt(7000) + 3000);
             contactsList.get(i).findElement(By.xpath("td[7]/label/input")).click();
         }
+
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
         driver.findElement(By.id("ticket_select_contacts_confirm_btn")).click();
+
+
         System.out.println("Ticket contacts selected btn is clicked");
         Thread.sleep(1000);
     }
     @Test (dependsOnMethods = {"testBooking"})
     public void testTicketConfirm ()throws Exception{
+
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+
         String itemFrom = driver.findElement(By.id("ticket_confirm_from")).getText();
         String itemTo = driver.findElement(By.id("ticket_confirm_to")).getText();
         String itemTripId = driver.findElement(By.id("ticket_confirm_tripId")).getText();
@@ -191,17 +236,25 @@ public class TestFlowOne {
             driver.findElement(By.id("ticket_confirm_cancel_btn")).click();
             System.out.println("Confirming Ticket Canceled!");
         }
+
+
         Assert.assertEquals(bStatusConfirm,true);
+
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
         driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-        Thread.sleep(20000);
-//        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
-//        Thread.sleep(15000);
-//        System.out.println("Confirm Ticket!");
-//        Alert javascriptConfirm = driver.switchTo().alert();
-//        String statusAlert = driver.switchTo().alert().getText();
-//        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
-//        Assert.assertEquals(statusAlert.startsWith("Success"),true);
-//        javascriptConfirm.accept();
+        //Add random delay to emulate the waiting between user click.
+        Thread.sleep(new Random().nextInt(7000) + 3000);
+        driver.findElement(By.id("ticket_confirm_confirm_btn")).click();
+
+
+        Thread.sleep(15000);
+        System.out.println("Confirm Ticket!");
+        Alert javascriptConfirm = driver.switchTo().alert();
+        String statusAlert = driver.switchTo().alert().getText();
+        System.out.println("The Alert information of Confirming Ticket："+statusAlert);
+        Assert.assertEquals(statusAlert.startsWith("Success"),true);
+        javascriptConfirm.accept();
 
         System.out.println("Confirm Ticket!");
         Alert javascriptConfirm2 = driver.switchTo().alert();
@@ -211,63 +264,7 @@ public class TestFlowOne {
         javascriptConfirm2.accept();
 
     }
-//    @Test (dependsOnMethods = {"testTicketConfirm"})
-//    public void testTicketPay ()throws Exception {
-//        String itemOrderId = driver.findElement(By.id("preserve_pay_orderId")).getAttribute("value");
-//        String itemPrice = driver.findElement(By.id("preserve_pay_price")).getAttribute("value");
-//        String itemTripId = driver.findElement(By.id("preserve_pay_tripId")).getAttribute("value");
-//        boolean bOrderId = !"".equals(itemOrderId);
-//        boolean bPrice = !"".equals(itemPrice);
-//        boolean bTripId = !"".equals(itemTripId);
-//        boolean bStatusPay = bOrderId && bPrice && bTripId;
-//        if(bStatusPay == false)
-//            System.out.println("Confirming Ticket failed!");
-//        Assert.assertEquals(bStatusPay,true);
-//
-//        driver.findElement(By.id("preserve_pay_button")).click();
-//        Thread.sleep(1000);
-//        String itemCollectOrderId = driver.findElement(By.id("preserve_collect_order_id")).getAttribute("value");
-//        Assert.assertEquals(!"".equals(itemCollectOrderId),true);
-//        System.out.println("Success to pay and book ticket!");
-//    }
-//    @Test (dependsOnMethods = {"testTicketPay"})
-//    public void testTicketCollect ()throws Exception {
-//        String itemCollectOrderId = driver.findElement(By.id("preserve_collect_order_id")).getAttribute("value");
-//        boolean bCollectOrderId = !"".equals(itemCollectOrderId);
-//        if(bCollectOrderId == false)
-//            System.out.println("Ticket payment failed!");
-//        Assert.assertEquals(bCollectOrderId,true);
-//
-//        driver.findElement(By.id("preserve_collect_button")).click();
-//        Thread.sleep(1000);
-//        String statusCollectOrderId = driver.findElement(By.id("preserve_collect_order_status")).getText();
-//
-//        if("".equals(statusCollectOrderId))
-//            System.out.println("Failed to Collect Ticket! Status is Null!");
-//        else if(statusCollectOrderId.startsWith("Success"))
-//            System.out.println("Success to Collect Ticket! Status:"+statusCollectOrderId);
-//        else
-//            System.out.println("Failed to Collect Ticket! Status is:"+statusCollectOrderId);
-//        Assert.assertEquals(statusCollectOrderId.startsWith("Success"),true);
-//    }
-//    @Test (dependsOnMethods = {"testTicketCollect"})
-//    public void testEnterStation ()throws Exception {
-//        String itemEnterOrderId = driver.findElement(By.id("preserve_execute_order_id")).getAttribute("value");
-//        if("".equals(itemEnterOrderId))
-//            System.out.println("Enter Station,No Order Id,failed");
-//        Assert.assertEquals(!"".equals(itemEnterOrderId),true);
-//
-//        driver.findElement(By.id("preserve_order_button")).click();
-//        Thread.sleep(1000);
-//        String statusEnterStation = driver.findElement(By.id("preserve_order_status")).getText();
-//        if("".equals(statusEnterStation))
-//            System.out.println("Failed to Enter Station! Status is Null!");
-//        else if(statusEnterStation.startsWith("Success"))
-//            System.out.println("Success to Enter Station! Status:"+statusEnterStation);
-//        else
-//            System.out.println("Failed to Enter Station! Status is:"+statusEnterStation);
-//        Assert.assertEquals(statusEnterStation.startsWith("Success"),true);
-//    }
+
     @AfterClass
     public void tearDown() throws Exception {
         driver.quit();

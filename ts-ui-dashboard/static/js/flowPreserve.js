@@ -650,8 +650,8 @@ $("#ticket_confirm_confirm_btn").click(function () {
     var tripType = orderTicketInfo.tripId.charAt(0);
     var path;
     if(tripType == 'G' || tripType == 'D'){
-        //path = "/preserve";
-        path = "/click/clickTwice"
+        path = "/preserve";
+        // path = "/click/clickTwice"
     }else{
         path = "/preserveOther";
     }
