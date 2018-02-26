@@ -1,15 +1,19 @@
 
-
 industrial fault description:
 
-F2 is a fault that messages are displayed in wrong order,
-which is appears when different data requests for the same report are returned in an unexpected order.
+F2 is a fault that multiple messages are displayed in wrong order.
+Sometimes we send many requests at a short time.
+However, these requests may returns at a different order with the origin.
+If we display the information without checking the order of these requests, wrong information may be shown on the screen.
+Then this kind of fault occurs.
+
 
 
 train_ticket replicated fault description:
 
-In ticket system, every request to reserve ticket has a random delay to simulate the unstable network condition.
-If a user send many requests for reserve ticket at a short time, sometimes the order of the result will be wrong, then this fault occurs.
+In ticket system, every request for ticket-booking has a random delay to simulate the unstable network condition.
+If a user send multiple requests for ticket-booking at a short time, the order of the result may be wrong due to the random delay.
+Then this fault occurs.
 
 
 

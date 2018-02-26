@@ -2,20 +2,20 @@
 
 industrial fault description:
 
-F1 is a fault that occurs in using asynchronous tasks, when we send messages asynchronously without message sequence control.
-Suppose we have event A and event B that occurs in a service. Event A is always processed and return earlier than Event B.
-But sometimes, due to some specific reasons, Event A is received and processed later than Event B. Then a fault will occur.
+F5 is such kind of fault that caused by the resource competition of multiple request.
+Sometimes a microservice has its maximum number of connections.
+Suppose we have 3 services, A, B, C. A and B both call C for some specific information.
+If A send some requests to C, but before that B has sent some requests to C and these requests are too complex to process at a short time, then
+the requests from A must wait until the requests from B completed, leading to a timeout exception.
+
 
 
 train_ticket replicated fault description:
 
-In the ticket cancel function in ticket system, we have two major event: [Drawback Money] and [Reset Order Status].
-If the user decided to cancel a order, the Cancel-Service firstly call Inside-Payment-Service to drawback money.
-Then Inside-Payment-Service call Order-Service to set the order status to CANCELLING. Then drawback the money.
-After that, the Cancel-Service call Order-Service set the order status to CANCEL. Then the whole cancel process done.
-In our fault reproduction, we had a random delay to send event [Drawback Money] to simulate the situation of network congestion.
-In this case, the event [Reset Order Stauts] will completed before [Drawback Money], then the fault occurs.
-
+We implemented this fault in Basic-Info-Service. 
+We use asynchronous tasks in Basic-Info-Service to collect tickets information.
+Then we use the thread pool which is needed for the implementation of asynchronous tasks as microservice resource.
+We send many requests at a short period of time and if the thread number is equal or exceeds the max-thread-pool-size, the fault will occur.
 
 
 
