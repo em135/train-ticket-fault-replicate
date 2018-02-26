@@ -2,17 +2,21 @@
 
 industrial fault description:
 
-F10 is an external logic fault related to business logic. This fault occurs due to the wrong implementation of a specific
-business logic.
+F10 is simply a normal logic fault in one business process.
+This kind of fault occurs due to the defects in the implementation of a business process.
+
+
 
 train_ticket replicated fault description:
 
-In ticket system, the user could create new contacts when selecting contacts.
-For different contacts, one ID-Number can only mapping to one contacts.
-If the contacts database is empty, he could create a contact without any ID-Number check.
-However, if the database is not empty, for every request to add contacts, the duplication of ID-Number
-should be checked. However, in our system, the ID-number is not checked when adding new contacts. In this
-cases, this kind of fault occurs.
+In our Train Ticket System, the name and the ID Card number is required for booking a ticket.
+In our society, one ID card number only mapping one name.
+Thus, if two user input two distinct name but the document number is same, one of the user must be rejected.
+In our system, if one  document number has been occupied by one name, another user inputs the same document number but
+another name, he/she still successfully gets a ticket.
+In this scenario, a logic fault like F10 occurs.
+
+
 
 
 
