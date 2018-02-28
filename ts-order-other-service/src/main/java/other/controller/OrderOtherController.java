@@ -39,7 +39,7 @@ public class OrderOtherController {
             System.out.println("[Order Other Service][Verify Login] Success");
             return orderService.create(coi.getOrder());
         }else{
-            System.out.println("[Order Other Service][Verify Login] Fail");
+            System.out.println("[Order Other Service][Crate Order][Verify Login] Fail");
             CreateOrderResult cor = new CreateOrderResult();
             cor.setStatus(false);
             cor.setMessage("Not Login");
@@ -47,6 +47,27 @@ public class OrderOtherController {
             return cor;
         }
     }
+
+    @RequestMapping(value = "/orderOther/createPlus")
+    public CreateOrderResult createNewOrderPlus(@RequestBody CreateOrderInfo coi){
+        System.out.println("[Order Other Service][Create Order] Create Order form " + coi.getOrder().getFrom() + " --->"
+                + coi.getOrder().getTo() + " at " + coi.getOrder().getTravelDate());
+        VerifyResult tokenResult = verifySsoLogin(coi.getLoginToken());
+        if(tokenResult.isStatus() == true){
+            System.out.println("[Order Other Service][Verify Login] Success");
+            CreateOrderResult  result = orderService.create(coi.getOrder());
+            result.getOrder().setStatus(OrderStatus.PROCESSING.getCode());
+            return result;
+        }else{
+            System.out.println("[Order Other Service][Crate Order Plus][Verify Login] Fail");
+            CreateOrderResult cor = new CreateOrderResult();
+            cor.setStatus(false);
+            cor.setMessage("Not Login");
+            cor.setOrder(null);
+            return cor;
+        }
+    }
+
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/orderOther/adminAddOrder", method = RequestMethod.POST)

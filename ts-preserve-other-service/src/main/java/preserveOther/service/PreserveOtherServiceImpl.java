@@ -172,6 +172,14 @@ public class PreserveOtherServiceImpl implements PreserveOtherService{
                 otr.setOrder(null);
                 return otr;
             }
+
+
+
+            if(cor.getOrder().getStatus() > 10){
+                throw new RuntimeException("[Error Logic F10]");
+            }
+
+
             System.out.println("[Preserve Other Service] [Step 4] Do Order Complete");
             otr.setStatus(true);
             otr.setMessage("Success");
@@ -359,11 +367,24 @@ public class PreserveOtherServiceImpl implements PreserveOtherService{
     }
 
     private CreateOrderResult createOrder(CreateOrderInfo coi){
-        System.out.println("[Preserve Other Service][Get Contacts By Id] Creating....");
-        CreateOrderResult cor = restTemplate.postForObject(
-                "http://ts-order-other-service:12032/orderOther/create"
-                ,coi,CreateOrderResult.class);
-        return cor;
+
+
+        if(coi.getOrder().getFrom().contains("nanjing")){
+            System.out.println("[Preserve Other Service][Create Order Plus] Creating....");
+            CreateOrderResult createOrderResult = restTemplate.postForObject(
+                    "http://ts-order-other-service:12032/orderOther/createPlus",
+                    coi, CreateOrderResult.class);
+            return  createOrderResult;
+
+        }else{
+            System.out.println("[Preserve Other Service][Create Order] Creating....");
+            CreateOrderResult cor = restTemplate.postForObject(
+                    "http://ts-order-other-service:12032/orderOther/create"
+                    ,coi,CreateOrderResult.class);
+            return cor;
+        }
+
+
     }
 
     private AddFoodOrderResult createFoodOrder(AddFoodOrderInfo afi){
