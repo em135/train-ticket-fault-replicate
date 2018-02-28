@@ -1,11 +1,14 @@
 package other.controller;
 
+import com.sun.org.apache.xpath.internal.functions.FuncTranslate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import other.async.AsyncTask;
 import other.domain.*;
 import other.service.OrderOtherService;
 import java.util.ArrayList;
+import java.util.concurrent.Future;
 
 @RestController
 public class OrderOtherController {
@@ -15,6 +18,9 @@ public class OrderOtherController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private AsyncTask asyncTask;
 
     @RequestMapping(path = "/welcome", method = RequestMethod.GET)
     public String home() {
@@ -49,7 +55,7 @@ public class OrderOtherController {
     }
 
     @RequestMapping(value = "/orderOther/createPlus")
-    public CreateOrderResult createNewOrderPlus(@RequestBody CreateOrderInfo coi){
+    public CreateOrderResult createNewOrderPlus(@RequestBody CreateOrderInfo coi) throws Exception {
         System.out.println("[Order Other Service][Create Order] Create Order form " + coi.getOrder().getFrom() + " --->"
                 + coi.getOrder().getTo() + " at " + coi.getOrder().getTravelDate());
         VerifyResult tokenResult = verifySsoLogin(coi.getLoginToken());
@@ -57,6 +63,11 @@ public class OrderOtherController {
             System.out.println("[Order Other Service][Verify Login] Success");
             CreateOrderResult  result = orderService.create(coi.getOrder());
             result.getOrder().setStatus(OrderStatus.PROCESSING.getCode());
+
+            QueryStationById queryStationById = new QueryStationById();
+            queryStationById.setStationId(coi.getOrder().getFrom());
+            Future<CheckValidResult> resultFuture = asyncTask.checkStationValid(queryStationById);
+
             return result;
         }else{
             System.out.println("[Order Other Service][Crate Order Plus][Verify Login] Fail");

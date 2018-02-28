@@ -17,6 +17,14 @@ public class StationController {
     @Autowired
     private StationService stationService;
 
+    @RequestMapping(value="/station/checkValid", method = RequestMethod.POST)
+    public CheckValidResult checkStationValid(@RequestBody QueryById queryById){
+        CheckValidResult result = new CheckValidResult();
+        result.setValid(true);
+        result.setStationId(queryById.getStationId());
+        return result;
+    }
+
     @RequestMapping(value="/station/create",method= RequestMethod.POST)
     public boolean create(@RequestBody Information info){
         return stationService.create(info);
