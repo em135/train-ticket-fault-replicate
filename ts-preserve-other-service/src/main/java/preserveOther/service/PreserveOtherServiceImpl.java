@@ -4,11 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import preserveOther.domain.*;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.UUID;
 
 @Service
 public class PreserveOtherServiceImpl implements PreserveOtherService{
+
+    public static ArrayList<ReserveQueueInformation> arrayList = new ArrayList<>();
 
     @Autowired
     private RestTemplate restTemplate;
