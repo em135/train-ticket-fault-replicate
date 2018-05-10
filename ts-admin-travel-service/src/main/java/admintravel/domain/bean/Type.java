@@ -2,9 +2,7 @@ package admintravel.domain.bean;
 
 import java.io.Serializable;
 
-/**
- * Created by Chenjie Xu on 2017/5/9.
- */
+
 public enum Type implements Serializable{
 
     //G("GC-高铁/城际", 1), D("D-动车", 2);

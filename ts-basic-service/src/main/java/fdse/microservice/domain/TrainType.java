@@ -1,8 +1,6 @@
 package fdse.microservice.domain;
 
-/**
- * Created by Chenjie Xu on 2017/5/23.
- */
+
 public class TrainType {
 
     private String id;      //车型ID，每个车型一个ID，比如某个型号的动车

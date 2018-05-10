@@ -6,9 +6,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- * Created by Chenjie Xu on 2017/5/9.
- */
+
 @Document(collection="trip")
 public class Trip {
     @Valid

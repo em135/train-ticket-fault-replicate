@@ -15,9 +15,7 @@ import java.util.*;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Administrator on 2017/6/20.
- */
+
 @Service
 public class InsidePaymentServiceImpl implements InsidePaymentService{
 
@@ -91,7 +89,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
                 outsidePaymentInfo.setPrice(result.getOrder().getPrice());
 
 
-                /****这里异步调用第三方支付***/
+
                 boolean outsidePaySuccess = restTemplate.postForObject(
                         "http://ts-payment-service:19001/payment/pay", outsidePaymentInfo,Boolean.class);
 //                boolean outsidePaySuccess = false;

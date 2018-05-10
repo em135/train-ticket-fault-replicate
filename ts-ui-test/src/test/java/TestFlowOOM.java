@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-/**
- * 0.5的概率OOM
- */
+
 public class TestFlowOOM {
     private WebDriver driver;
     private String trainType;//0--all,1--GaoTie,2--others

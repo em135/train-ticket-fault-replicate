@@ -110,10 +110,8 @@ public class CancelServiceImpl implements CancelService{
                     ChangeOrderResult changeOrderResult = cancelFromOtherOrder(changeOrderInfo);
 
 
-//                    /***********************Error Process Seq - Correct Part*************************/
-//                    /**
-//                     * 提示：这是正常的流程！
-//                     */
+//
+//
 //                    //1.首先退还订单金额
 //                    String money = calculateRefund(order);
 //                    Future<Boolean> taskDrawBackMoney = asyncTask.drawBackMoneyForOrderCan(money,loginId,order.getId().toString());
@@ -128,7 +126,7 @@ public class CancelServiceImpl implements CancelService{
 //                    changeOrderResult = taskCancelOrder.get();
 //
 //
-//                    /********************************************************************************/
+//
 
 //                    if(changeOrderResult.isStatus() == true && drawBackMoneyStatus == true){
 //                        CancelOrderResult finalResult = new CancelOrderResult();

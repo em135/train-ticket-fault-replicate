@@ -1,8 +1,6 @@
 package adminbasic.domin.bean;
 
-/**
- * Created by Chenjie Xu on 2017/5/8.
- */
+
 
 public class TrainType {
 

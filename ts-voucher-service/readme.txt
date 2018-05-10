@@ -1,1 +1,1 @@
-1.需要安装tornado和pymysql依赖
+1. need tornado and pymysql dependency

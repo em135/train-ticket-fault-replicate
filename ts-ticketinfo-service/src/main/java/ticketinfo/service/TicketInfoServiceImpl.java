@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Chenjie Xu on 2017/6/6.
- */
+
 @Service
 public class TicketInfoServiceImpl implements TicketInfoService{
 
