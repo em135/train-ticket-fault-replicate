@@ -1,37 +1,14 @@
 # fault_replicate
 
 
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
+##  Fault Replication(F22) 
 
-F1:
-ts-error-process-seq
+###Symptom：
+When the user switch to Flow Three - Consign & Voucher 
+and click the button of "Print Voucher" if any,
+the result page displays "Empty. No data!".
 
-F2:
-ts-error-reportui
+###Root Cause
+The constructed SQL statement includes a wrong column name
+in the “select” part according to its “from” part
 
-F3:
-ts-error-docker-JVM
-
-F4:
-ts-error-ssl
-
-F5:
-ts-error-cross-timeout-status(chance)
-
-F7:
-ts-external-normal
-
-F8:
-ts-error-redis
-
-F10:
-ts-error-normal
-
-F11:
-ts-error-bomupdate
-
-F12:
-ts-error-processes-seq-status(chance)
-
-F13:
-ts-error-queue
