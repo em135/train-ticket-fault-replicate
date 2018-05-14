@@ -1,37 +1,9 @@
-# fault_replicate
+### ts-error-F18
 
+**industrial fault description**:
 
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
+Loading the product-analysis chart is erroneous
+Because one key of the returned JSON data for the UI chart includes the null value
 
-F1:
-ts-error-process-seq
+**train_ticket replicated fault description:**:
 
-F2:
-ts-error-reportui
-
-F3:
-ts-error-docker-JVM
-
-F4:
-ts-error-ssl
-
-F5:
-ts-error-cross-timeout-status(chance)
-
-F7:
-ts-external-normal
-
-F8:
-ts-error-redis
-
-F10:
-ts-error-normal
-
-F11:
-ts-error-bomupdate
-
-F12:
-ts-error-processes-seq-status(chance)
-
-F13:
-ts-error-queue
