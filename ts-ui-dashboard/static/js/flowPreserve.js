@@ -250,6 +250,8 @@ function initFoodSelect(tripId){
         success: function(result){
             console.log(result);
             if(result.status){
+                $('#train-food-type-list').empty();
+                $('#food-station-list').empty();
 
                 if(null == result.trainFoodList || result.trainFoodList.length == 0){
                     //没有
