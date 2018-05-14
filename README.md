@@ -1,37 +1,34 @@
-# fault_replicate
+### ts-error-F15
 
+**industrial fault description**:
 
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
+Symptom：
 
-F1:
-ts-error-process-seq
+The data-synchronization job quits unexpectedly
 
-F2:
-ts-error-reportui
+Root Cause：
 
-F3:
-ts-error-docker-JVM
+The spark actor is used for the configuration of actorSystem (part of Apache Spark) instead of the system actor
 
-F4:
-ts-error-ssl
+**train_ticket replicated fault description**:
 
-F5:
-ts-error-cross-timeout-status(chance)
+Limit the post json size to 200 bytes in nginx.conf file.
+If user select the food and consign, the request body will exceed 200 bytes, and the request will be blocked by nginx
 
-F7:
-ts-external-normal
+**fault replicate steps**:
 
-F8:
-ts-error-redis
+setup system:
 
-F10:
-ts-error-normal
+- Use docker-compose to setup the Train-Ticket System.
 
-F11:
-ts-error-bomupdate
+fault reproduce manually step:
 
-F12:
-ts-error-processes-seq-status(chance)
+1. Select [Flow One - Ticket Reserve]
+2. Log in and select a data, Click [Search]
+3. Select one searching results, click the [Booking] button 
+4. Select a contacts, check [Need Food], select [Station Food Stores] and select one food as you like
+5. Check [Consign] and input the corresponding information, click [Select] 
+6. Click the [Confirm Ticket] in step4
+5. You will get the alert which says "Preserve Failed"
 
-F13:
-ts-error-queue
+If you want to reserve ticket successfully, uncheck the [Need Food] and [Consign]
