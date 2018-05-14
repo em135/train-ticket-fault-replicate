@@ -604,7 +604,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
     orderTicketInfo.assurance = $("#assurance_type").val();
 
     //add the food information
-    if(null != $('#ticket_confirm_food_type').text() && "" != $('#ticket_confirm_food_type').text()){
+    if($('#need-food-or-not').is(":checked") && null != $('#ticket_confirm_food_type').text() && "" != $('#ticket_confirm_food_type').text()){
         if($('#ticket_confirm_food_type').text() == "Train Food"){
             orderTicketInfo.foodType = 1;
             orderTicketInfo.foodName = $('#ticket_confirm_food_name').text();
