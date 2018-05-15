@@ -1,24 +1,40 @@
-package fdse.microservice.domain;
+package travel.domain;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.Valid;
 
 
-public class TrainType {
-
+@Document(collection="trainType")
+public class TrainTypeClass {
+    @Valid
+    @Id
     private String id;
 
+    @Valid
     private int economyClass;
 
+    @Valid
     private int confortClass;
 
     private int averageSpeed;
 
-    public TrainType(){
-
+    public TrainTypeClass(){
+        //Default Constructor
     }
 
-    public TrainType(String id, int economyClass, int confortClass) {
+    public TrainTypeClass(String id, int economyClass, int confortClass) {
         this.id = id;
         this.economyClass = economyClass;
         this.confortClass = confortClass;
+    }
+
+    public TrainTypeClass(String id, int economyClass, int confortClass, int averageSpeed) {
+        this.id = id;
+        this.economyClass = economyClass;
+        this.confortClass = confortClass;
+        this.averageSpeed = averageSpeed;
     }
 
     public String getId() {

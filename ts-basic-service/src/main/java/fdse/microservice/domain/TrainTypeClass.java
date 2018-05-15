@@ -1,23 +1,21 @@
-package preserve.domain;
-
-import javax.validation.Valid;
+package fdse.microservice.domain;
 
 
-public class TrainType {
-    @Valid
+public class TrainTypeClass {
+
     private String id;
 
-    @Valid
     private int economyClass;
 
-    @Valid
     private int confortClass;
 
-    public TrainType(){
-        //Default Constructor
+    private int averageSpeed;
+
+    public TrainTypeClass(){
+
     }
 
-    public TrainType(String id, int economyClass, int confortClass) {
+    public TrainTypeClass(String id, int economyClass, int confortClass) {
         this.id = id;
         this.economyClass = economyClass;
         this.confortClass = confortClass;
@@ -45,5 +43,13 @@ public class TrainType {
 
     public void setConfortClass(int confortClass) {
         this.confortClass = confortClass;
+    }
+
+    public int getAverageSpeed() {
+        return averageSpeed;
+    }
+
+    public void setAverageSpeed(int averageSpeed) {
+        this.averageSpeed = averageSpeed;
     }
 }

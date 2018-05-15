@@ -1,8 +1,9 @@
-package seat.domain;
+package preserveOther.domain;
 
 import javax.validation.Valid;
 
-public class TrainType {
+
+public class TrainTypeClass {
     @Valid
     private String id;
 
@@ -12,23 +13,14 @@ public class TrainType {
     @Valid
     private int confortClass;
 
-    private int averageSpeed;
-
-    public TrainType(){
+    public TrainTypeClass(){
         //Default Constructor
     }
 
-    public TrainType(String id, int economyClass, int confortClass) {
+    public TrainTypeClass(String id, int economyClass, int confortClass) {
         this.id = id;
         this.economyClass = economyClass;
         this.confortClass = confortClass;
-    }
-
-    public TrainType(String id, int economyClass, int confortClass, int averageSpeed) {
-        this.id = id;
-        this.economyClass = economyClass;
-        this.confortClass = confortClass;
-        this.averageSpeed = averageSpeed;
     }
 
     public String getId() {
@@ -53,13 +45,5 @@ public class TrainType {
 
     public void setConfortClass(int confortClass) {
         this.confortClass = confortClass;
-    }
-
-    public int getAverageSpeed() {
-        return averageSpeed;
-    }
-
-    public void setAverageSpeed(int averageSpeed) {
-        this.averageSpeed = averageSpeed;
     }
 }

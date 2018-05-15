@@ -1,4 +1,4 @@
-package travel.domain;
+package travel2.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,30 +7,29 @@ import javax.validation.Valid;
 
 
 @Document(collection="trainType")
-public class TrainType {
+public class TrainTypeClass {
     @Valid
     @Id
     private String id;
 
     @Valid
     private int economyClass;
-
     @Valid
     private int confortClass;
 
     private int averageSpeed;
 
-    public TrainType(){
+    public TrainTypeClass(){
         //Default Constructor
     }
 
-    public TrainType(String id, int economyClass, int confortClass) {
+    public TrainTypeClass(String id, int economyClass, int confortClass) {
         this.id = id;
         this.economyClass = economyClass;
         this.confortClass = confortClass;
     }
 
-    public TrainType(String id, int economyClass, int confortClass, int averageSpeed) {
+    public TrainTypeClass(String id, int economyClass, int confortClass, int averageSpeed) {
         this.id = id;
         this.economyClass = economyClass;
         this.confortClass = confortClass;

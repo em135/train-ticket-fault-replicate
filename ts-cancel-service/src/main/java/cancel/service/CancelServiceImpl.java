@@ -2,6 +2,8 @@ package cancel.service;
 
 import cancel.async.AsyncTask;
 import cancel.domain.*;
+import classenum.OrderStatus;
+import classenum.SeatClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,6 +19,7 @@ public class CancelServiceImpl implements CancelService{
 
     @Autowired
     private AsyncTask asyncTask;
+
 
     @Override
     public CancelOrderResult cancelOrder(CancelOrderInfo info,String loginToken,String loginId) throws Exception{
