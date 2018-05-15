@@ -59,14 +59,21 @@ $("#flow_preserve_login_button").click(function() {
                 document.cookie = "loginId=" + obj["account"].id;
                 document.cookie = "loginToken=" + obj["token"];
                 $("#flow_preserve_login_status").text(obj["status"]);
-                $("#flow_preserve_login_msg").text(obj["message"]);
+
+                //To replicate F21
+                $("#flow_preserve_login_msg").val(obj["message"]);
+                // $("#flow_preserve_login_msg").text(obj["message"]);
+
                 $("#user_login_id").text(obj["account"].id);
-                location.hash="anchor_flow_preserve_select_trip";
+                // location.hash="anchor_flow_preserve_select_trip";
             }else{
                 // setCookie("loginId", "", -1);
                 // setCookie("loginToken", "", -1);
                 //alert(obj["message"]);
-                $("#flow_preserve_login_msg").text(obj["message"]);
+
+                //To replicate F21
+                $("#flow_preserve_login_msg").val(obj["message"]);
+                // $("#flow_preserve_login_msg").text(obj["message"]);
             }
         }
     });

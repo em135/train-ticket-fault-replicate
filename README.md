@@ -1,37 +1,34 @@
-# fault_replicate
+### ts-error-F21
 
+**industrial fault description**:
 
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
+Symptom：
+JAWS (a screen reader) misses reading some elements
+Root Cause：
+The “aria-labeled-by” element for accessibility cannot be located by the JAWS
 
-F1:
-ts-error-process-seq
+**train_ticket replicated fault description**:
 
-F2:
-ts-error-reportui
+Just add the aria label in the login module.
+There are three input types to read —  Email, Password and Verification Code.
+When the cursor focuses on the input, the screen reader will read the value in it.
+Add the "aria-labelledby" label to the "Email" and "Password" inputs to first read the input name,
+so that user can make clear what the input value represent.
+But the "Verification Code" input doesn't add an "aria-labelledby" label
+So user will just heard the input's default value "abcd", it will confuse the user.
 
-F3:
-ts-error-docker-JVM
+**fault replicate steps**:
 
-F4:
-ts-error-ssl
+setup system:
 
-F5:
-ts-error-cross-timeout-status(chance)
+- Use docker-compose to setup the Train-Ticket System.
+- Install and start a screen reader software
 
-F7:
-ts-external-normal
+fault reproduce manually step:
 
-F8:
-ts-error-redis
+1. Click [Flow one - Ticket Reserve]
+2. Click [Tab] and focus the Email input, the screen reader will read the label and default value of this row
+3. Continue click [Tab] until cursor focuses on the Verification Code row, 
+since it misses a "aria-labelledby" label, the screen reader will not read the "Verification Code" string. 
+ 
 
-F10:
-ts-error-normal
-
-F11:
-ts-error-bomupdate
-
-F12:
-ts-error-processes-seq-status(chance)
-
-F13:
-ts-error-queue
