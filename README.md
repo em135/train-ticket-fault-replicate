@@ -1,37 +1,12 @@
 # fault_replicate
 
 
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
+##  Fault Replication(F19)
 
-F1:
-ts-error-process-seq
+###Symptom:
+When the user chooses to consign his packages and select the French format, the returned
+price is displayed in wrong format
 
-F2:
-ts-error-reportui
-
-F3:
-ts-error-docker-JVM
-
-F4:
-ts-error-ssl
-
-F5:
-ts-error-cross-timeout-status(chance)
-
-F7:
-ts-external-normal
-
-F8:
-ts-error-redis
-
-F10:
-ts-error-normal
-
-F11:
-ts-error-bomupdate
-
-F12:
-ts-error-processes-seq-status(chance)
-
-F13:
-ts-error-queue
+###Root Cause:
+The product price is not formatted correctly in the French format
+ 
