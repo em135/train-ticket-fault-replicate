@@ -71,23 +71,23 @@ public class AdminRouteController {
                 while((str = bufferedReader.readLine()) != null) {
                     System.out.println("[Upload Read Line]" + str);
 
-                    String[] strList = str.split("|");
+                    String[] strList = str.split("&");
 
                     if(strList.length != 4){
+                        System.out.println("[Array Length]：" + strList.length);
                         continue;
                     }
 
-                    String id = UUID.randomUUID().toString();
                     String startStationId = strList[0];
                     String endStationId = strList[1];
                     String stationListStr = strList[2];
                     String distanceList = strList[3];
 
                     CreateAndModifyRouteInfo info = new CreateAndModifyRouteInfo();
-                    info.setId(id);
+                    info.setId("");
                     info.setStartStation(startStationId);
                     info.setEndStation(endStationId);
-                    info.setDistanceList(stationListStr);
+                    info.setStationList(stationListStr);
                     info.setDistanceList(distanceList);
                     CreateAndModifyRouteResult result = restTemplate.postForObject(
                             "http://ts-route-service:11178/route/createAndModify",
