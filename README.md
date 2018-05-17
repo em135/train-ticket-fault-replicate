@@ -1,37 +1,27 @@
-# fault_replicate
+### ts-error-F17
 
+**industrial fault description**:
 
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
+Symptom：
+The grid-loading process takes too much time
 
-F1:
-ts-error-process-seq
+Root Cause：
+Too many nested “select” and “from” clauses are in the constructed SQL statement
 
-F2:
-ts-error-reportui
+**train_ticket replicated fault description**:
 
-F3:
-ts-error-docker-JVM
+To simulate the nested select clauses, one procedure of mysql to sleep 10s was created in ts-voucher-service.
+Since the front stage has a 5s limit of network request, the query of one order's voucher will be out of time.
 
-F4:
-ts-error-ssl
+**fault replicate steps**:
 
-F5:
-ts-error-cross-timeout-status(chance)
+setup system:
 
-F7:
-ts-external-normal
+- Use docker-compose to setup the Train-Ticket System.
 
-F8:
-ts-error-redis
+fault reproduce manually step:
 
-F10:
-ts-error-normal
-
-F11:
-ts-error-bomupdate
-
-F12:
-ts-error-processes-seq-status(chance)
-
-F13:
-ts-error-queue
+1. Click [Flow One - Ticket Reserve] and Log in
+2. Click [Flow Three - Consign & Voucher]  and click [Refresh Orders] of [Step1:- View My Orders] 
+3. Select one order and click its [Print Voucher] button
+4. You will get the "Timeout" alert 
