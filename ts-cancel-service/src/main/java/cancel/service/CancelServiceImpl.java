@@ -114,78 +114,20 @@ public class CancelServiceImpl implements CancelService{
                     ChangeOrderResult changeOrderResult = cancelFromOtherOrder(changeOrderInfo);
 
 
-//
-//
-//                    String money = calculateRefund(order);
-//                    Future<Boolean> taskDrawBackMoney = asyncTask.drawBackMoneyForOrderCan(money,loginId,order.getId().toString());
-//                    Future<ChangeOrderResult> taskCancelOrder = asyncTask.updateOtherOrderStatusToCancel(changeOrderInfo);
-//
-//                    ChangeOrderResult changeOrderResult = null;
-//                    boolean drawBackMoneyStatus = false;
-//                    while(!taskCancelOrder.isDone() || !taskDrawBackMoney.isDone()){}
-//                    System.out.println("[Cancel Order Service][Cancel Order] Two Process Done");
-//                    drawBackMoneyStatus = taskDrawBackMoney.get();
-//                    changeOrderResult = taskCancelOrder.get();
-//
-//
-//
+                    //Search and Drawback Voucher Info
+                    boolean handleVoucherStatus = handleVoucher(order.getId().toString());
+                    if(handleVoucherStatus == true){
+                        System.out.println("[Handle Voucher] Success.");
+                    }else{
+                        throw new Exception("Fail.");
+//                        System.out.println("[Handle Voucher] Fail.");
+//                        CancelOrderResult result = new CancelOrderResult();
+//                        result.setStatus(false);
+//                        result.setMessage("Voucher Handle Fail");
+//                        System.out.println("[Cancel Order Service][Cancel Order] Voucher Handle Fail.");
+//                        return result;
+                    }
 
-//                    if(changeOrderResult.isStatus() == true && drawBackMoneyStatus == true){
-//                        CancelOrderResult finalResult = new CancelOrderResult();
-//                        finalResult.setStatus(true);
-//                        finalResult.setMessage("Success.");
-//                        System.out.println("[Cancel Order Service][Cancel Order] Success.");
-//                        System.out.println("[Cancel Order Service][Draw Back Money] Success.");
-//
-//                        GetAccountByIdInfo getAccountByIdInfo = new GetAccountByIdInfo();
-//                        getAccountByIdInfo.setAccountId(order.getAccountId().toString());
-//                        GetAccountByIdResult result = getAccount(getAccountByIdInfo);
-//                        if(result.isStatus() == false){
-//                            return null;
-//                        }
-//
-//                        NotifyInfo notifyInfo = new NotifyInfo();
-//                        notifyInfo.setDate(new Date().toString());
-//
-//
-//                        notifyInfo.setEmail(result.getAccount().getEmail());
-//                        notifyInfo.setStartingPlace(order.getFrom());
-//                        notifyInfo.setEndPlace(order.getTo());
-//                        notifyInfo.setUsername(result.getAccount().getName());
-//                        notifyInfo.setSeatNumber(order.getSeatNumber());
-//                        notifyInfo.setOrderNumber(order.getId().toString());
-//                        notifyInfo.setPrice(order.getPrice());
-//                        notifyInfo.setSeatClass(SeatClass.getNameByCode(order.getSeatClass()));
-//                        notifyInfo.setStartingTime(order.getTravelTime().toString());
-//
-//                        sendEmail(notifyInfo);
-//
-//
-//                        return finalResult;
-//                    }else if(changeOrderResult.isStatus() == true && drawBackMoneyStatus == false){
-//                        CancelOrderResult finalResult = new CancelOrderResult();
-//                        finalResult.setStatus(false);
-//                        finalResult.setMessage("Fail.");
-//                        System.out.println("[Cancel Order Service][Cancel Order] Success.");
-//                        System.out.println("[Cancel Order Service][Draw Back Money] Fail.");
-//                        return finalResult;
-//                    }else if(changeOrderResult.isStatus() == false && drawBackMoneyStatus == true){
-//                        CancelOrderResult finalResult = new CancelOrderResult();
-//                        finalResult.setStatus(false);
-//                        finalResult.setMessage("Fail.");
-//                        System.out.println("[Cancel Order Service][Cancel Order] Fail.");
-//                        System.out.println("[Cancel Order Service][Draw Back Money] Success.");
-//                        return finalResult;
-//                    }else{
-//                        CancelOrderResult finalResult = new CancelOrderResult();
-//                        finalResult.setStatus(false);
-//                        finalResult.setMessage("Fail.");
-//                        System.out.println("[Cancel Order Service][Cancel Order] Fail.");
-//                        System.out.println("[Cancel Order Service][Draw Back Money] Fail.");
-//                        return finalResult;
-//                    }
-
-//
                     if(changeOrderResult.isStatus() == true){
                         CancelOrderResult finalResult = new CancelOrderResult();
                         finalResult.setStatus(true);
@@ -223,6 +165,42 @@ public class CancelServiceImpl implements CancelService{
             }
         }
     }
+
+    private boolean handleVoucher(String orderId){
+
+        HandleVoucherOfCancelOrderInfo info = new HandleVoucherOfCancelOrderInfo();
+        info.setOrderId(orderId);
+        info.setOperation(2);
+        info.setType(0);
+
+       int maxRetry = 10;
+       for(int i = 0; i < maxRetry; i++){
+           System.out.println("第" + i + "次");
+           String result = restTemplate.postForObject(
+                   "http://ts-voucher-service:16101/getVoucher",
+                   info,
+                   String.class
+           );
+
+           System.out.println("[Handle Voucher] Message:" + result);
+
+           if(result.contains("Success")){
+               System.out.println("Success");
+               return true;
+           }else{
+               System.out.println("Contain Retry");
+               try {
+                   Thread.sleep(5000);
+               }catch(Exception e){
+                   e.printStackTrace();
+               }
+           }
+        }
+        return false;
+
+    }
+
+
 
     public boolean sendEmail(NotifyInfo notifyInfo){
         System.out.println("[Cancel Order Service][Send Email]");

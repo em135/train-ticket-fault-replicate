@@ -613,6 +613,9 @@ $("#ticket_cancel_panel_confirm").click(function(){
                 $("#ticket_cancel_panel").css('display','none');
             }
             alert(result["message"]);
+        },
+        error: function(){
+            alert("Something Wrong");
         }
     });
 });
