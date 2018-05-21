@@ -1,3 +1,19 @@
+
+
+$("#display_convert").click(function(){
+
+    //alert("display_convert");
+    var htmlObj = document.getElementsByTagName('html')[0];
+
+    //alert(htmlObj.getAttribute("dir"));
+    if(htmlObj.getAttribute("dir") == "rtl"){
+        htmlObj.setAttribute("dir","ltr");
+    }else{
+        htmlObj.setAttribute("dir","rtl");
+    }
+
+});
+
 /***********************************************************/
 /******************Flow For Preserve Ticket*****************/
 /**Before ***/
