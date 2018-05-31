@@ -18,7 +18,7 @@ public class MsgSendingBean {
 		this.source = source;
 	}
 
-	public void sayHello(OrderTicketsInfo orderTicketsInfo) {
-		source.output().send(MessageBuilder.withPayload(val).build());
-	}
+//	public void sayHello(OrderTicketsInfo orderTicketsInfo) {
+//		source.output().send(MessageBuilder.withPayload(val).build());
+//	}
 }
