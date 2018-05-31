@@ -48,6 +48,7 @@ public class OrderServiceImpl implements OrderService{
             cor.setOrder(null);
         }else{
             order.setId(UUID.randomUUID());
+            order.setStatus(OrderStatus.NOTPAID.getCode());
             orderRepository.save(order);
             System.out.println("[Order Service][Order Create] Success.");
             System.out.println("[Order Service][Order Create] Price:" + order.getPrice());
