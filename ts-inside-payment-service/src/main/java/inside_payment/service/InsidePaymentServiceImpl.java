@@ -1,5 +1,6 @@
 package inside_payment.service;
 
+import classenum.OrderStatus;
 import inside_payment.async.AsyncTask;
 import inside_payment.domain.*;
 import inside_payment.repository.AddMoneyRepository;
@@ -299,7 +300,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
     private ModifyOrderStatusResult setOrderStatus(String tripId,String orderId){
         ModifyOrderStatusInfo info = new ModifyOrderStatusInfo();
         info.setOrderId(orderId);
-        info.setStatus(1);   //order paid and not collected
+        info.setStatus(OrderStatus.PAID.getCode());   //order paid and not collected
 
         ModifyOrderStatusResult result;
         if(tripId.startsWith("G") || tripId.startsWith("D")){
