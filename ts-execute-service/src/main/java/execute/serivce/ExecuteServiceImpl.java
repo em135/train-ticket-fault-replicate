@@ -1,5 +1,6 @@
 package execute.serivce;
 
+import classenum.OrderStatus;
 import execute.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,7 +117,7 @@ public class ExecuteServiceImpl implements ExecuteService{
 
                 ModifyOrderStatusInfo executeInfo = new ModifyOrderStatusInfo();
                 executeInfo.setOrderId(info.getOrderId());
-                executeInfo.setStatus(OrderStatus.COLLECTED.getCode());
+                executeInfo.setStatus(OrderStatus.USED.getCode());
                 ModifyOrderStatusResult resultExecute = executeOrderOther(executeInfo);
                 if(resultExecute.isStatus() == true){
                     result.setStatus(true);
