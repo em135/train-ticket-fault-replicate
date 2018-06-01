@@ -32,10 +32,15 @@ public class HttpAspect {
         String method = request.getMethod();
         String ip = request.getRemoteAddr();
         String remoteHost = request.getRemoteHost();
+        String requestArgs  = "";
+        if(joinPoint.getArgs() != null && joinPoint.getArgs().length > 0){
+            requestArgs = new Gson().toJson(joinPoint.getArgs());
+        }
 
         logger.info("[Service:" + thisServiceName + "]" +
                     "[URI:" + thisServiceName + url + "]" +
                     "[Method:" + method + "]" +
+                    "[RequestBody:" + requestArgs + "]" +
                     "[RemoteHost:" + remoteHost + "]" +
                     "[IP:" + ip + "]");
 
