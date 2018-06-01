@@ -751,6 +751,9 @@ $("#preserve_collect_button").click(function() {
                 $("#preserve_collect_order_status").html(obj["message"]);
             }
         },
+        error: function(){
+            alert("Fail. Something wrong.");
+        },
         complete: function(){
             $("#preserve_collect_button").attr("disabled",false);
         }
