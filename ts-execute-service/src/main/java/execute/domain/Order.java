@@ -1,5 +1,6 @@
 package execute.domain;
 
+import classenum.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import java.util.UUID;
