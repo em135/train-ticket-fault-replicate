@@ -1,7 +1,7 @@
 $("#upload").click(function() {
 
     $.ajax({
-        url: "/adminroute/upload",
+        url: "/adminuser/upload",
         type: 'POST',
         cache: false,
         data: new FormData($("#uploadForm")[0]),
@@ -11,7 +11,8 @@ $("#upload").click(function() {
             alert("Success");
         },
         error: function (err) {
-            alert("Upload Route List Fail.");
+            alert("Upload User List Fail.");
         }
     });
+
 });
