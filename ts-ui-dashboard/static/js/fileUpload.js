@@ -1,7 +1,7 @@
 $("#upload").click(function() {
 
     $.ajax({
-        url: "/adminuser/upload",
+        url: "/admintravel/upload",
         type: 'POST',
         cache: false,
         data: new FormData($("#uploadForm")[0]),
