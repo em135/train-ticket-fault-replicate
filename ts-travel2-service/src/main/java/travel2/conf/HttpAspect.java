@@ -36,7 +36,7 @@ public class HttpAspect {
         String requestArgs  = "";
         if(joinPoint.getArgs() != null && joinPoint.getArgs().length > 0){
             for(Object c:  joinPoint.getArgs()) {
-                if( !(c instanceof HttpServletResponse)) {
+                if( !(c instanceof HttpServletResponse) && !(c instanceof HttpServletRequest)) {
                     System.out.println("c=" + c);
                     requestArgs += new Gson().toJson(c);
                     System.out.println("requestArgs=" + requestArgs);
