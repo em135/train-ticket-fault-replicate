@@ -71,15 +71,9 @@ class GetVoucherHandler(tornado.web.RequestHandler):
         }
         conn = pymysql.connect(**config)
         cur = conn.cursor()
-
         #查询语句
         sql = 'SELECT * FROM voucher where order_id = %s'
         try:
-            # replicate F17
-            print("============= start sleep =================")
-            cur.callproc('testSleep')
-            print("=========== end sleep ====================")
-
             cur.execute(sql,(orderId))
             voucher = cur.fetchone()
             conn.commit()
@@ -133,19 +127,6 @@ def initDatabase():
         connect.commit()
     finally:
         pass
-
-
-    #create procedure, replicate F17
-    sql = "CREATE PROCEDURE testSleep() \
-       BEGIN \
-            select sleep(10); \
-       END"
-    try:
-        cur.execute(sql)
-        connect.commit()
-    finally:
-        pass
-
 
     #Create the table
     sql = """
