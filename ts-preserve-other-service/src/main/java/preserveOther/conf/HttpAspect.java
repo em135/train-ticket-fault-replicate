@@ -1,11 +1,15 @@
-package adminbasic.conf;
+package preserveOther.conf;
 
 import com.google.gson.Gson;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +19,7 @@ public class HttpAspect {
 
     private final static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(HttpAspect.class);
 
-    @Pointcut("execution(public * adminbasic.controller.AdminBasicInfoController.*(..))")
+    @Pointcut("execution(public * preserveOther.controller.PreserveOtherController.*(..))")
     public void webLog(){}
 
     @Before("webLog()")
