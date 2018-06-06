@@ -19,7 +19,7 @@ public class HttpAspect {
 
     private final static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(HttpAspect.class);
 
-    @Pointcut("execution(public * ticketinfo.controller.TicketInfoController.*(..))")
+    @Pointcut("execution(public * travelplan.controller.TravelPlanController.*(..))")
     public void webLog(){}
 
     @Before("webLog()")
