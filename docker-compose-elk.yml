@@ -1,13 +1,13 @@
 version: '3'
 services:
 
-#  rabbitmq:
-#    image: rabbitmq:management
-#    ports:
-#      - 5672:5672
-#      - 15672:15672
-#    networks:
-#      - my-network
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - my-network
 
   elasticsearch:
     image: elasticsearch
@@ -121,20 +121,20 @@ services:
     networks:
         - my-network
 
-#  ts-register-service:
-#    build: ts-register-service
-#    image: ts/ts-register-service
-#    restart: always
-#    ports:
-#      - 12344:12344
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-register-service:
+    build: ts-register-service
+    image: ts/ts-register-service
+    restart: always
+    ports:
+      - 12344:12344
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-sso-service:
     build: ts-sso-service
@@ -468,60 +468,60 @@ services:
     networks:
       - my-network
 
-#  ts-execute-service:
-#    build: ts-execute-service
-#    image: ts/ts-execute-service
-#    restart: always
-#    ports:
-#      - 12386:12386
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-execute-service:
+    build: ts-execute-service
+    image: ts/ts-execute-service
+    restart: always
+    ports:
+      - 12386:12386
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-payment-service:
-#    build: ts-payment-service
-#    image: ts/ts-payment-service
-#    restart: always
-#    ports:
-#      - 19001:19001
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-payment-service:
+    build: ts-payment-service
+    image: ts/ts-payment-service
+    restart: always
+    ports:
+      - 19001:19001
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-payment-mongo:
-#    image: mongo
-#    networks:
-#      - my-network
+  ts-payment-mongo:
+    image: mongo
+    networks:
+      - my-network
 
-#  ts-rebook-service:
-#    build: ts-rebook-service
-#    image: ts/ts-rebook-service
-#    restart: always
-#    ports:
-#      - 18886:18886
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-rebook-service:
+    build: ts-rebook-service
+    image: ts/ts-rebook-service
+    restart: always
+    ports:
+      - 18886:18886
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-rebook-mongo:
-#    image: mongo
-#    networks:
-#      - my-network
+  ts-rebook-mongo:
+    image: mongo
+    networks:
+      - my-network
 
   ts-cancel-service:
     build: ts-cancel-service
@@ -573,87 +573,87 @@ services:
       options:
         syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-travel-plan-service:
-#    build: ts-travel-plan-service
-#    image: ts/ts-travel-plan-service
-#    restart: always
-#    ports:
-#      - 14322:14322
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-travel-plan-service:
+    build: ts-travel-plan-service
+    image: ts/ts-travel-plan-service
+    restart: always
+    ports:
+      - 14322:14322
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-ticket-office-service:
-#    build: ts-ticket-office-service
-#    image: ts/ts-ticket-office-service
-#    restart: always
-#    ports:
-#      - 16108:16108
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-ticket-office-service:
+    build: ts-ticket-office-service
+    image: ts/ts-ticket-office-service
+    restart: always
+    ports:
+      - 16108:16108
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-ticket-office-mongo:
-#    image: mongo
-#    networks:
-#      - my-network
+  ts-ticket-office-mongo:
+    image: mongo
+    networks:
+      - my-network
 
-#  ts-news-service:
-#    build: ts-news-service
-#    image: ts/ts-news-service
-#    restart: always
-#    ports:
-#      - 12862:12862
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-news-service:
+    build: ts-news-service
+    image: ts/ts-news-service
+    restart: always
+    ports:
+      - 12862:12862
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-news-mongo:
-#    image: mongo
-#    networks:
-#      - my-network
+  ts-news-mongo:
+    image: mongo
+    networks:
+      - my-network
 
-#  ts-voucher-mysql:
-#    image: mysql:5.6.35
-#    expose:
-#      - "3306"
-#    environment:
-#     MYSQL_ROOT_PASSWORD: root
-#    networks:
-#     - my-network
+  ts-voucher-mysql:
+    image: mysql:5.6.35
+    expose:
+      - "3306"
+    environment:
+     MYSQL_ROOT_PASSWORD: root
+    networks:
+     - my-network
 
-#  ts-voucher-service:
-#    build: ts-voucher-service
-#    image: ts/ts-voucher-service
-#    restart: always
-#    ports:
-#      - 16101:16101
-#    depends_on:
-#      - ts-voucher-mysql
-#      - logstash
-#    volumes:
-#      - /var/lib/mysql
-#    networks:
-#      - my-network
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-voucher-service:
+    build: ts-voucher-service
+    image: ts/ts-voucher-service
+    restart: always
+    ports:
+      - 16101:16101
+    depends_on:
+      - ts-voucher-mysql
+      - logstash
+    volumes:
+      - /var/lib/mysql
+    networks:
+      - my-network
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-food-map-service:
     build: ts-food-map-service
@@ -675,20 +675,20 @@ services:
     networks:
       - my-network
 
-#  ts-route-plan-service:
-#    build: ts-route-plan-service
-#    image: ts/ts-route-plan-service
-#    restart: always
-#    ports:
-#      - 14578:14578
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-route-plan-service:
+    build: ts-route-plan-service
+    image: ts/ts-route-plan-service
+    restart: always
+    ports:
+      - 14578:14578
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-food-service:
     build: ts-food-service
@@ -705,137 +705,137 @@ services:
       options:
         syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-consign-service:
-#    build: ts-consign-service
-#    image: ts/ts-consign-service
-#    restart: always
-#    ports:
-#      - 16111:16111
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-consign-service:
+    build: ts-consign-service
+    image: ts/ts-consign-service
+    restart: always
+    ports:
+      - 16111:16111
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-consign-mongo:
-#    image: mongo
-#    networks:
-#      - my-network
+  ts-consign-mongo:
+    image: mongo
+    networks:
+      - my-network
 
-#  ts-consign-price-service:
-#    build: ts-consign-price-service
-#    image: ts/ts-consign-price-service
-#    restart: always
-#    ports:
-#      - 16110:16110
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-consign-price-service:
+    build: ts-consign-price-service
+    image: ts/ts-consign-price-service
+    restart: always
+    ports:
+      - 16110:16110
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-consign-price-mongo:
-#    image: mongo
-#    networks:
-#      - my-network
+  ts-consign-price-mongo:
+    image: mongo
+    networks:
+      - my-network
 
   ts-food-mongo:
     image: mongo
     networks:
       - my-network
 
-#  ts-admin-basic-info-service:
-#    build: ts-admin-basic-info-service
-#    image: ts/ts-admin-basic-info-service
-#    restart: always
-#    ports:
-#      - 18767:18767
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-admin-basic-info-service:
+    build: ts-admin-basic-info-service
+    image: ts/ts-admin-basic-info-service
+    restart: always
+    ports:
+      - 18767:18767
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-admin-order-service:
-#    build: ts-admin-order-service
-#    image: ts/ts-admin-order-service
-#    restart: always
-#    ports:
-#      - 16112:16112
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-admin-order-service:
+    build: ts-admin-order-service
+    image: ts/ts-admin-order-service
+    restart: always
+    ports:
+      - 16112:16112
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-admin-route-service:
-#    build: ts-admin-route-service
-#    image: ts/ts-admin-route-service
-#    restart: always
-#    ports:
-#      - 16113:16113
-#    deploy:
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-admin-route-service:
+    build: ts-admin-route-service
+    image: ts/ts-admin-route-service
+    restart: always
+    ports:
+      - 16113:16113
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-admin-travel-service:
-#    build: ts-admin-travel-service
-#    image: ts/ts-admin-travel-service
-#    restart: always
-#    ports:
-#      - 16114:16114
-#    deploy:
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-admin-travel-service:
+    build: ts-admin-travel-service
+    image: ts/ts-admin-travel-service
+    restart: always
+    ports:
+      - 16114:16114
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
-#  ts-admin-user-service:
-#    build: ts-admin-user-service
-#    image: ts/ts-admin-user-service
-#    restart: always
-#    ports:
-#      - 16115:16115
-#    deploy:
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#    networks:
-#      - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+  ts-admin-user-service:
+    build: ts-admin-user-service
+    image: ts/ts-admin-user-service
+    restart: always
+    ports:
+      - 16115:16115
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - my-network
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
 networks:
     my-network:
