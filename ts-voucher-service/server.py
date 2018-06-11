@@ -35,7 +35,7 @@ class GetVoucherHandler(tornado.web.RequestHandler):
             conn = pymysql.connect(**config)
             cur = conn.cursor()
             #插入语句
-            sql = 'INSERT INTO voucher (order_id,travelDate,travelTime,contactName,trainNumber,seatClass,seatNumber,startStation,destStation,price)VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+            sql = 'INSERT INTO voucher (order_id,travelDate,travelTime,contactName,train_number,seatClass,seat_number,start_station,dest_station,price)VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
             try:
                 cur.execute(sql,(order['id'],order['travelDate'],order['travelTime'],order['contactsName'],order['trainNumber'],order['seatClass'],order['seatNumber'],order['from'],order['to'],order['price']))
                 conn.commit()
@@ -137,11 +137,11 @@ def initDatabase():
     travelDate VARCHAR(1024) NOT NULL,
     travelTime VARCHAR(1024) NOT NULL,
     contactName VARCHAR(1024) NOT NULL,
-    trainNumber VARCHAR(1024) NOT NULL,
+    train_number VARCHAR(1024) NOT NULL,
     seatClass INT NOT NULL,
-    seatNumber VARCHAR(1024) NOT NULL,
-    startStation VARCHAR(1024) NOT NULL,
-    destStation VARCHAR(1024) NOT NULL,
+    seat_number VARCHAR(1024) NOT NULL,
+    start_station VARCHAR(1024) NOT NULL,
+    dest_station VARCHAR(1024) NOT NULL,
     price FLOAT NOT NULL,
     PRIMARY KEY (voucher_id));"""
     try:
