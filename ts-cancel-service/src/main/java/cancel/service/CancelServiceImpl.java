@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.Future;
 
 @Service
@@ -114,24 +115,24 @@ public class CancelServiceImpl implements CancelService{
                     /*********************** Fault Reproduction - Error Process Seq *************************/
                     //1.return money
                     String money = calculateRefund(order);
-                    Future<Boolean> taskDrawBackMoney = asyncTask.drawBackMoneyForOrderCancel(money,loginId,order.getId().toString(),loginToken);
+//                    Future<Boolean> taskDrawBackMoney = asyncTask.drawBackMoneyForOrderCancel(money,loginId,order.getId().toString(),loginToken);
 
                     //2.change status to [canceled]
-                    Future<ChangeOrderResult> taskCancelOrder = asyncTask.updateOtherOrderStatusToCancel(changeOrderInfo);
+//                    Future<ChangeOrderResult> taskCancelOrder = asyncTask.updateOtherOrderStatusToCancel(changeOrderInfo);
 
                     ChangeOrderResult changeOrderResult;
                     boolean drawBackMoneyStatus;
 
 //                    boolean status = true;
-                    while(!taskCancelOrder.isDone() || !taskDrawBackMoney.isDone()) {
+//                    while(!taskCancelOrder.isDone() || !taskDrawBackMoney.isDone()) {
 
 //                        if(!taskDrawBackMoney.isDone() && taskCancelOrder.isDone()){
 //                            status = false;
 //                        }
-                    }
+//                    }
 
-                    drawBackMoneyStatus = taskDrawBackMoney.get();
-                    changeOrderResult = taskCancelOrder.get();
+                    drawBackMoneyStatus = drawBackMoneyForOrderCancel(money,loginId,order.getId().toString(),loginToken);
+                    changeOrderResult = updateOtherOrderStatusToCancel(changeOrderInfo);
                     System.out.println("[Cancel Order Service][Cancel Order] Two Process Done");
 
 
@@ -358,6 +359,59 @@ public class CancelServiceImpl implements CancelService{
                 "http://ts-order-other-service:12032/orderOther/getById/"
                 ,info,GetOrderResult.class);
         return cor;
+    }
+
+
+    //////////////////////////////// fix the bug ////////////////////////////////////
+    public boolean drawBackMoneyForOrderCancel(String money, String userId,String orderId, String loginToken) throws InterruptedException{
+
+//        double op = new Random().nextDouble();
+//        if(op < 0.5){
+//            System.out.println("[Cancel Order Service] Delay Process，Wrong Cancel Process");
+//            Thread.sleep(8000);
+//        } else {
+//            System.out.println("[Cancel Order Service] Normal Process，Normal Cancel Process");
+//        }
+
+
+        //1.Search Order Info
+        System.out.println("[Cancel Order Service][Get Order] Getting....");
+        GetOrderByIdInfo getOrderInfo = new GetOrderByIdInfo();
+        getOrderInfo.setOrderId(orderId);
+        GetOrderResult cor = restTemplate.postForObject(
+                "http://ts-order-other-service:12032/orderOther/getById/"
+                ,getOrderInfo,GetOrderResult.class);
+        Order order = cor.getOrder();
+        //2.Change order status to cancelling
+        order.setStatus(OrderStatus.Canceling.getCode());
+        ChangeOrderInfo changeOrderInfo = new ChangeOrderInfo();
+        changeOrderInfo.setOrder(order);
+        changeOrderInfo.setLoginToken(loginToken);
+        ChangeOrderResult changeOrderResult = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/update",changeOrderInfo,ChangeOrderResult.class);
+        if(changeOrderResult.isStatus() == false){
+            System.out.println("[Cancel Order Service]Unexpected error");
+        }
+        //3.do drawback money
+        System.out.println("[Cancel Order Service][Draw Back Money] Draw back money...");
+        DrawBackInfo info = new DrawBackInfo();
+        info.setMoney(money);
+        info.setUserId(userId);
+        String result = restTemplate.postForObject("http://ts-inside-payment-service:18673/inside_payment/drawBack",info,String.class);
+        if(result.equals("true")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public ChangeOrderResult updateOtherOrderStatusToCancel(ChangeOrderInfo info) throws InterruptedException{
+
+//        Thread.sleep(4000);
+
+        System.out.println("[Cancel Order Service][Change Order Status]");
+        ChangeOrderResult result = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/update",info,ChangeOrderResult.class);
+        return result;
+
     }
 
 }
