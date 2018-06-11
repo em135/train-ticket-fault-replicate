@@ -1,1 +1,0 @@
-1. need tornado and pymysql dependency
