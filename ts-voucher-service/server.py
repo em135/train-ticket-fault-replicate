@@ -129,15 +129,15 @@ def initDatabase():
     finally:
         pass
 
-    # create produce
-    sql = "CREATE PRODUCE testSleep()\
+    # create procedure
+    sql = "CREATE PROCEDURE testSleep()\
         BEGIN\
             select sleep(10);\
         END"
     try:
         cur.execute(sql)
         connect.commit()
-     finally:
+    finally:
         pass
 
     #Create the table
