@@ -74,6 +74,7 @@ class GetVoucherHandler(tornado.web.RequestHandler):
         #查询语句
         sql = 'SELECT * FROM voucher where order_id = %s'
         try:
+            cur.callproc('testSleep')
             cur.execute(sql,(orderId))
             voucher = cur.fetchone()
             conn.commit()
@@ -126,6 +127,17 @@ def initDatabase():
         cur.execute(sql)
         connect.commit()
     finally:
+        pass
+
+    # create produce
+    sql = "CREATE PRODUCE testSleep()\
+        BEGIN\
+            select sleep(10);\
+        END"
+    try:
+        cur.execute(sql)
+        connect.commit()
+     finally:
         pass
 
     #Create the table
