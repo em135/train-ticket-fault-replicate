@@ -11,6 +11,7 @@ $("#upload").click(function() {
             alert("Success");
         },
         error: function (err) {
+            alert(err);
             alert("Upload Route List Fail.");
         }
     });
