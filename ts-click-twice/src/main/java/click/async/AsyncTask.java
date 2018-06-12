@@ -58,7 +58,7 @@ public class AsyncTask {
         getRoutePlanInfo.setEndPlace("Nan Jing");
 
         java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
-        String s = "2018-01-31";
+        String s = "2020-12-12";
         Date date = formatter.parse(s);
 
         //date = new Date(1504137600000L);
