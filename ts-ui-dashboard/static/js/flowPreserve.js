@@ -259,26 +259,30 @@ function initFoodSelect(tripId){
                 //     // $('#train-food-option').disabled(true);
                 // } else {
                 try{
-                    var trainFoodList = result.trainFoodList[0]['foodList'];
-                    console.log("trainFoodList:" );
-                    console.log(trainFoodList[0]);
+                    if( (null != result.trainFoodList) &&  (result.trainFoodList.length > 0) &&
+                        (null != result.trainFoodList[0]) && (null != result.trainFoodList[0]['foodList'])){
+                        var trainFoodList = result.trainFoodList[0]['foodList'];
+                        console.log("trainFoodList:" );
+                        console.log(trainFoodList[0]);
 
-                    $("#train-food-type-list").html("");
-                    $("#food-station-list").html("");
-                    $("#food-stores-list").html("");
-                    $("#food-store-food-list").html("");
+                        $("#train-food-type-list").html("");
+                        $("#food-station-list").html("");
+                        $("#food-stores-list").html("");
+                        $("#food-store-food-list").html("");
 
-                    var trainFoodSelect = document.getElementById ("train-food-type-list");
-                    var opt1 = document.createElement ("option");
-                    opt1.value = 0;
-                    opt1.innerText = "-- --";
-                    trainFoodSelect.appendChild(opt1);
-                    for(var k = 0; k < trainFoodList.length; k++){
-                        var opt2 = document.createElement ("option");
-                        opt2.value = k + 1;
-                        opt2.innerText = trainFoodList[k]['foodName'] + ":$" + trainFoodList[k]['price'];
-                        trainFoodSelect.appendChild (opt2);
+                        var trainFoodSelect = document.getElementById ("train-food-type-list");
+                        var opt1 = document.createElement ("option");
+                        opt1.value = 0;
+                        opt1.innerText = "-- --";
+                        trainFoodSelect.appendChild(opt1);
+                        for(var k = 0; k < trainFoodList.length; k++){
+                            var opt2 = document.createElement ("option");
+                            opt2.value = k + 1;
+                            opt2.innerText = trainFoodList[k]['foodName'] + ":$" + trainFoodList[k]['price'];
+                            trainFoodSelect.appendChild (opt2);
+                        }
                     }
+
                 } catch(err){
                    alert(err.message);
                 }
