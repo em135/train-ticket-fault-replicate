@@ -43,7 +43,10 @@ public class ConsignPriceServiceImpl implements ConsignPriceService {
         String ret;
         switch (format){
             case ConstFormat.FRENCH_FORMAT :
-                ret = "₣" + temp.replace(","," ");;
+                temp = temp.replace("."," ");
+                temp = temp.replace(",",".");
+                temp = temp.replace(" ",",");
+                ret = "₣" + temp;
                 break;
             case ConstFormat.GERMAN_FORMAT:
                 temp = temp.replace("."," ");
