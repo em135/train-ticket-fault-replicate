@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class FoodServiceImpl implements FoodService{
@@ -42,6 +39,9 @@ public class FoodServiceImpl implements FoodService{
                                                 qti, GetTrainFoodListResult.class);
         if( trainFoodListResult.isStatus()){
             trainFoodList = trainFoodListResult.getTrainFoodList();
+//            if(trainFoodList == null){
+//                trainFoodList = new ArrayList<>();
+//            }
             System.out.println("[Food Service]Get Train Food List!");
         } else {
             System.out.println("[Food Service]Get the Get Food Request Failed!");

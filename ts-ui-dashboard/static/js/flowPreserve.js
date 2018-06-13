@@ -259,9 +259,11 @@ function initFoodSelect(tripId){
                 //     // $('#train-food-option').disabled(true);
                 // } else {
                 try{
-                    var trainFoodList = result.trainFoodList[0]['foodList'];
-                    console.log("trainFoodList:" );
-                    console.log(trainFoodList[0]);
+
+
+
+                    // console.log("trainFoodList:" );
+                    // console.log(trainFoodList[0]);
 
                     $("#train-food-type-list").html("");
                     $("#food-station-list").html("");
@@ -273,12 +275,32 @@ function initFoodSelect(tripId){
                     opt1.value = 0;
                     opt1.innerText = "-- --";
                     trainFoodSelect.appendChild(opt1);
-                    for(var k = 0; k < trainFoodList.length; k++){
-                        var opt2 = document.createElement ("option");
-                        opt2.value = k + 1;
-                        opt2.innerText = trainFoodList[k]['foodName'] + ":$" + trainFoodList[k]['price'];
-                        trainFoodSelect.appendChild (opt2);
+
+
+                    var trainFoodList;
+                    if(result.trainFoodList == null){
+
+                    }else{
+                        trainFoodList = result.trainFoodList[0]['foodList'];
+                        for(var k = 0; k < trainFoodList.length; k++){
+                            var opt2 = document.createElement ("option");
+                            opt2.value = k + 1;
+                            opt2.innerText = trainFoodList[k]['foodName'] + ":$" + trainFoodList[k]['price'];
+                            trainFoodSelect.appendChild (opt2);
+                        }
                     }
+
+
+
+
+
+
+
+
+
+
+
+
                 } catch(err){
                    alert(err.message);
                 }
