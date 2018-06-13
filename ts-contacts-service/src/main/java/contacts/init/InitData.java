@@ -17,7 +17,7 @@ public class InitData implements CommandLineRunner{
     @Override
     public void run(String... args)throws Exception{
         Contacts contacts_One = new Contacts();
-        contacts_One.setAccountId(UUID.fromString("4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f"));
+        contacts_One.setAccountId(UUID.fromString("aded7dc5-06a7-4503-8e21-b7cad7a1f386"));
         contacts_One.setDocumentType(DocumentType.ID_CARD.getCode());
         contacts_One.setName("Contacts_One");
         contacts_One.setDocumentNumber("DocumentNumber_One");
