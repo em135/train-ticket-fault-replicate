@@ -9,47 +9,47 @@ services:
 #    networks:
 #      - my-network
 
-#  elasticsearch:
-#    image: elasticsearch
-#    networks:
-#      - my-network
-#    hostname: elasticsearch
-#    container_name: elasticsearch
-#    restart: always
-#    volumes:
-#      - /opt/elasticsearch/data:/usr/share/elasticsearch/data
-#    ports:
-#     - 9200:9200
-#
-#  kibana:
-#    image: kibana
-#    networks:
-#      - my-network
-#    hostname: kibana
-#    container_name: kibana
-#    restart: always
-#    environment:
-#      ELASTICSEARCH_URL: http://elasticsearch:9200/
-#    ports:
-#      - 5601:5601
-#    depends_on:
-#      - elasticsearch
-#
-#  logstash:
-#    image: logstash
-#    networks:
-#      - my-network
-#    hostname: logstash
-#    container_name: logstash
-#    restart: always
-#    volumes:
-#      - /opt/logstash/conf:/opt/logstash/conf
-#    command: logstash -f /opt/logstash/conf/
-#    ports:
-#      - 5000:5000
-#      - 5044:5044
-#    depends_on:
-#      - elasticsearch
+  elasticsearch:
+    image: elasticsearch
+    networks:
+      - my-network
+    hostname: elasticsearch
+    container_name: elasticsearch
+    restart: always
+    volumes:
+      - /opt/elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+     - 9200:9200
+
+  kibana:
+    image: kibana
+    networks:
+      - my-network
+    hostname: kibana
+    container_name: kibana
+    restart: always
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200/
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    image: logstash
+    networks:
+      - my-network
+    hostname: logstash
+    container_name: logstash
+    restart: always
+    volumes:
+      - /opt/logstash/conf:/opt/logstash/conf
+    command: logstash -f /opt/logstash/conf/
+    ports:
+      - 5000:5000
+      - 5044:5044
+    depends_on:
+      - elasticsearch
 
   zipkin:
     image: openzipkin/zipkin
@@ -74,12 +74,12 @@ services:
       - 80:8080
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
 #  ts-login-service:
 #    build: ts-login-service
@@ -109,12 +109,12 @@ services:
       - 11178:11178
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-route-mongo:
     image: mongo
@@ -159,12 +159,12 @@ services:
       - 15678:15678
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-verification-code-mongo:
     image: mongo
@@ -546,12 +546,12 @@ services:
       - 18888:18888
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-assurance-mongo:
     image: mongo
@@ -596,12 +596,12 @@ services:
       - 16108:16108
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-ticket-office-mongo:
     image: mongo
@@ -663,12 +663,12 @@ services:
       - 18855:18855
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
   ts-food-map-mongo:
     image: mongo
@@ -698,12 +698,12 @@ services:
       - 18856:18856
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
 #  ts-consign-service:
 #    build: ts-consign-service
@@ -792,12 +792,12 @@ services:
         condition: on-failure
     networks:
       - my-network
-#    depends_on:
-#      - logstash
-#    logging:
-#      driver: syslog
-#      options:
-#        syslog-address: 'tcp://127.0.0.1:5000'
+    depends_on:
+      - logstash
+    logging:
+      driver: syslog
+      options:
+        syslog-address: 'tcp://127.0.0.1:5000'
 
 #  ts-admin-travel-service:
 #    build: ts-admin-travel-service
