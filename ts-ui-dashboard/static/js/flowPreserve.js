@@ -8,8 +8,12 @@ $("#display_convert").click(function(){
     //alert(htmlObj.getAttribute("dir"));
     if(htmlObj.getAttribute("dir") == "rtl"){
         htmlObj.setAttribute("dir","ltr");
+        document.getElementById("user_login_id").innerHTML = document.getElementById("user_login_label").innerHTML;
+        document.getElementById("user_login_label").innerHTML = "Login User ID == ";
     }else{
         htmlObj.setAttribute("dir","rtl");
+        document.getElementById("user_login_label").innerHTML = document.getElementById("user_login_id").innerHTML;
+        document.getElementById("user_login_id").innerHTML = "Login User ID == ";
     }
 
 });
