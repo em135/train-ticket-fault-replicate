@@ -99,8 +99,7 @@ public class LauncherServiceImpl implements LauncherService {
                 break;
             }
         }
-
-
+        
         //5.Whether throws a exception
         try{
             for(;;){
