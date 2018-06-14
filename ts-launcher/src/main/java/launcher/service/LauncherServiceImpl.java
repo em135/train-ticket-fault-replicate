@@ -75,21 +75,7 @@ public class LauncherServiceImpl implements LauncherService {
         Future<Boolean> payResult  = asyncTask.sendInsidePayment(
                 orderId,"Z1234",loginId,loginToken);
 
-        boolean isFault;//error queue successfully reproduce or not.
-        try{
-            if(new Random().nextBoolean() == false){
-                System.out.println("[Launcher Service]Do not wait for result and return directly");
-                isFault = true;
-            }else{
-                //do wait until result
-                boolean payResultValue = payResult.get().booleanValue();
-                System.out.println("[Launcher Service]Wait for payment result.Payment result：" + payResultValue);
-                isFault = false;
-            }
-        }catch(Exception e){
-            isFault = true;
-            e.printStackTrace();
-        }
+
 
         //3.Cancel Order
         Future<CancelOrderResult> taskCancelResult = asyncTask.sendOrderCancel(orderId,loginId,loginToken);
@@ -106,15 +92,20 @@ public class LauncherServiceImpl implements LauncherService {
 
 
         //5.Whether throws a exception
-        for(;;){
-            if(taskCancelResult.isDone()){
-                if(isFault  == true){
-                    throw new RuntimeException("[Error Queue]");
-                }else{
-                    return;
+        try{
+            for(;;){
+                if(taskCancelResult.isDone()){
+                    if(taskCancelResult.get().isStatus() & payResult.get().booleanValue() == false){
+                        throw new RuntimeException("[Error Queue]");
+                    }else{
+                        return;
+                    }
                 }
             }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
 }
