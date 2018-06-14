@@ -56,16 +56,7 @@ public class CancelController {
                         GetAccountByIdResult.class
                 );
                 Account account = result.getAccount();
-                if(account.getName().contains("VIP")){
-                    return cancelService.cancelOrder(info,loginId,loginId);
-
-                }else{
-                    return cancelService.cancelOrder(info,loginToken,loginId);
-
-                }
-
-
-                //return cancelService.cancelOrder(info,loginToken,loginId);
+                return cancelService.cancelOrder(info,loginToken,loginId);
             }catch(Exception e){
                 e.printStackTrace();
                 return null;
