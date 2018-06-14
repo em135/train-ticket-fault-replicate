@@ -74,11 +74,21 @@ public class LauncherServiceImpl implements LauncherService {
         //2.pay
         Future<Boolean> payResult  = asyncTask.sendInsidePayment(
                 orderId,"Z1234",loginId,loginToken);
-
-
+        Boolean payBoolean = false;
+        try{
+            payBoolean = payResult.get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         //3.Cancel Order
         Future<CancelOrderResult> taskCancelResult = asyncTask.sendOrderCancel(orderId,loginId,loginToken);
+        CancelOrderResult cancelResult = new CancelOrderResult();
+        try{
+            cancelResult = taskCancelResult.get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
         //4.Search Order twice
@@ -95,7 +105,12 @@ public class LauncherServiceImpl implements LauncherService {
         try{
             for(;;){
                 if(taskCancelResult.isDone()){
-                    if(taskCancelResult.get().isStatus() & payResult.get().booleanValue() == false){
+//                    if(taskCancelResult.get().isStatus() & payResult.get().booleanValue() == false){
+//                        throw new RuntimeException("[Error Queue]");
+//                    }else{
+//                        return;
+//                    }
+                    if(cancelResult.isStatus() & payBoolean == false){
                         throw new RuntimeException("[Error Queue]");
                     }else{
                         return;
