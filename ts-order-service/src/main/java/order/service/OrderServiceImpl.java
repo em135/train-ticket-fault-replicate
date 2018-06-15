@@ -26,9 +26,9 @@ public class OrderServiceImpl implements OrderService{
         }
 
         //
-        if(new Random().nextDouble() < 1.0){
-            memory();
-        }
+//        if(new Random().nextDouble() < 1.0){
+//            memory();
+//        }
         //
 
         LeftTicketInfo leftTicketInfo = new LeftTicketInfo();

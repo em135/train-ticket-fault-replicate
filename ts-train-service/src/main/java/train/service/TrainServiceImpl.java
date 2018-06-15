@@ -36,9 +36,9 @@ public class TrainServiceImpl implements TrainService {
            return null;
        }else{
 
-           if(new Random().nextDouble() < 0.2){
-               memory();
-           }
+//           if(new Random().nextDouble() < 0.2){
+//               memory();
+//           }
 
            return repository.findById(info.getId());
        }
