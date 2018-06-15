@@ -73,7 +73,7 @@ class GetVoucherHandler(tornado.web.RequestHandler):
         cur = conn.cursor()
         #查询语句
         # sql = 'SELECT voucher_id,order_id,travelDate,contactName,trainNumber,seatNumber,startStation,destStation,price FROM voucher where order_id = %s'
-        sql = 'SELECT voucher_id,order_id,travelDate,contactName,train_number,seat_number,start_station,dest_station,price FROM voucher where order_id = %s'
+        sql = 'SELECT voucher_id,order_id,travelDate,contactName,trainNumber,seatNumber,startStation,destStation,price FROM voucher where order_id = %s'
         try:
             cur.execute(sql,(orderId))
             voucher = cur.fetchone()
