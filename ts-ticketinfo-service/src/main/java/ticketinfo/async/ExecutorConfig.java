@@ -11,11 +11,11 @@ import java.util.concurrent.Executor;
 public class ExecutorConfig {  
   
     /** Set the ThreadPoolExecutor's core pool size. */  
-    private int corePoolSize = 2;
+    private int corePoolSize = 10;
     /** Set the ThreadPoolExecutor's maximum pool size. */ 
-    private int maxPoolSize = 3;
+    private int maxPoolSize = 30;
     /** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */  
-    private int queueCapacity = 10;
+    private int queueCapacity = 20;
   
     @Bean  
     public Executor mySimpleAsync() {  
