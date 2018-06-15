@@ -126,16 +126,45 @@ public class CancelServiceImpl implements CancelService{
                      * 由于先发生的退款操作异步时间太长，使得修改订单状态的操作抢先完成，使得退款不能正常进行
                      */
 
-                    Future<ChangeOrderResult> cancellingTask = asyncTask.cancelling(loginId,order.getId().toString(),loginToken);
+//                    Future<ChangeOrderResult> cancellingTask = asyncTask.cancelling(loginId,order.getId().toString(),loginToken);
+                    //Update to cancelling status
+                    //1.查询订单信息
+                    GetOrderByIdInfo getOrderInfo1 = new GetOrderByIdInfo();
+                    getOrderInfo1.setOrderId(order.getId().toString());
+                    GetOrderResult cor1 = restTemplate.postForObject(
+                            "http://ts-order-other-service:12032/orderOther/getById/"
+                            ,getOrderInfo1,GetOrderResult.class);
+                    Order order1 = cor1.getOrder();
 
+                    //2.将订单状态修改为退款中
+                    order1.setStatus(OrderStatus.Canceling.getCode());
+                    ChangeOrderInfo changeOrderInfo1 = new ChangeOrderInfo();
+                    changeOrderInfo1.setOrder(order1);
+                    changeOrderInfo1.setLoginToken(loginToken);
+                    ChangeOrderResult changeOrderResult = restTemplate.postForObject("http://ts-order-other-service:12032/orderOther/update",changeOrderInfo1,ChangeOrderResult.class);
+
+                    //Drawback money
+                    boolean drawBackMoneyStatus;
                     String money = calculateRefund(order);
-                    Future<Boolean> drawBackMoneyTask = asyncTask.drawBackMoney(money,loginId,order.getId().toString(),loginToken);
+                    DrawBackInfo infotemp = new DrawBackInfo();
+                    infotemp.setMoney(money);
+                    infotemp.setUserId(loginId);
+                    infotemp.setOrderId(order.getId().toString());
+                    infotemp.setLoginToken(loginToken);
+                    String result = restTemplate.postForObject("http://ts-inside-payment-service:18673/inside_payment/drawBack",infotemp,String.class);
+                    if(result.equals("true")){
+                        drawBackMoneyStatus = true;
+                    }else{
+                        drawBackMoneyStatus = false;
+                    }
+
+
+//                    Future<Boolean> drawBackMoneyTask = asyncTask.drawBackMoney(money,loginId,order.getId().toString(),loginToken);
 
 //                    //2.然后修改订单的状态至【已取消】（将订单状态改为-已退款）
 //                    Future<ChangeOrderResult> taskCancelOrder = asyncTask.updateOtherOrderStatusToCancel(changeOrderInfo);
 
-                    ChangeOrderResult changeOrderResult = cancellingTask.get();
-                    boolean drawBackMoneyStatus = drawBackMoneyTask.get();
+//                    boolean drawBackMoneyStatus = drawBackMoneyTask.get();
 
                     //查询订单的状态，如果是退款中，在最后抛出Exception
                     GetOrderByIdInfo getOrderInfo = new GetOrderByIdInfo();
