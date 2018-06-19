@@ -71,15 +71,31 @@ public class LauncherServiceImpl implements LauncherService {
             e.printStackTrace();
         }
 
+        for(;;){
+            if(taskResult.isDone()){
+                break;
+            }
+        }
+
         //2.pay
         Future<Boolean> payResult  = asyncTask.sendInsidePayment(
                 orderId,"Z1234",loginId,loginToken);
 
 
+        for(;;){
+            if(payResult.isDone()){
+                break;
+            }
+        }
 
         //3.Cancel Order
         Future<CancelOrderResult> taskCancelResult = asyncTask.sendOrderCancel(orderId,loginId,loginToken);
 
+        for(;;){
+            if(taskCancelResult.isDone()){
+                break;
+            }
+        }
 
         //4.Search Order twice
         Future<ArrayList<Order>> orderListTask = asyncTask.sendQueryOrder(loginId,loginToken);
@@ -93,18 +109,28 @@ public class LauncherServiceImpl implements LauncherService {
 
         //5.Whether throws a exception
         try{
-            for(;;){
-                if(taskCancelResult.isDone()){
-                    if(taskCancelResult.get().isStatus() & payResult.get().booleanValue() == false){
-                        throw new RuntimeException("[Error Queue]");
-                    }else{
-                        return;
-                    }
-                }
+            if(taskCancelResult.get().isStatus() & payResult.get().booleanValue() == false){
+                throw new RuntimeException("[Error Queue]");
+            }else{
+                return;
             }
         }catch (Exception e){
             e.printStackTrace();
         }
+
+//        try{
+//            for(;;){
+//                if(taskCancelResult.isDone()){
+//                    if(taskCancelResult.get().isStatus() & payResult.get().booleanValue() == false){
+//                        throw new RuntimeException("[Error Queue]");
+//                    }else{
+//                        return;
+//                    }
+//                }
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
 
     }
 
