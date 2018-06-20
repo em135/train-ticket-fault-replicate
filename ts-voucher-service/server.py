@@ -67,7 +67,7 @@ class GetVoucherHandler(tornado.web.RequestHandler):
                 curDelete = connDelete.cursor()
                 voucherResult = {}
                 try:
-                    sqlDelete = 'DELETE FROM voucher WHERE voucherId = %s;'
+                    sqlDelete = 'DELETE FROM voucher WHERE voucher_id = %s;'
                     curDelete.execute(sqlDelete,(voucherId))
                     connDelete.commit()
                     #检查是否执行成功并返回结果
@@ -82,8 +82,8 @@ class GetVoucherHandler(tornado.web.RequestHandler):
                     voucherResult['status'] = False
                     voucherResult['message'] = "Retry."
                 finally:
-                    voucherResult['status'] = False
-                    voucherResult['message'] = "Retry."
+                    # voucherResult['status'] = False
+                    # voucherResult['message'] = "Retry."
                     connDelete.close()
                 voucherResultStr = json.dumps(voucherResult)
                 print(voucherResultStr)
