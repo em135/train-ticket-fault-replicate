@@ -253,7 +253,7 @@ function initFoodSelect(tripId){
 
                 if(null == result.trainFoodList || result.trainFoodList.length == 0){
                     //没有
-                    // $('#train-food-option').disabled(true);
+                    $('#train-food-option').disabled(true);
                 } else {
                     var trainFoodList = result.trainFoodList[0]['foodList'];
                     console.log("trainFoodList:" );
