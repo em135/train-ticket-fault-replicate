@@ -259,7 +259,11 @@ function initFoodSelect(tripId){
                 //     // $('#train-food-option').disabled(true);
                 // } else {
                 try{
-                    var trainFoodList = result.trainFoodList[0]['foodList'];
+                    var trainFoodList = null;
+                    try{
+                        trainFoodList = result.trainFoodList[0]['foodList'];
+                    }catch(err) {
+                    }
                     console.log("trainFoodList:" );
                     console.log(trainFoodList[0]);
 
