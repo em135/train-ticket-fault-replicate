@@ -50,10 +50,8 @@ public class AdminRouteController {
     @RequestMapping(value = "/adminroute/upload", method = RequestMethod.POST)
     @ResponseBody
     public String upload(@RequestParam("file") MultipartFile file) {
-        System.out.println("------------我是测试，错误在我这里，我到了这里！！！-----------");
         if (!file.isEmpty()) {
             try {
-
                 System.out.println("File Upload - File Name: " + file.getName());
                 System.out.println("File Upload - File Original Filename" + file.getOriginalFilename());
                 System.out.println("File Upload - File Size" + file.getSize());
