@@ -184,16 +184,18 @@ public class CancelServiceImpl implements CancelService{
 
            System.out.println("[Handle Voucher] Message:" + result);
 
-           if(result.contains("Success")){
+           if(result.contains("true") == true){
                System.out.println("Success");
                return true;
-           }else{
+           }else if(result.contains("Retry")){
                System.out.println("Contain Retry");
                try {
                    Thread.sleep(5000);
                }catch(Exception e){
                    e.printStackTrace();
                }
+           }else{
+               return false;
            }
         }
         return false;

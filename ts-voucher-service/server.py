@@ -20,6 +20,16 @@ class GetVoucherHandler(tornado.web.RequestHandler):
         print('\n')
 
         if(queryVoucher == None):
+            if(data["operation"] != None):
+                operation = data["operation"]
+                if(operation == 2):
+                    voucherResult = {}
+                    voucherResult['status'] = True
+                    voucherResult['message'] = "Success."
+                    voucherResultStr = json.dumps(voucherResult)
+                    print(voucherResultStr)
+                    self.write(voucherResultStr)
+                    return
             #根据订单id请求订单的详细信息
             print(data["orderId"])
             orderResult = self.queryOrderByIdAndType(orderId,type)
@@ -52,6 +62,14 @@ class GetVoucherHandler(tornado.web.RequestHandler):
             if(operation == 2):
                 #查询到voucher的信息
                 queryVoucherNew = self.fetchVoucherByOrderId(orderId)
+                if(queryVoucherNew == None):
+                    voucherResult = {}
+                    voucherResult['status'] = True
+                    voucherResult['message'] = "Success."
+                    voucherResultStr = json.dumps(voucherResult)
+                    print(voucherResultStr)
+                    self.write(voucherResultStr)
+                    return
                 #获取到voucher的ID
                 dataVoucher = json.loads(queryVoucherNew)
                 voucherId = dataVoucher['voucher_id']
@@ -67,8 +85,8 @@ class GetVoucherHandler(tornado.web.RequestHandler):
                 curDelete = connDelete.cursor()
                 voucherResult = {}
                 try:
-                    sqlDelete = 'DELETE FROM voucher WHERE voucherId = %s;'
-                    curDelete.execute(sqlDelete,(voucherId))
+                    sqlDelete = 'DELETE FROM voucher WHERE voucher_id = %s'
+                    curDelete.execute(sqlDelete,voucherId)
                     connDelete.commit()
                     #检查是否执行成功并返回结果
                     queryVoucherCheck = self.fetchVoucherByOrderId(orderId)
@@ -77,13 +95,13 @@ class GetVoucherHandler(tornado.web.RequestHandler):
                         voucherResult['message'] = "Success."
                     else:
                         voucherResult['status'] = False
-                        voucherResult['message'] = "Retry."
+                        voucherResult['message'] = "Fail."
                 except Exception as e:
                     voucherResult['status'] = False
-                    voucherResult['message'] = "Retry."
+                    voucherResult['message'] = "Exception."
                 finally:
-                    voucherResult['status'] = False
-                    voucherResult['message'] = "Retry."
+                    # voucherResult['status'] = False
+                    # voucherResult['message'] = "Finally."
                     connDelete.close()
                 voucherResultStr = json.dumps(voucherResult)
                 print(voucherResultStr)
@@ -131,10 +149,10 @@ class GetVoucherHandler(tornado.web.RequestHandler):
                 voucherData['order_id'] = voucher[1]
                 voucherData['travelDate'] = voucher[2]
                 voucherData['contactName'] = voucher[4]
-                voucherData['train_number'] = voucher[5]
-                voucherData['seat_number'] = voucher[7]
-                voucherData['start_station'] = voucher[8]
-                voucherData['dest_station'] = voucher[9]
+                voucherData['trainNumber'] = voucher[5]
+                voucherData['seatNumber'] = voucher[7]
+                voucherData['startStation'] = voucher[8]
+                voucherData['destStation'] = voucher[9]
                 voucherData['price'] = voucher[10]
                 jsonStr = json.dumps(voucherData)
                 print(jsonStr)

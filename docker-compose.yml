@@ -70,17 +70,6 @@ services:
     networks:
         - my-network
 
-
-  ts-register-service:
-    build: ts-register-service
-    image: ts/ts-register-service
-    restart: always
-    ports:
-      - 12344:12344
-    networks:
-      - my-network
-
-
   ts-sso-service:
     build: ts-sso-service
     image: ts/ts-sso-service
@@ -220,25 +209,6 @@ services:
       networks:
         - my-network
 
-  ts-preserve-service:
-    build: ts-preserve-service
-    image: ts/ts-preserve-service
-    restart: always
-    ports:
-      - 14568:14568
-    networks:
-      - my-network
-
-  ts-preserve-other-service:
-    build: ts-preserve-other-service
-    image: ts/ts-preserve-other-service
-    restart: always
-    ports:
-      - 14569:14569
-    networks:
-      - my-network
-
-
   ts-basic-service:
       build: ts-basic-service
       image: ts/ts-basic-service
@@ -271,15 +241,6 @@ services:
         networks:
           - my-network
 
-  ts-notification-service:
-        build: ts-notification-service
-        image: ts/ts-notification-service
-        restart: always
-        ports:
-          - 17853:17853
-        networks:
-          - my-network
-
   ts-security-service:
         build: ts-security-service
         image: ts/ts-security-service
@@ -308,42 +269,6 @@ services:
         networks:
           - my-network
 
-  ts-execute-service:
-        build: ts-execute-service
-        image: ts/ts-execute-service
-        restart: always
-        ports:
-          - 12386:12386
-        networks:
-          - my-network
-
-  ts-payment-service:
-        build: ts-payment-service
-        image: ts/ts-payment-service
-        restart: always
-        ports:
-          - 19001:19001
-        networks:
-          - my-network
-
-  ts-payment-mongo:
-        image: mongo
-        networks:
-          - my-network
-
-  ts-rebook-service:
-        build: ts-rebook-service
-        image: ts/ts-rebook-service
-        restart: always
-        ports:
-          - 18886:18886
-        networks:
-          - my-network
-
-  ts-rebook-mongo:
-        image: mongo
-        networks:
-          - my-network
 
   ts-cancel-service:
         build: ts-cancel-service
@@ -354,19 +279,6 @@ services:
         networks:
           - my-network
 
-  ts-assurance-service:
-        build: ts-assurance-service
-        image: ts/ts-assurance-service
-        restart: always
-        ports:
-          - 18888:18888
-        networks:
-          - my-network
-
-  ts-assurance-mongo:
-        image: mongo
-        networks:
-          - my-network
 
   ts-seat-service:
         build: ts-seat-service
@@ -374,15 +286,6 @@ services:
         restart: always
         ports:
           - 18898:18898
-        networks:
-          - my-network
-
-  ts-travel-plan-service:
-        build: ts-travel-plan-service
-        image: ts/ts-travel-plan-service
-        restart: always
-        ports:
-          - 14322:14322
         networks:
           - my-network
 
@@ -399,20 +302,6 @@ services:
           image: mongo
           networks:
             - my-network
-
-  ts-news-service:
-    build: ts-news-service
-    image: ts/ts-news-service
-    restart: always
-    ports:
-      - 12862:12862
-    networks:
-      - my-network
-
-  ts-news-mongo:
-        image: mongo
-        networks:
-          - my-network
 
   ts-voucher-mysql:
          image: mysql:5.6.35
@@ -436,127 +325,8 @@ services:
           networks:
             - my-network
 
-  ts-food-map-service:
-        build: ts-food-map-service
-        image: ts/ts-food-map-service
-        restart: always
-        ports:
-          - 18855:18855
-        networks:
-          - my-network
 
-  ts-food-map-mongo:
-          image: mongo
-          networks:
-            - my-network
 
-  ts-route-plan-service:
-          build: ts-route-plan-service
-          image: ts/ts-route-plan-service
-          restart: always
-          ports:
-            - 14578:14578
-          networks:
-            - my-network
-
-  ts-food-service:
-      build: ts-food-service
-      image: ts/ts-food-service
-      restart: always
-      ports:
-        - 18856:18856
-      networks:
-        - my-network
-
-  ts-consign-service:
-            build: ts-consign-service
-            image: ts/ts-consign-service
-            restart: always
-            ports:
-              - 16111:16111
-            networks:
-              - my-network
-
-  ts-consign-mongo:
-            image: mongo
-            networks:
-              - my-network
-
-  ts-consign-price-service:
-            build: ts-consign-price-service
-            image: ts/ts-consign-price-service
-            restart: always
-            ports:
-              - 16110:16110
-            networks:
-              - my-network
-
-  ts-consign-price-mongo:
-            image: mongo
-            networks:
-              - my-network
-
-  ts-food-mongo:
-            image: mongo
-            networks:
-              - my-network
-
-  ts-admin-basic-info-service:
-        build: ts-admin-basic-info-service
-        image: ts/ts-admin-basic-info-service
-        restart: always
-        ports:
-          - 18767:18767
-        networks:
-          - my-network
-
-  ts-admin-order-service:
-            build: ts-admin-order-service
-            image: ts/ts-admin-order-service
-            restart: always
-            ports:
-              - 16112:16112
-            networks:
-              - my-network
-
-  ts-admin-route-service:
-              build: ts-admin-route-service
-              image: ts/ts-admin-route-service
-              restart: always
-              ports:
-                - 16113:16113
-              deploy:
-                replicas: 1
-                restart_policy:
-                  condition: on-failure
-              networks:
-                - my-network
-
-  ts-admin-travel-service:
-                build: ts-admin-travel-service
-                image: ts/ts-admin-travel-service
-                restart: always
-                ports:
-                  - 16114:16114
-                deploy:
-                  replicas: 1
-                  restart_policy:
-                    condition: on-failure
-                networks:
-                  - my-network
-
-  ts-admin-user-service:
-                  build: ts-admin-user-service
-                  image: ts/ts-admin-user-service
-                  restart: always
-                  ports:
-                    - 16115:16115
-                  deploy:
-                    replicas: 1
-                    restart_policy:
-                      condition: on-failure
-                  networks:
-                    - my-network
 
 networks:
     my-network:
