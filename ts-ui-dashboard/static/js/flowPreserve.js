@@ -7,9 +7,12 @@ $("#display_convert").click(function(){
 
     //alert(htmlObj.getAttribute("dir"));
     if(htmlObj.getAttribute("dir") == "rtl"){
+        var loginP = document.getElementsByTagName('loginP')[0];
         htmlObj.setAttribute("dir","ltr");
+        loginP.setAttribute("dir","ltr");
     }else{
         htmlObj.setAttribute("dir","rtl");
+        loginP.setAttribute("dir","rtl");
     }
 
 });
