@@ -48,7 +48,7 @@ public class CancelServiceImpl implements CancelService{
                     System.out.println("[Cancel Order Service][Cancel Order] Success.");
                     //Draw back money
                     String money = calculateRefund(order);
-                    boolean status = drawbackMoney(money,loginId);
+                    boolean status = drawbackMoney(money,loginId,info.getOrderId(),loginToken);
                     if(status == true){
                         System.out.println("[Cancel Order Service][Draw Back Money] Success.");
 
@@ -389,11 +389,13 @@ public class CancelServiceImpl implements CancelService{
         return result;
     }
 
-    public boolean drawbackMoney(String money,String userId){
+    public boolean drawbackMoney(String money,String userId,String orderId,String loginToken){
         System.out.println("[Cancel Order Service][Draw Back Money] Draw back money...");
         DrawBackInfo info = new DrawBackInfo();
         info.setMoney(money);
         info.setUserId(userId);
+        info.setOrderId(orderId);
+        info.setLoginToken(loginToken);
         String result = restTemplate.postForObject("http://ts-inside-payment-service:18673/inside_payment/drawBack",info,String.class);
         if(result.equals("true")){
             return true;
