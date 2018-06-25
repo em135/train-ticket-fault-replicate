@@ -56,16 +56,24 @@ public class ContactsServiceImpl implements ContactsService{
 //            acr.setContacts(null);
 //        }else{
 
-        contactsRepository.save(contacts);
-        System.out.println("[Contacts-Add&Delete-Service][AddContacts] Success.");
-        acr.setStatus(true);
-        acr.setMessage("Success");
-        acr.setContacts(contacts);
+//        contactsRepository.save(contacts);
+//        System.out.println("[Contacts-Add&Delete-Service][AddContacts] Success.");
+//        acr.setStatus(true);
+//        acr.setMessage("Success");
+//        acr.setContacts(contacts);
         /*******If ID Number is replicate, then return true*********/
         if(accountContacts.contains(contacts)){
             acr.setExists(true);
+            acr.setStatus(false);
+            acr.setMessage("Contacts Already Exists");
+            acr.setContacts(null);
         }else{
             acr.setExists(false);
+            contactsRepository.save(contacts);
+            System.out.println("[Contacts-Add&Delete-Service][AddContacts] Success.");
+            acr.setStatus(true);
+            acr.setMessage("Success");
+            acr.setContacts(contacts);
         }
 //        }
         return acr;
