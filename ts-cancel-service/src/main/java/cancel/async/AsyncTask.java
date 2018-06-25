@@ -59,7 +59,7 @@ public class AsyncTask {
 
     @Async("mySimpleAsync")
     public Future<Boolean> drawBackMoney(String money, String userId,String orderId,String loginToken) throws InterruptedException{
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         //3.执行退款
         DrawBackInfo info = new DrawBackInfo();
         info.setMoney(money);
