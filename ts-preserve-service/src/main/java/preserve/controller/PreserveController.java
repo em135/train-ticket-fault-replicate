@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import preserve.domain.*;
 import preserve.service.PreserveService;
+import sun.awt.windows.ThemeReader;
 
 import java.util.UUID;
 import java.util.concurrent.Future;
@@ -35,6 +36,29 @@ public class PreserveController {
         UUID uuid = UUID.randomUUID();
         PreserveNode pn = new PreserveNode(uuid, loginId);
         statusBean.chartMsgs.add(pn);
+
+
+
+
+        while(true){
+            boolean checkStatus = false;
+            int indexCheck = statusBean.chartMsgs.indexOf(pn);
+            for(int i = 0; i < indexCheck; i++){
+                if(statusBean.chartMsgs.get(i).getLoginId().equals(loginId)){
+                    checkStatus = true;
+                    break;
+                    //throw new Exception("This OrderTicketsResult return before the last loginId request.");
+                }
+            }
+            if(checkStatus){
+                System.out.println("干等着吧");
+                Thread.sleep(5000);
+            }else{
+                break;
+            }
+        }
+
+
 
         Future<OrderTicketsResult> otr = preserveService.preserve(oti,loginId,loginToken);
         //wait the task done
