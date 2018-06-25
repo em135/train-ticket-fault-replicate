@@ -23,7 +23,7 @@ public class ClickController {
     public boolean clickTwice(@RequestBody OrderTicketsInfo oti, @CookieValue String loginId, @CookieValue String loginToken) throws Exception{
         System.out.println("Click Two");
         Future<OrderTicketsResult> task1 = asyncTask.sendAsyncClickTwice(oti,loginId,loginToken);
-        Thread.sleep(500);
+        Thread.sleep(5000);
         Future<OrderTicketsResult> task2 = asyncTask.sendAsyncClickTwice(oti,loginId,loginToken);
         boolean status = true;
         while(!(task1.isDone() && task2.isDone())){

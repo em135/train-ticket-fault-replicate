@@ -21,12 +21,12 @@ public class PreserveServiceImpl implements PreserveService{
     public Future<OrderTicketsResult> preserve(OrderTicketsInfo oti, String accountId, String loginToken){
 
         //random sleep
-        long sleep = (long) (Math.random() * 10000);
-        try {
-            Thread.sleep(sleep);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
+//        long sleep = (long) (Math.random() * 10000);
+//        try {
+//            Thread.sleep(sleep);
+//        } catch (InterruptedException e1) {
+//            e1.printStackTrace();
+//        }
 
         VerifyResult tokenResult = verifySsoLogin(loginToken);
         OrderTicketsResult otr = new OrderTicketsResult();
