@@ -34,7 +34,7 @@ public class AsyncTask {
     @Async("mySimpleAsync")
     public Future<ChangeOrderResult> cancelling(String userId,String orderId,String loginToken) throws InterruptedException{
 
-        if(Math.random() < 0.6){
+        if(Math.random() < 1){
             Thread.sleep(4000);
         }
 
