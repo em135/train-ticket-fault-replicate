@@ -131,8 +131,8 @@ public class CancelServiceImpl implements CancelService{
                     String money = calculateRefund(order);
                     Future<Boolean> drawBackMoneyTask = asyncTask.drawBackMoney(money,loginId,order.getId().toString(),loginToken);
 
-//                    //2.然后修改订单的状态至【已取消】（将订单状态改为-已退款）
-//                    Future<ChangeOrderResult> taskCancelOrder = asyncTask.updateOtherOrderStatusToCancel(changeOrderInfo);
+//                    //2.然后修改订单的状态至【已取消】（将订单状态改为-已退款）;
+                    Future<ChangeOrderResult> taskCancelOrder = asyncTask.updateOtherOrderStatusToCancel(changeOrderInfo);
 
                     ChangeOrderResult changeOrderResult = cancellingTask.get();
                     boolean drawBackMoneyStatus = drawBackMoneyTask.get();
