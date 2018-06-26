@@ -79,6 +79,13 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
                     System.out.println("[Preserve Service]Create Contacts WITHOUT CHECK");
                     addContactsResult = addContactsWithoutCheck(name,type,number,phone,accountId);
                 }
+                if(addContactsResult.isStatus() == false){
+                    System.out.println("[Preserve Other Service] Fail. Replicate document number " + number);
+                    otr.setStatus(false);
+                    otr.setMessage("Contacts with replicate document number.");
+                    otr.setOrder(null);
+                    return otr;
+                }
                 orderContact = addContactsResult.getContacts();
 
             }else{
