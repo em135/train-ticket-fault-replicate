@@ -75,11 +75,20 @@ public class LauncherServiceImpl implements LauncherService {
         Future<Boolean> payResult  = asyncTask.sendInsidePayment(
                 orderId,"Z1234",loginId,loginToken);
 
-
+        try{
+            payResult.get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         //3.Cancel Order
         Future<CancelOrderResult> taskCancelResult = asyncTask.sendOrderCancel(orderId,loginId,loginToken);
 
+        try{
+            taskCancelResult.get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         //4.Search Order twice
         Future<ArrayList<Order>> orderListTask = asyncTask.sendQueryOrder(loginId,loginToken);
