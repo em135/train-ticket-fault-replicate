@@ -79,6 +79,13 @@ public class PreserveOtherServiceImpl implements PreserveOtherService {
                     System.out.println("[Preserve Service]Create Contacts WITHOUT CHECK");
                     addContactsResult = addContactsWithoutCheck(name,type,number,phone,accountId);
                 }
+                if(addContactsResult.isStatus() == false){
+                    otr = new OrderTicketsResult();
+                    otr.setMessage("Contacts Already Exists");
+                    otr.setStatus(false);
+                    otr.setOrder(null);
+                    return otr;
+                }
                 orderContact = addContactsResult.getContacts();
 
             }else{

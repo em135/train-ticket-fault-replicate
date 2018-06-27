@@ -49,12 +49,13 @@ public class ContactsServiceImpl implements ContactsService{
 
         ArrayList<Contacts> accountContacts = contactsRepository.findByAccountId(UUID.fromString(accountId));
         AddContactsResult acr = new AddContactsResult();
-//        if(accountContacts.contains(contacts)){
-//            System.out.println("[Contacts-Add&Delete-Service][AddContacts] Fail.Contacts already exists");
-//            acr.setStatus(false);
-//            acr.setMessage("Contacts Already Exists");
-//            acr.setContacts(null);
-//        }else{
+        if(accountContacts.contains(contacts)){
+            System.out.println("[Contacts-Add&Delete-Service][AddContacts] Fail.Contacts already exists");
+            acr.setStatus(false);
+            acr.setMessage("Contacts Already Exists");
+            acr.setContacts(null);
+            return acr;
+        }
 
         contactsRepository.save(contacts);
         System.out.println("[Contacts-Add&Delete-Service][AddContacts] Success.");
