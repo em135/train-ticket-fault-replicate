@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class FoodController {
-//    private final static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(FoodController.class);
+    private final static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(FoodController.class);
 
     @Autowired
     FoodService foodService;
@@ -66,6 +68,21 @@ public class FoodController {
     public double getDrawbackPercent(@RequestBody Information info){
         double result = foodService.getDrawbackPercent(info);
 //        logger.info("[Service:ts-food-service]" + "[DrawbackPercent:" + result + "]");
+        DecimalFormat df = new DecimalFormat("#.00");
+        double min = 0.1;
+        double max = 0.3;
+        double boundedDouble = min + new Random().nextDouble() * (max - min);
+        String temp = df.format(boundedDouble);
+        boundedDouble = Double.parseDouble(temp);
+        logger.info("[VM:vm1][Service:ts-food-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+        boundedDouble = min + new Random().nextDouble() * (max - min);
+        temp = df.format(boundedDouble);
+        boundedDouble = Double.parseDouble(temp);
+        logger.info("[VM:vm2][Service:ts-food-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+        boundedDouble = min + new Random().nextDouble() * (max - min);
+        temp = df.format(boundedDouble);
+        boundedDouble = Double.parseDouble(temp);
+        logger.info("[VM:vm3][Service:ts-food-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
         return result;
     }
 

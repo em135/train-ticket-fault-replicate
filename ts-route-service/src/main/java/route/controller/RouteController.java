@@ -49,21 +49,21 @@ public class RouteController {
     public double getDrawbackPercent(@RequestBody Information information){
         double result = routeService.getDrawbackPercent(information);
 //        logger.info("[Service:ts-route-service]" + "[DrawbackPercent:" + result + "]");
-        DecimalFormat df = new DecimalFormat("#.00");
-        double min = 0.1;
-        double max = 0.3;
-        double boundedDouble = min + new Random().nextDouble() * (max - min);
-        String temp = df.format(boundedDouble);
-        boundedDouble = Double.parseDouble(temp);
-        logger.info("[VM:vm1][Service:ts-route-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
-        boundedDouble = min + new Random().nextDouble() * (max - min);
-        temp = df.format(boundedDouble);
-        boundedDouble = Double.parseDouble(temp);
-        logger.info("[VM:vm2][Service:ts-route-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
-        boundedDouble = min + new Random().nextDouble() * (max - min);
-        temp = df.format(boundedDouble);
-        boundedDouble = Double.parseDouble(temp);
-        logger.info("[VM:vm3][Service:ts-route-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+//        DecimalFormat df = new DecimalFormat("#.00");
+//        double min = 0.1;
+//        double max = 0.3;
+//        double boundedDouble = min + new Random().nextDouble() * (max - min);
+//        String temp = df.format(boundedDouble);
+//        boundedDouble = Double.parseDouble(temp);
+//        logger.info("[VM:vm1][Service:ts-route-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+//        boundedDouble = min + new Random().nextDouble() * (max - min);
+//        temp = df.format(boundedDouble);
+//        boundedDouble = Double.parseDouble(temp);
+//        logger.info("[VM:vm2][Service:ts-route-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+//        boundedDouble = min + new Random().nextDouble() * (max - min);
+//        temp = df.format(boundedDouble);
+//        boundedDouble = Double.parseDouble(temp);
+//        logger.info("[VM:vm3][Service:ts-route-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
         return result;
     }
 
