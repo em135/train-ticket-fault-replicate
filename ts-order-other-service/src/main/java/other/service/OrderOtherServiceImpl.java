@@ -30,19 +30,38 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     @Override
     public String getStatusDescription(){
         String description = "";
+
+        ArrayList<String> easternChina = new ArrayList<>();
+        ArrayList<String> northernChina = new ArrayList<>();
         for(int i = 0;i < EasternChina.length;i++) {
-            if(EasternChina[i].equals(fromId)){
-                description += "EasternChina";
-                break;
+            easternChina.add(EasternChina[i]);
+        }
+        for(int i = 0; i < NorthernChina.length; i++){
+            northernChina.add(NorthernChina[i]);
+        }
+
+        System.out.println("FromId:" + fromId);
+
+        if(easternChina.contains(fromId) || northernChina.contains(fromId)){
+            if(easternChina.contains(fromId)){
+                description += "Eastern";
+            }else{
+                description += "Northern";
             }
         }
-        description += " / ";
-        for(int i = 0;i < NorthernChina.length;i++) {
-            if(NorthernChina[i].equals(toId)){
-                description += "NorthernChina";
-                break;
+
+        description += "/";
+
+        System.out.println("ToId:" + toId);
+
+        if(easternChina.contains(toId) || northernChina.contains(toId)){
+            if(easternChina.contains(toId)){
+                description += "Eastern";
+            }else{
+                description += "Northern";
             }
         }
+        
         return description;
     }
 
