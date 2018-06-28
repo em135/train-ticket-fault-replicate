@@ -49,25 +49,25 @@ public class ContactsServiceImpl implements ContactsService{
 
         ArrayList<Contacts> accountContacts = contactsRepository.findByAccountId(UUID.fromString(accountId));
         AddContactsResult acr = new AddContactsResult();
-//        if(accountContacts.contains(contacts)){
-//            System.out.println("[Contacts-Add&Delete-Service][AddContacts] Fail.Contacts already exists");
-//            acr.setStatus(false);
-//            acr.setMessage("Contacts Already Exists");
-//            acr.setContacts(null);
-//        }else{
-
-        contactsRepository.save(contacts);
-        System.out.println("[Contacts-Add&Delete-Service][AddContacts] Success.");
-        acr.setStatus(true);
-        acr.setMessage("Success");
-        acr.setContacts(contacts);
-        /*******If ID Number is replicate, then return true*********/
         if(accountContacts.contains(contacts)){
-            acr.setExists(true);
+            System.out.println("[Contacts-Add&Delete-Service][AddContacts] Fail.Contacts already exists");
+            acr.setStatus(false);
+            acr.setMessage("Contacts Already Exists");
+            acr.setContacts(null);
         }else{
-            acr.setExists(false);
+
+            contactsRepository.save(contacts);
+            System.out.println("[Contacts-Add&Delete-Service][AddContacts] Success.");
+            acr.setStatus(true);
+            acr.setMessage("Success");
+            acr.setContacts(contacts);
+            /*******If ID Number is replicate, then return true*********/
+//            if(accountContacts.contains(contacts)){
+//                acr.setExists(true);
+//            }else{
+//                acr.setExists(false);
+//            }
         }
-//        }
         return acr;
     }
     /*****************************************************************/
