@@ -1,37 +1,6 @@
-# fault_replicate
-
-
-##  Fault Replication Branches list (11): You can check the fault replication details on following branches of this git repository
-
-F1:
-ts-error-process-seq
-
-F2:
-ts-error-reportui
-
-F3:
-ts-error-docker-JVM
-
-F4:
-ts-error-ssl
-
-F5:
-ts-error-cross-timeout-status(chance)
-
-F7:
-ts-external-normal
-
-F8:
-ts-error-redis
-
-F10:
-ts-error-normal
-
-F11:
-ts-error-bomupdate
-
-F12:
-ts-error-processes-seq-status(chance)
-
-F13:
-ts-error-queue
+# fault_replicate - F8
+1. Login by using the email "vip_microservices@163.com" and password "DefaultPassword"
+2. View All Orders
+3. Cancel a Normal Ticket (Z|K)
+4. You will fail to cancel a normal ticket. 
+5. Find out what happened and fix it.
