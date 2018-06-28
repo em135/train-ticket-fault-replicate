@@ -43,7 +43,7 @@ var sleep = function(array, callback) {
 
 
 var arr = [
-  {name:'mocksleep', delay:2000}
+  {name:'mocksleep', delay:10000}
 ];
 
 // sleep(arr, function(error, data) {
