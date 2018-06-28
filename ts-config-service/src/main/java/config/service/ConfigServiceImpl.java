@@ -3,6 +3,7 @@ package config.service;
 import config.domain.Config;
 import config.domain.Information;
 import config.domain.Information2;
+import config.domain.Information3;
 import config.repository.ConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,5 +78,14 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     public List<Config> queryAll(){
         return repository.findAll();
+    }
+
+    @Override
+    public double getDrawbackPercent(Information3 information) {
+        if(information.getIdentity() == 0){
+            return 0.6;
+        }else{
+            return 0.8;
+        }
     }
 }

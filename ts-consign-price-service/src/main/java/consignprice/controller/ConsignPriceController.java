@@ -1,6 +1,7 @@
 package consignprice.controller;
 
 import consignprice.domain.GetPriceDomain;
+import consignprice.domain.Information;
 import consignprice.domain.PriceConfig;
 import consignprice.service.ConsignPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DecimalFormat;
+import java.util.Random;
+
 @RestController
 public class ConsignPriceController {
+    private final static org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ConsignPriceController.class);
 
     @Autowired
     ConsignPriceService service;
@@ -33,5 +38,26 @@ public class ConsignPriceController {
     @RequestMapping(value = "/consignPrice/modifyPriceConfig", method= RequestMethod.POST)
     public boolean modifyPriceConfig(@RequestBody PriceConfig priceConfig){
         return service.createAndModifyPrice(priceConfig);
+    }
+
+    @RequestMapping(value = "/consignPrice/getDrawbackPercent", method= RequestMethod.POST)
+    public double getDrawbackPercent(@RequestBody Information information){
+        double result = service.getDrawbackPercent(information);
+        DecimalFormat df = new DecimalFormat("#.00");
+        double min = 0.1;
+        double max = 0.3;
+        double boundedDouble = min + new Random().nextDouble() * (max - min);
+        String temp = df.format(boundedDouble);
+        boundedDouble = Double.parseDouble(temp);
+        logger.info("[VM:vm1][Service:ts-consign-price-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+        boundedDouble = min + new Random().nextDouble() * (max - min);
+        temp = df.format(boundedDouble);
+        boundedDouble = Double.parseDouble(temp);
+        logger.info("[VM:vm2][Service:ts-consign-price-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+        boundedDouble = min + new Random().nextDouble() * (max - min);
+        temp = df.format(boundedDouble);
+        boundedDouble = Double.parseDouble(temp);
+        logger.info("[VM:vm3][Service:ts-consign-price-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+        return result;
     }
 }

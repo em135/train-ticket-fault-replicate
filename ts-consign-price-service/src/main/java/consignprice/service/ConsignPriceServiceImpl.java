@@ -1,6 +1,7 @@
 package consignprice.service;
 
 import consignprice.domain.GetPriceDomain;
+import consignprice.domain.Information;
 import consignprice.domain.PriceConfig;
 import consignprice.repository.ConsignPriceConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,15 @@ public class ConsignPriceServiceImpl implements ConsignPriceService {
     private ConsignPriceConfigRepository repository;
 
     //计价
+    @Override
+    public double getDrawbackPercent(Information information) {
+        if(information.getIdentity() == 0)
+            return 0.4;
+        else{
+            return 0.5;
+        }
+    }
+
     @Override
     public double getPriceByWeightAndRegion(GetPriceDomain domain) {
         PriceConfig priceConfig = repository.findByIndex(0);

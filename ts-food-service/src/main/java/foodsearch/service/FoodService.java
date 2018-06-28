@@ -17,4 +17,6 @@ public interface FoodService {
     List<FoodOrder> findAllFoodOrder();
 
     FindByOrderIdResult findByOrderId(String orderId);
+
+    double getDrawbackPercent(Information information);
 }

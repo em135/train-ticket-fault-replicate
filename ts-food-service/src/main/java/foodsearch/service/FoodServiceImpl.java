@@ -21,6 +21,14 @@ public class FoodServiceImpl implements FoodService{
     private FoodOrderRepository foodOrderRepository;
 
     @Override
+    public double getDrawbackPercent(Information information) {
+        if(information.getIdentity() == 0)
+            return 0.3;
+        else
+            return 0.5;
+    }
+
+    @Override
     public GetAllFoodOfTripResult getAllFood(String date, String startStation, String endStation, String tripId) {
         System.out.println("data=" + date + "start=" + startStation + "end=" + endStation + "tripid=" + tripId);
         GetAllFoodOfTripResult result = new GetAllFoodOfTripResult();

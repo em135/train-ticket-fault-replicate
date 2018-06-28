@@ -5,6 +5,8 @@ import cancel.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import javax.sound.sampled.Line;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,7 +21,7 @@ public class CancelServiceImpl implements CancelService{
     private AsyncTask asyncTask;
 
     @Override
-    public CancelOrderResult cancelOrder(CancelOrderInfo info,String loginToken,String loginId) throws Exception{
+    public CancelOrderResult cancelOrder(int identity,CancelOrderInfo info,String loginToken,String loginId) throws Exception{
         GetOrderByIdInfo getFromOrderInfo = new GetOrderByIdInfo();
         getFromOrderInfo.setOrderId(info.getOrderId());
         GetOrderResult orderResult = getOrderByIdFromOrder(getFromOrderInfo);
@@ -34,9 +36,6 @@ public class CancelServiceImpl implements CancelService{
                 changeOrderInfo.setLoginToken(loginToken);
                 changeOrderInfo.setOrder(order);
 
-
-
-
                 ChangeOrderResult changeOrderResult = cancelFromOrder(changeOrderInfo);
                 if(changeOrderResult.isStatus() == true){
                     CancelOrderResult finalResult = new CancelOrderResult();
@@ -44,7 +43,7 @@ public class CancelServiceImpl implements CancelService{
                     finalResult.setMessage("Success.");
                     System.out.println("[Cancel Order Service][Cancel Order] Success.");
                     //Draw back money
-                    String money = calculateRefund(order);
+                    String money = calculateRefund(identity,order);
                     boolean status = drawbackMoney(money,loginId);
                     if(status == true){
                         System.out.println("[Cancel Order Service][Draw Back Money] Success.");
@@ -197,7 +196,7 @@ public class CancelServiceImpl implements CancelService{
                         finalResult.setMessage("Success.");
                         System.out.println("[Cancel Order Service][Cancel Order] Success.");
                         //Draw back money
-                        String money = calculateRefund(order);
+                        String money = calculateRefund(identity,order);
                         boolean status = drawbackMoney(money,loginId);
                         if(status == true){
                             System.out.println("[Cancel Order Service][Draw Back Money] Success.");
@@ -241,7 +240,7 @@ public class CancelServiceImpl implements CancelService{
     }
 
 
-    public CalculateRefundResult calculateRefund(CancelOrderInfo info){
+    public CalculateRefundResult calculateRefund(int identity,CancelOrderInfo info){
         GetOrderByIdInfo getFromOrderInfo = new GetOrderByIdInfo();
         getFromOrderInfo.setOrderId(info.getOrderId());
         GetOrderResult orderResult = getOrderByIdFromOrder(getFromOrderInfo);
@@ -260,7 +259,7 @@ public class CancelServiceImpl implements CancelService{
                     CalculateRefundResult result = new CalculateRefundResult();
                     result.setStatus(true);
                     result.setMessage("Success");
-                    result.setRefund(calculateRefund(order));
+                    result.setRefund(calculateRefund(identity,order));
                     System.out.println("[Cancel Order][Refund Price] From Order Service.Paid.");
                     return result;
                 }
@@ -292,7 +291,7 @@ public class CancelServiceImpl implements CancelService{
                         CalculateRefundResult result = new CalculateRefundResult();
                         result.setStatus(true);
                         result.setMessage("Success");
-                        result.setRefund(calculateRefund(order));
+                        result.setRefund(calculateRefund(identity,order));
                         System.out.println("[Cancel Order][Refund Price] From Order Other Service.Paid.");
                         return result;
                     }
@@ -315,7 +314,7 @@ public class CancelServiceImpl implements CancelService{
         }
     }
 
-    private String calculateRefund(Order order){
+    private String calculateRefund(int identity, Order order){
         if(order.getStatus() == OrderStatus.NOTPAID.getCode()){
             return "0.00";
         }
@@ -345,6 +344,20 @@ public class CancelServiceImpl implements CancelService{
         }else{
             double totalPrice = Double.parseDouble(order.getPrice());
             double price = totalPrice * 0.8;
+
+            Information information = new Information();
+            information.setIdentity(identity);
+            //Get drawback percent of four price
+            double drawbackPercentOfConsign = restTemplate.postForObject("http://ts-consign-price-service:16110/consignPrice/getDrawbackPercent",
+                    information,double.class);
+            double drawbackPercentOfRoute = restTemplate.postForObject("http://ts-route-service:11178/route/getDrawbackPercent",
+                    information,double.class);
+            double drawbackPercentOfFood = restTemplate.postForObject("http://ts-food-service:18856/food/getDrawbackPercent",
+                    information,double.class);
+            information.setIdentity(0);
+            double drawbackPercentOfConfig = restTemplate.postForObject("http://ts-config-service:15679/config/getDrawbackPercent",
+                    information,double.class);
+
             DecimalFormat priceFormat = new java.text.DecimalFormat("0.00");
             String str = priceFormat.format(price);
             System.out.println("[Cancel Order]calculate refund - " + str);

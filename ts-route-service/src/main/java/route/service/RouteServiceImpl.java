@@ -14,6 +14,14 @@ public class RouteServiceImpl implements RouteService {
     private RouteRepository routeRepository;
 
     @Override
+    public double getDrawbackPercent(Information information) {
+        if(information.getIdentity() == 0)
+            return 0.3;
+        else
+            return 0.5;
+    }
+
+    @Override
     public CreateAndModifyRouteResult createAndModify(CreateAndModifyRouteInfo info){
         System.out.println("[Route Service] Create And Modify Start:" + info.getStartStation() + " End:" + info.getEndStation());
         CreateAndModifyRouteResult result;

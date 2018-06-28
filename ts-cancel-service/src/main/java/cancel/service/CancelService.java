@@ -6,8 +6,8 @@ import cancel.domain.CancelOrderResult;
 
 public interface CancelService {
 
-    CancelOrderResult cancelOrder(CancelOrderInfo info,String loginToken,String loginId) throws Exception;
+    CancelOrderResult cancelOrder(int identity, CancelOrderInfo info,String loginToken,String loginId) throws Exception;
 
-    CalculateRefundResult calculateRefund(CancelOrderInfo info);
+    CalculateRefundResult calculateRefund(int identity, CancelOrderInfo info);
 
 }

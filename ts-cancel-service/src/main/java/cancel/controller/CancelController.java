@@ -17,9 +17,23 @@ public class CancelController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(path = "/cancelCalculateRefund", method = RequestMethod.POST)
-    public CalculateRefundResult calculate(@RequestBody CancelOrderInfo info){
+    public CalculateRefundResult calculate(@RequestBody CancelOrderInfo info, @CookieValue String loginToken, @CookieValue String loginId){
         System.out.println("[Cancel Order Service][Calculate Cancel Refund] OrderId:" + info.getOrderId());
-        return cancelService.calculateRefund(info);
+        GetAccountByIdInfo getAccountByIdInfo = new GetAccountByIdInfo();
+        getAccountByIdInfo.setAccountId(loginId);
+        GetAccountByIdResult result = restTemplate.postForObject(
+                "http://ts-sso-service:12349/account/findById",
+                getAccountByIdInfo,
+                GetAccountByIdResult.class
+        );
+        Account account = result.getAccount();
+        if(account.getName().contains("VIP")){
+            return cancelService.calculateRefund(1,info);
+
+        }else{
+            return cancelService.calculateRefund(0,info);
+
+        }
     }
 
     @CrossOrigin(origins = "*")
@@ -57,15 +71,14 @@ public class CancelController {
                 );
                 Account account = result.getAccount();
                 if(account.getName().contains("VIP")){
-                    return cancelService.cancelOrder(info,loginId,loginId);
+                    return cancelService.cancelOrder(1,info,loginToken,loginId);
 
                 }else{
-                    return cancelService.cancelOrder(info,loginToken,loginId);
+                    return cancelService.cancelOrder(0,info,loginToken,loginId);
 
                 }
 
-
-                //return cancelService.cancelOrder(info,loginToken,loginId);
+//                return cancelService.cancelOrder(info,loginToken,loginId);
             }catch(Exception e){
                 e.printStackTrace();
                 return null;

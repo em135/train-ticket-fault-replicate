@@ -14,4 +14,6 @@ public interface RouteService {
 
     CreateAndModifyRouteResult createAndModify(CreateAndModifyRouteInfo info);
 
+    double getDrawbackPercent(Information information);
+
 }
