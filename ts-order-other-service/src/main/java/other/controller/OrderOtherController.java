@@ -31,6 +31,12 @@ public class OrderOtherController {
         return "Welcome to [ Order Other Service ] !";
     }
 
+    @RequestMapping(path = "/getStatusDescription", method = RequestMethod.GET)
+    public String getStatusDescription() {
+        return orderService.getStatusDescription();
+    }
+
+
     /***************************For Normal Use***************************/
 
     @RequestMapping(value = "/orderOther/suspend/{fromId}/{toId}", method = RequestMethod.GET)
@@ -41,6 +47,12 @@ public class OrderOtherController {
     @RequestMapping(value = "/orderOther/cancelSuspend/{fromId}/{toId}", method = RequestMethod.GET)
     public Boolean setCancelSuspendStation(@PathVariable String fromId, @PathVariable String toId){
         return new Boolean(orderService.cancelSuspend(fromId,toId));
+    }
+
+    @RequestMapping(value = "/orderOther/getSuspendStationArea", method = RequestMethod.GET)
+    public SuspendArea getSuspendStationArea(){
+        System.out.println("[Order Other Service] Get Suspend Station Area.");
+        return orderService.getSuspendArea();
     }
 
 

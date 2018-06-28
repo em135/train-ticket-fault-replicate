@@ -44,12 +44,10 @@ public class OrderOtherApplication {
         return new SpanAdjuster() {
             @Override
             public Span adjust(Span span) {
+                String des = orderOtherServiceImpl.getStatusDescription();
                 return span.toBuilder()
                         .tag("controller_state",
-                                "(" + orderOtherServiceImpl.fromId
-                                        + " / "
-                                        + AsyncTask.count
-                                        + ")")
+                                "(" + des + ")")
                         //.name(span.getName() + "--------------------")
                         .build();
             }
