@@ -46,18 +46,28 @@ public class ConsignPriceController {
         DecimalFormat df = new DecimalFormat("#.00");
         double min = 0.1;
         double max = 0.3;
-        double boundedDouble = min + new Random().nextDouble() * (max - min);
-        String temp = df.format(boundedDouble);
-        boundedDouble = Double.parseDouble(temp);
-        logger.info("[VM:vm1][Service:ts-consign-price-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
-        boundedDouble = min + new Random().nextDouble() * (max - min);
-        temp = df.format(boundedDouble);
-        boundedDouble = Double.parseDouble(temp);
-        logger.info("[VM:vm2][Service:ts-consign-price-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
-        boundedDouble = min + new Random().nextDouble() * (max - min);
-        temp = df.format(boundedDouble);
-        boundedDouble = Double.parseDouble(temp);
-        logger.info("[VM:vm3][Service:ts-consign-price-service]" + "[DrawbackPercent:" + (result + boundedDouble) + "]");
+        double boundedDouble;
+        String temp;
+        double random = Math.random();
+        if(random < 0.33 ){
+            boundedDouble = min + new Random().nextDouble() * (max - min);
+            temp = df.format(boundedDouble);
+            boundedDouble = Double.parseDouble(temp);
+            result = result + boundedDouble;
+            logger.info("[VM:vm1][Service:ts-consign-price-service]" + "[DrawbackPercent:" + result + "]");
+        }else if(random < 0.66){
+            boundedDouble = min + new Random().nextDouble() * (max - min);
+            temp = df.format(boundedDouble);
+            boundedDouble = Double.parseDouble(temp);
+            result = result + boundedDouble;
+            logger.info("[VM:vm2][Service:ts-consign-price-service]" + "[DrawbackPercent:" + result + "]");
+        }else{
+            boundedDouble = min + new Random().nextDouble() * (max - min);
+            temp = df.format(boundedDouble);
+            boundedDouble = Double.parseDouble(temp);
+            result = result + boundedDouble;
+            logger.info("[VM:vm3][Service:ts-consign-price-service]" + "[DrawbackPercent:" + result + "]");
+        }
         return result;
     }
 }
