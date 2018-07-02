@@ -601,6 +601,7 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     }
 
     private boolean checkSuspendArea(String fromStationId, String toStationId) {
+
         String lastFromId = "";
         String lastToId = "";
         SuspendArea suspendArea = restTemplate.getForObject(
@@ -608,14 +609,20 @@ public class OrderOtherServiceImpl implements OrderOtherService{
                 ,SuspendArea.class);
         lastFromId = suspendArea.getSuspendFromArea();
         lastToId = suspendArea.getSuspendToArea();
-        for(int i = 0; i < 2; i++) {
+
+
+
+        for(int i = 0; i < 10; i++) {
             SuspendArea tempSuspendArea = restTemplate.getForObject(
                     "http://ts-order-other-service:12032/orderOther/getSuspendStationArea"
                     ,SuspendArea.class);
             if(!(lastFromId.equals(tempSuspendArea.getSuspendFromArea()) && lastToId.equals(tempSuspendArea.getSuspendToArea()))){
                 throw new RuntimeException("[Error] State Inconsistent.");
+            }else{
+                System.out.println("[Compare] State Same");
             }
         }
+
         String suspendAreaFromId = lastFromId;
         String suspendAreaToId = lastToId;
 

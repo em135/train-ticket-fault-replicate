@@ -39,18 +39,18 @@ public class OrderOtherApplication {
     //                                       String a = orderOtherServiceImpl.fromId;
     //                                       String b = orderOtherServiceImpl.toId;
     //Use the following method to print the key in Zipkin
-    @Bean
-    public SpanAdjuster spanCollector() {
-        return new SpanAdjuster() {
-            @Override
-            public Span adjust(Span span) {
-                String des = orderOtherServiceImpl.getStatusDescription();
-                return span.toBuilder()
-                        .tag("controller_state",
-                                "(" + des + ")")
-                        //.name(span.getName() + "--------------------")
-                        .build();
-            }
-        };
-    }
+//    @Bean
+//    public SpanAdjuster spanCollector() {
+//        return new SpanAdjuster() {
+//            @Override
+//            public Span adjust(Span span) {
+//                String des = orderOtherServiceImpl.getStatusDescription();
+//                return span.toBuilder()
+//                        .tag("controller_state",
+//                                "(" + des + ")")
+//                        //.name(span.getName() + "--------------------")
+//                        .build();
+//            }
+//        };
+//    }
 }
