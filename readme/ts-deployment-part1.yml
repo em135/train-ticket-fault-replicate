@@ -706,3 +706,35 @@ spec:
    app: ts-food-mongo
 
 ---
+
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zipkin
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zipkin
+    spec:
+      containers:
+      - name: zipkin
+        image: openzipkin/zipkin
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9411
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin
+spec:
+  type: NodePort
+  ports:
+    - port: 9411
+      nodePort: 30005
+  selector:
+   app: zipkin
+---
