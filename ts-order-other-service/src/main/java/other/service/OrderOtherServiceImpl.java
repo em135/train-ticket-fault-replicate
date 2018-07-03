@@ -24,7 +24,8 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     @Autowired
     private RestTemplate restTemplate;
 
-    private String[] EasternChina = {"shanghai","shanghaihongqiao","nanjing","hangzhou","jiaxingnan","zhenjiang","wuxi","suzhou"};
+    private String[] EasternChina = {"shanghai","shanghaihongqiao","hangzhou","jiaxingnan"};
+    private String[] JiangSuProvince = {"nanjing","zhenjiang","wuxi","suzhou"};
     private String[] NorthernChina = {"taiyuan","beijing","shijiazhuang","xuzhou","jinan"};
 
     @Override
@@ -32,9 +33,13 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         String description = "";
 
         ArrayList<String> easternChina = new ArrayList<>();
+        ArrayList<String> jiangsuProvince = new ArrayList<>();
         ArrayList<String> northernChina = new ArrayList<>();
         for(int i = 0;i < EasternChina.length;i++) {
             easternChina.add(EasternChina[i]);
+        }
+        for(int i = 0;i < JiangSuProvince.length;i++){
+            jiangsuProvince.add(JiangSuProvince[i]);
         }
         for(int i = 0; i < NorthernChina.length; i++){
             northernChina.add(NorthernChina[i]);
@@ -42,11 +47,13 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
         System.out.println("FromId:" + fromId);
 
-        if(easternChina.contains(fromId) || northernChina.contains(fromId)){
+        if(easternChina.contains(fromId) || northernChina.contains(fromId) || jiangsuProvince.contains(fromId)){
             if(easternChina.contains(fromId)){
                 description += "Eastern";
-            }else{
+            }else if(northernChina.contains(fromId)){
                 description += "Northern";
+            }else if(jiangsuProvince.contains(fromId)){
+                description += "JiangSuProvince";
             }
         }
 
@@ -54,11 +61,13 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
         System.out.println("ToId:" + toId);
 
-        if(easternChina.contains(toId) || northernChina.contains(toId)){
+        if(easternChina.contains(toId) || northernChina.contains(toId) || jiangsuProvince.contains(toId)){
             if(easternChina.contains(toId)){
                 description += "Eastern";
-            }else{
+            }else if(northernChina.contains(toId)){
                 description += "Northern";
+            }else if(jiangsuProvince.contains(toId)){
+                description += "JiangSuProvince";
             }
         }
         
@@ -247,49 +256,35 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
 //        boolean checkSuspendOrder = checkOrderIsSuspend(order.getFrom(),order.getTo());
 
-        boolean checkSuspendOrder = checkSuspendArea(order.getFrom(),order.getTo());
+        int checkSuspendOrder = checkSuspendArea(order.getFrom(),order.getTo());
 
-//        System.out.println("[服务池子] " + asyncTask.count);
-//        System.out.println("[锁定区域] " + fromId + " || " + toId);
-//        System.out.println("[正在修改] " + order.getFrom() + " || " + order.getTo());
+        if(checkSuspendOrder != 1) {
 
-        if(checkSuspendOrder == false) {
-            try{
-//                System.out.println("[抛出错误]");
-                throw new RuntimeException("[Fail] The order is suspending by admin." +
-                        "This is not a error. Please wait for a while.");
-            }catch(Exception e){
-                e.printStackTrace();
-            }finally{
-                ChangeOrderResult cor = new ChangeOrderResult();
-                cor.setStatus(false);
-                cor.setMessage("[Error] The order is suspending by admin.");
-                return cor;
-//                Order oldOrder = findOrderById(order.getId());
-//                ChangeOrderResult cor = new ChangeOrderResult();
-//
-//                oldOrder.setAccountId(order.getAccountId());
-//                oldOrder.setBoughtDate(order.getBoughtDate());
-//                oldOrder.setTravelDate(order.getTravelDate());
-//                oldOrder.setTravelTime(order.getTravelTime());
-//                oldOrder.setCoachNumber(order.getCoachNumber());
-//                oldOrder.setSeatClass(order.getSeatClass());
-//                oldOrder.setSeatNumber(order.getSeatNumber());
-//                oldOrder.setFrom(order.getFrom());
-//                oldOrder.setTo(order.getTo());
-//                oldOrder.setStatus(order.getStatus());
-//                oldOrder.setTrainNumber(order.getTrainNumber());
-//                oldOrder.setPrice(order.getPrice());
-//                oldOrder.setContactsName(order.getContactsName());
-//                oldOrder.setContactsDocumentNumber(order.getContactsDocumentNumber());
-//                oldOrder.setDocumentType(order.getDocumentType());
-//                orderOtherRepository.save(oldOrder);
-//                System.out.println("[Order Other Service] Success.");
-//                cor.setOrder(oldOrder);
-//                cor.setStatus(true);
-//                cor.setMessage("Success");
-//                return cor;
+            if(checkSuspendOrder == 0){
+                try{
+                    throw new RuntimeException("[Fail] The order is suspending by admin." +
+                            "This is not a error. Please wait for a while.");
+                }catch(Exception e){
+                    e.printStackTrace();
+                }finally{
+                    ChangeOrderResult cor = new ChangeOrderResult();
+                    cor.setStatus(true);
+                    cor.setMessage("[Fail] The order is suspending by admin.");
+                    return cor;
+                }
+            }else{
+                try{
+                    throw new RuntimeException("[Error] State Inconsistence.");
+                }catch(Exception e){
+                    e.printStackTrace();
+                }finally{
+                    ChangeOrderResult cor = new ChangeOrderResult();
+                    cor.setStatus(true);
+                    cor.setMessage("[Error] State Inconsistence.");
+                    return cor;
+                }
             }
+
         }else {
             Order oldOrder = findOrderById(order.getId());
             ChangeOrderResult cor = new ChangeOrderResult();
@@ -600,7 +595,7 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         }
     }
 
-    private boolean checkSuspendArea(String fromStationId, String toStationId) {
+    private int checkSuspendArea(String fromStationId, String toStationId) {
 
         String lastFromId = "";
         String lastToId = "";
@@ -610,14 +605,13 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         lastFromId = suspendArea.getSuspendFromArea();
         lastToId = suspendArea.getSuspendToArea();
 
-
-
+        boolean status = false;
         for(int i = 0; i < 10; i++) {
             SuspendArea tempSuspendArea = restTemplate.getForObject(
                     "http://ts-order-other-service:12032/orderOther/getSuspendStationArea"
                     ,SuspendArea.class);
             if(!(lastFromId.equals(tempSuspendArea.getSuspendFromArea()) && lastToId.equals(tempSuspendArea.getSuspendToArea()))){
-                throw new RuntimeException("[Error] State Inconsistent.");
+                status = true;
             }else{
                 System.out.println("[Compare] State Same");
             }
@@ -626,11 +620,18 @@ public class OrderOtherServiceImpl implements OrderOtherService{
         String suspendAreaFromId = lastFromId;
         String suspendAreaToId = lastToId;
 
+        if(status == true){
+            System.out.println("返回100");
+            return 100;
+        }
+
         if(fromStationId.equals(suspendAreaFromId) || fromStationId.equals(suspendAreaToId)
                 || toStationId.equals(suspendAreaFromId) || toStationId.equals(suspendAreaToId)){
-            return false;
+            System.out.println("返回0");
+            return 0;
         }else{
-            return true;
+            System.out.println("返回1");
+            return 1;
         }
     }
 

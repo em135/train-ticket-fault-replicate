@@ -116,7 +116,7 @@ public class CancelServiceImpl implements CancelService{
                     if(changeOrderResult.isStatus() == true){
                         CancelOrderResult finalResult = new CancelOrderResult();
                         finalResult.setStatus(true);
-                        finalResult.setMessage("Success.");
+                        finalResult.setMessage(changeOrderResult.getMessage());
                         System.out.println("[Cancel Order Service][Cancel Order] Success.");
                         //Draw back money
                         String money = calculateRefund(order);
