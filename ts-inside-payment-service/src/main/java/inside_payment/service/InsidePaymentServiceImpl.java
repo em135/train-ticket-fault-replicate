@@ -96,7 +96,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService{
                     Future<Boolean> task = asyncTask.sendAsyncCallToPaymentService(outsidePaymentInfo);
 //                    if(new Random().nextBoolean() == true){
                         //External service timeout
-                        outsidePaySuccess = task.get(2000,TimeUnit.MILLISECONDS).booleanValue();
+                        outsidePaySuccess = task.get(6000,TimeUnit.MILLISECONDS).booleanValue();
 //                    }else{
 //                        //External service timeout normal
 //                        outsidePaySuccess = task.get(6000,TimeUnit.MILLISECONDS).booleanValue();
