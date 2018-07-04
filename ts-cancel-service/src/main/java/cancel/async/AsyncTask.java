@@ -31,7 +31,7 @@ public class AsyncTask {
 
         /*********************** Fault Reproduction - Error Process Seq *************************/
         double op = new Random().nextDouble();
-        if(op < 0.5){
+        if(op < 1.0){
             System.out.println("[Cancel Order Service] Delay Process，Wrong Cancel Process");
             Thread.sleep(8000);
         } else {
