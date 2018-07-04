@@ -6,6 +6,8 @@ import other.domain.*;
 import other.repository.OrderOtherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import other.repository.SuspendAreaRepository;
+
 import java.util.*;
 
 @Service
@@ -17,9 +19,12 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     @Autowired
     private OrderOtherRepository orderOtherRepository;
 
-    public String fromId = "None";
+    @Autowired
+    private SuspendAreaRepository suspendAreaRepository;
 
-    public String toId = "None";
+//    public String fromId = "None";
+//
+//    public String toId = "None";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -30,6 +35,15 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
     @Override
     public String getStatusDescription(){
+        String fromId = "";
+        String toId = "";
+        List<SuspendArea> suspendAreas = suspendAreaRepository.findAll();
+        if(suspendAreas.size() > 0){
+            SuspendArea suspendArea = suspendAreas.get(0);
+            fromId = suspendArea.getSuspendFromArea();
+            toId = suspendArea.getSuspendToArea();
+        }
+
         String description = "";
 
         ArrayList<String> easternChina = new ArrayList<>();
@@ -76,30 +90,40 @@ public class OrderOtherServiceImpl implements OrderOtherService{
 
     @Override
     public boolean cancelSuspend(String fromId,String toId){
-        this.fromId = "";
-        this.toId = "";
+        suspendAreaRepository.deleteAll();
+
+        SuspendArea suspendArea = new SuspendArea();
+        suspendArea.setSuspendFromArea("");
+        suspendArea.setSuspendToArea("");
+        suspendAreaRepository.save(suspendArea);
+
         return true;
     }
 
     @Override
     public boolean suspend(String fromId,String toId){
-        this.fromId = fromId;
-        this.toId = toId;
+        suspendAreaRepository.deleteAll();
+
+        SuspendArea suspendArea = new SuspendArea();
+        suspendArea.setSuspendFromArea(fromId);
+        suspendArea.setSuspendToArea(toId);
+        suspendAreaRepository.save(suspendArea);
+
         return true;
     }
 
     @Override
     public SuspendArea getSuspendArea() {
         SuspendArea suspendArea = new SuspendArea();
-        if(fromId == null){
-            fromId = "None";
-        }
-        if(toId == null){
-            toId = "None";
-        }
-
+        String fromId = "None";
+        String toId = "None";
         suspendArea.setSuspendFromArea(fromId);
         suspendArea.setSuspendToArea(toId);
+
+        List<SuspendArea> suspendAreas = suspendAreaRepository.findAll();
+        if(suspendAreas.size() > 0){
+            suspendArea = suspendAreas.get(0);
+        }
         return suspendArea;
     }
 
@@ -587,6 +611,11 @@ public class OrderOtherServiceImpl implements OrderOtherService{
     }
 
     private boolean checkOrderIsSuspend(String fromStationId, String toStationId){
+        SuspendArea suspendArea = suspendAreaRepository.findAll().get(0);
+
+        String fromId = suspendArea.getSuspendFromArea();
+        String toId = suspendArea.getSuspendToArea();
+
         if(fromStationId.equals(fromId) || fromStationId.equals(toId)
                 || toStationId.equals(fromId) || toStationId.equals(toId)){
             return false;
