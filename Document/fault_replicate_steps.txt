@@ -1,0 +1,23 @@
+Setup System:
+
+1. Use docker-compose to setup the TrainTicket system.
+2. Log in and make sure that there is at least one ticket order that fits the following:
+   (1) The train number starts with Z or K.
+   (2) The order status is PAID.
+
+
+Failure Triggering Usage Steps:
+
+1. Log in.
+2. Click [Flow Two - Ticket Cancel & Ticket Change].
+3. Click [Refresh Orders].
+4. Select the order mentioned above and click [Cancel Order].
+5. Click [Confirm Cancel].
+6. You will get result of cancel. If you get SUCCESS, it means the fault does not occur.
+                                  If you get WRONG, it means the fault occurs, and you will see the exception logs on the server console.
+
+
+Failure Triggering Test Case:
+
+There is only one test case in ts-ui-test, named [TestFlowTwoCancel.java].
+Just run it and it will do as failure triggering usage steps mentioned above.
