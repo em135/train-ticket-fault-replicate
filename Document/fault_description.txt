@@ -1,0 +1,17 @@
+Industrial fault description:
+
+Nothing is returned upon workflow data request.
+The JBoss startup classpath parameter does not include the right DB2 jar package.
+
+
+TrainTicket replicated fault description:
+
+Many microservices share a same lib. This lib contains some basic data structure such as Enum of Order status.
+The value of same order status in different version is in different value.
+If some microservice use an old version lib but some use a new version lib, the fault will occur.
+
+
+
+
+
+
