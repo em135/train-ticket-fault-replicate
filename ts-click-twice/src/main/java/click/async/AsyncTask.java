@@ -21,23 +21,7 @@ public class AsyncTask {
     @Async("myAsync")
     public Future<OrderTicketsResult> sendAsyncClickTwice(OrderTicketsInfo info,String loginId, String loginToken) throws InterruptedException {
 
-//        Gson gson = new GsonBuilder()
-//                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-//                .create();
-//        String jsonString = gson.toJson(info);
-//
-//        System.out.println("【发送的Json】" + jsonString);
-//
-//        HttpHeaders requestHeaders = new HttpHeaders();
-//        requestHeaders.add("Cookie","loginId=" + loginId);
-//        requestHeaders.add("Cookie","loginId=" + loginToken);
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        HttpEntity<OrderTicketsInfo> entity = new HttpEntity<>(info,headers);
-//        ResponseEntity<OrderTicketsResult> resp = restTemplate.exchange(
-//                "http://ts-preserve-service:14568/preserve", HttpMethod.POST, entity, OrderTicketsResult.class);
-//        OrderTicketsResult result = resp.getBody();
+
 
         OrderTicketsInfoPlus plus = new OrderTicketsInfoPlus();
         plus.setInfo(info);
