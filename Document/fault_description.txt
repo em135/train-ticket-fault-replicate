@@ -1,0 +1,18 @@
+
+
+Industrial fault description:
+
+Loading the product-analysis chart is erroneous.
+One key of the returned JSON data for the UI chart includes the null value.
+
+
+TrainTicket replicated fault description:
+
+When user select a train which doesn't have train food, the return result of 'getFood' will be null.
+But the front stage should get the first item which represents trainfood of the result without check whether it's null.
+
+
+
+
+
+
