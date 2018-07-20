@@ -1,9 +1,9 @@
-#Setup System#
+# Setup System#
    mvn clean package
    docker-compose build
    docker-compose up
  
-#Replicate The Fault
+# Replicate The Fault
 Step 1:
     Login
 Step 2:
@@ -22,12 +22,12 @@ Step 5:
     You may try some more times if you get a "Success". If the fault occurs, you will get an [Error] and you
     will see the exception logs in console.  
 
-#Tip
+# Tip
    In order to simplify the process of log collection, we add a service name click-twice.
    If you click [Confirm Ticket], a request will be sent to click-twice, and this service will send two
 request to ticket-preserve asynchronous. In some cases the fault will occurs.
   
-#How the fault occurs
+# How the fault occurs
 1. In [ts-preserve-service] -> [PreserController], a var named [statusBean] will save the unfinished request.
 2. In [ts-preserve-service] -> [PreserviceImpl] -> [preserve], a random delay is added at the beginning of this method.
 3. For a user who send 2 requests to [ts-preservice-service] in a short time, the 2nd request may be finished early before the first one due to the random delay.
