@@ -27,6 +27,12 @@ Step 5:
    If you click [Confirm Ticket], a request will be sent to click-twice, and this service will send two
 request to ticket-preserve asynchronous. In some cases the fault will occurs.
   
+#How the fault occurs
+1. In [ts-preserve-service] -> [PreserController], a var named [statusBean] will save the unfinished request.
+2. In [ts-preserve-service] -> [PreserviceImpl] -> [preserve], a random delay is added at the beginning of this method.
+3. For a user who send 2 requests to [ts-preservice-service] in a short time, the 2nd request may be finished early before the first one due to the random delay.
+   In such situation, the system will found that this user has a non-finished request which should be finished before the 2nd request.
+   Then the exception will be thrown.
         
 
         
