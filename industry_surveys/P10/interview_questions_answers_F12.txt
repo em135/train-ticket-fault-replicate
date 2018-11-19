@@ -1,0 +1,44 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Price management system
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Mixed: some legacy monolithic service + fresh new developed microservices
+
+Q: How many development language used in this microservices system? what are they?
+A: Java, Python, Nodejs
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: The price status shown in the optimized result table is wrong
+
+Q: How to reproduce the fault?
+A: Execute the price optimization steps
+
+Q: How many microservices involved in this case?
+A: 3
+
+Q: How much time spent to locate the fault?
+A: 3 days
+
+Q: What's the root cause of the fault?
+A: Price status querying does not consider an unexpected output of a microservice in its call chain
+
+Q: Describe the detail process of the fault localication?
+A: First to check the price optimization steps separately,
+   Sceond to check the specific optimization chain.
+   Third to check the code detail of each microservice in the optimization chain and locate the specific state issue.
+
+
+
+

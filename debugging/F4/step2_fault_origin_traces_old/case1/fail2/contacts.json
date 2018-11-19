@@ -1,0 +1,179 @@
+[
+  {
+    "traceId": "45de14c5360fe14b",
+    "id": "45de14c5360fe14b",
+    "name": "http:/contacts/findcontacts",
+    "timestamp": 1517209033287000,
+    "duration": 65683,
+    "annotations": [
+      {
+        "timestamp": 1517209033287000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "timestamp": 1517209033352683,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "FuckContactsController",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "findContactsByAccountId",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "571baf40d8ec:ts-contacts-service:12347",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "45de14c5360fe14b",
+    "id": "7196ae6b136e4992",
+    "name": "https:/verifylogintoken/2a4e5c08-994f-4694-9798-e8",
+    "parentId": "45de14c5360fe14b",
+    "timestamp": 1517209033295000,
+    "duration": 43000,
+    "annotations": [
+      {
+        "timestamp": 1517209033295000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "timestamp": 1517209033310500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.56",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1517209033322500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.56",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1517209033338000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/2a4e5c08-994f-4694-9798-e839f1cab449",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "https://ts-sso-service:12349/verifyLoginToken/2a4e5c08-994f-4694-9798-e839f1cab449",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.56",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.56",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "571baf40d8ec:ts-contacts-service:12347",
+        "endpoint": {
+          "serviceName": "ts-contacts-service",
+          "ipv4": "172.18.0.62",
+          "port": 12347
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "2adc2d2d6194:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "172.18.0.56",
+          "port": 12349
+        }
+      }
+    ]
+  }
+]
+ 

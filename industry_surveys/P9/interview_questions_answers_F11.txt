@@ -1,0 +1,44 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Product data management system
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Mixed: some legacy monolithic service + fresh new developed microservices
+
+Q: How many development language used in this microservices system? what are they?
+A: Java, Scala, Nodejs
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: The BOM (Bill of Material) tree of a product is erroneous after updates
+
+Q: How to reproduce the fault?
+A: Process the product BOM update scenario
+
+Q: How many microservices involved in this case?
+A: 6
+
+Q: How much time spent to locate the fault?
+A: 3 days
+
+Q: What's the root cause of the fault?
+A: The BOM data is updated in an unexpected sequence
+
+Q: Describe the detail process of the fault localication?
+A: First to check the update API,
+   Sceond to check the API in a sequential chain.
+   Third to check the final result in runtime and record the sequence of each API.
+
+
+
+

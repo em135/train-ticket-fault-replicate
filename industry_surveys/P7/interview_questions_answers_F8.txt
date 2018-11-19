@@ -1,0 +1,44 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: OA (Office Automation) system
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Mixed: some legacy monolithic service + fresh new developed microservices
+
+Q: How many development language used in this microservices system? What are they?
+A: 3 languages
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: A default selection on the web page is changed unexpectedly
+
+Q: How to reproduce the fault?
+A: Process the "approve document" step, and select the "reject" as default in previous approvement.
+
+Q: How many microservices involved in this case?
+A: 8
+
+Q: How much time spent to locate the fault?
+A: 5 days
+
+Q: What's the root cause of the fault?
+A: The key in the request of one microservice is not passed to its dependent microservice
+
+Q: Describe the detail process of the fault localication?
+A: Check whether the detail option is saved successfully.
+   Second check all the combination of document approve process, locate the multimedia document has the issue.
+   Third check the detail log of the multimedia document process, locate the id issue in redis persistence.
+
+
+
+

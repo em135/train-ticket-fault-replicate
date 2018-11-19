@@ -1,0 +1,20 @@
+
+Setup System:
+
+1. Use docker-compose to setup the TrainTicket system.
+
+
+Failure Triggering Usage Steps:
+
+1. Login.
+2. Go and search for a ticket.
+3. Click the search button many times to send many requests to occupy the thread pool.
+4. Click [Advanced-Search].
+5. Click the search button, if you operate this quickly, you will receive an error.
+
+
+Failure Triggering Test Case:
+
+There are two test cases in ts-ui-test, named [TestFlowFail] and [TestFlowSuccess].
+Just run [TestFlowFail] and it will do as failure triggering usage steps mentioned above.
+

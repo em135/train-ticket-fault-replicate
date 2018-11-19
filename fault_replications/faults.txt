@@ -1,0 +1,171 @@
+
+
+Faults:
+
+
+
+F1: async message sequence issue
+
+Description:
+F1 is a fault that is associated with asynchronous tasks, i.e., when we send messages asynchronously without message sequence control. 
+We replicate this fault in the order cancellation process of TrainTicket. 
+There are two asynchronous tasks sent in the process, which have no additional sequence control.
+The first task should always be completed before the second one. 
+However, if the first task is delayed and completed only after the second one, the order reaches an abnormal status, leading to a failure.
+
+Branch:
+ts-error-process-seq-F1
+-
+
+
+
+F2: response sequence issue
+
+Description:
+F2 is also caused by lacking sequence control in asynchronous interactions, thus making that the responses of multiple data requests may be returned in an unexpected order.
+We replicate this fault in the ticket reservation process.
+During the process two ticket reservation requests may be sent asynchronously in a short period of time.
+Without sequence control, the response for the second request may be returned earlier than that for the first one and thus causing an unexpected state.
+
+Branch:
+ts-error-reportui-F2
+-
+
+
+F3: JVM config VS Docker memory config
+
+Description:
+F3 is a reliability problem caused by improper configurations of JVM and Docker. 
+JVM's max memory configuration conflicts with Docker cluster's memory limitation configuration. 
+As a result, Docker sometimes kills the JVM process.
+We replicate this fault in the ticket searching process.
+We select some microservices that are involved in this process and revise them to be more resource consuming.
+These revised microservices are deployed in a Docker cluster with conflicting configurations, thus making these microservices sometimes unavailable.
+
+Branch:
+ts-error-docker-JVM-F3
+- 
+
+
+
+F4: SSL config performance issue
+
+description:
+F4 is a performance problem caused by improper configuration of SSL (Secure Sockets Layer) applied for many microservices.
+The result is frequent SSL offloading at a fine granularity, which slows down the executions of related microservices.
+We replicate this fault by applying the faulty SSL configuration to every microservice of TrainTicket.
+Then when a user requests a service (e.g., ticket reservation), he/she will feel the response time is very long.
+
+Branch:
+ts-error-ssl-F4
+- 
+
+
+
+F5: thread pool full occupy issue
+
+Description:
+F5 is a reliability problem caused by improper usage of thread pool.
+The microservice uses a thread pool to process multiple different types of service requests.
+When the thread pool is exhausted due to the high load of a type of service requests, another type of service requests will fail due to timeout.
+We replicate this fault in ticket reservation service, which serves both the ticket searching process and the ticket booking process.
+When the load of ticket searching is high, the thread pool of the service will be exhausted and the ticket booking requests to the service will fail due to timeout.
+
+Branch:
+ts-error-cross-timeout-status(chance)-F5
+- 
+
+
+
+F7: third-party request issue 
+
+Description:
+F7 is a failure caused by the denial of service of a third-party service.
+As there is no limit on the number of requests to the third-party service, an overwhelming number of requests makes the service deny the requests.
+This denial of service in turn causes the failure of the payment service.
+We replicate this fault in the ticket booking process.
+We build an external payment service as the third-party service, which denies service requests when the number of requests exceeds a given limit.
+We use the payment service in the ticket booking process and put no limit on the number of payment requests.
+
+branch:
+ts-external-normal-F7
+- 
+
+
+
+F8: redis app state issue 
+
+Description:
+F8 is caused by missing or incorrect parameter passing along an invocation chain.
+We replicate this fault in the ticket cancellation process.
+When a VIP user tries to cancel a ticket, the login token saved in Redis is not passed to some involved microservices that require the token.
+
+Branch:
+ts-error-redis-F8
+- 
+
+
+
+F10: logic issue
+
+Description:
+F10 is caused by an unexpected output of a microservice, which is used in a special case of business processing.
+We replicate this fault in the ticket booking process.
+We implement two APIs in the ticket ordering service, which respectively serve for general ticket ordering and ticket ordering of some special stations.
+The API for special ticket ordering sometimes returns an unexpected output that is not correctly handled, thus making the ticket booking process fail.
+
+branch:
+ts-error-logic-F10
+- 
+
+
+
+F11: BOM update sequence issue
+
+Description:
+F11 is a fault that occurs in asynchronous updating of data, caused by the missing of sequence control.
+When the Bill Of Material (BOM) tree is updated in an unexpected order, the resulting tree is incorrect. 
+But when the user turns on the "strict mode" on product BOM services, the resulting tree is rebuilt when the BOM tree includes some negative numbers, leading to a correct tree.
+We replicate this fault in the order cancellation process, which includes two microservices (payment service and cancel service) that asynchronously set the same value in the database. 
+Due to the missing of sequence control, the two microservices may set the value in a wrong sequence, thus causing an incorrect value.
+But if the user turns on the "strict order" mode on the order service, the incorrect value will be corrected eventually.
+
+Branch:
+ts-error-bomupdate-F11
+- 
+
+
+
+F12: price update issue (service status)
+
+Description:
+F12 is caused by an unexpected output of a microservice when it is in a special state.
+We replicate this fault in the ticket booking process.
+We introduce state admDepStation/admDesStation for the ticket reservation service to indicate the departure/destination station of which the administrator is examining the tickets.
+If the departure/destination station of a ticket reservation request is admDepStation/admDesStation, the request will be denied with an unexpected output and the ticket booking process returns an error.
+
+Branch:
+ts-error-processes-seq-status(chance)-F12
+- 
+
+
+
+F13: price optimize sequence issue
+
+Description:
+F13 is due to lack of sequence control among the processing steps for multiple user requests.
+We replicate this fault in the ticket booking process of TrainTicket, during which the user can first reserve a ticket, pay for it, and then cancel it.
+These three user requests are handled in an asynchronous way using message queue and without sequence control.
+When the user cancel a ticket right after paying for it, the ticket cancelling may be processed before the ticket payment.
+
+Branch:
+ts-error-queue-F13
+-
+
+
+
+
+
+
+
+

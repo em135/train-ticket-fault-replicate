@@ -1,0 +1,2233 @@
+[
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "db8744664909e8ae",
+    "name": "http:/cancelorder",
+    "timestamp": 1530620486359000,
+    "duration": 191008,
+    "annotations": [
+      {
+        "timestamp": 1530620486359000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1530620486550008,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "CancelController",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "cancelTicket",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-cancel-service-559b66bd8b-tltr9:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "be6e047c54f99b9c",
+    "name": "http:/verifylogintoken/22b8d371-db67-46c6-a378-62a",
+    "parentId": "db8744664909e8ae",
+    "timestamp": 1530620486363000,
+    "duration": 11000,
+    "annotations": [
+      {
+        "timestamp": 1530620486363000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1530620486365000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1530620486372000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1530620486374000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/22b8d371-db67-46c6-a378-62ae9bd36b41",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-sso-service:12349/verifyLoginToken/22b8d371-db67-46c6-a378-62ae9bd36b41",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-sso-service-54877bfbb4-llmgd:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-cancel-service-559b66bd8b-tltr9:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "598723a63cee5938",
+    "name": "http:/order/getbyid/",
+    "parentId": "db8744664909e8ae",
+    "timestamp": 1530620486375000,
+    "duration": 10000,
+    "annotations": [
+      {
+        "timestamp": 1530620486375000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1530620486376500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "10.244.1.225",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1530620486383500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "10.244.1.225",
+          "port": 12031
+        }
+      },
+      {
+        "timestamp": 1530620486385000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-order-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/order/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-service:12031/order/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderController",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "10.244.1.225",
+          "port": 12031
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "10.244.1.225",
+          "port": 12031
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-service-7f9b98677-bqv7k:ts-order-service:12031",
+        "endpoint": {
+          "serviceName": "ts-order-service",
+          "ipv4": "10.244.1.225",
+          "port": 12031
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-cancel-service-559b66bd8b-tltr9:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "f6d4a21c6fa71b36",
+    "name": "http:/orderother/getbyid/",
+    "parentId": "db8744664909e8ae",
+    "timestamp": 1530620486387000,
+    "duration": 17000,
+    "annotations": [
+      {
+        "timestamp": 1530620486387000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1530620486388500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486402500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486404000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getById/",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getOrderById",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-cancel-service-559b66bd8b-tltr9:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "b163bccc8b1792c1",
+    "name": "http:/orderother/update",
+    "parentId": "db8744664909e8ae",
+    "timestamp": 1530620486404000,
+    "duration": 120000,
+    "annotations": [
+      {
+        "timestamp": 1530620486404000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1530620486406000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486522000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486524000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/update",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "saveOrderInfo",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-cancel-service-559b66bd8b-tltr9:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "02be23d69920b9b3",
+    "name": "http:/inside_payment/drawback",
+    "parentId": "db8744664909e8ae",
+    "timestamp": 1530620486527000,
+    "duration": 21000,
+    "annotations": [
+      {
+        "timestamp": 1530620486527000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "timestamp": 1530620486529000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "10.244.1.222",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1530620486546000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "10.244.1.222",
+          "port": 18673
+        }
+      },
+      {
+        "timestamp": 1530620486548000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-inside-payment-service",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/inside_payment/drawBack",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-inside-payment-service:18673/inside_payment/drawBack",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "InsidePaymentController",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "10.244.1.222",
+          "port": 18673
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "drawBack",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "10.244.1.222",
+          "port": 18673
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-inside-payment-service-9b9c99b5d-56chk:ts-inside-payment-service:18673",
+        "endpoint": {
+          "serviceName": "ts-inside-payment-service",
+          "ipv4": "10.244.1.222",
+          "port": 18673
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-cancel-service-559b66bd8b-tltr9:ts-cancel-service:18885",
+        "endpoint": {
+          "serviceName": "ts-cancel-service",
+          "ipv4": "10.244.1.223",
+          "port": 18885
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "69f2527aa36fed87",
+    "name": "http:/verifylogintoken/22b8d371-db67-46c6-a378-62a",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486412000,
+    "duration": 15000,
+    "annotations": [
+      {
+        "timestamp": 1530620486412000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486414000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1530620486425000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "timestamp": 1530620486427000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-sso-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/verifyLoginToken/22b8d371-db67-46c6-a378-62ae9bd36b41",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-sso-service:12349/verifyLoginToken/22b8d371-db67-46c6-a378-62ae9bd36b41",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "AccountSsoController",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "verifyLoginToken",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-sso-service-54877bfbb4-llmgd:ts-sso-service:12349",
+        "endpoint": {
+          "serviceName": "ts-sso-service",
+          "ipv4": "10.244.2.129",
+          "port": 12349
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "21cfc595705f51de",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486429000,
+    "duration": 9000,
+    "annotations": [
+      {
+        "timestamp": 1530620486429000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486432000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486435000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486438000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "controller_state",
+        "value": "(/)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-4kk5m:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "aaf1d1e96896244c",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486439000,
+    "duration": 6000,
+    "annotations": [
+      {
+        "timestamp": 1530620486439000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486441000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486444000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486445000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "472b3b7fceffcce8",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486446000,
+    "duration": 10000,
+    "annotations": [
+      {
+        "timestamp": 1530620486446000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486448000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.131",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486454000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.131",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486456000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.131",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.131",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.131",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-5khxp:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.131",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "a12f383600c299d2",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486458000,
+    "duration": 6000,
+    "annotations": [
+      {
+        "timestamp": 1530620486458000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486459500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486462500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486464000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "controller_state",
+        "value": "(/)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-vm66b:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "767f67b3ae2900a6",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486465000,
+    "duration": 5000,
+    "annotations": [
+      {
+        "timestamp": 1530620486465000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486466500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486468500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486470000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "controller_state",
+        "value": "(/)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-4kk5m:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.221",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "cc32537ce9a81535",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486471000,
+    "duration": 6000,
+    "annotations": [
+      {
+        "timestamp": 1530620486471000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486472000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486476000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486477000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "controller_state",
+        "value": "(/)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-vm66b:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.1.226",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "863a67f007d53834",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486478000,
+    "duration": 4000,
+    "annotations": [
+      {
+        "timestamp": 1530620486478000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486479000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.130",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486481000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.130",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486482000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "controller_state",
+        "value": "(/)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.130",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.130",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.130",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-5r62m:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.130",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "db78456f0f89f20b",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486483000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1530620486483000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486485000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486488000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486491000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "8b05810fc39060e7",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486491000,
+    "duration": 6000,
+    "annotations": [
+      {
+        "timestamp": 1530620486491000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486492000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486495000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486497000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "ad607e78fef566b7",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486498000,
+    "duration": 5000,
+    "annotations": [
+      {
+        "timestamp": 1530620486498000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486499000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486502000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486503000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "db8744664909e8ae",
+    "id": "264788d9c7b52ac5",
+    "name": "http:/orderother/getsuspendstationarea",
+    "parentId": "b163bccc8b1792c1",
+    "timestamp": 1530620486504000,
+    "duration": 8000,
+    "annotations": [
+      {
+        "timestamp": 1530620486504000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486508000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486511000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "timestamp": 1530620486512000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "controller_state",
+        "value": "(Eastern/JiangSuProvince)",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.host",
+        "value": "ts-order-other-service",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "http://ts-order-other-service:12032/orderOther/getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "OrderOtherController",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getSuspendStationArea",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "ts-order-other-service-6cd68fc975-pwzxf:ts-order-other-service:12032",
+        "endpoint": {
+          "serviceName": "ts-order-other-service",
+          "ipv4": "10.244.2.125",
+          "port": 12032
+        }
+      }
+    ]
+  }
+]

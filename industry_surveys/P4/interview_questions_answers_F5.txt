@@ -1,0 +1,49 @@
+
+
+
+
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Message notification system.
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Fresh new developed microservices.
+
+Q: How many development language used in this microservices system? what are they?
+A: Java, Lua.
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: A service sometimes returns timeout exceptions for user requests.
+
+Q: How to reproduce the fault?
+A: The timeout become more and more when pressure become huge.
+
+Q: how many microservices involved in this case?
+A: 10+.
+
+Q: how much time spent to locate the fault?
+A: 3 days.
+
+Q: What's the root cause of the fault?
+A: The high load of a type of requests causes the timeout failure of another type of requests.
+
+Q: Describe the detail process of the fault localication?
+A: First check the messaging analysis microservice logic.
+   Second check te auto-scaling and circuit breaker.
+   Check the implementation of the messaging analysis microservices logic in specific messaging notification process.
+   Finally check the thread pool used in rule process of the message and no rule processing of the message, and locate the issue.
+
+
+
+

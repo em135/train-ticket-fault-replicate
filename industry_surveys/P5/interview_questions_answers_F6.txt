@@ -1,0 +1,44 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Mobile payment system.
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Fresh new developed microservices.
+
+Q: How many development language used in this microservices system? what are they?
+A: Java.
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: A service is slowing down and returns error finally.
+
+Q: How to reproduce the fault?
+A: Sometimes update the user's balance cause OOM issue.
+
+Q: How many microservices involved in this case?
+A: 3.
+
+Q: How much time spent to locate the fault?
+A: 3 days.
+
+Q: What's the root cause of the fault?
+A: Endless recursive requests of a microservice caused by SQL errors of another dependent microservice.
+
+Q: Describe the detail process of the fault localication?
+A: First check the sql logic issue of bank card microservice.
+   Second check the OOM related variable.
+   Third check the terminate of the worker actor, locate the issue.
+
+
+
+

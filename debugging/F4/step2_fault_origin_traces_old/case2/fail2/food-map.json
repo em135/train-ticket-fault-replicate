@@ -1,0 +1,299 @@
+[
+  {
+    "traceId": "9e14372f88ccdb0d",
+    "id": "9e14372f88ccdb0d",
+    "name": "http:/food/getfood",
+    "timestamp": 1517209467855000,
+    "duration": 173055,
+    "annotations": [
+      {
+        "timestamp": 1517209467855000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "timestamp": 1517209468028055,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "mvc.controller.class",
+        "value": "FoodController",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getFood",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "651c9fb307ae:ts-food-service:18856",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "9e14372f88ccdb0d",
+    "id": "1a192c49595b2628",
+    "name": "https:/foodmap/gettrainfoodoftrip",
+    "parentId": "9e14372f88ccdb0d",
+    "timestamp": 1517209467876000,
+    "duration": 94000,
+    "annotations": [
+      {
+        "timestamp": 1517209467876000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "timestamp": 1517209467917500,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-food-map-service",
+          "ipv4": "172.18.0.13",
+          "port": 18855
+        }
+      },
+      {
+        "timestamp": 1517209467928500,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-food-map-service",
+          "ipv4": "172.18.0.13",
+          "port": 18855
+        }
+      },
+      {
+        "timestamp": 1517209467970000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-food-map-service",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "POST",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/foodmap/getTrainFoodOfTrip",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "https://ts-food-map-service:18855/foodmap/getTrainFoodOfTrip",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "FoodMapController",
+        "endpoint": {
+          "serviceName": "ts-food-map-service",
+          "ipv4": "172.18.0.13",
+          "port": 18855
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getTrainFoodOfTrip",
+        "endpoint": {
+          "serviceName": "ts-food-map-service",
+          "ipv4": "172.18.0.13",
+          "port": 18855
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "12e059280b25:ts-food-map-service:18855",
+        "endpoint": {
+          "serviceName": "ts-food-map-service",
+          "ipv4": "172.18.0.13",
+          "port": 18855
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "651c9fb307ae:ts-food-service:18856",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      }
+    ]
+  },
+  {
+    "traceId": "9e14372f88ccdb0d",
+    "id": "d88599b4a3b69776",
+    "name": "https:/travel/getroutebytripid/z1234",
+    "parentId": "9e14372f88ccdb0d",
+    "timestamp": 1517209467973000,
+    "duration": 50000,
+    "annotations": [
+      {
+        "timestamp": 1517209467973000,
+        "value": "cs",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "timestamp": 1517209467992000,
+        "value": "sr",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.18",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517209468004000,
+        "value": "ss",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.18",
+          "port": 12346
+        }
+      },
+      {
+        "timestamp": 1517209468023000,
+        "value": "cr",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      }
+    ],
+    "binaryAnnotations": [
+      {
+        "key": "http.host",
+        "value": "ts-travel-service",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "http.method",
+        "value": "GET",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "http.path",
+        "value": "/travel/getRouteByTripId/Z1234",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "http.url",
+        "value": "https://ts-travel-service:12346/travel/getRouteByTripId/Z1234",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      },
+      {
+        "key": "mvc.controller.class",
+        "value": "TravelController",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.18",
+          "port": 12346
+        }
+      },
+      {
+        "key": "mvc.controller.method",
+        "value": "getRouteByTripId",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.18",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "7bccfa28265b:ts-travel-service:12346",
+        "endpoint": {
+          "serviceName": "ts-travel-service",
+          "ipv4": "172.18.0.18",
+          "port": 12346
+        }
+      },
+      {
+        "key": "spring.instance_id",
+        "value": "651c9fb307ae:ts-food-service:18856",
+        "endpoint": {
+          "serviceName": "ts-food-service",
+          "ipv4": "172.18.0.61",
+          "port": 18856
+        }
+      }
+    ]
+  }
+]
+ 

@@ -1,0 +1,40 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Price management system
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Mixed: some legacy monolithic service + fresh new developed microservices
+
+Q: How many development language used in this microservices system? what are they?
+A: Java, Python, Nodejs
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: The file-uploading process fails
+
+Q: How to reproduce the fault?
+A: Execute the file-uploading process
+
+Q: How many microservices involved in this case?
+A: 1
+
+Q: How much time spent to locate the fault?
+A: 2 days
+
+Q: What's the root cause of the fault?
+A: The "max-content-length" configuration of spray is only 2m, not allowing to support to upload big file
+
+Q: Describe the detail process of the fault localication?
+A: First to check the file-uploading logic.
+   Sceond to check the file content,
+   Third to check the spray config, and add max-content-length config, fix the issue.

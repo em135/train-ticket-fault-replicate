@@ -1,0 +1,44 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Collaborative translation system.
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Mixed: some legacy monolithic service + fresh new developed microservices.
+
+Q: How many development language used in this microservices system? what are they?
+A: There are 4, Python, Java, Javascript, Ruby.
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: Some information displayed in a report is wrong.
+
+Q: How to reproduce the fault?
+A: When user access the report dashboard, some report are occasionally not correctly renderred.  
+
+Q: How many microservices involved in this case?
+A: 1.
+
+Q: How much time spent to locate the fault?
+A: 6 days.
+
+Q: What's the root cause of the fault?
+A: Different data requests for the same report are returned in an unexpected order.
+
+Q: Describe the detail process of the fault localication?
+A: First check the ajax request one by one separately.
+   Second check the backend handler for each ajax request.
+   Third check the charts of the dashboard together in different combination.
+   Finally check the chart rendering logic in different ajax returning sequence, and locate the issue. 
+
+
+

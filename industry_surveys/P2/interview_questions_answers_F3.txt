@@ -1,0 +1,45 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Collaborative translation system
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Mixed: some legacy monolithic service + fresh new developed microservices
+
+Q: How many development language used in this microservices system? what are they?
+A: There are 4, Python, java, javascript, ruby
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: A microservice instance is periodically unavailable.
+
+Q: How to reproduce the fault?
+A: request for some specific microservices are periodically with error response.
+
+Q: How many microservices involved in this case?
+A: 12.
+
+Q: How much time spent to locate the fault?
+A: 20 days.
+
+Q: What's the root cause of the fault?
+A: JVM configurations are inconsistent with Docker configurations
+
+Q: Describe the detail process of the fault localication?
+A: First check all the logic issue for all the related microservices
+   Second check the JVM process memory
+   Third check the standalone jboss runtime, there is no issue
+   Bring in docker again, issue happened in some cases, so make sure it is related with docker container
+   Then google similar issue, locate it is a docker config issue
+
+
+

@@ -1,0 +1,42 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Online meeting system.
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Fresh new developed microservices.
+
+Q: How many development language used in this microservices system? what are they?
+A: There are 2, Java and C++.
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: Messages are displayed in wrong order.
+
+Q: How to reproduce the fault?
+A: When user submit more than one messages in quick manner, the issue will happen.
+
+Q: How many microservices involved in this case?
+A: 3.
+
+Q: How much time spent to locate the fault?
+A: 10 days.
+
+Q: What's the root cause of the fault?
+A: Asynchronous message delivery doesn't have sequence control.
+
+Q: Describe the detail process of the fault localication?
+A: First check the message sending logic,
+   Second check the code change, sync --> async
+   Third check the sequence control, locate the issue.
+
+

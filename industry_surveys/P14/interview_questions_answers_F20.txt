@@ -1,0 +1,43 @@
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: BPM system.
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Transformed from monolithic to microservices.
+
+Q: How many development language used in this microservices system? what are they?
+A: Java.
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: Nothing is returned upon workflow data request.
+
+Q: How to reproduce the fault?
+A: Query the customized workflow data in DB2.
+
+Q: How many microservices involved in this case?
+A: 1.
+
+Q: How much time spent to locate the fault?
+A: 3 days.
+
+Q: What's the root cause of the fault?
+A: The JBoss startup classpath parameter does not include the right DB2 jar package
+
+Q: Describe the detail process of the fault localication?
+A: Rollbacking to old version code still has the issue.
+   Check the logic of the database access logic.
+   Check the SQL of the issue logic.
+   Check the JBoss startup config, then locate the DB2 jdbc jar is in old version, which cause the issue.
+
+

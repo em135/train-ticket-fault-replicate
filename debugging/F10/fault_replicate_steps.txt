@@ -1,0 +1,23 @@
+
+Setup System:
+
+1. Use docker-compose to setup the Train-Ticket system.
+2. After running the test case once, delete all the contacts in the admin page.
+
+
+Failure Triggering Usage Steps:
+
+1. Log in and ensure there is at least one contact.
+2. Input "Shang Hai" as the starting place and "Nan Jing" as the end place.
+3. Randomly select one day between 5 and 30 days from today as the Date.
+4. Click [Search].
+5. Add one contact, select it and click [Select].
+6. Click [Confirm Ticket].
+7. You will get error alert and see the exception logs on the server console.
+
+
+Failure Triggering Test Case:
+
+There is only one test case in ts-ui-test, named [TestFlowOne.java].
+Run it and it will preserve ticket successfully once and fail twice.
+

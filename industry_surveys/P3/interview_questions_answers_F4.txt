@@ -1,0 +1,46 @@
+
+
+
+
+Questions:
+
+
+
+General Questions:
+
+Q: What's the fault related software system?
+A: Personal financial system.
+
+Q: Is it fresh new developed microservices or transformed from legacy monolithic system?
+A: Fresh new developed microservices.
+
+Q: How many development language used in this microservices system? what are they?
+A: Java, Javascript.
+
+
+
+Fault Related Questions:
+
+Q: What's the appearance of the fault?
+A: User scenario processing performance is slow.
+
+Q: How to reproduce the fault?
+A: Process most of the scenario.
+
+Q: How many microservices involved in this case?
+A: Most of the microservices.
+
+Q: How much time spent to locate the fault?
+A: 3 days.
+
+Q: What's the root cause of the fault?
+A: SSL offloading happens in a fine granularity (happening in almost each Docker instance).
+
+Q: Describe the detail process of the fault localication?
+A: First check the logic and code change on the logic.
+   Second add performance checker inside logic code.
+   Third check the performance from sending request to receive the request, lcoate the issue.
+
+
+
+
