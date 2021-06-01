@@ -11,6 +11,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Aspect
 @Component
@@ -34,13 +35,20 @@ public class HttpAspect {
         String remoteHost = request.getRemoteHost();
         String requestArgs  = "";
         if(joinPoint.getArgs() != null && joinPoint.getArgs().length > 0){
-            requestArgs = new Gson().toJson(joinPoint.getArgs());
+            for(Object c:  joinPoint.getArgs()) {
+                if( !(c instanceof HttpServletResponse) && !(c instanceof HttpServletRequest)) {
+                    System.out.println("c=" + c);
+                    requestArgs += new Gson().toJson(c);
+                    System.out.println("requestArgs=" + requestArgs);
+                }
+            }
         }
+
 
         logger.info("[Service:" + thisServiceName + "]" +
                     "[URI:" + thisServiceName + url + "]" +
                     "[Method:" + method + "]" +
-                    "[RequestBody:" + requestArgs + "]" +
+                    "[Request:" + requestArgs + "]" +
                     "[RemoteHost:" + remoteHost + "]" +
                     "[IP:" + ip + "]");
 
