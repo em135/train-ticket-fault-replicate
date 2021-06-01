@@ -39,11 +39,9 @@ type News struct {
 	Content string `bson:"Content"`
 }
 
-func hello(val string) string {
-	var str = []byte(`[
-                       {"Title": "News Service Complete", "Content": "Congratulations:Your News Service Complete"},
-                       {"Title": "Total Ticket System Complete", "Content": "Just a total test"}
-                    ]`)
+func hello(ctx *web.Context, val string) string {
+	var str = []byte("501 - We have been lazy with the news")
+	ctx.WriteHeader(501)
 	return string(str)
 }
 

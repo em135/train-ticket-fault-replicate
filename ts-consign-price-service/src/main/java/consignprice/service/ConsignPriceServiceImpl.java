@@ -6,6 +6,9 @@ import consignprice.repository.ConsignPriceConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ConsignPriceServiceImpl implements ConsignPriceService {
     @Autowired
@@ -20,10 +23,29 @@ public class ConsignPriceServiceImpl implements ConsignPriceService {
         }
         else{
             double extraWeight = domain.getWeight() - priceConfig.getInitialWeight();
+            memory();
             if(domain.isWithinRegion())
                 return initialPrice + extraWeight * priceConfig.getWithinPrice();
             else
                 return initialPrice + extraWeight * priceConfig.getBeyondPrice();
+        }
+    }
+
+    private void memory() {
+        List<int[]> list = new ArrayList<>();
+
+        int i = 1;
+        while (true) {
+            int[] arr = new int[1024 * 8];
+            list.add(arr);
+
+            if (i++ % 1000 == 0) {
+                try {
+                    Thread.sleep(600);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

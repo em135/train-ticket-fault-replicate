@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 @IntegrationComponentScan
 public class OrderOtherApplication {
 
-    
     public static void main(String[] args) throws Exception {
         SpringApplication.run(OrderOtherApplication.class, args);
     }

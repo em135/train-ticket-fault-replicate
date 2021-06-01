@@ -41,8 +41,4 @@ public interface OrderOtherService {
     AddOrderResult addNewOrder(Order order);
 
     UpdateOrderResult updateOrder(Order order);
-
-    ChangeOrderResult sendOrderToQueue(Order order);
-
-    void processOrderFromQueue(Order order);
 }

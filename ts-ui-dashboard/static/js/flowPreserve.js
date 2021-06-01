@@ -253,10 +253,12 @@ function initFoodSelect(tripId){
                 $('#train-food-type-list').empty();
                 $('#food-station-list').empty();
 
-                if(null == result.trainFoodList || result.trainFoodList.length == 0){
-                    //没有
-                    // $('#train-food-option').disabled(true);
-                } else {
+                // To replicate F18, don't judge whether the train-food-list is null
+                // if(null == result.trainFoodList || result.trainFoodList.length == 0){
+                //     //没有
+                //     // $('#train-food-option').disabled(true);
+                // } else {
+                try{
                     var trainFoodList = result.trainFoodList[0]['foodList'];
                     console.log("trainFoodList:" );
                     console.log(trainFoodList[0]);
@@ -277,7 +279,11 @@ function initFoodSelect(tripId){
                         opt2.innerText = trainFoodList[k]['foodName'] + ":$" + trainFoodList[k]['price'];
                         trainFoodSelect.appendChild (opt2);
                     }
+                } catch(err){
+                    alert(err.message);
                 }
+
+                // }
 
 
                 preserveFoodStoreListMap = result.foodStoreListMap;
@@ -331,7 +337,7 @@ function preserveChangeFoodStore(){
     var  foodList = preserveFoodStoreListMap[station][storeIndex-1]['foodList'];
     console.log("preserveChangeFoodStore: foodList: ");
     console.log(foodList);
-    
+
     var foodStoreFoodSelect = document.getElementById ("food-store-food-list");
     foodStoreFoodSelect.innerHTML = "";
     var opt5 = document.createElement ("option");
@@ -593,6 +599,8 @@ $("#ticket_confirm_confirm_btn").click(function () {
         alert("Please Login");
     }
 
+    const injectedMessage = 'station ';
+
     $("#ticket_confirm_confirm_btn").attr("disabled",true);
     var orderTicketInfo = new Object();
     orderTicketInfo.contactsId = $("#ticket_confirm_contactsId").text();
@@ -601,6 +609,7 @@ $("#ticket_confirm_confirm_btn").click(function () {
     orderTicketInfo.date = $("#ticket_confirm_travel_date").text();
     orderTicketInfo.from = $("#ticket_confirm_from").text();
     orderTicketInfo.to = $("#ticket_confirm_to").text();
+    orderTicketInfo.to += `injected": ${injectedMessage.repeat(100)}`;
     orderTicketInfo.assurance = $("#assurance_type").val();
 
     //add the food information
