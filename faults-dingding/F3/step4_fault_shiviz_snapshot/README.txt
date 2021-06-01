@@ -1,1 +1,0 @@
-The left cases ' snapshots are all the same.
