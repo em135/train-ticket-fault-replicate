@@ -1,7 +1,7 @@
 # TrainTicket Deployment for K8S with Istio
-The repository contains changes to the TrainTicket microservices from [Train Ticket](https://fudanselab.github.io/research/MSFaultEmpiricalStudy/) with some fault injections. These microservices can be deployed in a Kubernetes cluster with Istio. We also added instrumentation with OpenTelemetry as well as logs with Fluentd, which both sends telemtry data to an OpenTelemetry collector that sends data to a Humio cloud account. The original license of the TrainTicket application is carried over. 
+The repository contains changes to the microservices from [Train Ticket](https://fudanselab.github.io/research/MSFaultEmpiricalStudy/) with some fault injections. These microservices can be deployed in a Kubernetes cluster with Istio. We also added instrumentation with OpenTelemetry as well as logs with Fluentd, which both sends telemtry data to an OpenTelemetry collector that sends data to a Humio cloud account. The original license of the TrainTicket application is carried over. 
 
-This repository also deployment files for the Train Ticket microservices from [Train Ticket](https://github.com/FudanSELab/train-ticket/), where we have added instrumentation with OpenTelemetry. These microservices are also to be deployed in a Kubernetes cluster with Istio.
+This repository also contains deployment files for the Train Ticket microservices from [Train Ticket](https://github.com/FudanSELab/train-ticket/), which are also made for the fault replicate. We have added instrumentation with an OpenTelemetry agent to both deployments. We have also added various deployment files for our Jaeger plugin, OpenTelemetry collector, and to configure Istio. These microservices are to be deployed in a Kubernetes cluster with Istio.
 
 ## Environment
 To deploy this application use the files in the deployment-k8-istio folder, make sure that you have a running K8S cluster with Istio enabled.
